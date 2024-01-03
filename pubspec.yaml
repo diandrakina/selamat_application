@@ -38,7 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
 
   google_fonts: ^6.1.0
-  calendar_appbar: ^0.0.6
+  # calendar_appbar: ^0.0.6
   table_calendar: ^3.0.9
   calendar_timeline: ^1.1.2
 
@@ -85,10 +85,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: SamsungSans
-      fonts:
-        - asset: assets/fonts/
+  # fonts:
+    # - family: SamsungSans
+    # - fonts:
+    #     - asset: assets/fonts/
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
