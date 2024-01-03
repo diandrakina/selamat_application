@@ -29,7 +29,7 @@ class loginPage extends StatelessWidget {
               'Sehat Selalu Mentalku',
               style: TextStyles.GR_24_title_light,
             ),
-            Text('halo'),
+            Text('halo rici babi setan ajg tai asu'),
             SizedBox(
               height: 38,
             ),
