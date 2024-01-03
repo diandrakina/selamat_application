@@ -20,38 +20,38 @@ class loginPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Spacer(),
-            Text(
-              'Selamat',
-              style: TextStyles.GR_40_title_regular,
-            ),
-            Text(
-              'Sehat Selalu Mentalku',
-              style: TextStyles.GR_24_title_light,
-            ),
-            Text('halo rici babi sesu'),
-            SizedBox(
+            Spacervytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse(),
+            Text(v
+              'Selamat',v
+              style: TextStyles.GR_40_title_regular,ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+            ),ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+            Text(ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+              'Sehat Selalu Mentalku',ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+              style: TextStyles.GR_24_title_light,ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+            ),ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+            Text('halo rici babi sesu'),ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+            SizedBox(ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
               height: 38,
             ),
-            _buildUserName(context),
-            SizedBox(
-              height: 26,
-            ),
-            _buildPassword(context),
-            SizedBox(
-              height: 15,
-            ),
-          ],
-        ),
-      )),
-    ));
-  }
-
-  Widget _buildUserName(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 50),
-      child: CustomTextFormField(
-        controller: userNameController,
+            _buildUserName(context),ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+            SizedBox(ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+              height: 26,ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+            ),ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+            _buildPassword(context),ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+            SizedBox(ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+              height: 15,ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+            ),ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+          ],ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+        ),ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+      )),ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+    ));ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+  }ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+  Widget _buildUserName(BuildContext context) {ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+    return Padding(ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+      padding: EdgeInsets.symmetric(horizontal: 50),ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+      child: CustomTextFormField(ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+        controller: userNameController,ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
         hintText: 'username',
       ),
     );
@@ -61,11 +61,12 @@ class loginPage extends StatelessWidget {
     return Padding(
         padding: EdgeInsets.symmetric(horizontal: 50),
         child: CustomTextFormField(
-          controller: passwordController,
-          hintText: 'password',
-          textInputAction: TextInputAction.done,
-          textInputType: TextInputType.visiblePassword,
-          obscureText: true,
-        ));
-  }
-}
+          controller: passwordController,ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+          hintText: 'password',ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+          textInputAction: TextInputAction.done,ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+          textInputType: TextInputType.visiblePassword,ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+          obscureText: true,ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+        ));ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+  }ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
+}ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfsev
+ytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfsevytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfseytdutfviygilkcrmopirpioscicffaiocfpnjpcrfjcfrnjprfjpcrfrfse
