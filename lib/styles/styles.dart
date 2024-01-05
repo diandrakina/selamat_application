@@ -30,253 +30,253 @@ class TextStyles {
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.bold,
       fontSize: 18.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle body = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.normal,
       fontSize: 16.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle medium_16 = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.normal,
       fontSize: 16.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle bold_16 = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.bold,
       fontSize: 16.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle regular_16 = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.normal,
       fontSize: 16.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle light_16 = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.w300,
       fontSize: 16.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle thin_16 = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.w100,
       fontSize: 16.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle bold_24 = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.bold,
       fontSize: 24.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle medium_24 = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.normal,
       fontSize: 24.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle regular_24 = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.normal,
       fontSize: 24.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle light_24 = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.w300,
       fontSize: 24.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle thin_24 = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.w100,
       fontSize: 24.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle bold_18 = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.bold,
       fontSize: 18.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle medium_18 = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.normal,
       fontSize: 18.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle regular_18 = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.normal,
       fontSize: 18.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle light_18 = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.w300,
       fontSize: 18.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle thin_18 = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.w100,
       fontSize: 18.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle bold_14 = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.bold,
       fontSize: 14.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle medium_14 = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.normal,
       fontSize: 14.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle regular_14 = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.normal,
       fontSize: 14.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle light_14 = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.w300,
       fontSize: 14.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle thin_14 = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.w100,
       fontSize: 14.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle big_samsung = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.bold,
       fontSize: 36.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle intro_39_bold = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.bold,
       fontSize: 40.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle GR_14_light = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.w300,
       fontSize: 14.83,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle GR_9_light = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.w300,
       fontSize: 9.17,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle GR_24_light = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.w300,
       fontSize: 24.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle GR_16_light = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.w300,
       fontSize: 15.28,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle GR_15_light = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.w300,
       fontSize: 16.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle GR_40_title_light = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.w300,
       fontSize: 40.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle GR_24_title_light = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.w300,
       fontSize: 24.72,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle GR_15_title_light = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.w300,
       fontSize: 15.28,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle GR_9_title_light = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.w300,
       fontSize: 9.44,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle GR_15_title_regular = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.normal,
       fontSize: 15.28,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle GR_40_title_regular = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.normal,
       fontSize: 40,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle GR_24_title_regular = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.normal,
       fontSize: 24.72,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle GR_14_bold = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.bold,
       fontSize: 14.83,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle GR_15_bold = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.bold,
       fontSize: 15.28,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle GR_16_bold = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.bold,
       fontSize: 16.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle GR_42_bold = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.bold,
       fontSize: 42.0,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle GR_24_bold = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.bold,
       fontSize: 24.72,
-      color: AppColors.black);
+      color: Colors.white);
 
   static TextStyle GR_16_regular = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.normal,
       fontSize: 16.0,
-      color: AppColors.black);
+      color: Colors.white);
 }
 
 class AppDecoration {
@@ -323,5 +323,10 @@ class AppDecoration {
       BoxDecoration(color: AppColors.baseColorCard);
 }
 
+class CustomButtonStyles {
+  static ButtonStyle get buttonGray => ElevatedButton.styleFrom(
+      backgroundColor: AppColors.darkModeCard,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)));
+}
 
 // PrimaryColors get appTheme => ThemeHelper()
