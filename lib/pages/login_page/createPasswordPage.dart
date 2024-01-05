@@ -4,13 +4,14 @@ import 'package:selamat_application/widget/customElevatedButton.dart';
 import 'package:selamat_application/widget/customTextFormField.dart';
 import 'package:selamat_application/widget/customCheckboxButton.dart';
 
-class createPasswordPage extends StatelessWidget {
-  createPasswordPage({super.key});
+class CreatePasswordPage extends StatelessWidget {
+  CreatePasswordPage({super.key});
 
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
 
   bool rememberMeCheckBox = false;
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {

@@ -5,6 +5,9 @@ import 'package:flutter/scheduler.dart';
 import 'package:selamat_application/pages/login_page/loginPage.dart';
 import 'package:selamat_application/pages/login_page/createUsernamePage.dart';
 import 'package:selamat_application/pages/login_page/createPasswordPage.dart';
+import 'package:selamat_application/pages/login_page/completeProfile.dart';
+
+//STYLES
 import 'package:selamat_application/styles/styles.dart';
 
 void main() {
@@ -41,7 +44,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
       debugShowCheckedModeBanner: true,
       // home: loginPage(),
-      home: createPasswordPage(),
+      home: CompleteProfile(),
     );
   }
 }
