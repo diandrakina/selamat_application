@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart';
+// LOGIN
 import 'package:selamat_application/pages/login_page/loginPage.dart';
+import 'package:selamat_application/pages/login_page/createUsernamePage.dart';
 import 'package:selamat_application/styles/styles.dart';
 
 void main() {
@@ -37,7 +39,8 @@ class MyApp extends StatelessWidget {
       // ),
       theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
       debugShowCheckedModeBanner: true,
-      home: loginPage(),
+      // home: loginPage(),
+      home: createUsernamePage(),
     );
   }
 }

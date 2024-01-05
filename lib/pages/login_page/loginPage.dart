@@ -7,7 +7,8 @@ import 'package:selamat_application/widget/customButton.dart';
 import 'package:selamat_application/widget/customImage.dart';
 
 class loginPage extends StatelessWidget {
-  loginPage({super.key});
+  // loginPage({super.key});
+  loginPage({Key? key}) : super(key: key);
 
   TextEditingController userNameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
