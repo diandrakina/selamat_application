@@ -7,6 +7,10 @@ import 'package:selamat_application/pages/login_page/createUsernamePage.dart';
 import 'package:selamat_application/pages/login_page/createPasswordPage.dart';
 import 'package:selamat_application/pages/login_page/completeProfile.dart';
 
+// WELCOME PAGE
+import 'package:selamat_application/pages/welcome_page/welcomePage.dart';
+import 'package:selamat_application/pages/welcome_page/askQuestion.dart';
+
 //QUESTION
 import 'package:selamat_application/pages/question_page/startUpQuestionPage.dart';
 import 'package:selamat_application/pages/question_page/endUpQuestionPage.dart';
@@ -51,7 +55,9 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
       debugShowCheckedModeBanner: false,
       // home: CreatePasswordPage(),
-      home: NavBar(),
+      // home: NavBar(),
+      home: WelcomePage(),
+      // home: AskQuestion()
       // home: StartUpQuestionPage(),
 
       // home: CompleteProfile(),

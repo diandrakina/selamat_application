@@ -5,16 +5,16 @@ import 'package:selamat_application/widget/customCheckboxButton.dart';
 import 'package:selamat_application/widget/customElevatedButton.dart';
 
 class WelcomePage extends StatelessWidget {
-  const WelcomePage ({super.key});
+  const WelcomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Text(
-          'Welcome',
+          'Welcome!',
           style: TextStyles.GR_42_bold,
-          ),
+        ),
       ),
     );
   }
