@@ -7,8 +7,15 @@ import 'package:selamat_application/pages/login_page/createUsernamePage.dart';
 import 'package:selamat_application/pages/login_page/createPasswordPage.dart';
 import 'package:selamat_application/pages/login_page/completeProfile.dart';
 
+//QUESTION
+import 'package:selamat_application/pages/question_page/startUpQuestionPage.dart';
+import 'package:selamat_application/pages/question_page/endUpQuestionPage.dart';
+import 'package:selamat_application/pages/question_page/targetQuestionPage.dart';
+import 'package:selamat_application/pages/question_page/goalsQuestionPage.dart';
+
 //STYLES
 import 'package:selamat_application/styles/styles.dart';
+import 'package:selamat_application/widget/navbar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,9 +49,12 @@ class MyApp extends StatelessWidget {
       // useMaterial3: true,
       // ),
       theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
-      debugShowCheckedModeBanner: true,
-      // home: loginPage(),
-      home: CompleteProfile(),
+      debugShowCheckedModeBanner: false,
+      // home: CreatePasswordPage(),
+      home: NavBar(),
+      // home: StartUpQuestionPage(),
+
+      // home: CompleteProfile(),
     );
   }
 }

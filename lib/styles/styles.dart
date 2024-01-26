@@ -50,6 +50,12 @@ class TextStyles {
       fontSize: 16.0,
       color: Colors.white);
 
+  static TextStyle bold_15_blue = const TextStyle(
+      fontFamily: 'SamsungSans',
+      fontWeight: FontWeight.bold,
+      fontSize: 15.0,
+      color: AppColors.baseColor);
+
   static TextStyle regular_16 = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.normal,
@@ -258,6 +264,12 @@ class TextStyles {
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.bold,
       fontSize: 16.0,
+      color: Colors.white);
+
+  static TextStyle GR_38_bold = const TextStyle(
+      fontFamily: 'SamsungSans',
+      fontWeight: FontWeight.bold,
+      fontSize: 38.0,
       color: Colors.white);
 
   static TextStyle GR_42_bold = const TextStyle(

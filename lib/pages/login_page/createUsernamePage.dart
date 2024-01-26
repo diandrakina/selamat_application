@@ -81,36 +81,41 @@ class createUsernamePage extends StatelessWidget {
 
   Widget _logInStack(BuildContext context) {
     return Container(
+      // color: Colors.amber,
       height: 20,
-      width: 203,
-      margin: EdgeInsets.only(left: 70, right: 70, bottom: 29),
-      child: Stack(
-        alignment: Alignment.center,
+      width: 250,
+      margin: EdgeInsets.only(left: 70, right: 70, bottom: 30),
+      child: Row(
         children: [
-          Align(
-            alignment: Alignment.centerRight,
-            child: GestureDetector(
-              onTap: () {
-                onTapLogIn(context);
-              },
+          Container(
+            child: Text(
+              'already have an account? ',
+              style: TextStyles.GR_15_light,
+            ),
+            // margin: EdgeInsets.symmetric(horizontal: 1),
+          ),
+          GestureDetector(
+            child: Container(
+              // color: Colors.blue,
               child: Text(
-                'Login',
-                style: TextStyles.GR_15_light,
+                "Login",
+                style: TextStyles.bold_15_blue,
               ),
+              padding: EdgeInsets.symmetric(vertical: 0),
             ),
-          ),
-          RichText(
-            text: TextSpan(
-              children: [
-                TextSpan(
-                    text: 'already have an account?',
-                    style: TextStyles.GR_15_light),
-                TextSpan(text: " "),
-                TextSpan(text: 'Login', style: TextStyles.GR_15_bold)
-              ],
-            ),
-            textAlign: TextAlign.left,
-          ),
+          )
+          // RichText(
+          //   text: TextSpan(
+          //     children: [
+          //       TextSpan(
+          //           text: 'don\'t have an account?',
+          //           style: TextStyles.GR_15_light),
+          //       TextSpan(text: " "),
+          //       TextSpan(text: 'Sign In', style: TextStyles.bold_15_blue)
+          //     ],
+          //   ),
+          //   textAlign: TextAlign.left,
+          // ),
         ],
       ),
     );

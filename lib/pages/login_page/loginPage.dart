@@ -23,15 +23,18 @@ class loginPage extends StatelessWidget {
         body: Form(
           child: Container(
             width: double.maxFinite,
-            padding: EdgeInsets.symmetric(vertical: 33),
+            padding: EdgeInsets.symmetric(vertical: 10),
             child: Column(
               // crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Spacer(),
+                Flexible(
+                  child: Container(),
+                  flex: 2,
+                ),
+                // Spacer(),
                 Text(
                   'Selamat',
-                  // style: TextStyle(color: Colors.white, fontSize: 40),
                   style: TextStyles.GR_40_title_regular,
                 ),
                 Text(
@@ -43,7 +46,7 @@ class loginPage extends StatelessWidget {
                 ),
                 _buildUserName(context),
                 SizedBox(
-                  height: 26,
+                  height: 25,
                 ),
                 _buildPassword(context),
                 SizedBox(
@@ -60,13 +63,13 @@ class loginPage extends StatelessWidget {
                         style: TextStyles.medium_14),
                     TextSpan(text: " "),
                     TextSpan(
-                        text: 'Get help with logging in,',
+                        text: 'Get help with logging in.',
                         style: TextStyles.bold_14)
                   ]),
                   textAlign: TextAlign.left,
                 ),
                 SizedBox(
-                  height: 59,
+                  height: 50,
                 ),
                 Center(
                   child: Container(
@@ -97,11 +100,11 @@ class loginPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 46,
+                  height: 40,
                 ),
                 _buildGoogle(context),
                 SizedBox(
-                  height: 15,
+                  height: 13,
                 ),
                 _buildFacebook(context),
                 SizedBox(
@@ -113,6 +116,7 @@ class loginPage extends StatelessWidget {
                 ),
               ],
             ),
+            // color: const Color.fromARGB(255, 173, 203, 255),
           ),
         ),
         bottomNavigationBar: _signInStack(context),
@@ -160,12 +164,13 @@ class loginPage extends StatelessWidget {
       height: 50.0,
       margin: EdgeInsets.symmetric(horizontal: 50),
       leftIcon: Container(
-        margin: EdgeInsets.only(right: 30),
-        // child: CustomImageView(
-        //   imagePath: ImageConstant.imgDevicongoogle,
-        //   height: 10,
-        //   width: 10,
-        // ),
+        height: 35,
+        width: 35,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/images/login_page/google_logo.png"),
+                fit: BoxFit.cover)),
+        margin: EdgeInsets.only(right: 20),
       ),
       buttonStyle: CustomButtonStyles.buttonGray,
       buttonTextStyle: TextStyles.regular_18,
@@ -178,7 +183,14 @@ class loginPage extends StatelessWidget {
       height: 50.0,
       margin: EdgeInsets.symmetric(horizontal: 50),
       leftIcon: Container(
-        margin: EdgeInsets.only(right: 30),
+        height: 35,
+        width: 35,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/images/login_page/facebook_logo.png"),
+              fit: BoxFit.cover),
+        ),
+        margin: EdgeInsets.only(right: 15),
       ),
       buttonStyle: CustomButtonStyles.buttonGray,
       buttonTextStyle: TextStyles.regular_18,
@@ -187,36 +199,41 @@ class loginPage extends StatelessWidget {
 
   Widget _signInStack(BuildContext context) {
     return Container(
+      // color: Colors.amber,
       height: 20,
       width: 203,
-      margin: EdgeInsets.only(left: 70, right: 70, bottom: 29),
-      child: Stack(
-        alignment: Alignment.center,
+      margin: EdgeInsets.only(left: 70, right: 70, bottom: 30),
+      child: Row(
         children: [
-          Align(
-            alignment: Alignment.centerRight,
-            child: GestureDetector(
-              onTap: () {
-                onTapSignIn(context);
-              },
+          Container(
+            child: Text(
+              'don\'t have an account?',
+              style: TextStyles.GR_15_light,
+            ),
+            margin: EdgeInsets.symmetric(horizontal: 10),
+          ),
+          GestureDetector(
+            child: Container(
+              // color: Colors.blue,
               child: Text(
-                'Sign In',
-                style: TextStyles.GR_15_light,
+                "Sign in.",
+                style: TextStyles.bold_15_blue,
               ),
+              padding: EdgeInsets.symmetric(vertical: 0),
             ),
-          ),
-          RichText(
-            text: TextSpan(
-              children: [
-                TextSpan(
-                    text: 'don\'t have an account?',
-                    style: TextStyles.GR_15_light),
-                TextSpan(text: " "),
-                TextSpan(text: 'Sign In', style: TextStyles.GR_15_bold)
-              ],
-            ),
-            textAlign: TextAlign.left,
-          ),
+          )
+          // RichText(
+          //   text: TextSpan(
+          //     children: [
+          //       TextSpan(
+          //           text: 'don\'t have an account?',
+          //           style: TextStyles.GR_15_light),
+          //       TextSpan(text: " "),
+          //       TextSpan(text: 'Sign In', style: TextStyles.bold_15_blue)
+          //     ],
+          //   ),
+          //   textAlign: TextAlign.left,
+          // ),
         ],
       ),
     );
