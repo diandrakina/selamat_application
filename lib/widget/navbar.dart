@@ -32,7 +32,7 @@ class _NavBarState extends State<NavBar> {
       const BottomNavigationBarItem(
           icon: Icon(Icons.calendar_month), label: 'Schedule'),
       const BottomNavigationBarItem(
-          icon: Icon(Icons.run_circle), label: 'Progress'),
+          icon: Icon(Icons.run_circle_outlined), label: 'Progress'),
       const BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
     ];
 
@@ -42,8 +42,10 @@ class _NavBarState extends State<NavBar> {
       items: _bottomNavBarItems,
       currentIndex: _selectedTabIndex,
       unselectedItemColor: Colors.white54,
-      selectedItemColor: Colors.white,
+      selectedItemColor: AppColors.white,
       onTap: _onNavBarTapped,
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
     );
 
     return Scaffold(
