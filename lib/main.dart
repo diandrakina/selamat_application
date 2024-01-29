@@ -56,8 +56,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // home: CreatePasswordPage(),
       // home: NavBar(),
-      home: WelcomePage(),
-      // home: AskQuestion()
+      // home: WelcomePage(),
+      home: AskQuestion()
       // home: StartUpQuestionPage(),
 
       // home: CompleteProfile(),
