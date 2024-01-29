@@ -16,6 +16,7 @@ import 'package:selamat_application/pages/question_page/startUpQuestionPage.dart
 import 'package:selamat_application/pages/question_page/endUpQuestionPage.dart';
 import 'package:selamat_application/pages/question_page/targetQuestionPage.dart';
 import 'package:selamat_application/pages/question_page/goalsQuestionPage.dart';
+import 'package:selamat_application/pages/welcome_page/youAlmostThere.dart';
 
 //STYLES
 import 'package:selamat_application/styles/styles.dart';
@@ -57,7 +58,8 @@ class MyApp extends StatelessWidget {
       // home: CreatePasswordPage(),
       // home: NavBar(),
       // home: WelcomePage(),
-      home: AskQuestion()
+      // home: AskQuestion()
+      home: AlmostThere(),
       // home: StartUpQuestionPage(),
 
       // home: CompleteProfile(),
