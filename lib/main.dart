@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
       // home: CreatePasswordPage(),
       // home: WelcomePage(),
       // home: AskQuestion()
-      home: GoalQuestionPage(),
+      home: TargetQuestionPage(),
 
       // home: CompleteProfile(),
     );

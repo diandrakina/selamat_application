@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/customElevatedButton.dart';
@@ -24,9 +25,7 @@ class _StartUpQuestionPageState extends State<StartUpQuestionPage> {
           padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
           child: Column(
             children: [
-              SizedBox(
-                height: 38,
-              ),
+              _buildAppBar(context),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -191,6 +190,25 @@ class _StartUpQuestionPageState extends State<StartUpQuestionPage> {
       height: 60,
       margin: EdgeInsets.symmetric(horizontal: 10),
       buttonStyle: CustomButtonStyles.buttonNotSure,
+    );
+  }
+
+  Widget _buildAppBar(BuildContext context) {
+    return Container(
+      alignment: Alignment.centerLeft,
+      margin: EdgeInsets.only(left: 5, bottom: 5),
+      height: 38,
+      // color: Colors.amber,
+      child: IconButton(
+        iconSize: 18,
+        icon: Icon(
+          FontAwesomeIcons.arrowLeft,
+          color: AppColors.white,
+        ),
+        onPressed: () {},
+        alignment: Alignment.centerLeft,
+        padding: EdgeInsets.only(left: 0),
+      ),
     );
   }
 }
