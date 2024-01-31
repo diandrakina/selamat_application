@@ -55,10 +55,9 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
       debugShowCheckedModeBanner: false,
       // home: CreatePasswordPage(),
-      home: NavBar(),
       // home: WelcomePage(),
       // home: AskQuestion()
-      // home: StartUpQuestionPage(),
+      home: GoalQuestionPage(),
 
       // home: CompleteProfile(),
     );

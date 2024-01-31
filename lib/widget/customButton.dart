@@ -12,6 +12,7 @@ class Button extends StatelessWidget {
     this.width,
     this.margin,
     this.alignment,
+    Color? color,
   }) : super(
           key: key,
         );

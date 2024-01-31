@@ -1,112 +1,196 @@
 import 'package:flutter/material.dart';
+import 'package:numberpicker/numberpicker.dart';
 import 'package:selamat_application/styles/styles.dart';
+import 'package:selamat_application/widget/customElevatedButton.dart';
 
-class StartUpQuestionPage extends StatelessWidget {
-  const StartUpQuestionPage({super.key});
+class StartUpQuestionPage extends StatefulWidget {
+  StartUpQuestionPage({super.key});
+
+  @override
+  State<StartUpQuestionPage> createState() => _StartUpQuestionPageState();
+}
+
+class _StartUpQuestionPageState extends State<StartUpQuestionPage> {
+  var hour = 0;
+  var minute = 0;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Container(
-        width: double.maxFinite,
-        padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 34,
-            ),
-            Text(
-              "What time do you\nusually go to work?",
-              maxLines: 2,
-              // overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.center,
-              style: TextStyles.GR_38_bold,
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Text(
-              "choose time below",
-              style: TextStyles.GR_16_light,
-            ),
-            SizedBox(
-              height: 80,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 70),
-              child: Row(
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: Container(
+          width: double.maxFinite,
+          padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 38,
+              ),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    children: [
-                      Text(
-                        "05",
-                        style: TextStyles.intro_39_bold,
-                      ),
-                      SizedBox(
-                        height: 32,
-                      ),
-                      Container(
-                        height: 1,
-                        width: 70,
-                        decoration: BoxDecoration(color: AppColors.deadBlue),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        "06",
-                        style: TextStyles.intro_39_bold,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        height: 1,
-                        width: 70,
-                        decoration: BoxDecoration(color: AppColors.deadBlue),
-                      ),
-                      SizedBox(
-                        height: 32,
-                      ),
-                      Text(
-                        "07",
-                        style: TextStyles.intro_39_bold,
-                      )
-                    ],
+                  Container(
+                    height: 10,
+                    width: 80,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(6.0),
+                        color: AppColors.baseColor),
                   ),
-                  Column(
-                    children: [
-                      Container(
-                        height: 1,
-                        width: 70,
-                        decoration: BoxDecoration(color: AppColors.deadBlue),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        "00",
-                        style: TextStyles.intro_39_bold,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        height: 1,
-                        width: 70,
-                        decoration: BoxDecoration(color: AppColors.deadBlue),
-                      ),
-                    ],
-                  )
+                  Container(
+                    height: 10,
+                    width: 80,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(6.0),
+                        color: AppColors.inactive),
+                  ),
+                  Container(
+                    height: 10,
+                    width: 80,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(6.0),
+                        color: AppColors.inactive),
+                  ),
+                  Container(
+                    height: 10,
+                    width: 80,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(6.0),
+                        color: AppColors.inactive),
+                  ),
                 ],
               ),
-            )
-          ],
+              SizedBox(
+                height: 34,
+              ),
+              Text(
+                "What time do you\nusually go to work?",
+                maxLines: 2,
+                // overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
+                style: TextStyles.GR_38_bold,
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                "choose time below",
+                style: TextStyles.GR_24_light,
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              //COBA WIDGET
+              timePicker(context),
+              SizedBox(
+                height: 120,
+              ),
+              _buttonNext(context),
+              SizedBox(
+                height: 10,
+              ),
+              _buttonNotSure(context)
+            ],
+          ),
         ),
       ),
-    ));
+    );
+  }
+
+  Widget timePicker(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+            ),
+            decoration: BoxDecoration(
+              // color: Colors.amber,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                //HOUR
+                NumberPicker(
+                  minValue: 0,
+                  maxValue: 23,
+                  value: hour,
+                  zeroPad: true,
+                  // infiniteLoop: true,
+                  itemHeight: 72,
+                  itemWidth: 69,
+                  onChanged: (value) {
+                    setState(() {
+                      hour = value;
+                    });
+                  },
+                  textStyle: TextStyles.timeRoll,
+                  selectedTextStyle: TextStyles.timeRollOke,
+                  decoration: const BoxDecoration(
+                    border: Border(
+                        top: BorderSide(
+                          width: 2,
+                          color: AppColors.deadBlue,
+                        ),
+                        bottom:
+                            BorderSide(width: 2, color: AppColors.deadBlue)),
+                  ),
+                ),
+                //MINUTE
+                NumberPicker(
+                  minValue: 0,
+                  maxValue: 59,
+                  value: minute,
+                  zeroPad: true,
+                  // infiniteLoop: true,
+                  itemHeight: 72,
+                  itemWidth: 69,
+                  onChanged: (value) {
+                    setState(() {
+                      minute = value;
+                    });
+                  },
+                  textStyle: TextStyles.timeRoll,
+                  selectedTextStyle: TextStyles.timeRollOke,
+                  decoration: const BoxDecoration(
+                    border: Border(
+                        top: BorderSide(
+                          width: 2,
+                          color: AppColors.deadBlue,
+                        ),
+                        bottom:
+                            BorderSide(width: 2, color: AppColors.deadBlue)),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buttonNext(BuildContext context) {
+    return CustomElevatedButton(
+      text: 'NEXT',
+      buttonTextStyle: TextStyles.medium_24,
+      height: 60,
+      margin: EdgeInsets.symmetric(horizontal: 10),
+      buttonStyle: CustomButtonStyles.buttonBlue,
+    );
+  }
+
+  Widget _buttonNotSure(BuildContext context) {
+    return CustomElevatedButton(
+      text: 'IM NOT SURE',
+      buttonTextStyle: TextStyles.medium_24,
+      height: 60,
+      margin: EdgeInsets.symmetric(horizontal: 10),
+      buttonStyle: CustomButtonStyles.buttonNotSure,
+    );
   }
 }

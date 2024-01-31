@@ -278,6 +278,18 @@ class TextStyles {
       fontSize: 42.0,
       color: Colors.white);
 
+  static TextStyle timeRoll = const TextStyle(
+      fontFamily: 'SamsungSans',
+      fontWeight: FontWeight.bold,
+      fontSize: 42.17,
+      color: AppColors.inactive);
+
+  static TextStyle timeRollOke = const TextStyle(
+      fontFamily: 'SamsungSans',
+      fontWeight: FontWeight.bold,
+      fontSize: 60.0,
+      color: Colors.white);
+
   static TextStyle GR_24_bold = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.bold,
@@ -338,7 +350,15 @@ class AppDecoration {
 class CustomButtonStyles {
   static ButtonStyle get buttonGray => ElevatedButton.styleFrom(
       backgroundColor: AppColors.darkModeCard,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)));
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)));
+
+  static ButtonStyle get buttonNotSure => ElevatedButton.styleFrom(
+      backgroundColor: AppColors.floatingGrey,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)));
+
+  static ButtonStyle get buttonBlue => ElevatedButton.styleFrom(
+      backgroundColor: AppColors.baseColor,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)));
 }
 
 // PrimaryColors get appTheme => ThemeHelper()
