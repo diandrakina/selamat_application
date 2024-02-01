@@ -6,6 +6,7 @@ import 'package:selamat_application/pages/login_page/loginPage.dart';
 import 'package:selamat_application/pages/login_page/createUsernamePage.dart';
 import 'package:selamat_application/pages/login_page/createPasswordPage.dart';
 import 'package:selamat_application/pages/login_page/completeProfile.dart';
+import 'package:selamat_application/pages/rule_page/privacyPolicy.dart';
 
 // WELCOME PAGE
 import 'package:selamat_application/pages/welcome_page/welcomePage.dart';
@@ -59,7 +60,8 @@ class MyApp extends StatelessWidget {
       // home: NavBar(),
       // home: WelcomePage(),
       // home: AskQuestion()
-      home: AlmostThere(),
+      // home: AlmostThere(),
+      home: PrivacyPolicy(),
       // home: StartUpQuestionPage(),
 
       // home: CompleteProfile(),
