@@ -91,6 +91,7 @@ class PrivacyPolicy extends StatelessWidget {
     );
   }
 
+// ini buat bikin tombol back yang ada di atas kiri
   Widget _buildAppBar(BuildContext context) {
     return Container(
       alignment: Alignment.centerLeft,
