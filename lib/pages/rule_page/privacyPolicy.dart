@@ -64,4 +64,23 @@ class PrivacyPolicy extends StatelessWidget {
       ),
     );
   }
+
+//   Widget _buildAppBar(BuildContext context) {
+//     return Container(
+//       alignment: Alignment.centerLeft,
+//       margin: EdgeInsets.only(left: 5, bottom: 5),
+//       height: 38,
+//       // color: Colors.amber,
+//       child: IconButton(
+//         iconSize: 18,
+//         icon: Icon(
+//           FontAwesomeIcons.arrowLeft,
+//           color: AppColors.white,
+//         ),
+//         onPressed: () {},
+//         alignment: Alignment.centerLeft,
+//         padding: EdgeInsets.only(left: 0),
+//       ),
+//     );
+//   }
 }
