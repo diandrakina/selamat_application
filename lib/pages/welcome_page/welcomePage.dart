@@ -19,3 +19,25 @@ class WelcomePage extends StatelessWidget {
     );
   }
 }
+
+// class WelcomePage extends StatelessWidget {
+//   const WelcomePage({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         backgroundColor: AppColors.bgDarkMode,
+//         title: Center(
+//           child: Text('Selamat', style: TextStyles.GR_42_bold),
+//           ),
+//       ),
+//       body: Center(
+//         child: Text(
+//           'Are you ready to change?',
+//           style: TextStyles.GR_24_title_regular,
+//         ),
+//       ),
+//     );
+//   }
+// }

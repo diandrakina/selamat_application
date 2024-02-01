@@ -6,6 +6,7 @@ import 'package:selamat_application/pages/login_page/loginPage.dart';
 import 'package:selamat_application/pages/login_page/createUsernamePage.dart';
 import 'package:selamat_application/pages/login_page/createPasswordPage.dart';
 import 'package:selamat_application/pages/login_page/completeProfile.dart';
+import 'package:selamat_application/pages/rule_page/privacyPolicy.dart';
 
 // WELCOME PAGE
 import 'package:selamat_application/pages/welcome_page/welcomePage.dart';
@@ -16,6 +17,7 @@ import 'package:selamat_application/pages/question_page/startUpQuestionPage.dart
 import 'package:selamat_application/pages/question_page/endUpQuestionPage.dart';
 import 'package:selamat_application/pages/question_page/targetQuestionPage.dart';
 import 'package:selamat_application/pages/question_page/goalsQuestionPage.dart';
+import 'package:selamat_application/pages/welcome_page/youAlmostThere.dart';
 
 //HOME PAGE
 import 'package:selamat_application/pages/home_page/homePage.dart';
@@ -57,6 +59,7 @@ class MyApp extends StatelessWidget {
       // ),
       theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
       debugShowCheckedModeBanner: false,
+
       home: HomePage(),
 
       // home: CompleteProfile(),
