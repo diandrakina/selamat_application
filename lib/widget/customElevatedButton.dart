@@ -26,6 +26,7 @@ class CustomElevatedButton extends Button {
           buttonStyle: buttonStyle,
           isDisabled: isDisabled,
           buttonTextStyle: buttonTextStyle,
+          color: color,
           height: height,
           width: width,
           alignment: alignment,
@@ -52,6 +53,7 @@ class CustomElevatedButton extends Button {
         height: this.height ?? 50.v,
         width: this.width ?? double.maxFinite,
         margin: margin,
+        // color: AppColors.floatingGrey,
         decoration: decoration,
         child: ElevatedButton(
           style: buttonStyle,
