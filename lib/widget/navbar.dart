@@ -27,13 +27,36 @@ class _NavBarState extends State<NavBar> {
     ];
 
     final _bottomNavBarItems = <BottomNavigationBarItem>[
-      const BottomNavigationBarItem(icon: Icon(Icons.home), label: 'HomePage'),
-      const BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
       const BottomNavigationBarItem(
-          icon: Icon(Icons.calendar_month), label: 'Schedule'),
+          icon: Icon(
+            Icons.home,
+            size: 32,
+          ),
+          label: 'HomePage'),
       const BottomNavigationBarItem(
-          icon: Icon(Icons.run_circle), label: 'Progress'),
-      const BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          icon: Icon(
+            Icons.search,
+            size: 32,
+          ),
+          label: 'Search'),
+      const BottomNavigationBarItem(
+          icon: Icon(
+            Icons.calendar_month,
+            size: 32,
+          ),
+          label: 'Schedule'),
+      const BottomNavigationBarItem(
+          icon: Icon(
+            Icons.run_circle_outlined,
+            size: 32,
+          ),
+          label: 'Progress'),
+      const BottomNavigationBarItem(
+          icon: Icon(
+            Icons.person,
+            size: 32,
+          ),
+          label: 'Profile'),
     ];
 
     final _bottomNavBar = BottomNavigationBar(
@@ -42,18 +65,20 @@ class _NavBarState extends State<NavBar> {
       items: _bottomNavBarItems,
       currentIndex: _selectedTabIndex,
       unselectedItemColor: Colors.white54,
-      selectedItemColor: Colors.white,
+      selectedItemColor: AppColors.white,
       onTap: _onNavBarTapped,
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
     );
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('HomePage'),
+    return SafeArea(
+      child: Scaffold(
+        bottomNavigationBar: ClipRRect(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(12), topRight: Radius.circular(12)),
+          child: _bottomNavBar,
+        ),
       ),
-      body: Center(
-        child: _listPage[_selectedTabIndex],
-      ),
-      bottomNavigationBar: _bottomNavBar,
     );
   }
 }

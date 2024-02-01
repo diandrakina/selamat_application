@@ -1,6 +1,16 @@
 # selamat_application
 
-A new Flutter project.
+KETENTUAN PAKAI GITHUB
+1. Kabarin di grup kalau mau commit
+2. Message Waktu commit : "Nama - Ngerjain apa"
+    misal : Diandra - Login Page
+    *update dan delete berlaku hal yg sama
+3. Kalau UDAH COMMIT BILANG
+4. Kalau temennya udh ada yg commit, PULL
+(PUSH DULU BARU PULL YAA)
+5. Kalau mau MERGE KABARIN!!!
+
+*udah dibuat branch per member biar kerjanya ga nabrak, kalau mau NYAMBUNGIN page (sprint page udah kelar) HARUS MERGE
 
 ## Getting Started
 
