@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:selamat_application/styles/styles.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});
@@ -46,9 +47,9 @@ class _NavBarState extends State<NavBar> {
           ),
           label: 'Schedule'),
       const BottomNavigationBarItem(
-          icon: Icon(
-            Icons.run_circle_outlined,
-            size: 32,
+          icon: FaIcon(
+            FontAwesomeIcons.running,
+            size: 29,
           ),
           label: 'Progress'),
       const BottomNavigationBarItem(
@@ -71,7 +72,8 @@ class _NavBarState extends State<NavBar> {
       showUnselectedLabels: false,
     );
 
-    return SafeArea(
+    return SizedBox(
+      height: 62,
       child: Scaffold(
         bottomNavigationBar: ClipRRect(
           borderRadius: BorderRadius.only(

@@ -22,7 +22,11 @@ import 'package:selamat_application/pages/home_page/homePage.dart';
 
 //STYLES
 import 'package:selamat_application/styles/styles.dart';
+import 'package:selamat_application/widget/chart/home_page_chart/tracking_duration/test_graph.dart';
+
+//WIDGET
 import 'package:selamat_application/widget/navbar.dart';
+import 'package:selamat_application/widget/widget_home_page.dart/container_work_sleep_time.dart';
 
 void main() {
   runApp(const MyApp());
@@ -57,8 +61,19 @@ class MyApp extends StatelessWidget {
       // ),
       theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
       debugShowCheckedModeBanner: false,
+      // home: StartUpQuestionPage(),
       home: HomePage(),
-
+      // home: ContainerWorkSleepTime(
+      //     icon: Icons.abc,
+      //     text: 'Halo',
+      //     numberhour: '2',
+      //     numberminute: '3',
+      //     colorIcon: Colors.white,
+      //     sizeIcon: 32,
+      //     startTime: [127.0],
+      //     endTime: [500.0]),
+      // home: TestChart(),
+      // home: Test(),
       // home: CompleteProfile(),
     );
   }

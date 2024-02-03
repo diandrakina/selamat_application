@@ -301,6 +301,12 @@ class TextStyles {
       fontWeight: FontWeight.normal,
       fontSize: 16.0,
       color: Colors.white);
+
+  static TextStyle bold_30 = const TextStyle(
+      fontFamily: 'SamsungSans',
+      fontWeight: FontWeight.bold,
+      fontSize: 30.0,
+      color: Colors.white);
 }
 
 class AppDecoration {
