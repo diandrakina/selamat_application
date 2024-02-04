@@ -76,6 +76,10 @@ flutter:
     - assets/
     - assets/images/login_page/google_logo.png
     - assets/images/login_page/facebook_logo.png
+    - assets/images/home_page/jamonrantgunners.png
+    - assets/images/home_page/gojosatoru.png
+    - assets/images/home_page/fushigurorahmat.png
+    - assets/images/home_page/donaldtrump.png
     # - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   fonts:

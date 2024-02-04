@@ -319,11 +319,37 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                     children: [
                       RecentActivities(
-                          image: 'assets/images/login_page/facebook_logo.png',
-                          username: "@gojosatoru",
-                          activities:
-                              "Halo qwertyuiopasdfghjklzxcvbnmqwertuoubiuduawu",
+                          image: 'assets/images/home_page/jamonrantgunners.png',
+                          username: "@jamonrantgunners",
+                          activities: "just add you",
                           hours: '2h'),
+                      Divider(
+                        color: AppColors.activeCalendar,
+                        height: 3,
+                      ),
+                      RecentActivities(
+                          image: 'assets/images/home_page/gojosatoru.png',
+                          username: "@gojosatoru",
+                          activities: "just share a schedule with you",
+                          hours: '3h'),
+                      Divider(
+                        color: AppColors.activeCalendar,
+                        height: 3,
+                      ),
+                      RecentActivities(
+                          image: 'assets/images/home_page/fushigurorahmat.png',
+                          username: "@fushigurorahmat",
+                          activities: "just share a schedule with you",
+                          hours: '15h'),
+                      Divider(
+                        color: AppColors.activeCalendar,
+                        height: 3,
+                      ),
+                      RecentActivities(
+                          image: 'assets/images/home_page/donaldtrump.png',
+                          username: "@donaldtrump",
+                          activities: "just share a schedule with you",
+                          hours: '23h'),
                     ],
                   ),
                 ),
@@ -425,43 +451,53 @@ class _RecentActivitiesState extends State<RecentActivities> {
   Widget build(BuildContext context) {
     return Container(
       height: 50,
-      child: Row(children: [
-        Padding(padding: EdgeInsets.all(8)),
-        Container(
-          width: 30,
-          height: 30,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            image: DecorationImage(
-                image: AssetImage(widget.image), fit: BoxFit.cover),
+      // color: Colors.amber,
+      child: Row(
+        children: [
+          SizedBox(
+            // color: Colors.blue,
+            height: 50,
+            width: 315,
+            child: Row(
+              children: [
+                Padding(padding: EdgeInsets.all(8)),
+                Container(
+                  width: 30,
+                  height: 30,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                        image: AssetImage(widget.image), fit: BoxFit.cover),
+                  ),
+                ),
+                Padding(padding: EdgeInsets.all(5)),
+                Text(
+                  widget.username,
+                  style: TextStyles.bold_18,
+                ),
+                Padding(padding: EdgeInsets.all(2)),
+                Expanded(
+                  child: Text(
+                    widget.activities,
+                    // _truncateDescription(widget.activities, 12),
+                    style: TextStyles.light_18,
+                    overflow: TextOverflow.ellipsis,
+                    softWrap: true,
+                    maxLines: 1,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 20),
+                ),
+              ],
+            ),
           ),
-        ),
-        Padding(padding: EdgeInsets.all(5)),
-        Text(
-          widget.username,
-          style: TextStyles.bold_18,
-        ),
-        Padding(padding: EdgeInsets.all(2)),
-        Container(
-          child: Row(
-            children: [
-              Text(
-                _truncateDescription(widget.activities, 12),
-                style: TextStyles.light_18,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-              ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(left: 20),
-        ),
-        Text(
-          widget.hours,
-          style: TextStyles.light_14,
-        )
-      ]),
+          Text(
+            widget.hours,
+            style: TextStyles.light_14,
+          )
+        ],
+      ),
     );
   }
 
