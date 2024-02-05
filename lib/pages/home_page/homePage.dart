@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                         Row(
                           children: [
                             FaIcon(
-                              FontAwesomeIcons.solidBuilding,
+                              Icons.work,
                               color: AppColors.baseColor,
                               size: 35,
                             ),

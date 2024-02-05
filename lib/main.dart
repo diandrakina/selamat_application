@@ -20,6 +20,9 @@ import 'package:selamat_application/pages/question_page/goalsQuestionPage.dart';
 //HOME PAGE
 import 'package:selamat_application/pages/home_page/homePage.dart';
 
+//DISCOVERY PAGE
+import 'package:selamat_application/pages/discovery_page/discoveryPage.dart';
+
 //STYLES
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/chart/home_page_chart/tracking_duration/test_graph.dart';
@@ -62,7 +65,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
       debugShowCheckedModeBanner: false,
       // home: StartUpQuestionPage(),
-      home: HomePage(),
+      home: DiscoveryPage(),
       // home: ContainerWorkSleepTime(
       //     icon: Icons.abc,
       //     text: 'Halo',
