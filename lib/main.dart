@@ -64,20 +64,7 @@ class MyApp extends StatelessWidget {
       // ),
       theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
       debugShowCheckedModeBanner: false,
-      // home: StartUpQuestionPage(),
       home: DiscoveryPage(),
-      // home: ContainerWorkSleepTime(
-      //     icon: Icons.abc,
-      //     text: 'Halo',
-      //     numberhour: '2',
-      //     numberminute: '3',
-      //     colorIcon: Colors.white,
-      //     sizeIcon: 32,
-      //     startTime: [127.0],
-      //     endTime: [500.0]),
-      // home: TestChart(),
-      // home: Test(),
-      // home: CompleteProfile(),
     );
   }
 }

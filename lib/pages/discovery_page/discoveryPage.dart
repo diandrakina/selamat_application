@@ -15,6 +15,7 @@ class DiscoveryPage extends StatefulWidget {
 
 class _DiscoveryPageState extends State<DiscoveryPage> {
   PageController _carouselController = PageController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -88,13 +89,32 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                 ),
 
                 //KONTEN YG DISCROLL KE SAMPING
-                Container(
-                  height: 300,
-                  decoration: BoxDecoration(
-                    color: AppColors.activeCalendar,
-                    borderRadius: BorderRadius.circular(12),
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: Column(
+                    children: [
+                      CarouselSlider(
+                        items: [_buildPsikologProfile(context), _news(context)],
+                        options:
+                            CarouselOptions(viewportFraction: 1, height: 300),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          _circularContainer(),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          _circularContainer(),
+                        ],
+                      )
+                    ],
                   ),
                 ),
+
                 SizedBox(
                   height: 30,
                 ),
@@ -256,7 +276,6 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                       enlargeCenterPage: true,
                       autoPlay: true,
                       aspectRatio: 1 / 1,
-                      // enableInfiniteScroll: Curves.fastOutSlowIn,
                       enableInfiniteScroll: true,
                       autoPlayAnimationDuration: Duration(milliseconds: 2000),
                       viewportFraction: 0.8),
@@ -273,43 +292,155 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
     );
   }
 
-  // Widget _buildPsikologProfile(psikologData psikolog) {
-  //   return Container(
-  //     height: 300,
-  //     decoration: BoxDecoration(
-  //       color: AppColors.activeCalendar,
-  //       borderRadius: BorderRadius.circular(12),
-  //     ),
-  //     child: Column(
-  //       mainAxisAlignment: MainAxisAlignment.center,
-  //       children: [
-  //         CircleAvatar(
-  //           radius: 50,
-  //           backgroundImage: NetworkImage(psikolog.imagePsikolog),
-  //         ),
-  //         SizedBox(
-  //           height: 10,
-  //         ),
-  //         Text(
-  //           psikolog.namePsikolog,
-  //           style: TextStyles.GR_15_bold,
-  //         ),
-  //         SizedBox(
-  //           height: 10,
-  //         ),
-  //         Text(
-  //           psikolog.descPsikolog,
-  //           style: TextStyles.GR_14_light,
-  //         ),
-  //         SizedBox(
-  //           height: 20,
-  //         ),
-  //         ElevatedButton(
-  //           onPressed: () {},
-  //           child: Text('haha'),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
+  Widget _buildPsikologProfile(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(left: 20, right: 20),
+      height: 300,
+      decoration: BoxDecoration(
+        color: AppColors.activeCalendar,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(padding: EdgeInsets.symmetric(vertical: 8)),
+          Row(
+            children: [
+              CircleAvatar(
+                radius: 50,
+                backgroundImage: AssetImage(
+                    'assets/images/discovery_page/psikolog/Joel.jpeg'),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                child: Text(
+                  "Joeliardo Gerald Leviothniel, S.Psi., M.Psi.",
+                  style: TextStyles.bold_24,
+                  maxLines: 3,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Expanded(
+            child: Text(
+              "Joeliardo Gerald is our built-in doctor he used to study in harvard medical school and harvard medical school, he is also have 16 years of experience.",
+              style: TextStyles.GR_14_light,
+              maxLines: 4,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(bottom: 40),
+            child: Row(
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    "Psychologist",
+                    style: TextStyles.medium_16,
+                  ),
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    "See Details",
+                    style: TextStyles.medium_16,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _news(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(left: 20, right: 20),
+      height: 300,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage("assets/images/discovery_page/catur.png"),
+            fit: BoxFit.cover),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(padding: EdgeInsets.symmetric(vertical: 30)),
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  "The Art of Thinking",
+                  style: TextStyles.bold_24,
+                  maxLines: 2,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Expanded(
+            child: Text(
+              "The Art of Thinking is the journey that will help you to think a lot and make a better decision, this is including upgrade your IQ and your Emotional Intelligence",
+              style: TextStyles.GR_14_light,
+              maxLines: 4,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(30),
+            child: ElevatedButton(
+              onPressed: () {},
+              child: Text(
+                "Habits",
+                style: TextStyles.medium_16,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _circularContainer extends StatelessWidget {
+  final double? height;
+  final double? width;
+  final double radius;
+  final double padding;
+  final Color bgColor;
+  final Widget? child;
+  const _circularContainer(
+      {super.key,
+      this.height = 10,
+      this.width = 40,
+      this.radius = 24,
+      this.bgColor = AppColors.white,
+      this.child,
+      this.padding = 0});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 10,
+      width: 40,
+      decoration: BoxDecoration(
+          color: AppColors.activeCalendar,
+          borderRadius: BorderRadius.circular(24)),
+    );
+  }
 }
