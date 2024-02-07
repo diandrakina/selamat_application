@@ -34,6 +34,8 @@ class _ContactPageState extends State<ContactPage> {
         children: [
           TextField(
               decoration: InputDecoration(
+                  filled: true,
+                  fillColor: AppColors.darkModeCard,
                   contentPadding: EdgeInsets.all(12),
                   hintText: 'Search',
                   hintStyle: TextStyles.regular_14)),
@@ -44,15 +46,15 @@ class _ContactPageState extends State<ContactPage> {
                 color: AppColors.bgDarkMode,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30),
-                      topRight: Radius.circular(30)),
+                      topLeft: Radius.circular(0),
+                      topRight: Radius.circular(0)),
                   child: ListView.builder(
                     itemCount: chats.length,
                     itemBuilder: (BuildContext context, int index) {
                       final Message chat = chats[index];
                       return Container(
                         margin:
-                            EdgeInsets.only(top: 5.0, bottom: 5.0, right: 20.0),
+                            EdgeInsets.only(top: 5.0, bottom: 5.0, right: 5.0),
                         padding: EdgeInsets.symmetric(
                             horizontal: 10.0, vertical: 5.0),
                         child: Row(
@@ -61,7 +63,7 @@ class _ContactPageState extends State<ContactPage> {
                             Row(
                               children: [
                                 CircleAvatar(
-                                  radius: 35.0,
+                                  radius: 25,
                                   backgroundImage:
                                       AssetImage(chat.sender.imageUrl),
                                 ),
@@ -79,7 +81,8 @@ class _ContactPageState extends State<ContactPage> {
                                           0.45,
                                       child: Text(
                                         chat.text,
-                                        style: TextStyles.light_18,
+                                        style: TextStyles.GR_16_light,
+                                        overflow: TextOverflow.ellipsis,
                                       ),
                                     )
                                   ],
@@ -90,7 +93,7 @@ class _ContactPageState extends State<ContactPage> {
                               children: [
                                 Text(
                                   chat.time,
-                                  style: TextStyles.thin_18,
+                                  style: TextStyles.GR_16_light,
                                 )
                               ],
                             )

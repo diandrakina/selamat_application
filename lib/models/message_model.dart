@@ -103,7 +103,7 @@ List<Message> chats = [
   ),
   Message(
     sender: sam,
-    time: '12:30 PM',
+    time: 'Yesterday',
     text: 'Hey, how\'s it going? What did you do today?',
     isLiked: false,
     unread: false,
