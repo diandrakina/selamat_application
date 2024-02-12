@@ -104,11 +104,10 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          _circularContainer(),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          _circularContainer(),
+                          for (int i = 0; i < 2; i++)
+                            _circularContainer(
+                              margin: EdgeInsets.only(right: 10),
+                            ),
                         ],
                       )
                     ],
@@ -422,22 +421,26 @@ class _circularContainer extends StatelessWidget {
   final double? width;
   final double radius;
   final double padding;
+  final EdgeInsets? margin;
   final Color bgColor;
   final Widget? child;
-  const _circularContainer(
-      {super.key,
-      this.height = 10,
-      this.width = 40,
-      this.radius = 24,
-      this.bgColor = AppColors.white,
-      this.child,
-      this.padding = 0});
+  const _circularContainer({
+    super.key,
+    this.height = 10,
+    this.width = 40,
+    this.radius = 24,
+    this.padding = 0,
+    this.margin,
+    this.bgColor = AppColors.white,
+    this.child,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 10,
       width: 40,
+      margin: margin,
       decoration: BoxDecoration(
           color: AppColors.activeCalendar,
           borderRadius: BorderRadius.circular(24)),
