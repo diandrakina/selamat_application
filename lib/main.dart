@@ -68,8 +68,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
       debugShowCheckedModeBanner: false,
 
-      home: HomePage(),
-
+      home: HabitPage(),
     );
   }
 }
