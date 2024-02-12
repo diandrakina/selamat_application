@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:selamat_application/pages/discovery_page/habitPage.dart';
 // LOGIN
 import 'package:selamat_application/pages/login_page/loginPage.dart';
 import 'package:selamat_application/pages/login_page/createUsernamePage.dart';
@@ -22,9 +23,16 @@ import 'package:selamat_application/pages/welcome_page/youAlmostThere.dart';
 //HOME PAGE
 import 'package:selamat_application/pages/home_page/homePage.dart';
 
+//DISCOVERY PAGE
+import 'package:selamat_application/pages/discovery_page/discoveryPage.dart';
+
 //STYLES
 import 'package:selamat_application/styles/styles.dart';
+import 'package:selamat_application/widget/chart/home_page_chart/tracking_duration/test_graph.dart';
+
+//WIDGET
 import 'package:selamat_application/widget/navbar.dart';
+import 'package:selamat_application/widget/widget_home_page.dart/container_work_sleep_time.dart';
 
 void main() {
   runApp(const MyApp());
@@ -62,7 +70,6 @@ class MyApp extends StatelessWidget {
 
       home: HomePage(),
 
-      // home: CompleteProfile(),
     );
   }
 }

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:selamat_application/styles/styles.dart';
-import 'package:selamat_application/widget/customTextFormField.dart';
-import 'package:selamat_application/widget/customCheckboxButton.dart';
-import 'package:selamat_application/widget/customElevatedButton.dart';
 
 class AskQuestion extends StatelessWidget {
-  const AskQuestion ({super.key});
+  const AskQuestion({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +12,7 @@ class AskQuestion extends StatelessWidget {
           'Before we start\nLet me ask you some questions',
           style: TextStyles.GR_42_bold,
           textAlign: TextAlign.center,
-          ),
+        ),
       ),
     );
   }

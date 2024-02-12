@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/utils/imagesConstant.dart';
-import 'package:selamat_application/widget/customTextFormField.dart';
-import 'package:selamat_application/widget/customElevatedButton.dart';
-import 'package:selamat_application/widget/customButton.dart';
-import 'package:selamat_application/widget/customImage.dart';
+import 'package:selamat_application/widget/widget_login_register/customTextFormField.dart';
+import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
+import 'package:selamat_application/widget/widget_login_register/customButton.dart';
+import 'package:selamat_application/widget/widget_login_register/customImage.dart';
 
 class loginPage extends StatelessWidget {
   // loginPage({super.key});

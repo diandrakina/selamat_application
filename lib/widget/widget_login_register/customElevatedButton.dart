@@ -1,4 +1,4 @@
-import 'package:selamat_application/widget/customButton.dart';
+import 'package:selamat_application/widget/widget_login_register/customButton.dart';
 import 'package:flutter/material.dart';
 import 'package:selamat_application/utils/sizeUtils.dart';
 import 'package:selamat_application/styles/styles.dart';

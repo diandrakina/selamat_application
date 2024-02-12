@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:selamat_application/styles/styles.dart';
-import 'package:selamat_application/widget/customElevatedButton.dart';
+import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 
 class EndUpQuestionPage extends StatefulWidget {
   EndUpQuestionPage({super.key});
