@@ -101,8 +101,8 @@ class _FeaturedHabitsPageState extends State<FeaturedHabitsPage> {
                     decoration: BoxDecoration(
                       color: AppColors.bgDarkMode,
                       borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(24),
-                        topRight: Radius.circular(24),
+                        topLeft: Radius.circular(38),
+                        topRight: Radius.circular(38),
                       ),
                     ),
                     padding: EdgeInsets.only(left: 20, right: 20),
