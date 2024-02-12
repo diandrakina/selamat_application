@@ -53,10 +53,10 @@ class CustomElevatedButton extends Button {
         height: this.height ?? 50.v,
         width: this.width ?? double.maxFinite,
         margin: margin,
-        // color: AppColors.floatingGrey,
+        // color: color,
         decoration: decoration,
         child: ElevatedButton(
-          style: buttonStyle,
+          style: buttonStyle ?? buttonStyle,
           onPressed: isDisabled ?? false ? null : onPressed ?? () {},
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -65,7 +65,7 @@ class CustomElevatedButton extends Button {
               leftIcon ?? const SizedBox.shrink(),
               Text(
                 text,
-                style: buttonTextStyle ?? TextStyles.bold_24,
+                style: buttonTextStyle ?? buttonTextStyle,
               ),
               rightIcon ?? const SizedBox.shrink(),
             ],
