@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/navbar.dart';
+import 'package:selamat_application/widget/searchBar.dart';
 import 'package:selamat_application/widget/widget_discovery/container_habits.dart';
 import 'package:selamat_application/widget/widget_discovery/container_profile_psikolog.dart';
 
@@ -50,33 +51,7 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                 SizedBox(
                   height: 20,
                 ),
-                Container(
-                  height: 30,
-                  width: 350,
-                  decoration: BoxDecoration(
-                    color: AppColors.activeCalendar,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 13,
-                      ),
-                      FaIcon(
-                        FontAwesomeIcons.search,
-                        size: 18,
-                        color: AppColors.white,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "Search",
-                        style: TextStyles.regular_14,
-                      )
-                    ],
-                  ),
-                ),
+                CustomSearchBar(),
                 SizedBox(
                   height: 30,
                 ),
