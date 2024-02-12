@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:selamat_application/pages/discovery_page/featuredHabitsPage.dart';
 import 'package:selamat_application/pages/discovery_page/habitPage.dart';
 // LOGIN
 import 'package:selamat_application/pages/login_page/loginPage.dart';
@@ -68,7 +69,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
       debugShowCheckedModeBanner: false,
 
-      home: HabitPage(),
+      home: FeaturedHabitsPage(),
     );
   }
 }
