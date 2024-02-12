@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:selamat_application/styles/styles.dart';
-import 'package:selamat_application/widget/customTextFormField.dart';
-import 'package:selamat_application/widget/customCheckboxButton.dart';
-import 'package:selamat_application/widget/customElevatedButton.dart';
+import 'package:selamat_application/widget/widget_login_register/customTextFormField.dart';
+import 'package:selamat_application/widget/widget_login_register/customCheckboxButton.dart';
+import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 
 class PrivacyPolicy extends StatelessWidget {
   const PrivacyPolicy({super.key});
