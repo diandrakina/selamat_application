@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:selamat_application/models/user_model.dart';
 import 'package:selamat_application/pages/chat_page/ChatPage.dart';
 import 'package:selamat_application/pages/chat_page/ContactPage.dart';
 // LOGIN
@@ -65,8 +66,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // home: PrivacyPolicy(),
       // home: ProfilePage(),
-      // home: ChatPage(),
-      home: ContactPage(),
+      // home: ChatPage(user: User),
+      // home: ContactPage(),
       // home: EndUpQuestionPage(),
 
       // home: CompleteProfile(),
