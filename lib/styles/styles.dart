@@ -307,6 +307,18 @@ class TextStyles {
       fontWeight: FontWeight.bold,
       fontSize: 30.0,
       color: Colors.white);
+
+  static TextStyle bold_76_black = const TextStyle(
+      fontFamily: 'SamsungSans',
+      fontWeight: FontWeight.bold,
+      fontSize: 76.24,
+      color: AppColors.floatingGrey);
+
+  static TextStyle bold_76_white = const TextStyle(
+      fontFamily: 'SamsungSans',
+      fontWeight: FontWeight.bold,
+      fontSize: 76.24,
+      color: Colors.white);
 }
 
 class AppDecoration {

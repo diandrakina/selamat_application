@@ -173,7 +173,7 @@ class loginPage extends StatelessWidget {
         margin: EdgeInsets.only(right: 20),
       ),
       buttonStyle: CustomButtonStyles.buttonGray,
-      buttonTextStyle: TextStyles.regular_18,
+      textStyle: TextStyles.bold_18,
     );
   }
 

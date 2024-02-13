@@ -62,12 +62,25 @@ class CustomElevatedButton extends Button {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              leftIcon ?? const SizedBox.shrink(),
-              Text(
-                text,
-                style: buttonTextStyle ?? buttonTextStyle,
+              Container(width: 30, child: leftIcon ?? const SizedBox.shrink()),
+              SizedBox(
+                width: 15,
               ),
-              rightIcon ?? const SizedBox.shrink(),
+              SizedBox(
+                width: 200,
+                child: Text(
+                  text,
+                  style: buttonTextStyle ?? buttonTextStyle,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              SizedBox(
+                width: 15,
+              ),
+              Container(
+                  width: 30,
+                  // color: Colors.yellow,
+                  child: rightIcon ?? const SizedBox.shrink()),
             ],
           ),
         ),

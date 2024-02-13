@@ -6,6 +6,7 @@ import 'package:selamat_application/pages/discovery_page/featuredHabitsPage.dart
 import 'package:selamat_application/pages/discovery_page/habitPage.dart';
 import 'package:selamat_application/pages/discovery_page/psychologistDetailPage.dart';
 import 'package:selamat_application/pages/discovery_page/searchDiscoverPage.dart';
+import 'package:selamat_application/pages/login_page/beforeLoginPage.dart';
 import 'package:selamat_application/pages/login_page/enterPIN.dart';
 // LOGIN
 import 'package:selamat_application/pages/login_page/loginPage.dart';
@@ -72,7 +73,7 @@ class MyApp extends StatelessWidget {
       // ),
       theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
       debugShowCheckedModeBanner: false,
-      home: EnterPIN(),
+      home: BeforeLoginPage(),
     );
   }
 }
