@@ -87,7 +87,7 @@ class _ChatScreenState extends State<ChatPage> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 8.0),
       height: 70.0,
-      color: Colors.white,
+      color: AppColors.bgDarkMode,
       child: Row(
         children: <Widget>[
           IconButton(
