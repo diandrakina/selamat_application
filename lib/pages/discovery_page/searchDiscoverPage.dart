@@ -46,41 +46,47 @@ class _SearchDiscoverPageState extends State<SearchDiscoverPage> {
           children: [
             Padding(padding: EdgeInsets.all(8)),
             CustomSearchBar(),
-            Padding(padding: EdgeInsets.all(8)),
-            Text(
-              "Recent",
-              style: TextStyles.medium_24,
+            SingleChildScrollView(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(padding: EdgeInsets.all(8)),
+                    Text(
+                      "Recent",
+                      style: TextStyles.medium_24,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Psikolog(
+                        profilePicture:
+                            'assets/images/discovery_page/psikolog/MarkLee.jpg',
+                        name: "Mark Lee",
+                        code: "26090989",
+                        rating: 4.9),
+                    Padding(padding: EdgeInsets.all(8)),
+                    Psikolog(
+                        profilePicture:
+                            'assets/images/discovery_page/psikolog/ChenZheyuan.jpg',
+                        name: "Chen Zheyuan",
+                        code: "29872341",
+                        rating: 4.7),
+                    Padding(padding: EdgeInsets.all(8)),
+                    Psikolog(
+                        profilePicture:
+                            'assets/images/discovery_page/psikolog/SongEunseok.jpg',
+                        name: "Song Eunseok",
+                        code: "23132949",
+                        rating: 5.0),
+                    Padding(padding: EdgeInsets.all(8)),
+                    Psikolog(
+                        profilePicture:
+                            'assets/images/discovery_page/psikolog/Joel.jpeg',
+                        name: "Joeliardo Leviothniel",
+                        code: "298745362",
+                        rating: 4.6),
+                  ]),
             ),
-            SizedBox(
-              height: 20,
-            ),
-            Psikolog(
-                profilePicture:
-                    'assets/images/discovery_page/psikolog/MarkLee.jpg',
-                name: "Mark Lee",
-                code: "26090989",
-                rating: 4.9),
-            Padding(padding: EdgeInsets.all(8)),
-            Psikolog(
-                profilePicture:
-                    'assets/images/discovery_page/psikolog/ChenZheyuan.jpg',
-                name: "Chen Zheyuan",
-                code: "29872341",
-                rating: 4.7),
-            Padding(padding: EdgeInsets.all(8)),
-            Psikolog(
-                profilePicture:
-                    'assets/images/discovery_page/psikolog/SongEunseok.jpg',
-                name: "Song Eunseok",
-                code: "23132949",
-                rating: 5.0),
-            Padding(padding: EdgeInsets.all(8)),
-            Psikolog(
-                profilePicture:
-                    'assets/images/discovery_page/psikolog/Joel.jpeg',
-                name: "Joeliardo Leviothniel",
-                code: "298745362",
-                rating: 4.6),
           ],
         ),
       ),

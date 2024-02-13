@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:selamat_application/pages/discovery_page/discoverPsychologist.dart';
 import 'package:selamat_application/pages/discovery_page/featuredHabitsPage.dart';
 import 'package:selamat_application/pages/discovery_page/habitPage.dart';
 import 'package:selamat_application/pages/discovery_page/psychologistDetailPage.dart';
@@ -70,7 +71,7 @@ class MyApp extends StatelessWidget {
       // ),
       theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
       debugShowCheckedModeBanner: false,
-      home: SearchDiscoverPage(),
+      home: DiscoverPsychologist(),
     );
   }
 }
