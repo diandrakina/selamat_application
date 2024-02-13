@@ -7,9 +7,9 @@ import 'package:selamat_application/widget/customCheckboxButton.dart';
 import 'package:selamat_application/widget/customElevatedButton.dart';
 
 class ChatPage extends StatefulWidget {
-  final User user;
+  // final User user;
 
-  const ChatPage({super.key, required this.user});
+  const ChatPage({super.key});
 
   @override
   _ChatScreenState createState() => _ChatScreenState();
@@ -47,7 +47,7 @@ class _ChatScreenState extends State<ChatPage> {
           Text(
             message.time,
             style: TextStyle(
-              color: Colors.blueGrey,
+              color: Colors.white,
               fontSize: 16.0,
               fontWeight: FontWeight.w600,
             ),
@@ -56,7 +56,7 @@ class _ChatScreenState extends State<ChatPage> {
           Text(
             message.text,
             style: TextStyle(
-              color: Colors.blueGrey,
+              color: Colors.white,
               fontSize: 16.0,
               fontWeight: FontWeight.w600,
             ),
@@ -70,16 +70,15 @@ class _ChatScreenState extends State<ChatPage> {
     return Row(
       children: <Widget>[
         msg,
-        IconButton(
-          icon: message.isLiked
-              ? Icon(Icons.favorite)
-              : Icon(Icons.favorite_border),
-          iconSize: 30.0,
-          color: message.isLiked
-              ? Theme.of(context).primaryColor
-              : Colors.blueGrey,
-          onPressed: () {},
-        )
+        // IconButton(
+        //   icon: message.isLiked
+        //       ? Icon(Icons.favorite)
+        //       : Icon(Icons.favorite_border),
+        //   iconSize: 30.0,
+        //   color:
+        //       message.isLiked ? Theme.of(context).primaryColor : Colors.white,
+        //   onPressed: () {},
+        // )
       ],
     );
   }
@@ -123,7 +122,7 @@ class _ChatScreenState extends State<ChatPage> {
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
         title: Text(
-          widget.user.name,
+          'Agus',
           style: TextStyle(
             fontSize: 28.0,
             fontWeight: FontWeight.bold,
@@ -146,11 +145,11 @@ class _ChatScreenState extends State<ChatPage> {
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30.0),
-                    topRight: Radius.circular(30.0),
-                  ),
+                  color: AppColors.bgDarkMode,
+                  // borderRadius: BorderRadius.only(
+                  //   topLeft: Radius.circular(30.0),
+                  //   topRight: Radius.circular(30.0),
+                  // ),
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(

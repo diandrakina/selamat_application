@@ -66,7 +66,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // home: PrivacyPolicy(),
       // home: ProfilePage(),
-      // home: ChatPage(user: User),
+      home: ChatPage(),
       // home: ContactPage(),
       // home: EndUpQuestionPage(),
 
