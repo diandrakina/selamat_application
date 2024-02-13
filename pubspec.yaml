@@ -40,7 +40,7 @@ dependencies:
   table_calendar: ^3.0.9
   calendar_timeline: ^1.1.2
   sliding_up_panel: ^2.0.0+1
-
+  pinput: ^4.0.0
   font_awesome_flutter: ^9.0.0
   numberpicker: ^2.1.2
 

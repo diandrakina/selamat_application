@@ -70,7 +70,7 @@ class _DiscoverPsychologistState extends State<DiscoverPsychologist> {
                   height: 180,
                   width: double.maxFinite,
                   decoration: BoxDecoration(
-                      color: AppColors.floatingGrey,
+                      color: AppColors.darkModeCard,
                       borderRadius: BorderRadius.circular(12)),
                   child: Row(
                     children: [
@@ -110,7 +110,7 @@ class _DiscoverPsychologistState extends State<DiscoverPsychologist> {
                                   width: 85,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(4),
-                                      color: AppColors.inactiveTask),
+                                      color: AppColors.activeCalendar),
                                   child: Row(
                                     children: [
                                       Padding(padding: EdgeInsets.all(2)),
