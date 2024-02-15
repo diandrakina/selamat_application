@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:selamat_application/models/user_model.dart';
 import 'package:selamat_application/models/message_model.dart';
 import 'package:selamat_application/styles/styles.dart';
@@ -31,14 +32,17 @@ class _ChatScreenState extends State<ChatPage> {
       padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
       width: MediaQuery.of(context).size.width * 0.75,
       decoration: BoxDecoration(
+        color: isMe ? Colors.blue : Colors.grey[800],
         borderRadius: isMe
             ? BorderRadius.only(
                 topLeft: Radius.circular(15.0),
                 bottomLeft: Radius.circular(15.0),
+                topRight: Radius.circular(15.0),
               )
             : BorderRadius.only(
                 topRight: Radius.circular(15.0),
                 bottomRight: Radius.circular(15.0),
+                topLeft: Radius.circular(15.0),
               ),
       ),
       child: Column(
@@ -46,21 +50,10 @@ class _ChatScreenState extends State<ChatPage> {
         children: <Widget>[
           Text(
             message.time,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16.0,
-              fontWeight: FontWeight.w600,
-            ),
+            style: TextStyles.GR_14_bold,
           ),
           SizedBox(height: 8.0),
-          Text(
-            message.text,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16.0,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
+          Text(message.text, style: TextStyles.GR_14_light),
         ],
       ),
     );
@@ -101,7 +94,8 @@ class _ChatScreenState extends State<ChatPage> {
               textCapitalization: TextCapitalization.sentences,
               onChanged: (value) {},
               decoration: InputDecoration.collapsed(
-                hintText: 'Send a message...',
+                hintText: 'Message...',
+                hintStyle: TextStyles.GR_14_light,
               ),
             ),
           ),
@@ -121,12 +115,17 @@ class _ChatScreenState extends State<ChatPage> {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
+        leading: IconButton(
+          iconSize: 18,
+          icon: Icon(
+            FontAwesomeIcons.arrowLeft,
+            color: AppColors.white,
+          ),
+          onPressed: () {},
+        ),
         title: Text(
           'Agus',
-          style: TextStyle(
-            fontSize: 28.0,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyles.GR_24_bold,
         ),
         elevation: 0.0,
         actions: <Widget>[
