@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
 
                 //CONTAINER PERTAMA
                 Container(
-                  height: 165,
+                  height: 185,
                   decoration: BoxDecoration(
                     color: AppColors.darkModeCard,
                     borderRadius: BorderRadius.only(
@@ -90,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 15),
+                    padding: const EdgeInsets.only(left: 15, right: 15),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -148,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                     Text(
                                       'From 12.00 -12.30',
-                                      style: TextStyles.GR_14_light,
+                                      style: TextStyles.GR_12_light,
                                     ),
                                   ],
                                 ),
@@ -172,7 +172,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                     Text(
                                       'From 17.00 -18.00',
-                                      style: TextStyles.GR_14_light,
+                                      style: TextStyles.GR_12_light,
                                     )
                                   ],
                                 )
@@ -192,7 +192,7 @@ class _HomePageState extends State<HomePage> {
                 //CONTAINER KEDUA
                 Container(
                   width: double.maxFinite,
-                  height: 215,
+                  height: 225,
                   decoration: BoxDecoration(
                       color: AppColors.darkModeCard,
                       borderRadius: BorderRadius.only(
@@ -371,7 +371,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget _viewAll(BuildContext context) {
     return Container(
-      height: 35,
+      height: 40,
       width: double.maxFinite,
       decoration: BoxDecoration(
         color: AppColors.inactiveCalendar,

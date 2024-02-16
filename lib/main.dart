@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:selamat_application/pages/discovery_page/discoverPsychologist.dart';
-import 'package:selamat_application/pages/discovery_page/featuredHabitsPage.dart';
-import 'package:selamat_application/pages/discovery_page/habitPage.dart';
-import 'package:selamat_application/pages/discovery_page/psychologistDetailPage.dart';
-import 'package:selamat_application/pages/discovery_page/searchDiscoverPage.dart';
+
 import 'package:selamat_application/pages/login_page/beforeLoginPage.dart';
 import 'package:selamat_application/pages/login_page/enterPIN.dart';
 // LOGIN
@@ -31,6 +27,11 @@ import 'package:selamat_application/pages/home_page/homePage.dart';
 
 //DISCOVERY PAGE
 import 'package:selamat_application/pages/discovery_page/discoveryPage.dart';
+import 'package:selamat_application/pages/discovery_page/discoverPsychologist.dart';
+import 'package:selamat_application/pages/discovery_page/featuredHabitsPage.dart';
+import 'package:selamat_application/pages/discovery_page/habitPage.dart';
+import 'package:selamat_application/pages/discovery_page/psychologistDetailPage.dart';
+import 'package:selamat_application/pages/discovery_page/searchDiscoverPage.dart';
 
 //STYLES
 import 'package:selamat_application/styles/styles.dart';
@@ -51,30 +52,33 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Joeliardo Test Commit',
-      // theme: ThemeData(
-      // This is the theme of your application.
-      //
-      // TRY THIS: Try running your application with "flutter run". You'll see
-      // the application has a blue toolbar. Then, without quitting the app,
-      // try changing the seedColor in the colorScheme below to Colors.green
-      // and then invoke "hot reload" (save your changes or press the "hot
-      // reload" button in a Flutter-supported IDE, or press "r" if you used
-      // the command line to start the app).
-      //
-      // Notice that the counter didn't reset back to zero; the application
-      // state is not lost during the reload. To reset the state, use hot
-      // restart instead.
-      //
-      // This works for code too, not just values: Most code changes can be
-      // tested with just a hot reload.
-      // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      // useMaterial3: true,
-      // ),
-      theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
-      debugShowCheckedModeBanner: false,
-      home: BeforeLoginPage(),
-    );
+        title: 'Joeliardo Test Commit',
+        // theme: ThemeData(
+        // This is the theme of your application.
+        //
+        // TRY THIS: Try running your application with "flutter run". You'll see
+        // the application has a blue toolbar. Then, without quitting the app,
+        // try changing the seedColor in the colorScheme below to Colors.green
+        // and then invoke "hot reload" (save your changes or press the "hot
+        // reload" button in a Flutter-supported IDE, or press "r" if you used
+        // the command line to start the app).
+        //
+        // Notice that the counter didn't reset back to zero; the application
+        // state is not lost during the reload. To reset the state, use hot
+        // restart instead.
+        //
+        // This works for code too, not just values: Most code changes can be
+        // tested with just a hot reload.
+        // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        // useMaterial3: true,
+        // ),
+        theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
+        debugShowCheckedModeBanner: false,
+        home: loginPage()
+        // home: Scaffold(
+        //   body: Text("hihihi"),
+        // ),
+        );
   }
 }
 

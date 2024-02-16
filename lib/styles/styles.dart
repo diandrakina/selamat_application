@@ -188,6 +188,12 @@ class TextStyles {
       fontSize: 9.17,
       color: Colors.white);
 
+  static TextStyle GR_12_light = const TextStyle(
+      fontFamily: 'SamsungSans',
+      fontWeight: FontWeight.w300,
+      fontSize: 13.5,
+      color: Colors.white);
+
   static TextStyle GR_24_light = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.w300,
@@ -308,16 +314,16 @@ class TextStyles {
       fontSize: 30.0,
       color: Colors.white);
 
-  static TextStyle bold_76_black = const TextStyle(
+  static TextStyle bold_70_black = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.bold,
-      fontSize: 76.24,
+      fontSize: 70.24,
       color: AppColors.floatingGrey);
 
-  static TextStyle bold_76_white = const TextStyle(
+  static TextStyle bold_70_white = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.bold,
-      fontSize: 76.24,
+      fontSize: 70.24,
       color: Colors.white);
 }
 
@@ -377,6 +383,9 @@ class CustomButtonStyles {
   static ButtonStyle get buttonBlue => ElevatedButton.styleFrom(
       backgroundColor: AppColors.baseColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)));
+  static ButtonStyle get buttonBlue2 => ElevatedButton.styleFrom(
+      backgroundColor: AppColors.baseColor,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.0)));
 }
 
 // PrimaryColors get appTheme => ThemeHelper()

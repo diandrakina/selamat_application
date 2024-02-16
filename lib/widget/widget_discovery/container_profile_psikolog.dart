@@ -15,7 +15,7 @@ class _ProfilePsikologState extends State<ProfilePsikolog> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 110,
       width: 70,
       child: Column(children: [
         Container(

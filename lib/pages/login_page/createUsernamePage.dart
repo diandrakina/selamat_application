@@ -54,6 +54,8 @@ class createUsernamePage extends StatelessWidget {
                       ),
                       CustomElevatedButton(
                         text: 'Next',
+                        buttonStyle: CustomButtonStyles.buttonBlue,
+                        buttonTextStyle: TextStyles.bold_24,
                         height: 50,
                         margin: EdgeInsets.symmetric(horizontal: 50),
                         onPressed: () {},
@@ -67,7 +69,6 @@ class createUsernamePage extends StatelessWidget {
                       SizedBox(
                         height: 32,
                       ),
-                      _logInStack(context)
                     ],
                   ),
                 ))
@@ -75,13 +76,13 @@ class createUsernamePage extends StatelessWidget {
             ),
           ),
         ),
+        bottomNavigationBar: _logInStack(context),
       ),
     );
   }
 
   Widget _logInStack(BuildContext context) {
     return Container(
-      // color: Colors.amber,
       height: 20,
       width: 250,
       margin: EdgeInsets.only(left: 70, right: 70, bottom: 30),
@@ -92,11 +93,9 @@ class createUsernamePage extends StatelessWidget {
               'already have an account? ',
               style: TextStyles.GR_15_light,
             ),
-            // margin: EdgeInsets.symmetric(horizontal: 1),
           ),
           GestureDetector(
             child: Container(
-              // color: Colors.blue,
               child: Text(
                 "Login",
                 style: TextStyles.bold_15_blue,
@@ -104,18 +103,6 @@ class createUsernamePage extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 0),
             ),
           )
-          // RichText(
-          //   text: TextSpan(
-          //     children: [
-          //       TextSpan(
-          //           text: 'don\'t have an account?',
-          //           style: TextStyles.GR_15_light),
-          //       TextSpan(text: " "),
-          //       TextSpan(text: 'Sign In', style: TextStyles.bold_15_blue)
-          //     ],
-          //   ),
-          //   textAlign: TextAlign.left,
-          // ),
         ],
       ),
     );

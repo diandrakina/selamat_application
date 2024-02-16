@@ -160,8 +160,9 @@ class _DiscoverPsychologistState extends State<DiscoverPsychologist> {
                             Padding(padding: EdgeInsets.all(2)),
                             CustomElevatedButton(
                               text: "Chat",
-                              width: 150,
                               height: 30,
+                              width: 150,
+                              buttonStyle: CustomButtonStyles.buttonBlue2,
                             )
                           ],
                         ),
@@ -193,7 +194,7 @@ class _DiscoverPsychologistState extends State<DiscoverPsychologist> {
                   height: 10,
                 ),
                 Container(
-                  height: 100,
+                  height: 120,
                   // color: Colors.amber,
                   width: double.maxFinite,
                   child: SingleChildScrollView(
@@ -296,7 +297,7 @@ class _DiscoverPsychologistState extends State<DiscoverPsychologist> {
                   height: 10,
                 ),
                 Container(
-                  height: 100,
+                  height: 120,
                   // color: Colors.amber,
                   width: double.maxFinite,
                   child: SingleChildScrollView(
@@ -399,7 +400,7 @@ class _DiscoverPsychologistState extends State<DiscoverPsychologist> {
                   height: 10,
                 ),
                 Container(
-                  height: 100,
+                  height: 120,
                   // color: Colors.amber,
                   width: double.maxFinite,
                   child: SingleChildScrollView(

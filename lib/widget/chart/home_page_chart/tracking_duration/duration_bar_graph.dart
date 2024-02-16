@@ -55,7 +55,7 @@ class DurationBarGraph extends StatelessWidget {
                         toY: timeEnd[data.x],
                         width: 20,
                         color: barColor,
-                        borderRadius: BorderRadius.circular(0),
+                        borderRadius: BorderRadius.circular(5),
                         backDrawRodData: BackgroundBarChartRodData(
                             show: true,
                             color: AppColors.activeCalendar,

@@ -20,7 +20,7 @@ class _ContainerHabitsState extends State<ContainerHabits> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(8),
-      height: 200,
+      height: 250,
       width: 350,
       decoration: BoxDecoration(
         color: AppColors.activeCalendar,
@@ -55,7 +55,7 @@ class _ContainerHabitsState extends State<ContainerHabits> {
             height: 15,
           ),
           Container(
-            height: 30,
+            height: 40,
             decoration: BoxDecoration(
                 color: AppColors.activeCalendar,
                 borderRadius: BorderRadius.circular(8)),

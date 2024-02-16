@@ -152,7 +152,7 @@ class _HabitPageState extends State<HabitPage> {
                         share: 10),
                   ],
                   options: CarouselOptions(
-                      height: 300,
+                      height: 320,
                       enlargeCenterPage: true,
                       aspectRatio: 1 / 1,
                       enableInfiniteScroll: true,
@@ -229,7 +229,7 @@ class _ContainerHabitsState extends State<ContainerHabits> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 110,
       width: 70,
       child: Column(children: [
         Container(
@@ -282,7 +282,7 @@ class _RecentHabitsState extends State<RecentHabits> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Padding(padding: EdgeInsets.all(60)),
+          Padding(padding: EdgeInsets.all(50)),
           Expanded(
             child: Text(
               widget.nameHabit,
@@ -296,9 +296,10 @@ class _RecentHabitsState extends State<RecentHabits> {
             padding: EdgeInsets.all(10),
             child: CustomElevatedButton(
               text: "See Details",
-              textStyle: TextStyles.bold_18,
+              buttonTextStyle: TextStyles.bold_16,
+              buttonStyle: CustomButtonStyles.buttonBlue,
               height: 35,
-              width: 120,
+              width: 130,
             ),
           ),
         ],
@@ -333,7 +334,7 @@ class _FeaturedHabitsState extends State<FeaturedHabits> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
+      height: 320,
       width: double.maxFinite,
       decoration: BoxDecoration(
           image: DecorationImage(
@@ -358,6 +359,7 @@ class _FeaturedHabitsState extends State<FeaturedHabits> {
               overflow: TextOverflow.ellipsis,
             ),
           ),
+          Padding(padding: EdgeInsets.all(8)),
           Row(
             children: [
               Column(
@@ -429,6 +431,8 @@ class _FeaturedHabitsState extends State<FeaturedHabits> {
           Padding(padding: EdgeInsets.all(8)),
           CustomElevatedButton(
             text: "Enroll",
+            buttonTextStyle: TextStyles.bold_18,
+            buttonStyle: CustomButtonStyles.buttonBlue2,
             height: 30,
             width: 150,
           )

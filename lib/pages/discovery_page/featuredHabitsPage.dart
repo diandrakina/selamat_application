@@ -269,8 +269,9 @@ class _FeaturedHabitsPageState extends State<FeaturedHabitsPage> {
                               Center(
                                 child: CustomElevatedButton(
                                   text: "Enroll Now",
-                                  textStyle: TextStyles.bold_18,
-                                  height: 30,
+                                  buttonTextStyle: TextStyles.bold_18,
+                                  buttonStyle: CustomButtonStyles.buttonBlue2,
+                                  height: 40,
                                   width: 150,
                                 ),
                               ),

@@ -217,8 +217,9 @@ class _PsychologistDetailPageState extends State<PsychologistDetailPage> {
                               Center(
                                 child: CustomElevatedButton(
                                   text: "Chat",
-                                  textStyle: TextStyles.bold_18,
-                                  height: 30,
+                                  buttonTextStyle: TextStyles.bold_18,
+                                  buttonStyle: CustomButtonStyles.buttonBlue2,
+                                  height: 40,
                                   width: 150,
                                 ),
                               ),
@@ -260,6 +261,7 @@ class _ProfilePsikologState extends State<ProfilePsikolog> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       child: Row(
         children: [
           Container(
@@ -270,24 +272,37 @@ class _ProfilePsikologState extends State<ProfilePsikolog> {
               color: Colors.white,
             ),
           ),
-          Padding(padding: EdgeInsets.all(8)),
-          // SizedBox(
-          //   width: 10,
-          // ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                widget.tittle,
-                style: TextStyles.bold_18,
-              ),
-              Text(
-                widget.description,
-                style: TextStyles.light_18,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              )
-            ],
+          Padding(padding: EdgeInsets.all(10)),
+          Container(
+            width: 300,
+            height: 70,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 50,
+                  width: double.maxFinite,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.tittle,
+                        style: TextStyles.bold_18,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Expanded(
+                        child: Text(
+                          widget.description,
+                          style: TextStyles.light_18,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
           )
         ],
       ),

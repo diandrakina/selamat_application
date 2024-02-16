@@ -22,42 +22,48 @@ class _BeforeLoginPageState extends State<BeforeLoginPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(padding: EdgeInsets.all(10)),
+                  Padding(padding: EdgeInsets.all(5)),
                   Container(
+                    height: 80,
                     padding: EdgeInsets.only(left: 10),
                     child: Text(
                       "Ready",
-                      style: TextStyles.bold_76_black,
+                      style: TextStyles.bold_70_black,
                     ),
                   ),
                   Container(
+                    height: 90,
                     padding: EdgeInsets.only(left: 10),
                     child: Text(
                       "to",
-                      style: TextStyles.bold_76_black,
+                      style: TextStyles.bold_70_black,
                     ),
                   ),
                   Container(
                     padding: EdgeInsets.only(left: 10),
                     width: double.maxFinite,
-                    height: 90,
+                    height: 100,
                     decoration: BoxDecoration(
                         color: AppColors.baseColor,
                         borderRadius: BorderRadius.circular(8)),
                     child: TypewriterTextAnimation(),
                   ),
                   Container(
+                    height: 90,
+                    width: 200,
                     padding: EdgeInsets.only(left: 10),
                     child: Text(
                       "your",
-                      style: TextStyles.bold_76_black,
+                      style: TextStyles.bold_70_black,
+                      // textAlign: TextAlign.center,
                     ),
                   ),
                   Container(
+                    height: 90,
                     padding: EdgeInsets.only(left: 10),
                     child: Text(
                       "life?",
-                      style: TextStyles.bold_76_black,
+                      style: TextStyles.bold_70_black,
                     ),
                   ),
                 ],
@@ -81,6 +87,7 @@ class _BeforeLoginPageState extends State<BeforeLoginPage> {
                     leftIcon: FaIcon(
                       Icons.apple,
                       size: 30,
+                      color: Colors.white,
                     ),
                     buttonStyle: CustomButtonStyles.buttonNotSure,
                   ),
@@ -94,6 +101,7 @@ class _BeforeLoginPageState extends State<BeforeLoginPage> {
                     leftIcon: FaIcon(
                       FontAwesomeIcons.google,
                       size: 30,
+                      color: Colors.white,
                     ),
                     buttonStyle: CustomButtonStyles.buttonNotSure,
                   ),
@@ -107,6 +115,7 @@ class _BeforeLoginPageState extends State<BeforeLoginPage> {
                     leftIcon: FaIcon(
                       Icons.person,
                       size: 30,
+                      color: Colors.white,
                     ),
                     buttonStyle: CustomButtonStyles.buttonNotSure,
                   ),
@@ -187,7 +196,7 @@ class _TypewriterTextAnimationState extends State<TypewriterTextAnimation> {
     return Container(
       child: Text(
         _strings[currentIndex].substring(0, currentCharIndex),
-        style: TextStyles.bold_76_white,
+        style: TextStyles.bold_70_white,
       ),
     );
   }
