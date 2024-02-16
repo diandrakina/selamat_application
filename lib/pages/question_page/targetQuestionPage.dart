@@ -18,15 +18,15 @@ class _TargetQuestionPageState extends State<TargetQuestionPage> {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          leading: _buildAppBar(context),
+          backgroundColor: AppColors.bgDarkMode,
+        ),
         body: Container(
           width: double.maxFinite,
-          padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+          padding: EdgeInsets.only(left: 20, right: 20),
           child: Column(
             children: [
-              // SizedBox(
-              //   height: 38,
-              // ),
-              _buildAppBar(context),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -84,7 +84,7 @@ class _TargetQuestionPageState extends State<TargetQuestionPage> {
               ),
               // _yourTarget(context),
               Container(
-                  height: 385,
+                  height: 375,
                   child: SingleChildScrollView(
                     child: _yourTarget(context),
                   )),
@@ -174,7 +174,7 @@ class _TargetQuestionPageState extends State<TargetQuestionPage> {
   Widget _buildAppBar(BuildContext context) {
     return Container(
       alignment: Alignment.centerLeft,
-      margin: EdgeInsets.only(left: 5, bottom: 5),
+      margin: EdgeInsets.only(left: 20, top: 5),
       height: 38,
       // color: Colors.amber,
       child: IconButton(

@@ -74,7 +74,7 @@ class MyApp extends StatelessWidget {
         // ),
         theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
         debugShowCheckedModeBanner: false,
-        home: loginPage()
+        home: AlmostThere()
         // home: Scaffold(
         //   body: Text("hihihi"),
         // ),

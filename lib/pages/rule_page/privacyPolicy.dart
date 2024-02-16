@@ -10,12 +10,18 @@ class PrivacyPolicy extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 80,
+        leadingWidth: double.maxFinite,
         backgroundColor: AppColors.bgDarkMode,
-        title: Text(
-          'Privacy and Policy',
-          style: TextStyles.GR_42_bold,
-          // buat semenetara pake 42 dulu, tunggu sampe dibuat yang 49
-          // ini buat bikin judulnya
+        // backgroundColor: Colors.amber,
+        leading: Container(
+          padding: EdgeInsets.only(left: 20, right: 20),
+          child: Text(
+            'Privacy and Policy',
+            style: TextStyles.GR_42_bold,
+            // buat semenetara pake 42 dulu, tunggu sampe dibuat yang 49
+            // ini buat bikin judulnya
+          ),
         ),
       ),
       body: Padding(
@@ -64,23 +70,4 @@ class PrivacyPolicy extends StatelessWidget {
       ),
     );
   }
-
-//   Widget _buildAppBar(BuildContext context) {
-//     return Container(
-//       alignment: Alignment.centerLeft,
-//       margin: EdgeInsets.only(left: 5, bottom: 5),
-//       height: 38,
-//       // color: Colors.amber,
-//       child: IconButton(
-//         iconSize: 18,
-//         icon: Icon(
-//           FontAwesomeIcons.arrowLeft,
-//           color: AppColors.white,
-//         ),
-//         onPressed: () {},
-//         alignment: Alignment.centerLeft,
-//         padding: EdgeInsets.only(left: 0),
-//       ),
-//     );
-//   }
 }
