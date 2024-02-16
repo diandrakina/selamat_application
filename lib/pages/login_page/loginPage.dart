@@ -116,7 +116,6 @@ class loginPage extends StatelessWidget {
                 ),
               ],
             ),
-            // color: const Color.fromARGB(255, 173, 203, 255),
           ),
         ),
         bottomNavigationBar: _signInStack(context),
@@ -155,6 +154,7 @@ class loginPage extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 50),
       height: 50.0,
       buttonTextStyle: TextStyles.bold_24,
+      buttonStyle: CustomButtonStyles.buttonBlue,
     );
   }
 
@@ -167,10 +167,10 @@ class loginPage extends StatelessWidget {
         height: 35,
         width: 35,
         decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/images/login_page/google_logo.png"),
-                fit: BoxFit.cover)),
-        margin: EdgeInsets.only(right: 20),
+          image: DecorationImage(
+              image: AssetImage("assets/images/login_page/google_logo.png"),
+              fit: BoxFit.cover),
+        ),
       ),
       buttonStyle: CustomButtonStyles.buttonGray,
       buttonTextStyle: TextStyles.regular_18,
@@ -190,7 +190,7 @@ class loginPage extends StatelessWidget {
               image: AssetImage("assets/images/login_page/facebook_logo.png"),
               fit: BoxFit.cover),
         ),
-        margin: EdgeInsets.only(right: 15),
+        margin: EdgeInsets.only(right: 5),
       ),
       buttonStyle: CustomButtonStyles.buttonGray,
       buttonTextStyle: TextStyles.regular_18,
@@ -222,18 +222,6 @@ class loginPage extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 0),
             ),
           )
-          // RichText(
-          //   text: TextSpan(
-          //     children: [
-          //       TextSpan(
-          //           text: 'don\'t have an account?',
-          //           style: TextStyles.GR_15_light),
-          //       TextSpan(text: " "),
-          //       TextSpan(text: 'Sign In', style: TextStyles.bold_15_blue)
-          //     ],
-          //   ),
-          //   textAlign: TextAlign.left,
-          // ),
         ],
       ),
     );

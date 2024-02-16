@@ -21,12 +21,15 @@ class _StartUpQuestionPageState extends State<StartUpQuestionPage> {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          leading: _buildAppBar(context),
+          backgroundColor: AppColors.bgDarkMode,
+        ),
         body: Container(
           width: double.maxFinite,
-          padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+          padding: EdgeInsets.only(left: 20, right: 20),
           child: Column(
             children: [
-              _buildAppBar(context),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -83,7 +86,7 @@ class _StartUpQuestionPageState extends State<StartUpQuestionPage> {
               //COBA WIDGET
               timePicker(context),
               SizedBox(
-                height: 120,
+                height: 100,
               ),
               _buttonNext(context),
               SizedBox(
@@ -200,7 +203,7 @@ class _StartUpQuestionPageState extends State<StartUpQuestionPage> {
   Widget _buildAppBar(BuildContext context) {
     return Container(
       alignment: Alignment.centerLeft,
-      margin: EdgeInsets.only(left: 5, bottom: 5),
+      margin: EdgeInsets.only(left: 20, top: 5),
       height: 38,
       // color: Colors.amber,
       child: IconButton(

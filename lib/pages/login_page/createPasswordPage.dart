@@ -16,69 +16,73 @@ class CreatePasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Form(
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: Form(
           child: SizedBox(
-        width: double.maxFinite,
-        child: Column(
-          children: [
-            SizedBox(
-              height: 162,
+            width: double.maxFinite,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 162,
+                ),
+                Expanded(
+                    child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Text(
+                        'Create password',
+                        style: TextStyles.GR_24_title_regular,
+                      ),
+                      SizedBox(
+                        height: 1,
+                      ),
+                      Text(
+                        'for security, create a strong password',
+                        style: TextStyles.GR_15_title_light,
+                      ),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      _buildPassword(context),
+                      SizedBox(
+                        height: 21,
+                      ),
+                      _buildConfirmPassword(context),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      _buildRememberMeCheckBox(context),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      CustomElevatedButton(
+                        text: 'Next',
+                        height: 50,
+                        buttonTextStyle: TextStyles.bold_24,
+                        buttonStyle: CustomButtonStyles.buttonBlue,
+                        margin: EdgeInsets.symmetric(horizontal: 50),
+                        onPressed: () {},
+                      ),
+                      SizedBox(
+                        height: 180,
+                      ),
+                      Divider(
+                        color: AppColors.inactive,
+                      ),
+                      SizedBox(
+                        height: 32,
+                      ),
+                    ],
+                  ),
+                ))
+              ],
             ),
-            Expanded(
-                child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Text(
-                    'Create password',
-                    style: TextStyles.GR_24_title_regular,
-                  ),
-                  SizedBox(
-                    height: 1,
-                  ),
-                  Text(
-                    'for security, create a strong password',
-                    style: TextStyles.GR_15_title_light,
-                  ),
-                  SizedBox(
-                    height: 40,
-                  ),
-                  _buildPassword(context),
-                  SizedBox(
-                    height: 21,
-                  ),
-                  _buildConfirmPassword(context),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  _buildRememberMeCheckBox(context),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  CustomElevatedButton(
-                    text: 'Next',
-                    height: 50,
-                    margin: EdgeInsets.symmetric(horizontal: 50),
-                    onPressed: () {},
-                  ),
-                  SizedBox(
-                    height: 200,
-                  ),
-                  Divider(
-                    color: AppColors.inactive,
-                  ),
-                  SizedBox(
-                    height: 32,
-                  ),
-                  _logInStack(context)
-                ],
-              ),
-            ))
-          ],
+          ),
         ),
-      )),
-    ));
+        bottomNavigationBar: _logInStack(context),
+      ),
+    );
   }
 
   Widget _buildPassword(BuildContext context) {
@@ -129,7 +133,6 @@ class CreatePasswordPage extends StatelessWidget {
 
   Widget _logInStack(BuildContext context) {
     return Container(
-      // color: Colors.amber,
       height: 20,
       width: 250,
       margin: EdgeInsets.only(left: 70, right: 70, bottom: 30),
@@ -140,7 +143,6 @@ class CreatePasswordPage extends StatelessWidget {
               'already have an account? ',
               style: TextStyles.GR_15_light,
             ),
-            // margin: EdgeInsets.symmetric(horizontal: 1),
           ),
           GestureDetector(
             child: Container(
@@ -152,18 +154,6 @@ class CreatePasswordPage extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 0),
             ),
           )
-          // RichText(
-          //   text: TextSpan(
-          //     children: [
-          //       TextSpan(
-          //           text: 'don\'t have an account?',
-          //           style: TextStyles.GR_15_light),
-          //       TextSpan(text: " "),
-          //       TextSpan(text: 'Sign In', style: TextStyles.bold_15_blue)
-          //     ],
-          //   ),
-          //   textAlign: TextAlign.left,
-          // ),
         ],
       ),
     );

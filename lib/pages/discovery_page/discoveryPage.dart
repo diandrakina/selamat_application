@@ -1,10 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/navbar.dart';
+import 'package:selamat_application/widget/searchBar.dart';
 import 'package:selamat_application/widget/widget_discovery/container_habits.dart';
 import 'package:selamat_application/widget/widget_discovery/container_profile_psikolog.dart';
+import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 
 class DiscoveryPage extends StatefulWidget {
   const DiscoveryPage({super.key});
@@ -50,33 +51,7 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                 SizedBox(
                   height: 20,
                 ),
-                Container(
-                  height: 30,
-                  width: 350,
-                  decoration: BoxDecoration(
-                    color: AppColors.activeCalendar,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 13,
-                      ),
-                      FaIcon(
-                        FontAwesomeIcons.search,
-                        size: 18,
-                        color: AppColors.white,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "Search",
-                        style: TextStyles.regular_14,
-                      )
-                    ],
-                  ),
-                ),
+                CustomSearchBar(),
                 SizedBox(
                   height: 30,
                 ),
@@ -137,7 +112,7 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                 //PSIKOLOG
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 20),
-                  height: 100,
+                  height: 110,
                   // color: Colors.amber,
                   width: double.maxFinite,
                   child: SingleChildScrollView(
@@ -271,7 +246,7 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                     ),
                   ],
                   options: CarouselOptions(
-                      height: 250,
+                      height: 270,
                       enlargeCenterPage: true,
                       autoPlay: true,
                       aspectRatio: 1 / 1,
@@ -317,6 +292,7 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                 child: Text(
                   "Joeliardo Gerald Leviothniel, S.Psi., M.Psi.",
                   style: TextStyles.bold_24,
+                  overflow: TextOverflow.ellipsis,
                   maxLines: 3,
                 ),
               ),
@@ -329,29 +305,34 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
             child: Text(
               "Joeliardo Gerald is our built-in doctor he used to study in harvard medical school and harvard medical school, he is also have 16 years of experience.",
               style: TextStyles.GR_14_light,
-              maxLines: 4,
+              maxLines: 3,
               overflow: TextOverflow.ellipsis,
             ),
           ),
           Container(
-            padding: EdgeInsets.only(bottom: 40),
+            // color: Colors.amber,
+            padding: EdgeInsets.only(bottom: 30),
             child: Row(
               children: [
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Psychologist",
-                    style: TextStyles.medium_16,
+                Expanded(
+                  flex: 2,
+                  child: CustomElevatedButton(
+                    text: 'Psychologist',
+                    height: 40,
+                    width: 150,
+                    buttonStyle: CustomButtonStyles.buttonBlue2,
                   ),
                 ),
                 SizedBox(
-                  width: 20,
+                  width: 10,
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Text(
-                    "See Details",
-                    style: TextStyles.medium_16,
+                Expanded(
+                  flex: 2,
+                  child: CustomElevatedButton(
+                    text: 'See Details',
+                    height: 40,
+                    width: 120,
+                    buttonStyle: CustomButtonStyles.buttonBlue2,
                   ),
                 ),
               ],

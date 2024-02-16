@@ -20,12 +20,16 @@ class _EndUpQuestionPageState extends State<EndUpQuestionPage> {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          leading: _buildAppBar(context),
+          backgroundColor: AppColors.bgDarkMode,
+        ),
         body: Container(
           width: double.maxFinite,
-          padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+          padding: EdgeInsets.only(left: 20, right: 20),
+          // padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
           child: Column(
             children: [
-              _buildAppBar(context),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -65,7 +69,6 @@ class _EndUpQuestionPageState extends State<EndUpQuestionPage> {
               Text(
                 "What about you end work time?",
                 maxLines: 2,
-                // overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.center,
                 style: TextStyles.GR_38_bold,
               ),
@@ -82,7 +85,7 @@ class _EndUpQuestionPageState extends State<EndUpQuestionPage> {
               //COBA WIDGET
               timePicker(context),
               SizedBox(
-                height: 120,
+                height: 100,
               ),
               _buttonNext(context),
               SizedBox(
@@ -196,7 +199,7 @@ class _EndUpQuestionPageState extends State<EndUpQuestionPage> {
   Widget _buildAppBar(BuildContext context) {
     return Container(
       alignment: Alignment.centerLeft,
-      margin: EdgeInsets.only(left: 5, bottom: 5),
+      margin: EdgeInsets.only(left: 20, top: 5),
       height: 38,
       // color: Colors.amber,
       child: IconButton(

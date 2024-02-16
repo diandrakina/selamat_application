@@ -10,7 +10,7 @@ class ButtonHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 30,
+      height: 40,
       width: 130,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),

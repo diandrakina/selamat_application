@@ -9,6 +9,8 @@ class CompleteProfile extends StatelessWidget {
   CompleteProfile({super.key});
 
   TextEditingController fullNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+
   bool read = false;
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -44,6 +46,10 @@ class CompleteProfile extends StatelessWidget {
                       SizedBox(
                         height: 40,
                       ),
+                      _buildEmail(context),
+                      SizedBox(
+                        height: 15,
+                      ),
                       _buildFullName(context),
                       SizedBox(
                         height: 15,
@@ -59,6 +65,8 @@ class CompleteProfile extends StatelessWidget {
                       CustomElevatedButton(
                         text: 'Next',
                         height: 50,
+                        buttonTextStyle: TextStyles.bold_24,
+                        buttonStyle: CustomButtonStyles.buttonBlue,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8)),
                         margin: EdgeInsets.symmetric(horizontal: 50),
@@ -73,6 +81,19 @@ class CompleteProfile extends StatelessWidget {
         ),
       ),
     ));
+  }
+
+  Widget _buildEmail(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: 50,
+      ),
+      child: CustomTextFormField(
+        controller: emailController,
+        hintText: 'email',
+        textInputAction: TextInputAction.done,
+      ),
+    );
   }
 
   Widget _buildFullName(BuildContext context) {
@@ -103,10 +124,11 @@ class CompleteProfile extends StatelessWidget {
   }
 
   Widget _buildHaveRead(BuildContext context) {
-    return Align(
+    return Container(
+      // color: Colors.red,
       alignment: Alignment.centerLeft,
       child: Padding(
-        padding: EdgeInsets.only(left: 40),
+        padding: EdgeInsets.symmetric(vertical: 8, horizontal: 30),
         child: CustomCheckboxButton(
           alignment: Alignment.center,
           text: 'i’ve read and accept the privacy and policy',
