@@ -53,21 +53,28 @@ class CustomElevatedButton extends Button {
         height: this.height ?? 50.v,
         width: this.width ?? double.maxFinite,
         margin: margin,
-        // color: AppColors.floatingGrey,
+        // color: color,
         decoration: decoration,
         child: ElevatedButton(
-          style: buttonStyle,
+          style: buttonStyle ?? buttonStyle,
           onPressed: isDisabled ?? false ? null : onPressed ?? () {},
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              // Container(width: 30, child:
               leftIcon ?? const SizedBox.shrink(),
+              // ),
               Text(
                 text,
-                style: buttonTextStyle ?? TextStyles.bold_24,
+                style: buttonTextStyle ?? buttonTextStyle,
+                textAlign: TextAlign.center,
               ),
+              // Container(
+              // width: 30,
+              // color: Colors.yellow,
               rightIcon ?? const SizedBox.shrink(),
+              // ),
             ],
           ),
         ),

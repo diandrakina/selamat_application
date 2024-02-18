@@ -73,7 +73,7 @@ class _NavBarState extends State<NavBar> {
     );
 
     return SizedBox(
-      height: 62,
+      height: 70,
       child: Scaffold(
         bottomNavigationBar: ClipRRect(
           borderRadius: BorderRadius.only(
