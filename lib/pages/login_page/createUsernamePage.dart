@@ -6,8 +6,7 @@ import 'package:selamat_application/widget/widget_login_register/customTextFormF
 
 class createUsernamePage extends StatelessWidget {
   createUsernamePage({super.key});
-
-  TextEditingController userNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +43,8 @@ class createUsernamePage extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 50),
                         child: CustomTextFormField(
-                          controller: userNameController,
-                          hintText: 'username',
+                          controller: emailController,
+                          hintText: 'email',
                           textInputAction: TextInputAction.done,
                         ),
                       ),

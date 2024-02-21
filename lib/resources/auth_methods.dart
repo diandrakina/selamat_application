@@ -13,48 +13,68 @@ class AuthMethods {
 
   Future<model.User> getUserDetails() async {
     User currentUser = _auth.currentUser!;
-    DocumentSnapshot snap = await _firestore.collection('users').doc(currentUser.uid).get();
+    DocumentSnapshot snap =
+        await _firestore.collection('users').doc(currentUser.uid).get();
 
     return model.User.fromSnap(snap);
   }
 
+  late String _uid;
+  late String _fullName;
+  late String _password;
+  late String _email;
+  late DateTime _dateOfBirth;
+  late DateTime _goToWorkTime;
+  late List _userGoal;
+  late DateTime _endWorkTime;
+  late List _userTarget;
+
   // Sign up user
   Future<String> signUpUser(
-      {required String email,
-      required String password,
-      required String username,
-      required String bio,
-      required Uint8List file}) async {
+    // required String email,
+    // required String password,
+    // required String username,
+    // required String bio,
+    // required Uint8List file,
+  ) async {
     String res = "Some error occurred";
     try {
-      if (email.isNotEmpty ||
-          password.isNotEmpty ||
-          username.isNotEmpty ||
-          bio.isNotEmpty) {
+      // if (email.isNotEmpty ||
+      //     password.isNotEmpty ||
+      //     username.isNotEmpty ||
+          // bio.isNotEmpty) {
         // Register user
         UserCredential cred = await _auth.createUserWithEmailAndPassword(
-            email: email, password: password);
+            email: _email, password: _password);
 
         // print(cred.user!.uid);
 
-        String photoURL = await StorageMethods()
-            .uploadImageToStorage('ProfilePics', file, false);
+        // String photoURL = await StorageMethods()
+        //     .uploadImageToStorage('ProfilePics', file, false);
 
         model.User user = model.User(
-          username: username,
-          uid: cred.user!.uid,
-          email: email,
-          bio: bio,
-          followers: [],
-          following: [],
-          photoUrl: photoURL,
+          // username: username,
+          // uid: cred.user!.uid,
+          // email: email,
+          // bio: bio,
+          // followers: [],
+          // following: [],
+          // photoUrl: photoURL,
+          uid :_uid,
+          fullName :_fullName,
+          email :_email,
+          dateOfBirth :_dateOfBirth,
+          goToWorkTime :_goToWorkTime,
+          userGoal :_userGoal,
+          endWorkTime :_endWorkTime,
+          userTarget :_userTarget,
         );
         // add user to database
         await _firestore.collection('users').doc(cred.user!.uid).set(
               user.toJson(),
             );
         res = "Success!";
-      }
+      // }
     }
     // on FirebaseException catch(err){
     //   if(err.code == 'invalid-email'){
