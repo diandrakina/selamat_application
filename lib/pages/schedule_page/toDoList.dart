@@ -32,170 +32,181 @@ class _ToDoListState extends State<ToDoList> {
           color: AppColors.white,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: Column(
-                children: [
-                  Image.asset(
-                    'assets/images/login_page/facebook_logo.png', // Adjust the path to your logo
-                    width: 100,
-                    height: 100,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(
-                      'Add Title',
-                      style: TextStyles.bold_30,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Column(
+                  children: [
+                    Image.asset(
+                      'assets/images/login_page/facebook_logo.png', // Adjust the path to your logo
+                      width: 100,
+                      height: 100,
                     ),
-                  )
-                ],
-              ),
-            ),
-            Text(
-              'Date and Times',
-              style: TextStyles.GR_24_title_regular,
-            ),
-            SizedBox(height: 10),
-            ListTile(
-              title: Row(
-                children: [
-                  Icon(
-                    Icons.calendar_month,
-                    color: AppColors.white,
-                  ),
-                  SizedBox(width: 10),
-                  Text(
-                    'Start Date',
-                    style: TextStyles.GR_16_light,
-                  ),
-                ],
-              ),
-              trailing: Text(
-                'Wed, 22 Nov 2023',
-                style: TextStyles.GR_16_light,
-              ), // Add your logic for language selection here
-              onTap: () {
-                // Add logic for language selection here
-              },
-            ),
-            Divider(),
-            ListTile(
-              title: Row(
-                children: [
-                  Icon(
-                    Icons.alarm,
-                    color: AppColors.white,
-                  ),
-                  SizedBox(width: 10),
-                  Text(
-                    'Time',
-                    style: TextStyles.GR_16_light,
-                  ),
-                ],
-              ),
-              trailing: Text('19:00',
-                  style: TextStyles
-                      .GR_16_light), // Add your logic for language selection here
-              onTap: () {
-                // Add logic for language selection here
-              },
-            ),
-            Divider(),
-            SwitchListTile(
-              activeColor: Colors.blue,
-              title: Row(
-                children: [
-                  Icon(Icons.repeat, color: AppColors.white),
-                  SizedBox(width: 10),
-                  Text('Repeat', style: TextStyles.GR_16_light),
-                ],
-              ),
-              value: _notification,
-              onChanged: (bool value) {
-                setState(() {
-                  _notification = value;
-                });
-              },
-            ),
-            Text(
-              'Task Details',
-              style: TextStyles.GR_24_title_regular,
-            ),
-            SizedBox(height: 10),
-            ListTile(
-              title: Row(
-                children: [
-                  Icon(Icons.visibility, color: AppColors.white),
-                  SizedBox(width: 10),
-                  Text('Visibility', style: TextStyles.GR_16_light),
-                ],
-              ),
-              trailing: Text('Public',
-                  style: TextStyles
-                      .GR_16_light), // Add your logic for language selection here
-              onTap: () {
-                // Add logic for language selection here
-              },
-            ),
-            Divider(),
-            ListTile(
-              title: Row(
-                children: [
-                  Icon(Icons.category, color: AppColors.white),
-                  SizedBox(width: 10),
-                  Text('Category', style: TextStyles.GR_16_light),
-                ],
-              ),
-              trailing: Text('None',
-                  style: TextStyles
-                      .GR_16_light), // Add your logic for language selection here
-              onTap: () {
-                // Add logic for language selection here
-              },
-            ),
-            Divider(),
-            ListTile(
-              leading: Icon(Icons.description, color: AppColors.white),
-              title: Text('Description', style: TextStyles.GR_16_light),
-              subtitle: TextField(
-                controller: _textFieldController,
-                decoration: InputDecoration(
-                  hintText: "Add some description",
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        'Add Title',
+                        style: TextStyles.bold_30,
+                      ),
+                    )
+                  ],
                 ),
-                onChanged: (text) {
-                  // Handle changes to the text field
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 20),
+                child: Text(
+                  'Date and Times',
+                  style: TextStyles.GR_24_title_regular,
+                ),
+              ),
+              SizedBox(height: 10),
+              ListTile(
+                title: Row(
+                  children: [
+                    Icon(
+                      Icons.calendar_month,
+                      color: AppColors.white,
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      'Start Date',
+                      style: TextStyles.GR_16_light,
+                    ),
+                  ],
+                ),
+                trailing: Text(
+                  'Wed, 22 Nov 2023',
+                  style: TextStyles.GR_16_light,
+                ), // Add your logic for language selection here
+                onTap: () {
+                  // Add logic for language selection here
                 },
               ),
-            ),
-            Text(
-              'Reminders',
-              style: TextStyles.GR_24_title_regular,
-            ),
-            SizedBox(height: 10),
-            SwitchListTile(
-              activeColor: Colors.blue,
-              title: Row(
-                children: [
-                  Icon(
-                    Icons.notifications_on,
-                    color: AppColors.white,
-                  ),
-                  SizedBox(width: 10),
-                  Text('Reminder', style: TextStyles.GR_16_light),
-                ],
+              Divider(),
+              ListTile(
+                title: Row(
+                  children: [
+                    Icon(
+                      Icons.alarm,
+                      color: AppColors.white,
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      'Time',
+                      style: TextStyles.GR_16_light,
+                    ),
+                  ],
+                ),
+                trailing: Text('19:00',
+                    style: TextStyles
+                        .GR_16_light), // Add your logic for language selection here
+                onTap: () {
+                  // Add logic for language selection here
+                },
               ),
-              value: _reminder,
-              onChanged: (bool value) {
-                setState(() {
-                  _reminder = value;
-                });
-              },
-            ),
-          ],
+              Divider(),
+              SwitchListTile(
+                activeColor: Colors.blue,
+                title: Row(
+                  children: [
+                    Icon(Icons.repeat, color: AppColors.white),
+                    SizedBox(width: 10),
+                    Text('Repeat', style: TextStyles.GR_16_light),
+                  ],
+                ),
+                value: _notification,
+                onChanged: (bool value) {
+                  setState(() {
+                    _notification = value;
+                  });
+                },
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 20),
+                child: Text(
+                  'Task Details',
+                  style: TextStyles.GR_24_title_regular,
+                ),
+              ),
+              SizedBox(height: 10),
+              ListTile(
+                title: Row(
+                  children: [
+                    Icon(Icons.visibility, color: AppColors.white),
+                    SizedBox(width: 10),
+                    Text('Visibility', style: TextStyles.GR_16_light),
+                  ],
+                ),
+                trailing: Text('Public',
+                    style: TextStyles
+                        .GR_16_light), // Add your logic for language selection here
+                onTap: () {
+                  // Add logic for language selection here
+                },
+              ),
+              Divider(),
+              ListTile(
+                title: Row(
+                  children: [
+                    Icon(Icons.category, color: AppColors.white),
+                    SizedBox(width: 10),
+                    Text('Category', style: TextStyles.GR_16_light),
+                  ],
+                ),
+                trailing: Text('None',
+                    style: TextStyles
+                        .GR_16_light), // Add your logic for language selection here
+                onTap: () {
+                  // Add logic for language selection here
+                },
+              ),
+              Divider(),
+              ListTile(
+                leading: Icon(Icons.description, color: AppColors.white),
+                title: Text('Description', style: TextStyles.GR_16_light),
+                subtitle: TextField(
+                  controller: _textFieldController,
+                  decoration: InputDecoration(
+                      hintText: "Add some description",
+                      hintStyle: TextStyles.GR_12_light),
+                  onChanged: (text) {
+                    // Handle changes to the text field
+                  },
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 20),
+                child: Text(
+                  'Reminders',
+                  style: TextStyles.GR_24_title_regular,
+                ),
+              ),
+              SizedBox(height: 10),
+              SwitchListTile(
+                activeColor: Colors.blue,
+                title: Row(
+                  children: [
+                    Icon(
+                      Icons.notifications_on,
+                      color: AppColors.white,
+                    ),
+                    SizedBox(width: 10),
+                    Text('Reminder', style: TextStyles.GR_16_light),
+                  ],
+                ),
+                value: _reminder,
+                onChanged: (bool value) {
+                  setState(() {
+                    _reminder = value;
+                  });
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
