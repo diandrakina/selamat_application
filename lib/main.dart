@@ -11,6 +11,7 @@ import 'package:selamat_application/pages/login_page/createPasswordPage.dart';
 import 'package:selamat_application/pages/login_page/completeProfile.dart';
 import 'package:selamat_application/pages/rule_page/privacyPolicy.dart';
 import 'package:selamat_application/pages/schedule_page/toDoList.dart';
+import 'package:selamat_application/pages/schedule_page/visibilityPage.dart';
 
 // WELCOME PAGE
 import 'package:selamat_application/pages/welcome_page/welcomePage.dart';
@@ -76,7 +77,8 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
       debugShowCheckedModeBanner: false,
       // home: AlmostThere()
-      home: ToDoList(),
+      // home: ToDoList(),
+      home: VisibilityPage(),
       // home: Scaffold(
       //   body: Text("hihihi"),
       // ),
