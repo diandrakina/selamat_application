@@ -13,6 +13,7 @@ import 'package:selamat_application/pages/rule_page/privacyPolicy.dart';
 import 'package:selamat_application/pages/schedule_page/categoriesPage.dart';
 import 'package:selamat_application/pages/schedule_page/toDoList.dart';
 import 'package:selamat_application/pages/schedule_page/visibilityPage.dart';
+import 'package:selamat_application/pages/settings_page/settingsPage.dart';
 
 // WELCOME PAGE
 import 'package:selamat_application/pages/welcome_page/welcomePage.dart';
@@ -79,8 +80,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // home: AlmostThere()
       // home: ToDoList(),
+      home: SettingsPage(),
       // home: VisibilityPage(),
-      home: CategoriesPage(),
+      // home: CategoriesPage(),
       // home: Scaffold(
       //   body: Text("hihihi"),
       // ),
