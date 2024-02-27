@@ -3,8 +3,6 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 // import 'dart:html';
 
-//RICHIE
-
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/drawerWidget.dart';

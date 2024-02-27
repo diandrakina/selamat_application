@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:selamat_application/pages/login_page/completeProfilePage.dart';
+import 'package:selamat_application/pages/login_page/createPasswordPage.dart';
 import 'package:selamat_application/pages/login_page/loginPage.dart';
 import 'package:selamat_application/resources/auth_methods.dart';
 import 'package:selamat_application/styles/styles.dart';
@@ -7,83 +7,34 @@ import 'package:selamat_application/utils/richie_utils.dart';
 import 'package:selamat_application/utils/text_field_input.dart';
 import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 import 'package:selamat_application/widget/widget_login_register/customTextFormField.dart';
-import 'package:selamat_application/widget/widget_login_register/customCheckboxButton.dart';
+// import 'package:selamat_application/widget/customElevatedButton.dart';
 
-class CreatePasswordPage extends StatefulWidget {
-  CreatePasswordPage({
-    super.key,
-    required this.email,
-  });
-  final String email;
+class CreateEmailPage extends StatefulWidget {
+  CreateEmailPage({super.key});
 
   @override
-  State<CreatePasswordPage> createState() => _CreatePasswordPageState();
+  State<CreateEmailPage> createState() => _CreateEmailPageState();
 }
 
-class _CreatePasswordPageState extends State<CreatePasswordPage> {
-  TextEditingController _passwordController = TextEditingController();
-  TextEditingController _confirmPasswordController = TextEditingController();
+class _CreateEmailPageState extends State<CreateEmailPage> {
+  final TextEditingController _emailController = TextEditingController();
   bool _isLoading = false;
 
-  // Widget _buildPassword(BuildContext context) {
-  //   return Padding(
-  //     padding: EdgeInsets.symmetric(
-  //       horizontal: 50,
-  //     ),
-  //     child: CustomTextFormField(
-  //       controller: passwordController,
-  //       hintText: 'password',
-  //       textInputType: TextInputType.visiblePassword,
-  //       obscureText: true,
-  //     ),
-  //   );
-  // }
+  @override
+  void dispose() {
+    super.dispose();
+    _emailController.dispose();
+  }
 
-  // Widget _buildConfirmPassword(BuildContext context) {
-  //   return Padding(
-  //     padding: EdgeInsets.symmetric(horizontal: 50),
-  //     child: CustomTextFormField(
-  //       controller: confirmPasswordController,
-  //       hintText: 'confirm password',
-  //       textInputAction: TextInputAction.done,
-  //       textInputType: TextInputType.visiblePassword,
-  //       obscureText: true,
-  //     ),
-  //   );
-  // }
-
-  // Widget _buildRememberMeCheckBox(BuildContext context) {
-  //   return Align(
-  //     alignment: Alignment.centerLeft,
-  //     child: Padding(
-  //       padding: EdgeInsets.only(left: 50),
-  //       child: CustomCheckboxButton(
-  //         alignment: Alignment.centerLeft,
-  //         text: 'Remember me',
-  //         textStyle: TextStyles.GR_15_title_light,
-  //         value: rememberMeCheckBox,
-  //         padding: EdgeInsets.symmetric(vertical: 1),
-  //         onChange: (value) {
-  //           rememberMeCheckBox = value;
-  //         },
-  //       ),
-  //     ),
-  //   );
-  // }
-
-  void createPasswordAndConfirm() {
-    // print("${_email}");
+  void chooseEmail() {
     setState(() {
       _isLoading = true;
     });
-    String _email = widget.email;
-    String password = _passwordController.text;
-    // print('P2 ${_email}');
-    String confirmPassword = _confirmPasswordController.text;
+    String email = _emailController.text;
+    print('P1 ${email}');
     String res = "Some error occured";
     try {
-      if ((password.isNotEmpty && confirmPassword.isNotEmpty) &&
-          password == confirmPassword) {
+      if (email.isNotEmpty) {
         res = "success";
       }
     } catch (err) {
@@ -98,10 +49,7 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
     } else {
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => CompleteProfilePage(
-            email: _email,
-            password: password,
-          ),
+          builder: (context) => CreatePasswordPage(email: email),
         ),
       );
     }
@@ -140,36 +88,26 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                 flex: 1,
               ),
               Text(
-                'Create Password',
+                'Insert your Email',
                 style: TextStyles.GR_24_title_regular,
               ),
               Text(
-                'for security, create a strong password',
+                'Insert your email down here',
                 style: TextStyles.GR_15_title_light,
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.width * 0.15,
               ),
               TextFieldInput(
-                textEditingController: _passwordController,
-                hintText: "password",
-                textInputType: TextInputType.text,
-                isPass: true,
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.width * 0.05,
-              ),
-              TextFieldInput(
-                textEditingController: _confirmPasswordController,
-                hintText: "confirm password",
-                textInputType: TextInputType.text,
-                isPass: true,
+                textEditingController: _emailController,
+                hintText: "email",
+                textInputType: TextInputType.emailAddress,
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.width * 0.05,
               ),
               InkWell(
-                onTap: createPasswordAndConfirm,
+                onTap: chooseEmail,
                 child: Container(
                   child: _isLoading
                       ? const Center(
@@ -224,6 +162,7 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                       ),
                     ),
                   ),
+                  // ),
                 ],
               )
             ],
@@ -231,5 +170,80 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
         ),
       ),
     );
+
+    // return Scaffold(
+    //   appBar: AppBar(
+    //     backgroundColor: AppColors.bgDarkMode,
+    //     leading: IconButton(
+    //       icon: const Icon(Icons.arrow_back),
+    //       color: AppColors.white,
+    //       onPressed: () async {
+    //         Navigator.of(context).pop();
+    //       },
+    //     ),
+    //   ),
+    //   body: SafeArea(
+    //     child: Container(
+    //       padding: EdgeInsets.symmetric(horizontal: 32),
+    //       width: double.infinity,
+    //       child: Column(
+    //         children: [
+    //           Flexible(
+    //             child: Container(),
+    //             flex: 1,
+    //           ),
+    //           Text(
+    //             'Insert your Email',
+    //             style: TextStyles.GR_24_title_regular,
+    //           ),
+    //           Text(
+    //             'Insert your email down here',
+    //             style: TextStyles.GR_15_title_light,
+    //           ),
+    //           SizedBox(
+    //             height: MediaQuery.of(context).size.width * 0.15,
+    //           ),
+    //           TextFieldInput(
+    //             textEditingController: _emailController,
+    //             hintText: "email",
+    //             textInputType: TextInputType.emailAddress,
+    //           ),
+    //           SizedBox(
+    //             height: MediaQuery.of(context).size.width * 0.05,
+    //           ),
+    //           InkWell(
+    //             onTap: chooseEmail,
+    //             child: Container(
+    //               child: _isLoading
+    //                   ? const Center(
+    //                       child: CircularProgressIndicator(
+    //                         color: AppColors.white,
+    //                       ),
+    //                     )
+    //                   : Text(
+    //                       "Sign Up",
+    //                       style: TextStyles.bold_18,
+    //                     ),
+    //               width: double.infinity,
+    //               alignment: Alignment.center,
+    //               padding: const EdgeInsets.symmetric(vertical: 12),
+    //               decoration: const ShapeDecoration(
+    //                   shape: RoundedRectangleBorder(
+    //                     borderRadius: BorderRadius.all(
+    //                       Radius.circular(8),
+    //                     ),
+    //                   ),
+    //                   color: AppColors.bluePowderBlack),
+    //             ),
+    //           ),
+    //           Flexible(
+    //             child: Container(),
+    //             flex: 2,
+    //           ),
+    //         ],
+    //       ),
+    //     ),
+    //   ),
+    // );
   }
 }
