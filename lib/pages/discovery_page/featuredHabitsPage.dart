@@ -35,13 +35,13 @@ class _FeaturedHabitsPageState extends State<FeaturedHabitsPage> {
           leading: Container(
             child: Row(
               children: [
-                Padding(padding: EdgeInsets.all(5)),
-                FaIcon(
+                const Padding(padding: EdgeInsets.all(5)),
+                const FaIcon(
                   Icons.arrow_back,
                   color: AppColors.white,
                   size: 25,
                 ),
-                Padding(padding: EdgeInsets.all(5)),
+                const Padding(padding: EdgeInsets.all(5)),
                 Text(
                   "The Art of Thinking",
                   style: TextStyles.bold_30,
@@ -58,7 +58,7 @@ class _FeaturedHabitsPageState extends State<FeaturedHabitsPage> {
           minHeight: 400,
           body: Center(
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/images/discovery_page/catur.png'),
                     fit: BoxFit.cover),
@@ -82,30 +82,30 @@ class _FeaturedHabitsPageState extends State<FeaturedHabitsPage> {
                         "4.9",
                         style: TextStyles.regular_18,
                       ),
-                      FaIcon(
+                      const FaIcon(
                         Icons.star,
                         size: 25,
                         color: Colors.yellow,
                       ),
-                      Padding(padding: EdgeInsets.all(5)),
+                      const Padding(padding: EdgeInsets.all(5)),
                       Text(
                         "(14,231 reviews)",
                         style: TextStyles.regular_18,
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: AppColors.bgDarkMode,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(38),
                         topRight: Radius.circular(38),
                       ),
                     ),
-                    padding: EdgeInsets.only(left: 20, right: 20),
+                    padding: const EdgeInsets.only(left: 20, right: 20),
                     child: Column(
                       children: [
                         GestureDetector(
@@ -120,23 +120,23 @@ class _FeaturedHabitsPageState extends State<FeaturedHabitsPage> {
                                   color: AppColors.white,
                                 ),
                               ),
-                              Padding(padding: EdgeInsets.all(15)),
+                              const Padding(padding: EdgeInsets.all(15)),
                               Text(
                                 "Details",
                                 style: TextStyles.bold_30,
                               ),
-                              Padding(padding: EdgeInsets.all(10)),
-                              Divider(
+                              const Padding(padding: EdgeInsets.all(10)),
+                              const Divider(
                                 height: 2,
                                 color: AppColors.activeCalendar,
                                 thickness: 2,
                               ),
-                              Padding(padding: EdgeInsets.all(8)),
+                              const Padding(padding: EdgeInsets.all(8)),
                               Text(
                                 "The art of thinking is use for person who needs a mentality improvement, health improvement and be an alpha in their group. All of this  is about mindset, how you thinking.",
                                 style: TextStyles.regular_18,
                               ),
-                              Padding(padding: EdgeInsets.all(8)),
+                              const Padding(padding: EdgeInsets.all(8)),
                               Container(
                                 height: 35,
                                 width: 80,
@@ -154,33 +154,35 @@ class _FeaturedHabitsPageState extends State<FeaturedHabitsPage> {
                                   ],
                                 ),
                               ),
-                              Padding(padding: EdgeInsets.all(8)),
+                              const Padding(padding: EdgeInsets.all(8)),
                               Row(
                                 children: [
                                   Column(
                                     children: [
                                       Row(
                                         children: [
-                                          FaIcon(
+                                          const FaIcon(
                                             FontAwesomeIcons.clock,
                                             size: 25,
                                             color: AppColors.white,
                                           ),
-                                          Padding(padding: EdgeInsets.all(5)),
+                                          const Padding(
+                                              padding: EdgeInsets.all(5)),
                                           Text(
                                             '3 months',
                                             style: TextStyles.regular_18,
                                           ),
                                         ],
                                       ),
-                                      Padding(padding: EdgeInsets.all(5)),
+                                      const Padding(padding: EdgeInsets.all(5)),
                                       Row(
                                         children: [
-                                          FaIcon(
+                                          const FaIcon(
                                             Icons.task,
                                             color: Colors.white,
                                           ),
-                                          Padding(padding: EdgeInsets.all(5)),
+                                          const Padding(
+                                              padding: EdgeInsets.all(5)),
                                           Text(
                                             '400 tasks',
                                             style: TextStyles.regular_18,
@@ -189,32 +191,34 @@ class _FeaturedHabitsPageState extends State<FeaturedHabitsPage> {
                                       )
                                     ],
                                   ),
-                                  Padding(padding: EdgeInsets.all(16)),
+                                  const Padding(padding: EdgeInsets.all(16)),
                                   Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
                                       Row(
                                         children: [
-                                          FaIcon(
+                                          const FaIcon(
                                             Icons.person,
                                             color: Colors.white,
                                           ),
-                                          Padding(padding: EdgeInsets.all(5)),
+                                          const Padding(
+                                              padding: EdgeInsets.all(5)),
                                           Text(
                                             '762 users',
                                             style: TextStyles.regular_18,
                                           ),
                                         ],
                                       ),
-                                      Padding(padding: EdgeInsets.all(5)),
+                                      const Padding(padding: EdgeInsets.all(5)),
                                       Row(
                                         children: [
-                                          FaIcon(
+                                          const FaIcon(
                                             Icons.share,
                                             color: Colors.white,
                                           ),
-                                          Padding(padding: EdgeInsets.all(5)),
+                                          const Padding(
+                                              padding: EdgeInsets.all(5)),
                                           Text(
                                             '238 shares',
                                             style: TextStyles.regular_18,
@@ -227,43 +231,43 @@ class _FeaturedHabitsPageState extends State<FeaturedHabitsPage> {
                               ),
 
                               //DESCRIPTION
-                              Padding(padding: EdgeInsets.all(20)),
+                              const Padding(padding: EdgeInsets.all(20)),
                               Text(
                                 "Description",
                                 style: TextStyles.bold_30,
                               ),
-                              Padding(padding: EdgeInsets.all(10)),
-                              Divider(
+                              const Padding(padding: EdgeInsets.all(10)),
+                              const Divider(
                                 height: 2,
                                 color: AppColors.activeCalendar,
                                 thickness: 2,
                               ),
-                              Padding(padding: EdgeInsets.all(8)),
+                              const Padding(padding: EdgeInsets.all(8)),
                               Text(
                                 "Dr. Andreas S.Kom was a master of computer science, he also study psychology, since he study psychology, he became an alpha male",
                                 style: TextStyles.regular_18,
                               ),
 
                               //REVIEWS
-                              Padding(padding: EdgeInsets.all(20)),
+                              const Padding(padding: EdgeInsets.all(20)),
                               Text(
                                 "Reviews",
                                 style: TextStyles.bold_30,
                               ),
-                              Padding(padding: EdgeInsets.all(10)),
-                              Divider(
+                              const Padding(padding: EdgeInsets.all(10)),
+                              const Divider(
                                 height: 2,
                                 color: AppColors.activeCalendar,
                                 thickness: 2,
                               ),
-                              Padding(padding: EdgeInsets.all(8)),
+                              const Padding(padding: EdgeInsets.all(8)),
                               Text(
                                 "Very positive, every person on this earth must try this habits, by copying Dr. Andreas habits all of people would be the greatest of all time",
                                 style: TextStyles.regular_18,
                               ),
 
                               //TOMBOL ENROLL
-                              SizedBox(
+                              const SizedBox(
                                 height: 40,
                               ),
                               Center(
@@ -275,7 +279,7 @@ class _FeaturedHabitsPageState extends State<FeaturedHabitsPage> {
                                   width: 150,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 40,
                               )
                             ],

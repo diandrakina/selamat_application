@@ -23,6 +23,8 @@ class AppColors {
   static const bluePowderBlack = Color.fromRGBO(2, 153, 231, 1);
   static const inactiveTask = Color.fromRGBO(74, 74, 74, 1);
   static const baseColorCard = Color.fromRGBO(160, 233, 255, 1);
+  static const greyBeforeLogin = Color.fromRGBO(88, 88, 88, 1);
+  static const purplePastel = Color.fromRGBO(116, 130, 255, 1);
 }
 
 class TextStyles {
@@ -121,6 +123,12 @@ class TextStyles {
       fontWeight: FontWeight.normal,
       fontSize: 18.0,
       color: Colors.white);
+
+  static TextStyle regular_18_black = const TextStyle(
+      fontFamily: 'SamsungSans',
+      fontWeight: FontWeight.normal,
+      fontSize: 18.0,
+      color: Colors.black);
 
   static TextStyle light_18 = const TextStyle(
       fontFamily: 'SamsungSans',
@@ -318,7 +326,7 @@ class TextStyles {
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.bold,
       fontSize: 70.24,
-      color: AppColors.floatingGrey);
+      color: AppColors.greyBeforeLogin);
 
   static TextStyle bold_70_white = const TextStyle(
       fontFamily: 'SamsungSans',
@@ -375,6 +383,10 @@ class CustomButtonStyles {
   static ButtonStyle get buttonGray => ElevatedButton.styleFrom(
       backgroundColor: AppColors.darkModeCard,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)));
+
+  static ButtonStyle get buttonGray2 => ElevatedButton.styleFrom(
+      backgroundColor: AppColors.darkModeCard,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)));
 
   static ButtonStyle get buttonNotSure => ElevatedButton.styleFrom(
       backgroundColor: AppColors.floatingGrey,

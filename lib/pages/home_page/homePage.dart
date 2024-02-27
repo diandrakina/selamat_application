@@ -1,13 +1,18 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+// import 'dart:html';
 
 //RICHIE
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:selamat_application/styles/styles.dart';
+import 'package:selamat_application/widget/drawerWidget.dart';
 import 'package:selamat_application/widget/navbar.dart';
-import 'package:selamat_application/widget/widget_home_page.dart/button_home_page.dart';
+import 'package:selamat_application/widget/searchBar.dart';
 import 'package:selamat_application/widget/widget_home_page.dart/container_work_sleep_time.dart';
 import 'package:selamat_application/widget/widget_home_page.dart/timing_home_page.dart';
+import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 
 import '../../widget/chart/home_page_chart/tracking_time/bar_graph.dart';
 
@@ -38,162 +43,72 @@ class _HomePageState extends State<HomePage> {
         resizeToAvoidBottomInset: false,
         //APP BAR
         appBar: AppBar(
-          toolbarHeight: 100,
+          toolbarHeight: 80,
           leadingWidth: double.maxFinite,
-          leading: Container(
-            color: AppColors.bgDarkMode,
-            padding: EdgeInsets.only(left: 20, right: 15),
-            child: Row(
-              children: [
-                Text(
-                  "Welcome, Richie!",
-                  style: TextStyles.bold_30,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                SizedBox(width: 40),
-                FaIcon(
-                  FontAwesomeIcons.solidBell,
-                  size: 28,
-                  color: AppColors.white,
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                FaIcon(
-                  FontAwesomeIcons.solidCommentDots,
-                  size: 28,
-                  color: AppColors.white,
-                ),
-              ],
-            ),
-          ),
+          leading: Builder(builder: (context) {
+            return Container(
+              color: AppColors.bgDarkMode,
+              padding: const EdgeInsets.only(left: 20, right: 15),
+              child: Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Scaffold.of(context).openDrawer();
+                    },
+                    child: Container(
+                      height: 36,
+                      width: 36,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            image: AssetImage(
+                                "assets/images/discovery_page/psikolog/ChenZheyuan.jpg"),
+                            fit: BoxFit.cover),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  const CustomSearchBar2(
+                    width: 270,
+                    height: 37.5,
+                    color: AppColors.floatingGrey,
+                  ),
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  const FaIcon(
+                    FontAwesomeIcons.solidCommentDots,
+                    size: 25,
+                    color: AppColors.white,
+                  ),
+                ],
+              ),
+            );
+          }),
         ),
+
+        //DRAWER
+        drawer: DrawerWidget(),
+
+        //BODY
         body: Container(
-          padding: EdgeInsets.only(left: 20, right: 20),
+          padding: const EdgeInsets.only(left: 20, right: 20),
           width: double.maxFinite,
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
 
                 //CONTAINER PERTAMA
                 Container(
-                  height: 185,
-                  decoration: BoxDecoration(
-                    color: AppColors.darkModeCard,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(12),
-                      topRight: Radius.circular(12),
-                    ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 15, right: 15),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            FaIcon(
-                              Icons.work,
-                              color: AppColors.baseColor,
-                              size: 35,
-                            ),
-                            Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 8)),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 8)),
-                                Text(
-                                  "Work",
-                                  style: TextStyles.bold_30,
-                                ),
-                                Text(
-                                  '09.00 - 17.00',
-                                  style: TextStyles.regular_18,
-                                )
-                              ],
-                            ),
-                            Padding(padding: EdgeInsets.all(16)),
-                            ButtonHomePage(
-                                buttonText: 'Finish Early', onPressed: () {}),
-                          ],
-                        ),
-                        Padding(padding: EdgeInsets.all(5)),
-                        Text(
-                          'Next schedule (9/32 tasks)',
-                          style: TextStyles.regular_18,
-                        ),
-                        Padding(padding: EdgeInsets.all(5)),
-                        Row(
-                          children: [
-                            Row(
-                              children: [
-                                FaIcon(
-                                  FontAwesomeIcons.sun,
-                                  color: AppColors.white,
-                                  size: 20,
-                                ),
-                                Padding(padding: EdgeInsets.all(5)),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Lunch',
-                                      style: TextStyles.GR_14_light,
-                                    ),
-                                    Text(
-                                      'From 12.00 -12.30',
-                                      style: TextStyles.GR_12_light,
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Padding(padding: EdgeInsets.all(8)),
-                            Row(
-                              children: [
-                                FaIcon(
-                                  FontAwesomeIcons.dumbbell,
-                                  color: AppColors.white,
-                                  size: 18,
-                                ),
-                                Padding(padding: EdgeInsets.all(5)),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Exercise',
-                                      style: TextStyles.GR_14_light,
-                                    ),
-                                    Text(
-                                      'From 17.00 -18.00',
-                                      style: TextStyles.GR_12_light,
-                                    )
-                                  ],
-                                )
-                              ],
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                _viewAll(context),
-                SizedBox(
-                  height: 15,
-                ),
-
-                //CONTAINER KEDUA
-                Container(
                   width: double.maxFinite,
                   height: 225,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: AppColors.darkModeCard,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(12),
@@ -201,15 +116,15 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       Text(
                         "01 Nov 2023 - 30 Nov 2023",
                         style: TextStyles.regular_18,
                       ),
-                      Padding(padding: EdgeInsets.all(10)),
+                      const Padding(padding: EdgeInsets.all(10)),
                       Row(
                         children: [
-                          Column(
+                          const Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -240,7 +155,7 @@ class _HomePageState extends State<HomePage> {
                                   colorIcon: AppColors.pastelGreenHealth),
                             ],
                           ),
-                          Padding(padding: EdgeInsets.all(8)),
+                          const Padding(padding: EdgeInsets.all(8)),
                           SizedBox(
                             height: 150,
                             width: 110,
@@ -254,16 +169,54 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 _viewAll(context),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
 
+                //CONTAINER KEDUA
+                Text(
+                  "Ongoing Schedule",
+                  style: TextStyles.bold_30,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const ScheduleBox(
+                    icon: Icons.work,
+                    activity: "Go To Work",
+                    status: true,
+                    time: '09:00'),
+                const SizedBox(
+                  height: 10,
+                ),
+
                 //CONTAINER KETIGA
+                Text("Next Schedule", style: TextStyles.medium_18),
+                const SizedBox(
+                  height: 10,
+                ),
+                const ScheduleBox(
+                    icon: Icons.work,
+                    activity: "Go To Work",
+                    status: false,
+                    time: '09:00'),
+                const SizedBox(
+                  height: 10,
+                ),
+                const ScheduleBox(
+                    icon: Icons.work,
+                    activity: "Go To Work",
+                    status: false,
+                    time: '09:00'),
+                const SizedBox(
+                  height: 10,
+                ),
+
                 Text(
                   "Work Time",
                   style: TextStyles.bold_30,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 ContainerWorkSleepTime(
@@ -275,7 +228,7 @@ class _HomePageState extends State<HomePage> {
                     sizeIcon: 30,
                     startTime: workTimeStart,
                     endTime: workTimeEnd),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
 
@@ -284,7 +237,7 @@ class _HomePageState extends State<HomePage> {
                   "Sleep Time",
                   style: TextStyles.bold_30,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 ContainerWorkSleepTime(
@@ -297,66 +250,7 @@ class _HomePageState extends State<HomePage> {
                   startTime: sleepTimeStart,
                   endTime: sleepTimeEnd,
                 ),
-                SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  "Recent activities",
-                  style: TextStyles.bold_30,
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-
-                //CONTAINER KELIMA
-                Container(
-                  height: 215,
-                  decoration: BoxDecoration(
-                    color: AppColors.darkModeCard,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(12),
-                      topRight: Radius.circular(12),
-                    ),
-                  ),
-                  child: Column(
-                    children: [
-                      RecentActivities(
-                          image: 'assets/images/home_page/jamonrantgunners.png',
-                          username: "@jamonrantgunners",
-                          activities: "just add you",
-                          hours: '2h'),
-                      Divider(
-                        color: AppColors.activeCalendar,
-                        height: 3,
-                      ),
-                      RecentActivities(
-                          image: 'assets/images/home_page/gojosatoru.png',
-                          username: "@gojosatoru",
-                          activities: "just share a schedule with you",
-                          hours: '3h'),
-                      Divider(
-                        color: AppColors.activeCalendar,
-                        height: 3,
-                      ),
-                      RecentActivities(
-                          image: 'assets/images/home_page/fushigurorahmat.png',
-                          username: "@fushigurorahmat",
-                          activities: "just share a schedule with you",
-                          hours: '15h'),
-                      Divider(
-                        color: AppColors.activeCalendar,
-                        height: 3,
-                      ),
-                      RecentActivities(
-                          image: 'assets/images/home_page/donaldtrump.png',
-                          username: "@donaldtrump",
-                          activities: "just share a schedule with you",
-                          hours: '23h'),
-                    ],
-                  ),
-                ),
-                _viewAll(context),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
               ],
@@ -364,7 +258,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
 
-        bottomNavigationBar: NavBar(),
+        bottomNavigationBar: NavBar2(),
       ),
     );
   }
@@ -373,61 +267,20 @@ class _HomePageState extends State<HomePage> {
     return Container(
       height: 40,
       width: double.maxFinite,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: AppColors.inactiveCalendar,
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(12),
           bottomRight: Radius.circular(12),
         ),
       ),
-      padding: EdgeInsets.only(top: 5),
+      padding: const EdgeInsets.only(top: 5),
       child: Text(
         "View all",
         style: TextStyles.medium_18,
         textAlign: TextAlign.center,
       ),
     );
-  }
-}
-
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  @override
-  Widget _buildAppBar(BuildContext context) {
-    return AppBar(
-      backgroundColor: AppColors.bgDarkMode,
-      toolbarHeight: 80,
-      title: Row(
-        children: [
-          Text(
-            "Welcome, Luka!",
-            style: TextStyles.bold_30,
-          ),
-          SizedBox(width: 60),
-          FaIcon(
-            FontAwesomeIcons.solidBell,
-            size: 28,
-            color: AppColors.white,
-          ),
-          SizedBox(
-            width: 20,
-          ),
-          FaIcon(
-            FontAwesomeIcons.solidCommentDots,
-            size: 28,
-            color: AppColors.white,
-          ),
-        ],
-      ),
-    );
-  }
-
-  @override
-  Size get preferredSize => Size.fromHeight(80);
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
   }
 }
 
@@ -462,7 +315,7 @@ class _RecentActivitiesState extends State<RecentActivities> {
             width: 315,
             child: Row(
               children: [
-                Padding(padding: EdgeInsets.all(8)),
+                const Padding(padding: EdgeInsets.all(8)),
                 Container(
                   width: 30,
                   height: 30,
@@ -472,12 +325,12 @@ class _RecentActivitiesState extends State<RecentActivities> {
                         image: AssetImage(widget.image), fit: BoxFit.cover),
                   ),
                 ),
-                Padding(padding: EdgeInsets.all(5)),
+                const Padding(padding: EdgeInsets.all(5)),
                 Text(
                   widget.username,
                   style: TextStyles.bold_18,
                 ),
-                Padding(padding: EdgeInsets.all(2)),
+                const Padding(padding: EdgeInsets.all(2)),
                 Expanded(
                   child: Text(
                     widget.activities,
@@ -488,7 +341,7 @@ class _RecentActivitiesState extends State<RecentActivities> {
                     maxLines: 1,
                   ),
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.only(left: 20),
                 ),
               ],
@@ -502,13 +355,77 @@ class _RecentActivitiesState extends State<RecentActivities> {
       ),
     );
   }
+}
 
-  //Function untuk membatasi panjang deskripsi
-  String _truncateDescription(String text, int length) {
-    if (text.length <= length) {
-      return text;
-    } else {
-      return text.substring(0, length) + '...';
-    }
+class ScheduleBox extends StatefulWidget {
+  final IconData icon;
+  final String activity;
+  final String time;
+  final bool status;
+
+  const ScheduleBox(
+      {super.key,
+      required this.icon,
+      required this.activity,
+      required this.status,
+      required this.time});
+
+  @override
+  State<ScheduleBox> createState() => _ScheduleBoxState();
+}
+
+class _ScheduleBoxState extends State<ScheduleBox> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 90,
+      width: double.maxFinite,
+      decoration: BoxDecoration(
+        color: AppColors.darkModeCard,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Row(
+        children: [
+          const Padding(padding: EdgeInsets.all(10)),
+          FaIcon(
+            widget.icon,
+            size: 30,
+            color: AppColors.baseColor,
+          ),
+          const SizedBox(
+            width: 20,
+          ),
+          SizedBox(
+            width: 160,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.activity,
+                  style: TextStyles.bold_18,
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  widget.time,
+                  style: TextStyles.light_14,
+                )
+              ],
+            ),
+          ),
+          CustomElevatedButton(
+            height: 30,
+            width: 100,
+            text: "Start",
+            buttonTextStyle: TextStyles.bold_14,
+            buttonStyle: widget.status
+                ? CustomButtonStyles.buttonBlue
+                : CustomButtonStyles.buttonNotSure,
+          )
+        ],
+      ),
+    );
   }
 }
