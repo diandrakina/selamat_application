@@ -51,67 +51,45 @@ class _SettingsPageState extends State<SettingsPage> {
                 title: Row(
                   children: [
                     Icon(
-                      Icons.calendar_month,
+                      Icons.person,
                       color: AppColors.white,
                     ),
                     SizedBox(width: 10),
                     Text(
-                      'Start Date',
+                      'Profile',
                       style: TextStyles.GR_16_light,
                     ),
                   ],
                 ),
-                trailing: Text(
-                  'Wed, 22 Nov 2023',
-                  style: TextStyles.GR_16_light,
-                ), // Add your logic for language selection here
-                onTap: () {
-                  // Add logic for language selection here
-                },
+                trailing: Icon(
+                  Icons.navigate_next,
+                  color: AppColors.white,
+                ),
               ),
               Divider(),
               ListTile(
                 title: Row(
                   children: [
                     Icon(
-                      Icons.alarm,
+                      Icons.shield_outlined,
                       color: AppColors.white,
                     ),
                     SizedBox(width: 10),
                     Text(
-                      'Time',
+                      'Password and Security',
                       style: TextStyles.GR_16_light,
                     ),
                   ],
                 ),
-                trailing: Text('19:00',
-                    style: TextStyles
-                        .GR_16_light), // Add your logic for language selection here
-                onTap: () {
-                  // Add logic for language selection here
-                },
-              ),
-              Divider(),
-              SwitchListTile(
-                activeColor: Colors.blue,
-                title: Row(
-                  children: [
-                    Icon(Icons.repeat, color: AppColors.white),
-                    SizedBox(width: 10),
-                    Text('Repeat', style: TextStyles.GR_16_light),
-                  ],
+                trailing: Icon(
+                  Icons.navigate_next,
+                  color: AppColors.white,
                 ),
-                value: _notification,
-                onChanged: (bool value) {
-                  setState(() {
-                    _notification = value;
-                  });
-                },
               ),
               Padding(
                 padding: EdgeInsets.only(top: 20),
                 child: Text(
-                  'Task Details',
+                  'Always on Screen',
                   style: TextStyles.GR_24_title_regular,
                 ),
               ),
@@ -119,52 +97,105 @@ class _SettingsPageState extends State<SettingsPage> {
               ListTile(
                 title: Row(
                   children: [
-                    Icon(Icons.visibility, color: AppColors.white),
+                    Icon(Icons.notifications, color: AppColors.white),
                     SizedBox(width: 10),
-                    Text('Visibility', style: TextStyles.GR_16_light),
+                    Text('Notification', style: TextStyles.GR_16_light),
                   ],
                 ),
-                trailing: Text('Public',
-                    style: TextStyles
-                        .GR_16_light), // Add your logic for language selection here
-                onTap: () {
-                  // Add logic for language selection here
-                },
+                trailing: Icon(
+                  Icons.navigate_next,
+                  color: AppColors.white,
+                ),
               ),
               Divider(),
               ListTile(
                 title: Row(
                   children: [
-                    Icon(Icons.category, color: AppColors.white),
-                    SizedBox(width: 10),
-                    Text('Category', style: TextStyles.GR_16_light),
-                  ],
-                ),
-                trailing: Text('None',
-                    style: TextStyles
-                        .GR_16_light), // Add your logic for language selection here
-                onTap: () {
-                  // Add logic for language selection here
-                },
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 20),
-                child: Text(
-                  'Reminders',
-                  style: TextStyles.GR_24_title_regular,
-                ),
-              ),
-              SizedBox(height: 10),
-              SwitchListTile(
-                activeColor: Colors.blue,
-                title: Row(
-                  children: [
-                    Icon(
-                      Icons.notifications_on,
-                      color: AppColors.white,
-                    ),
+                    Icon(Icons.notifications_active_outlined,
+                        color: AppColors.white),
                     SizedBox(width: 10),
                     Text('Reminder', style: TextStyles.GR_16_light),
+                  ],
+                ),
+                trailing: Icon(
+                  Icons.navigate_next,
+                  color: AppColors.white,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 20),
+                child: Text(
+                  'App Settings',
+                  style: TextStyles.GR_24_title_regular,
+                ),
+              ),
+              SizedBox(height: 10),
+              ListTile(
+                title: Row(
+                  children: [
+                    Icon(Icons.translate, color: AppColors.white),
+                    SizedBox(width: 10),
+                    Text('Language', style: TextStyles.GR_16_light),
+                  ],
+                ),
+                trailing: Icon(
+                  Icons.navigate_next,
+                  color: AppColors.white,
+                ),
+              ),
+              Divider(),
+              ListTile(
+                title: Row(
+                  children: [
+                    Icon(Icons.light_mode, color: AppColors.white),
+                    SizedBox(width: 10),
+                    Text('Theme', style: TextStyles.GR_16_light),
+                  ],
+                ),
+                trailing: Icon(
+                  Icons.navigate_next,
+                  color: AppColors.white,
+                ),
+              ),
+              Divider(),
+              ListTile(
+                title: Row(
+                  children: [
+                    Icon(Icons.help, color: AppColors.white),
+                    SizedBox(width: 10),
+                    Text('Help', style: TextStyles.GR_16_light),
+                  ],
+                ),
+                trailing: Icon(
+                  Icons.navigate_next,
+                  color: AppColors.white,
+                ),
+              ),
+              Divider(),
+              ListTile(
+                title: Row(
+                  children: [
+                    Icon(Icons.privacy_tip, color: AppColors.white),
+                    SizedBox(width: 10),
+                    Text('Privacy Policy', style: TextStyles.GR_16_light),
+                  ],
+                ),
+                trailing: Icon(
+                  Icons.navigate_next,
+                  color: AppColors.white,
+                ),
+              ),
+              Divider(),
+              SwitchListTile(
+                activeColor: Colors.blue,
+                title: Row(
+                  children: [
+                    Icon(
+                      Icons.pin,
+                      color: AppColors.white,
+                    ),
+                    SizedBox(width: 10),
+                    Text('PIN', style: TextStyles.GR_16_light),
                   ],
                 ),
                 value: _reminder,
@@ -173,6 +204,16 @@ class _SettingsPageState extends State<SettingsPage> {
                     _reminder = value;
                   });
                 },
+              ),
+              Divider(),
+              ListTile(
+                title: Row(
+                  children: [
+                    Icon(Icons.logout, color: AppColors.pastelRed),
+                    SizedBox(width: 10),
+                    Text('Log Out', style: TextStyles.GR_16_light),
+                  ],
+                ),
               ),
             ],
           ),
