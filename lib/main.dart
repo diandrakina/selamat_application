@@ -5,15 +5,17 @@ import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 
-import 'package:selamat_application/pages/login_page/beforeLoginPage.dart';
-import 'package:selamat_application/pages/login_page/before_we_start_page.dart';
-import 'package:selamat_application/pages/login_page/enterPIN.dart';
 // LOGIN
 import 'package:selamat_application/pages/login_page/loginPage.dart';
-import 'package:selamat_application/pages/login_page/create_email_page.dart';
+import 'package:selamat_application/pages/login_page/beforeLoginPage.dart';
+import 'package:selamat_application/pages/login_page/enterPIN.dart';
+import 'package:selamat_application/pages/login_page/createUsernamePage.dart';
 import 'package:selamat_application/pages/login_page/createPasswordPage.dart';
-import 'package:selamat_application/pages/login_page/completeProfilePage.dart';
+import 'package:selamat_application/pages/login_page/completeProfile.dart';
+import 'package:selamat_application/pages/profile_page/profileSharedSchedule.dart';
+
 import 'package:selamat_application/pages/rule_page/privacyPolicy.dart';
+import 'package:selamat_application/pages/statistic_page/StatisticPage.dart';
 
 // WELCOME PAGE
 import 'package:selamat_application/pages/welcome_page/welcomePage.dart';
@@ -40,11 +42,8 @@ import 'package:selamat_application/providers/user_provider.dart';
 
 //STYLES
 import 'package:selamat_application/styles/styles.dart';
-import 'package:selamat_application/widget/chart/home_page_chart/tracking_duration/test_graph.dart';
-
-//WIDGET
-import 'package:selamat_application/widget/navbar.dart';
-import 'package:selamat_application/widget/widget_home_page.dart/container_work_sleep_time.dart';
+import 'package:selamat_application/try.dart';
+import 'package:selamat_application/widget/chart/profile_page/donutChart.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -68,7 +67,7 @@ class MyApp extends StatelessWidget {
         title: 'Joeliardo Test Commit',
         theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
         debugShowCheckedModeBanner: false,
-        // home: loginPage(),
+
         home: StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
@@ -96,5 +95,6 @@ class MyApp extends StatelessWidget {
         ),
       ),
     );
+
   }
 }
