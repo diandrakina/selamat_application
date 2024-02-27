@@ -6,23 +6,31 @@ class User {
   final String email;
   final DateTime dateOfBirth;
   final String profilePicUrl;
-  final DateTime goToWorkTime;
+  final int startHour;
+  final int startMinute;
   final List userGoal;
-  final DateTime endWorkTime;
+  final int endHour;
+  final int endMinute;
   final List userTarget;
   final String bio; //Di profile
+  final String phoneNum;
 
   const User({
     required this.uid,
     required this.fullName,
     required this.email,
     required this.dateOfBirth,
-    this.profilePicUrl = "",
-    required this.goToWorkTime,
+    // this.profilePicUrl = "",
+    required this.profilePicUrl,
+    required this.startHour,
+    required this.startMinute,
     required this.userGoal,
-    required this.endWorkTime,
+    required this.endHour,
+    required this.endMinute,
     required this.userTarget,
-    this.bio = "",
+    // this.bio = "",
+    required this.bio,
+    required this.phoneNum,
   });
 
   Map<String, dynamic> toJson() => {
@@ -31,11 +39,14 @@ class User {
         'email': email,
         'dateOfBirth': dateOfBirth,
         'profilePicUrl': profilePicUrl,
-        'goToWorkTime': goToWorkTime,
+        'startHour': startHour,
+        'startMinute': startMinute,
         'userGoal': userGoal,
-        'endWorkTime': endWorkTime,
+        'endHour': endHour,
+        'endMinute': endMinute,
         'userTarget': userTarget,
         'bio': bio,
+        'phoneNum': phoneNum,
       };
 
   static User fromSnap(DocumentSnapshot snap) {
@@ -47,11 +58,14 @@ class User {
       email: snapshot['email'],
       dateOfBirth: snapshot['dateOfBirth'],
       profilePicUrl: snapshot['profilePicUrl'],
-      goToWorkTime: snapshot['goToWorkTime'],
+      startHour: snapshot['startHour'],
+      startMinute: snapshot['startMinute'],
       userGoal: snapshot['userGoal'],
-      endWorkTime: snapshot['endWorkTime'],
+      endHour: snapshot['endHour'],
+      endMinute: snapshot['endMinute'],
       userTarget: snapshot['userTarget'],
       bio: snapshot['bio'],
+      phoneNum: snapshot['phoneNum'],
     );
   }
 }

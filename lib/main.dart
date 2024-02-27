@@ -6,12 +6,13 @@ import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 
 import 'package:selamat_application/pages/login_page/beforeLoginPage.dart';
+import 'package:selamat_application/pages/login_page/before_we_start_page.dart';
 import 'package:selamat_application/pages/login_page/enterPIN.dart';
 // LOGIN
 import 'package:selamat_application/pages/login_page/loginPage.dart';
-import 'package:selamat_application/pages/login_page/createUsernamePage.dart';
+import 'package:selamat_application/pages/login_page/create_email_page.dart';
 import 'package:selamat_application/pages/login_page/createPasswordPage.dart';
-import 'package:selamat_application/pages/login_page/completeProfile.dart';
+import 'package:selamat_application/pages/login_page/completeProfilePage.dart';
 import 'package:selamat_application/pages/rule_page/privacyPolicy.dart';
 
 // WELCOME PAGE
@@ -90,7 +91,7 @@ class MyApp extends StatelessWidget {
                 ),
               );
             }
-            return loginPage();
+            return LoginPage();
           },
         ),
       ),

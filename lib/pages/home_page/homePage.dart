@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-//RICHIE
-
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/navbar.dart';
