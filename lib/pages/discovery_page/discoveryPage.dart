@@ -1,8 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:selamat_application/pages/discovery_page/habitPage.dart';
 import 'package:selamat_application/styles/styles.dart';
+import 'package:selamat_application/widget/drawerWidget.dart';
 import 'package:selamat_application/widget/navbar.dart';
 import 'package:selamat_application/widget/searchBar.dart';
+import 'package:selamat_application/widget/widget_discovery/containerPsikolog.dart';
 import 'package:selamat_application/widget/widget_discovery/container_habits.dart';
 import 'package:selamat_application/widget/widget_discovery/container_profile_psikolog.dart';
 import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
@@ -22,203 +26,143 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
+        //APP BAR
         appBar: AppBar(
-          toolbarHeight: 60,
+          toolbarHeight: 80,
           leadingWidth: double.maxFinite,
-          leading: Container(
-            padding: EdgeInsets.only(left: 20, right: 15),
-            color: AppColors.bgDarkMode,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  'Discovery',
-                  style: TextStyles.bold_24,
-                ),
-              ],
-            ),
-          ),
+          leading: Builder(builder: (context) {
+            return Container(
+              color: AppColors.bgDarkMode,
+              padding: const EdgeInsets.only(left: 20, right: 15),
+              child: Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Scaffold.of(context).openDrawer();
+                    },
+                    child: Container(
+                      height: 36,
+                      width: 36,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            image: AssetImage(
+                                "assets/images/discovery_page/psikolog/ChenZheyuan.jpg"),
+                            fit: BoxFit.cover),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  const CustomSearchBar2(
+                    width: 270,
+                    height: 37.5,
+                    color: AppColors.floatingGrey,
+                  ),
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  const FaIcon(
+                    FontAwesomeIcons.solidCommentDots,
+                    size: 25,
+                    color: AppColors.white,
+                  ),
+                ],
+              ),
+            );
+          }),
         ),
+
+        //DRAWER
+        drawer: const DrawerWidget(),
+
         body: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.only(left: 20, right: 20),
+            padding: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: 20,
-                ),
-                CustomSearchBar(),
-                SizedBox(
-                  height: 30,
-                ),
-                Text(
-                  "Featured Today",
-                  style: TextStyles.bold_30,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-
-                //KONTEN YG DISCROLL KE SAMPING
-                Padding(
-                  padding: EdgeInsets.all(8),
-                  child: Column(
-                    children: [
-                      CarouselSlider(
-                        items: [_buildPsikologProfile(context), _news(context)],
-                        options:
-                            CarouselOptions(viewportFraction: 1, height: 300),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          for (int i = 0; i < 2; i++)
-                            _circularContainer(
-                              margin: EdgeInsets.only(right: 10),
-                            ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-
-                SizedBox(
-                  height: 30,
-                ),
+                //FEATURED DOCTOR
                 Row(
                   children: [
-                    Text(
-                      "Phsychologist",
-                      style: TextStyles.bold_30,
+                    SizedBox(
+                      width: 260,
+                      child: Text(
+                        "Featured Doctor",
+                        style: TextStyles.bold_24,
+                      ),
                     ),
-                    Padding(padding: EdgeInsets.all(25)),
                     Text(
                       "View More >",
-                      style: TextStyles.regular_18,
+                      style: TextStyles.regular_14,
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
+                  height: 10,
+                ),
+
+                // ListView(
+                //   children: [],
+                // ),
+                const ContainerPsikolog(
+                  image:
+                      "assets/images/discovery_page/psikolog/ChenZheyuan.jpg",
+                  name: "Chen Zheyuan",
+                  price: "500.000",
+                  rating: 5.0,
+                  speciality: "Psikolog Klinis",
+                  years: 23,
+                  kiriAtas: 12,
+                  kananAtas: 12,
+                  kiriBawah: 0,
+                  kananBawah: 0,
+                ),
+                const Divider(
+                  color: AppColors.activeCalendar,
+                  height: 0,
+                  thickness: 2,
+                ),
+                const ContainerPsikolog(
+                  image:
+                      "assets/images/discovery_page/psikolog/ChenZheyuan.jpg",
+                  name: "Chen Zheyuan",
+                  price: "500.000",
+                  rating: 5.0,
+                  speciality: "Psikolog Klinis",
+                  years: 23,
+                  kiriAtas: 0,
+                  kananAtas: 0,
+                  kiriBawah: 12,
+                  kananBawah: 12,
+                ),
+                const SizedBox(
                   height: 20,
                 ),
 
-                //PSIKOLOG
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 20),
-                  height: 110,
-                  // color: Colors.amber,
-                  width: double.maxFinite,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/ChenZheyuan.jpg',
-                              namePsikolog: 'Chen Zheyuan'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/MarkLee.jpg',
-                              namePsikolog: 'Mark Lee'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/ZhouYiran.jpg',
-                              namePsikolog: 'Zhou Yiran'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/SongEunseok.jpg',
-                              namePsikolog: 'Song Eunseok'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/Joel.jpeg',
-                              namePsikolog: 'Joeliardo Leviothniel'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/ChenZheyuan.jpg',
-                              namePsikolog: 'Chen Zheyuan'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/MarkLee.jpg',
-                              namePsikolog: 'Mark Lee'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/ZhouYiran.jpg',
-                              namePsikolog: 'Zhou Yiran'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/SongEunseok.jpg',
-                              namePsikolog: 'Song Eunseok'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/Joel.jpeg',
-                              namePsikolog: 'Joeliardo Leviothniel'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
+                //HABITS
                 Row(
                   children: [
-                    Text(
-                      "Habits",
-                      style: TextStyles.bold_30,
-                    ),
                     SizedBox(
-                      width: 150,
+                      width: 260,
+                      child: Text(
+                        "Habits",
+                        style: TextStyles.bold_24,
+                      ),
                     ),
                     Text(
                       "View More >",
-                      style: TextStyles.regular_18,
-                    ),
+                      style: TextStyles.regular_14,
+                    )
                   ],
                 ),
-                SizedBox(
-                  height: 30,
+                const SizedBox(
+                  height: 10,
                 ),
-
-                //BUAT HABITS
                 CarouselSlider(
-                  items: [
-                    Container(
+                  items: const [
+                    SizedBox(
                       width: 350,
                       child: ContainerHabits(
                           titleHabits: "Gym",
@@ -226,7 +170,7 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                               "Gym is the best idea for you who want to build a healthy life. You can go to the gym center or do in your bedroom.",
                           imageHabits: 'assets/images/discovery_page/gym.png'),
                     ),
-                    Container(
+                    SizedBox(
                       width: 350,
                       child: ContainerHabits(
                           titleHabits: "Running",
@@ -235,7 +179,7 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                           imageHabits:
                               'assets/images/discovery_page/running.png'),
                     ),
-                    Container(
+                    SizedBox(
                       width: 350,
                       child: ContainerHabits(
                           titleHabits: "Study Flutter",
@@ -251,147 +195,50 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                       autoPlay: true,
                       aspectRatio: 1 / 1,
                       enableInfiniteScroll: true,
-                      autoPlayAnimationDuration: Duration(milliseconds: 2000),
+                      autoPlayAnimationDuration:
+                          const Duration(milliseconds: 2000),
                       viewportFraction: 0.8),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
+                ),
+
+                //JOURNEY
+                Text(
+                  "Journeys",
+                  style: TextStyles.bold_24,
+                ),
+                Text(
+                  "Pilih journey yang sesuai dengan keseharianmu",
+                  style: TextStyles.light_14,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ContainerHabitsRound(
+                        iconHabit: FontAwesomeIcons.dumbbell,
+                        nameHabit: "Exercise"),
+                    ContainerHabitsRound(
+                        iconHabit: Icons.monitor_heart, nameHabit: "Cardio"),
+                    ContainerHabitsRound(
+                        iconHabit: FontAwesomeIcons.glassWater,
+                        nameHabit: "Drink Water"),
+                    ContainerHabitsRound(
+                        iconHabit: FontAwesomeIcons.solidFaceSmile,
+                        nameHabit: "Happy"),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
                 ),
               ],
             ),
           ),
         ),
-        bottomNavigationBar: NavBar(),
-      ),
-    );
-  }
-
-  Widget _buildPsikologProfile(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(left: 20, right: 20),
-      height: 300,
-      decoration: BoxDecoration(
-        color: AppColors.activeCalendar,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(padding: EdgeInsets.symmetric(vertical: 8)),
-          Row(
-            children: [
-              CircleAvatar(
-                radius: 50,
-                backgroundImage: AssetImage(
-                    'assets/images/discovery_page/psikolog/Joel.jpeg'),
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                child: Text(
-                  "Joeliardo Gerald Leviothniel, S.Psi., M.Psi.",
-                  style: TextStyles.bold_24,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 3,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Expanded(
-            child: Text(
-              "Joeliardo Gerald is our built-in doctor he used to study in harvard medical school and harvard medical school, he is also have 16 years of experience.",
-              style: TextStyles.GR_14_light,
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-          Container(
-            // color: Colors.amber,
-            padding: EdgeInsets.only(bottom: 30),
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: CustomElevatedButton(
-                    text: 'Psychologist',
-                    height: 40,
-                    width: 150,
-                    buttonStyle: CustomButtonStyles.buttonBlue2,
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Expanded(
-                  flex: 2,
-                  child: CustomElevatedButton(
-                    text: 'See Details',
-                    height: 40,
-                    width: 120,
-                    buttonStyle: CustomButtonStyles.buttonBlue2,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _news(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(left: 20, right: 20),
-      height: 300,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage("assets/images/discovery_page/catur.png"),
-            fit: BoxFit.cover),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(padding: EdgeInsets.symmetric(vertical: 30)),
-          Row(
-            children: [
-              Expanded(
-                child: Text(
-                  "The Art of Thinking",
-                  style: TextStyles.bold_24,
-                  maxLines: 2,
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Expanded(
-            child: Text(
-              "The Art of Thinking is the journey that will help you to think a lot and make a better decision, this is including upgrade your IQ and your Emotional Intelligence",
-              style: TextStyles.GR_14_light,
-              maxLines: 4,
-              overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.center,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(30),
-            child: ElevatedButton(
-              onPressed: () {},
-              child: Text(
-                "Habits",
-                style: TextStyles.medium_16,
-              ),
-            ),
-          ),
-        ],
+        bottomNavigationBar: const NavBar(),
       ),
     );
   }

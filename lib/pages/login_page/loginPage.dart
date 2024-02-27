@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:selamat_application/pages/login_page/create_email_page.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/utils/imagesConstant.dart';
 import 'package:selamat_application/widget/widget_login_register/customTextFormField.dart';
@@ -6,14 +7,28 @@ import 'package:selamat_application/widget/widget_login_register/customElevatedB
 import 'package:selamat_application/widget/widget_login_register/customButton.dart';
 import 'package:selamat_application/widget/widget_login_register/customImage.dart';
 
-class loginPage extends StatelessWidget {
-  // loginPage({super.key});
-  loginPage({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  // LoginPage({super.key});
+  LoginPage({Key? key}) : super(key: key);
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   TextEditingController userNameController = TextEditingController();
+
   TextEditingController passwordController = TextEditingController();
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  void navigateToSignUp() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => CreateEmailPage(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -213,6 +228,7 @@ class loginPage extends StatelessWidget {
             margin: EdgeInsets.symmetric(horizontal: 10),
           ),
           GestureDetector(
+            onTap: navigateToSignUp,
             child: Container(
               // color: Colors.blue,
               child: Text(

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "130324097202",
+    "project_id": "selamat-testing",
+    "storage_bucket": "selamat-testing.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130324097202:android:f87e3b69e15f5eecc901ab",
+        "android_client_info": {
+          "package_name": "com.example.selamat_application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwPF28N0Z5N2EkZEHdwk6vMnP5gE5nHE8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

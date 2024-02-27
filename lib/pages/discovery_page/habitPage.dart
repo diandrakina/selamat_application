@@ -25,17 +25,25 @@ class _HabitPageState extends State<HabitPage> {
             color: AppColors.bgDarkMode,
             child: Row(
               children: [
-                Padding(padding: EdgeInsets.all(5)),
-                FaIcon(
+                const Padding(padding: EdgeInsets.all(5)),
+                const FaIcon(
                   Icons.arrow_back,
                   color: AppColors.white,
                   size: 25,
                 ),
-                Padding(padding: EdgeInsets.all(5)),
-                Text(
-                  "Habits",
-                  style: TextStyles.bold_30,
+                const Padding(padding: EdgeInsets.all(5)),
+                SizedBox(
+                  width: 300,
+                  child: Text(
+                    "Habits",
+                    style: TextStyles.bold_30,
+                  ),
                 ),
+                const FaIcon(
+                  Icons.history,
+                  size: 30,
+                  color: Colors.white,
+                )
               ],
             ),
           ),
@@ -43,64 +51,67 @@ class _HabitPageState extends State<HabitPage> {
         resizeToAvoidBottomInset: false,
         body: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.only(left: 20, right: 20),
+            padding: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
 
                 //BOX SEARCH
-                CustomSearchBar(),
-                SizedBox(
+                const CustomSearchBar(),
+                const SizedBox(
                   height: 16,
                 ),
 
-                //MOST POPULAR HABIT
+                //MOST POPULAR
                 Text(
                   "Most Popular",
                   style: TextStyles.medium_18,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
-                SingleChildScrollView(
+                const SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  child: Container(
+                  child: SizedBox(
                     child: Row(
                       children: [
-                        ContainerHabits(
+                        ContainerHabitsRound(
                             iconHabit: FontAwesomeIcons.solidBuilding,
                             nameHabit: 'Work Life Balance'),
                         SizedBox(
                           width: 8,
                         ),
-                        ContainerHabits(
+                        ContainerHabitsRound(
+                            // ignore: deprecated_member_use
                             iconHabit: FontAwesomeIcons.home,
                             nameHabit: 'Quality Time'),
                         SizedBox(
                           width: 8,
                         ),
-                        ContainerHabits(
+                        ContainerHabitsRound(
                             iconHabit: FontAwesomeIcons.dumbbell,
                             nameHabit: 'Exercise'),
                         SizedBox(
                           width: 8,
                         ),
-                        ContainerHabits(
+                        ContainerHabitsRound(
+                            // ignore: deprecated_member_use
                             iconHabit: FontAwesomeIcons.solidSmile,
                             nameHabit: 'Daily Routine'),
                         SizedBox(
                           width: 8,
                         ),
-                        ContainerHabits(
+                        ContainerHabitsRound(
                             iconHabit: FontAwesomeIcons.solidMoon,
                             nameHabit: 'Work Life Balance'),
                         SizedBox(
                           width: 8,
                         ),
-                        ContainerHabits(
+                        ContainerHabitsRound(
+                            // ignore: deprecated_member_use
                             iconHabit: FontAwesomeIcons.golfBall,
                             nameHabit: 'Playing Golf'),
                         SizedBox(
@@ -112,14 +123,14 @@ class _HabitPageState extends State<HabitPage> {
                 ),
 
                 //FEATURED HABITS
-                Padding(padding: EdgeInsets.all(10)),
+                const Padding(padding: EdgeInsets.all(10)),
                 Text(
                   "Featured habits",
                   style: TextStyles.bold_30,
                 ),
-                Padding(padding: EdgeInsets.all(8)),
+                const Padding(padding: EdgeInsets.all(8)),
                 CarouselSlider(
-                  items: [
+                  items: const [
                     FeaturedHabits(
                         nameHabits: "Running",
                         descHabits:
@@ -160,13 +171,13 @@ class _HabitPageState extends State<HabitPage> {
                 ),
 
                 //YOUR RECENT HABITS
-                Padding(padding: EdgeInsets.all(10)),
+                const Padding(padding: EdgeInsets.all(10)),
                 Text(
                   "Your recent habits",
                   style: TextStyles.bold_30,
                 ),
-                Padding(padding: EdgeInsets.all(8)),
-                Row(
+                const Padding(padding: EdgeInsets.all(8)),
+                const Row(
                   children: [
                     RecentHabits(
                         nameHabit: "Gym at AEON",
@@ -182,13 +193,13 @@ class _HabitPageState extends State<HabitPage> {
                 ),
 
                 //EXERCISE
-                Padding(padding: EdgeInsets.all(10)),
+                const Padding(padding: EdgeInsets.all(10)),
                 Text(
                   "Exercise",
                   style: TextStyles.bold_30,
                 ),
-                Padding(padding: EdgeInsets.all(8)),
-                Row(
+                const Padding(padding: EdgeInsets.all(8)),
+                const Row(
                   children: [
                     RecentHabits(
                         nameHabit: "Running with Frody",
@@ -202,30 +213,30 @@ class _HabitPageState extends State<HabitPage> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
               ],
             ),
           ),
         ),
-        bottomNavigationBar: NavBar(),
+        bottomNavigationBar: const NavBar(),
       ),
     );
   }
 }
 
-class ContainerHabits extends StatefulWidget {
+class ContainerHabitsRound extends StatefulWidget {
   final IconData iconHabit;
   final String nameHabit;
-  const ContainerHabits(
+  const ContainerHabitsRound(
       {Key? key, required this.iconHabit, required this.nameHabit});
 
   @override
-  State<ContainerHabits> createState() => _ContainerHabitsState();
+  State<ContainerHabitsRound> createState() => _ContainerHabitsRoundState();
 }
 
-class _ContainerHabitsState extends State<ContainerHabits> {
+class _ContainerHabitsRoundState extends State<ContainerHabitsRound> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -234,7 +245,7 @@ class _ContainerHabitsState extends State<ContainerHabits> {
       child: Column(children: [
         Container(
           height: 60,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               shape: BoxShape.circle, color: AppColors.activeCalendar),
           child: Center(
             child: FaIcon(
@@ -244,7 +255,7 @@ class _ContainerHabitsState extends State<ContainerHabits> {
             ),
           ),
         ),
-        Padding(padding: EdgeInsets.all(2)),
+        const Padding(padding: EdgeInsets.all(2)),
         Text(
           widget.nameHabit,
           style: TextStyles.light_14,
@@ -282,7 +293,7 @@ class _RecentHabitsState extends State<RecentHabits> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Padding(padding: EdgeInsets.all(50)),
+          const Padding(padding: EdgeInsets.all(50)),
           Expanded(
             child: Text(
               widget.nameHabit,
@@ -293,7 +304,7 @@ class _RecentHabitsState extends State<RecentHabits> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: CustomElevatedButton(
               text: "See Details",
               buttonTextStyle: TextStyles.bold_16,
@@ -340,7 +351,7 @@ class _FeaturedHabitsState extends State<FeaturedHabits> {
           image: DecorationImage(
               image: AssetImage(widget.bgFeaturedHabits), fit: BoxFit.cover),
           borderRadius: BorderRadius.circular(12)),
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Column(
         children: [
           Text(
@@ -350,7 +361,7 @@ class _FeaturedHabitsState extends State<FeaturedHabits> {
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
           ),
-          Padding(padding: EdgeInsets.all(8)),
+          const Padding(padding: EdgeInsets.all(8)),
           Expanded(
             child: Text(
               widget.descHabits,
@@ -359,7 +370,7 @@ class _FeaturedHabitsState extends State<FeaturedHabits> {
               overflow: TextOverflow.ellipsis,
             ),
           ),
-          Padding(padding: EdgeInsets.all(8)),
+          const Padding(padding: EdgeInsets.all(8)),
           Row(
             children: [
               Column(
@@ -367,34 +378,34 @@ class _FeaturedHabitsState extends State<FeaturedHabits> {
                   Row(
                     children: [
                       Text(
-                        '${widget.rating.toString()}',
+                        widget.rating.toString(),
                         style: TextStyles.regular_18,
                       ),
-                      Padding(padding: EdgeInsets.all(2)),
-                      FaIcon(
+                      const Padding(padding: EdgeInsets.all(2)),
+                      const FaIcon(
                         Icons.star,
                         size: 25,
                         color: Colors.yellow,
                       )
                     ],
                   ),
-                  Padding(padding: EdgeInsets.all(5)),
+                  const Padding(padding: EdgeInsets.all(5)),
                   Row(
                     children: [
-                      FaIcon(
+                      const FaIcon(
                         Icons.share,
                         color: Colors.white,
                       ),
-                      Padding(padding: EdgeInsets.all(2)),
+                      const Padding(padding: EdgeInsets.all(2)),
                       Text(
-                        '${widget.share.toString()}',
+                        widget.share.toString(),
                         style: TextStyles.regular_18,
                       ),
                     ],
                   )
                 ],
               ),
-              Padding(padding: EdgeInsets.all(16)),
+              const Padding(padding: EdgeInsets.all(16)),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -410,16 +421,16 @@ class _FeaturedHabitsState extends State<FeaturedHabits> {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  Padding(padding: EdgeInsets.all(5)),
+                  const Padding(padding: EdgeInsets.all(5)),
                   Row(
                     children: [
-                      FaIcon(
+                      const FaIcon(
                         Icons.person,
                         color: Colors.white,
                       ),
-                      Padding(padding: EdgeInsets.all(2)),
+                      const Padding(padding: EdgeInsets.all(2)),
                       Text(
-                        '${widget.person.toString()}',
+                        widget.person.toString(),
                         style: TextStyles.regular_18,
                       ),
                     ],
@@ -428,7 +439,7 @@ class _FeaturedHabitsState extends State<FeaturedHabits> {
               )
             ],
           ),
-          Padding(padding: EdgeInsets.all(8)),
+          const Padding(padding: EdgeInsets.all(8)),
           CustomElevatedButton(
             text: "Enroll",
             buttonTextStyle: TextStyles.bold_18,

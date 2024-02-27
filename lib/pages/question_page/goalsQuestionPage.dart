@@ -1,25 +1,73 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:selamat_application/pages/question_page/endUpQuestionPage.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 
 import 'package:selamat_application/widget/widget_question_page/customBoxGoals.dart';
 
 class GoalQuestionPage extends StatefulWidget {
-  const GoalQuestionPage({super.key});
+  const GoalQuestionPage({
+    super.key,
+    required this.email,
+    required this.password,
+    required this.phoneNum,
+    required this.fullName,
+    required this.dateOfBirth,
+    required this.startHour,
+    required this.startMinute,
+  });
+
+  final String email;
+  final String password;
+  final String phoneNum;
+  final String fullName;
+  final DateTime dateOfBirth;
+  final int startHour;
+  final int startMinute;
 
   @override
   State<GoalQuestionPage> createState() => _GoalQuestionPageState();
 }
 
 class _GoalQuestionPageState extends State<GoalQuestionPage> {
+
+void navigateToEndWorkPage() {
+    String _email = widget.email;
+    String _password = widget.password;
+    String _phoneNum = widget.phoneNum;
+    String _fullName = widget.fullName;
+    DateTime _dateOfBirth = widget.dateOfBirth;
+    int _startHour = widget.startHour;
+    int _startMinute = widget.startMinute;
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => EndUpQuestionPage(
+          email: _email,
+          password: _password,
+          phoneNum: _phoneNum,
+          fullName: _fullName,
+          dateOfBirth: _dateOfBirth,
+          startHour: _startHour,
+          startMinute: _startMinute,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          leading: _buildAppBar(context),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            color: AppColors.white,
+            onPressed: () async {
+              Navigator.of(context).pop();
+            },
+          ),
           backgroundColor: AppColors.bgDarkMode,
         ),
         body: Container(
@@ -104,6 +152,7 @@ class _GoalQuestionPageState extends State<GoalQuestionPage> {
       ),
     );
   }
+  
 
   Widget _yourGoals(BuildContext context) {
     return Container(
@@ -167,6 +216,9 @@ class _GoalQuestionPageState extends State<GoalQuestionPage> {
       height: 60,
       margin: EdgeInsets.symmetric(horizontal: 10),
       buttonStyle: CustomButtonStyles.buttonBlue,
+      onPressed: () {
+        navigateToEndWorkPage();
+      },
     );
   }
 
@@ -177,25 +229,6 @@ class _GoalQuestionPageState extends State<GoalQuestionPage> {
       height: 60,
       margin: EdgeInsets.symmetric(horizontal: 10),
       buttonStyle: CustomButtonStyles.buttonNotSure,
-    );
-  }
-
-  Widget _buildAppBar(BuildContext context) {
-    return Container(
-      alignment: Alignment.centerLeft,
-      margin: EdgeInsets.only(left: 20, top: 5),
-      height: 38,
-      // color: Colors.amber,
-      child: IconButton(
-        iconSize: 18,
-        icon: Icon(
-          FontAwesomeIcons.arrowLeft,
-          color: AppColors.white,
-        ),
-        onPressed: () {},
-        alignment: Alignment.centerLeft,
-        padding: EdgeInsets.only(left: 0),
-      ),
     );
   }
 }

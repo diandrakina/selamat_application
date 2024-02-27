@@ -10,20 +10,16 @@ class PrivacyPolicy extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 80,
-        leadingWidth: double.maxFinite,
-        backgroundColor: AppColors.bgDarkMode,
-        // backgroundColor: Colors.amber,
-        leading: Container(
-          padding: EdgeInsets.only(left: 20, right: 20),
-          child: Text(
-            'Privacy and Policy',
-            style: TextStyles.GR_42_bold,
-            // buat semenetara pake 42 dulu, tunggu sampe dibuat yang 49
-            // ini buat bikin judulnya
+        title: Text('Privacy and Policy', style: TextStyles.GR_24_bold),
+          backgroundColor: AppColors.bgDarkMode,
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            color: AppColors.white,
+            onPressed: () async {
+              Navigator.of(context).pop();
+            },
           ),
         ),
-      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
