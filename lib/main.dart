@@ -9,9 +9,7 @@ import 'package:provider/provider.dart';
 import 'package:selamat_application/pages/login_page/loginPage.dart';
 import 'package:selamat_application/pages/login_page/beforeLoginPage.dart';
 import 'package:selamat_application/pages/login_page/enterPIN.dart';
-import 'package:selamat_application/pages/login_page/createUsernamePage.dart';
 import 'package:selamat_application/pages/login_page/createPasswordPage.dart';
-import 'package:selamat_application/pages/login_page/completeProfile.dart';
 import 'package:selamat_application/pages/profile_page/profileSharedSchedule.dart';
 
 import 'package:selamat_application/pages/rule_page/privacyPolicy.dart';
