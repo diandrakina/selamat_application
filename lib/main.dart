@@ -37,6 +37,7 @@ import 'package:selamat_application/pages/discovery_page/habitPage.dart';
 import 'package:selamat_application/pages/discovery_page/psychologistDetailPage.dart';
 import 'package:selamat_application/pages/discovery_page/searchDiscoverPage.dart';
 import 'package:selamat_application/providers/user_provider.dart';
+import 'package:selamat_application/responsive/mobile_screen_layout.dart';
 
 //STYLES
 import 'package:selamat_application/styles/styles.dart';
@@ -88,7 +89,7 @@ class MyApp extends StatelessWidget {
                 ),
               );
             }
-            return BeforeLoginPage();
+            return MobileScreenLayout();
           },
         ),
       ),

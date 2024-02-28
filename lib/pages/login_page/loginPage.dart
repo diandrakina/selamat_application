@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:selamat_application/pages/home_page/homePage.dart';
 import 'package:selamat_application/pages/login_page/create_email_page.dart';
 import 'package:selamat_application/resources/auth_methods.dart';
+import 'package:selamat_application/responsive/mobile_screen_layout.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/utils/imagesConstant.dart';
 import 'package:selamat_application/utils/richie_utils.dart';
@@ -37,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
     if (res == "success") {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => HomePage(),
+          builder: (context) => MobileScreenLayout(),
         ),
       );
     } else {
