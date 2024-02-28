@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:selamat_application/styles/styles.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:selamat_application/widget/navbar.dart';
 import 'package:selamat_application/widget/searchBar.dart';
 import 'package:selamat_application/widget/widget_discovery/container_habits.dart';
@@ -34,6 +35,12 @@ class _TimerHomePageState extends State<TimerHomePage> {
   int _totalSeconds = 0;
   bool _isActive = false;
   late Timer _timer;
+  late AudioPlayer _audioPlayer;
+
+  void initState() {
+    super.initState();
+    _audioPlayer = AudioPlayer();
+  }
 
   void _toggleTimer() {
     setState(() {
@@ -49,6 +56,7 @@ class _TimerHomePageState extends State<TimerHomePage> {
             } else {
               _isActive = false;
               _timer.cancel();
+              _playRingtone();
             }
           });
         });
@@ -64,9 +72,23 @@ class _TimerHomePageState extends State<TimerHomePage> {
     });
   }
 
+  // void _playRingtone() {
+  //   _audioCache.play('ringtones.mp3');
+  // }
+
+  // Future<void> playSound() async {
+  //   String audioPath = "assets/audio/ringtone.mp3";
+  //   await player.play(AssetSource(audioPath));
+  // }
+
+  Future<void> _playRingtone() async {
+    await _audioPlayer.play(AssetSource('audio/ringtone.mp3'));
+  }
+
   @override
   void dispose() {
     _timer.cancel();
+    _audioPlayer.dispose();
     super.dispose();
   }
 
@@ -102,7 +124,7 @@ class _TimerHomePageState extends State<TimerHomePage> {
                   width: 300.0,
                   height: 300.0,
                   child: CircularProgressIndicator(
-                    value: _totalSeconds / 1500, // 10 minutes = 600 seconds
+                    value: _totalSeconds / 1500, // 25 minutes = 1500 seconds
                     strokeWidth: 25.0,
                     backgroundColor: Colors.grey,
                     valueColor:
@@ -169,7 +191,7 @@ class _TimerHomePageState extends State<TimerHomePage> {
         onPressed: () {
           setState(() {
             _totalSeconds =
-                1500; // Set your desired initial timer value here (10 minutes)
+                5; // Set your desired initial timer value here (10 minutes)
           });
         },
         tooltip: 'Set Timer',
