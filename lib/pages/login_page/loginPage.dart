@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:selamat_application/pages/home_page/homePage.dart';
 import 'package:selamat_application/pages/login_page/create_email_page.dart';
+import 'package:selamat_application/resources/auth_methods.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/utils/imagesConstant.dart';
+import 'package:selamat_application/utils/richie_utils.dart';
 import 'package:selamat_application/widget/widget_login_register/customTextFormField.dart';
 import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 import 'package:selamat_application/widget/widget_login_register/customButton.dart';
@@ -16,11 +19,34 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController userNameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
 
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
 
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool _isLoading = false;
+
+  void loginUser() async {
+    setState(() {
+      _isLoading = true;
+    });
+    String res = await AuthMethods().loginUser(
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
+
+    if (res == "success") {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => HomePage(),
+        ),
+      );
+    } else {
+      showSnackBar(res, context);
+    }
+    setState(() {
+      _isLoading = false;
+    });
+  }
 
   void navigateToSignUp() {
     Navigator.of(context).push(
@@ -59,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   height: 38,
                 ),
-                _buildUserName(context),
+                _buildemail(context),
                 SizedBox(
                   height: 25,
                 ),
@@ -67,7 +93,33 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   height: 15,
                 ),
-                _buildLoginButton(context),
+                InkWell(
+                  onTap: loginUser,
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: 50),
+                    child: _isLoading
+                        ? const Center(
+                            child: CircularProgressIndicator(
+                              color: AppColors.white,
+                            ),
+                          )
+                        : Text(
+                            "Sign Up",
+                            style: TextStyles.medium_24,
+                          ),
+                    width: double.infinity,
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    decoration: const ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(7),
+                        ),
+                      ),
+                      color: AppColors.bluePowderDarker,
+                    ),
+                  ),
+                ),
                 SizedBox(
                   height: 15,
                 ),
@@ -138,14 +190,14 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _buildUserName(BuildContext context) {
+  Widget _buildemail(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: 50,
       ),
       child: CustomTextFormField(
-        controller: userNameController,
-        hintText: 'username',
+        controller: _emailController,
+        hintText: 'email',
       ),
     );
   }
@@ -154,7 +206,7 @@ class _LoginPageState extends State<LoginPage> {
     return Padding(
         padding: EdgeInsets.symmetric(horizontal: 50),
         child: CustomTextFormField(
-          controller: passwordController,
+          controller: _passwordController,
           hintText: 'password',
           textInputAction: TextInputAction.done,
           textInputType: TextInputType.visiblePassword,
@@ -162,16 +214,16 @@ class _LoginPageState extends State<LoginPage> {
         ));
   }
 
-  Widget _buildLoginButton(BuildContext context) {
-    return CustomElevatedButton(
-      text: 'Login',
-      color: Colors.black,
-      margin: EdgeInsets.symmetric(horizontal: 50),
-      height: 50.0,
-      buttonTextStyle: TextStyles.bold_24,
-      buttonStyle: CustomButtonStyles.buttonBlue,
-    );
-  }
+  // Widget _buildLoginButton(BuildContext context) {
+  //   return CustomElevatedButton(
+  //     text: 'Login',
+  //     color: Colors.black,
+  //     margin: EdgeInsets.symmetric(horizontal: 50),
+  //     height: 50.0,
+  //     buttonTextStyle: TextStyles.bold_24,
+  //     buttonStyle: CustomButtonStyles.buttonBlue,
+  //   );
+  // }
 
   Widget _buildGoogle(BuildContext context) {
     return CustomElevatedButton(
@@ -241,10 +293,5 @@ class _LoginPageState extends State<LoginPage> {
         ],
       ),
     );
-  }
-
-  //Buat tempat logic Sign In
-  onTapSignIn(BuildContext context) {
-    // Navigator.pushNamed(context, routeName);
   }
 }
