@@ -3,6 +3,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:selamat_application/models/user.dart';
 import 'package:selamat_application/models/message.dart';
 import 'package:selamat_application/styles/styles.dart';
+import 'package:selamat_application/styles/styles.dart';
+import 'package:selamat_application/widget/navbar.dart';
+import 'package:selamat_application/widget/searchBar.dart';
+import 'package:selamat_application/widget/widget_discovery/container_habits.dart';
+import 'package:selamat_application/widget/widget_discovery/container_profile_psikolog.dart';
+import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 
 void main() {
   runApp(ChatPage());
@@ -10,7 +16,6 @@ void main() {
 
 class ChatPage extends StatefulWidget {
   // final User user;
-
 
   const ChatPage({super.key});
 
