@@ -48,8 +48,11 @@ dependencies:
   firebase_core: ^2.25.4
   firebase_storage: ^11.6.5
   uuid: ^4.3.3
-  provider: ^6.1.1
+  provider: ^6.1.2
+  youtube_player_flutter: ^9.0.0
   video_player: ^2.8.2
+  timeline_tile: ^2.0.0
+
 
 dev_dependencies:
   flutter_test:
@@ -96,6 +99,15 @@ flutter:
     - assets/images/discovery_page/psikolog/MarkLee.jpg
     - assets/images/discovery_page/psikolog/ChenZheyuan.jpg
     - assets/images/discovery_page/psikolog/SongEunseok.jpg
+
+    - assets/images/discovery_page/Art_Of_Thinking.mp4
+    - assets/images/discovery_page/Thinking.mp4
+
+    #BANK
+    - assets/images/payment_page/bca.png
+    - assets/images/payment_page/blu.png
+    - assets/images/payment_page/bri.png
+    - assets/images/payment_page/bni.png
     # - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   fonts:

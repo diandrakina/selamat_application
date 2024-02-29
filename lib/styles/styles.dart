@@ -12,6 +12,7 @@ class AppColors {
   static const darkModeCard = Color.fromRGBO(57, 57, 57, 1);
   static const activeCalendar = Color.fromRGBO(95, 95, 95, 1);
   static const inactiveCalendar = Color.fromRGBO(87, 87, 87, 0.4);
+  static const inactiveText = Color.fromRGBO(217, 217, 217, 0.4);
   static const bgDarkMode = Color.fromRGBO(44, 44, 44, 1);
   static const floatingGrey = Color.fromRGBO(84, 84, 84, 1);
   static const starYellow = Color.fromRGBO(223, 162, 6, 1);
@@ -333,6 +334,12 @@ class TextStyles {
       fontWeight: FontWeight.bold,
       fontSize: 70.24,
       color: Colors.white);
+
+  static TextStyle profile_text = const TextStyle(
+      fontFamily: 'SamsungSans',
+      fontWeight: FontWeight.w300,
+      fontSize: 16,
+      color: AppColors.inactiveText);
 }
 
 class AppDecoration {
@@ -387,6 +394,12 @@ class CustomButtonStyles {
   static ButtonStyle get buttonGray2 => ElevatedButton.styleFrom(
       backgroundColor: AppColors.darkModeCard,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)));
+
+  static ButtonStyle get buttonGray3 => ElevatedButton.styleFrom(
+        backgroundColor: AppColors.bluePowderDarker,
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+      );
 
   static ButtonStyle get buttonNotSure => ElevatedButton.styleFrom(
       backgroundColor: AppColors.floatingGrey,

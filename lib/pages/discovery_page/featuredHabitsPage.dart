@@ -4,6 +4,8 @@ import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
+import 'package:video_player/video_player.dart';
+
 class FeaturedHabitsPage extends StatefulWidget {
   const FeaturedHabitsPage({super.key});
 
@@ -13,10 +15,6 @@ class FeaturedHabitsPage extends StatefulWidget {
 
 class _FeaturedHabitsPageState extends State<FeaturedHabitsPage> {
   PanelController panelController = PanelController();
-  @override
-  void initState() {
-    super.initState();
-  }
 
   void togglePanel() => panelController.isPanelOpen
       ? panelController.close()
@@ -50,19 +48,15 @@ class _FeaturedHabitsPageState extends State<FeaturedHabitsPage> {
             ),
           ),
         ),
-
         body: SlidingUpPanel(
           controller: panelController,
           parallaxEnabled: true,
-          maxHeight: 650,
+          maxHeight: 600,
           minHeight: 400,
-          body: Center(
-            child: Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/images/discovery_page/catur.png'),
-                    fit: BoxFit.cover),
-              ),
+          body: const Center(
+            child: SizedBox(
+              height: double.infinity,
+              child: BackgroundVideo(),
             ),
           ),
           panelBuilder: (ScrollController controller) {
@@ -133,7 +127,7 @@ class _FeaturedHabitsPageState extends State<FeaturedHabitsPage> {
                               ),
                               const Padding(padding: EdgeInsets.all(8)),
                               Text(
-                                "The art of thinking is use for person who needs a mentality improvement, health improvement and be an alpha in their group. All of this  is about mindset, how you thinking.",
+                                "The art of thinking is use for person who needs a mentality improvement, health improvement and be an alpha in their group. All of this  is about mindset, how you thinking. This habit will be coached by Dr. Andreas, S.Kom, M. Kom. special Psychologist from BCA",
                                 style: TextStyles.regular_18,
                               ),
                               const Padding(padding: EdgeInsets.all(8)),
@@ -266,19 +260,6 @@ class _FeaturedHabitsPageState extends State<FeaturedHabitsPage> {
                                 style: TextStyles.regular_18,
                               ),
 
-                              //TOMBOL ENROLL
-                              const SizedBox(
-                                height: 40,
-                              ),
-                              Center(
-                                child: CustomElevatedButton(
-                                  text: "Enroll Now",
-                                  buttonTextStyle: TextStyles.bold_18,
-                                  buttonStyle: CustomButtonStyles.buttonBlue2,
-                                  height: 40,
-                                  width: 150,
-                                ),
-                              ),
                               const SizedBox(
                                 height: 40,
                               )
@@ -294,11 +275,69 @@ class _FeaturedHabitsPageState extends State<FeaturedHabitsPage> {
           },
           color: Colors.transparent,
         ),
-        // AnimatedPositioned(
-        //   duration: Duration(milliseconds: 500),
-        //   curve: Curves.easeInOut,
-        // ),
+        bottomNavigationBar: BottomNavigationBarEnrolled(context),
       ),
     );
+  }
+
+  Widget BottomNavigationBarEnrolled(BuildContext context) {
+    return Container(
+      height: 80,
+      color: AppColors.bgDarkMode,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CustomElevatedButton(
+            text: "Enroll Now",
+            buttonTextStyle: TextStyles.bold_18,
+            buttonStyle: CustomButtonStyles.buttonBlue2,
+            height: 40,
+            width: 150,
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class BackgroundVideo extends StatefulWidget {
+  const BackgroundVideo({super.key});
+
+  @override
+  State<BackgroundVideo> createState() => _BackgroundVideoState();
+}
+
+class _BackgroundVideoState extends State<BackgroundVideo> {
+  late VideoPlayerController _videoPlayerController;
+  late Future<void> _initializeVideoPlayerFuture;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    _videoPlayerController = VideoPlayerController.asset(
+        "assets/images/discovery_page/Art_Of_Thinking.mp4")
+      ..initialize().then((_) {
+        _videoPlayerController.setLooping(true);
+        _videoPlayerController.play();
+        _videoPlayerController.setVolume(1);
+        setState(() {});
+      });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      child: AspectRatio(
+        aspectRatio: _videoPlayerController.value.aspectRatio,
+        child: VideoPlayer(_videoPlayerController),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _videoPlayerController.dispose();
   }
 }
