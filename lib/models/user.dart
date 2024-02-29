@@ -4,14 +4,14 @@ class User {
   final String uid;
   final String fullName;
   final String email;
-  // final DateTime dateOfBirth;
+  final DateTime dateOfBirth;
   final String profilePicUrl;
   final int startHour;
   final int startMinute;
-  // final List userGoal;
+  final List userGoal;
   final int endHour;
   final int endMinute;
-  // final List userTarget;
+  final List userTarget;
   final String bio; //Di profile
   final String phoneNum;
 
@@ -19,15 +19,15 @@ class User {
     required this.uid,
     required this.fullName,
     required this.email,
-    // required this.dateOfBirth,
+    required this.dateOfBirth,
     // this.profilePicUrl = "",
     required this.profilePicUrl,
     required this.startHour,
     required this.startMinute,
-    // required this.userGoal,
+    required this.userGoal,
     required this.endHour,
     required this.endMinute,
-    // required this.userTarget,
+    required this.userTarget,
     // this.bio = "",
     required this.bio,
     required this.phoneNum,
@@ -37,14 +37,14 @@ class User {
         'uid': uid,
         'fullName': fullName,
         'email': email,
-        // 'dateOfBirth': dateOfBirth,
+        'dateOfBirth': dateOfBirth,
         'profilePicUrl': profilePicUrl,
         'startHour': startHour,
         'startMinute': startMinute,
-        // 'userGoal': userGoal,
+        'userGoal': userGoal,
         'endHour': endHour,
         'endMinute': endMinute,
-        // 'userTarget': userTarget,
+        'userTarget': userTarget,
         'bio': bio,
         'phoneNum': phoneNum,
       };
@@ -56,14 +56,14 @@ class User {
       uid: snapshot['uid'],
       fullName: snapshot['fullName'],
       email: snapshot['email'],
-      // dateOfBirth: snapshot['dateOfBirth'],
+      dateOfBirth: snapshot['dateOfBirth'],
       profilePicUrl: snapshot['profilePicUrl'],
       startHour: snapshot['startHour'],
       startMinute: snapshot['startMinute'],
-      // userGoal: snapshot['userGoal'],
+      userGoal: snapshot['userGoal'],
       endHour: snapshot['endHour'],
       endMinute: snapshot['endMinute'],
-      // userTarget: snapshot['userTarget'],
+      userTarget: snapshot['userTarget'],
       bio: snapshot['bio'],
       phoneNum: snapshot['phoneNum'],
     );
