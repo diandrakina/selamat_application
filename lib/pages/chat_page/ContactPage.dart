@@ -132,21 +132,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'WhatsApp Home',
-      theme: ThemeData.dark().copyWith(
-        primaryColor: Color(0xFF075E54),
-      ),
-      home: WhatsAppHome(),
+      title: 'Contact Page',
+      theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
+      home: ContactPage(),
     );
   }
 }
 
-class WhatsAppHome extends StatefulWidget {
+class ContactPage extends StatefulWidget {
   @override
-  _WhatsAppHomeState createState() => _WhatsAppHomeState();
+  _ContactPageState createState() => _ContactPageState();
 }
 
-class _WhatsAppHomeState extends State<WhatsAppHome> {
+class _ContactPageState extends State<ContactPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
