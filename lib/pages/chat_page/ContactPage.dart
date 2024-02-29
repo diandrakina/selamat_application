@@ -165,12 +165,14 @@ class _ContactPageState extends State<ContactPage> {
         actions: [
           IconButton(
             icon: Icon(Icons.search),
+            color: AppColors.white,
             onPressed: () {
               // Implement search functionality
             },
           ),
           IconButton(
             icon: Icon(Icons.more_vert),
+            color: AppColors.white,
             onPressed: () {
               // Implement more options
             },
