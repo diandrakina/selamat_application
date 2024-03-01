@@ -48,9 +48,13 @@ dependencies:
   provider: ^6.1.2
   youtube_player_flutter: ^9.0.0
   video_player: ^2.8.2
+
+  audioplayers: 5.2.1
+
   timeline_tile: ^2.0.0
   flutter_slidable: ^3.0.1
   easy_date_timeline: ^1.0.3
+
 
 dev_dependencies:
   flutter_test:
@@ -98,6 +102,9 @@ flutter:
     - assets/images/discovery_page/psikolog/ChenZheyuan.jpg
     - assets/images/discovery_page/psikolog/SongEunseok.jpg
 
+    - assets/audio/ringtone.mp3
+
+
     - assets/images/discovery_page/Art_Of_Thinking.mp4
     - assets/images/discovery_page/Thinking.mp4
 
@@ -106,6 +113,7 @@ flutter:
     - assets/images/payment_page/blu.png
     - assets/images/payment_page/bri.png
     - assets/images/payment_page/bni.png
+
     # - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   fonts:
