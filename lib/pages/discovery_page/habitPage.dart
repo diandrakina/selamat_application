@@ -220,7 +220,7 @@ class _HabitPageState extends State<HabitPage> {
             ),
           ),
         ),
-        bottomNavigationBar: const NavBar(),
+        // bottomNavigationBar: const NavBar(),
       ),
     );
   }

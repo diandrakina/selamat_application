@@ -31,7 +31,7 @@ class _CreateEmailPageState extends State<CreateEmailPage> {
       _isLoading = true;
     });
     String email = _emailController.text;
-    print('P1 ${email}');
+    // print('P1 ${email}');
     String res = "Some error occured";
     try {
       if (email.isNotEmpty) {
