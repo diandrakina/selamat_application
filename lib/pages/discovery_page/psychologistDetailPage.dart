@@ -31,32 +31,30 @@ class _PsychologistDetailPageState extends State<PsychologistDetailPage> {
           leadingWidth: double.maxFinite,
           elevation: 0.0,
           backgroundColor: Colors.transparent,
-          leading: Container(
-            child: Row(
-              children: [
-                Padding(padding: EdgeInsets.all(5)),
-                FaIcon(
-                  Icons.arrow_back,
-                  color: AppColors.white,
-                  size: 25,
-                ),
-                Padding(padding: EdgeInsets.all(5)),
-                Text(
-                  "Our psychologist",
-                  style: TextStyles.bold_30,
-                ),
-              ],
-            ),
+          leading: Row(
+            children: [
+              const Padding(padding: EdgeInsets.all(5)),
+              const FaIcon(
+                Icons.arrow_back,
+                color: AppColors.white,
+                size: 25,
+              ),
+              const Padding(padding: EdgeInsets.all(5)),
+              Text(
+                "Our psychologist",
+                style: TextStyles.bold_30,
+              ),
+            ],
           ),
         ),
         body: SlidingUpPanel(
           controller: panelController,
           parallaxEnabled: true,
-          maxHeight: 650,
+          maxHeight: 600,
           minHeight: 400,
           body: Center(
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage(
                         'assets/images/discovery_page/psikolog/ZhouYiran.jpg'),
@@ -81,30 +79,30 @@ class _PsychologistDetailPageState extends State<PsychologistDetailPage> {
                         "4.9",
                         style: TextStyles.regular_18,
                       ),
-                      FaIcon(
+                      const FaIcon(
                         Icons.star,
                         size: 25,
                         color: Colors.yellow,
                       ),
-                      Padding(padding: EdgeInsets.all(5)),
+                      const Padding(padding: EdgeInsets.all(5)),
                       Text(
                         "(14,231 reviews)",
                         style: TextStyles.regular_18,
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: AppColors.bgDarkMode,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(38),
                         topRight: Radius.circular(38),
                       ),
                     ),
-                    padding: EdgeInsets.only(left: 20, right: 20),
+                    padding: const EdgeInsets.only(left: 20, right: 20),
                     child: Column(
                       children: [
                         GestureDetector(
@@ -119,14 +117,15 @@ class _PsychologistDetailPageState extends State<PsychologistDetailPage> {
                                   color: AppColors.white,
                                 ),
                               ),
-                              Padding(padding: EdgeInsets.all(15)),
+                              const Padding(padding: EdgeInsets.all(15)),
                               Row(
                                 children: [
                                   Text(
                                     "Price",
                                     style: TextStyles.bold_30,
                                   ),
-                                  Padding(padding: EdgeInsets.only(left: 60)),
+                                  const Padding(
+                                      padding: EdgeInsets.only(left: 60)),
                                   Text(
                                     "Rp 200.000",
                                     style: TextStyles.bold_30,
@@ -137,14 +136,14 @@ class _PsychologistDetailPageState extends State<PsychologistDetailPage> {
                                   )
                                 ],
                               ),
-                              Padding(padding: EdgeInsets.all(10)),
-                              Divider(
+                              const Padding(padding: EdgeInsets.all(10)),
+                              const Divider(
                                 height: 2,
                                 color: AppColors.activeCalendar,
                                 thickness: 2,
                               ),
-                              Padding(padding: EdgeInsets.all(8)),
-                              Column(
+                              const Padding(padding: EdgeInsets.all(8)),
+                              const Column(
                                 children: [
                                   ProfilePsikolog(
                                     icon: FontAwesomeIcons.graduationCap,
@@ -175,57 +174,45 @@ class _PsychologistDetailPageState extends State<PsychologistDetailPage> {
                               ),
 
                               //DESCRIPTION
-                              Padding(padding: EdgeInsets.all(15)),
+                              const Padding(padding: EdgeInsets.all(15)),
                               Text(
                                 "Description",
                                 style: TextStyles.bold_30,
                               ),
-                              Padding(padding: EdgeInsets.all(10)),
-                              Divider(
+                              const Padding(padding: EdgeInsets.all(10)),
+                              const Divider(
                                 height: 2,
                                 color: AppColors.activeCalendar,
                                 thickness: 2,
                               ),
-                              Padding(padding: EdgeInsets.all(8)),
+                              const Padding(padding: EdgeInsets.all(8)),
                               Text(
                                 "Dr. Zhou Yiran is our recommended psycho-logist, since he studied in harvard and also he study about computer, that make him a great doctor of all time, nobody can defeat him until now.",
                                 style: TextStyles.regular_18,
                               ),
 
                               //REVIEWS
-                              Padding(padding: EdgeInsets.all(20)),
+                              const Padding(padding: EdgeInsets.all(20)),
                               Text(
                                 "Reviews",
                                 style: TextStyles.bold_30,
                               ),
-                              Padding(padding: EdgeInsets.all(10)),
-                              Divider(
+                              const Padding(padding: EdgeInsets.all(10)),
+                              const Divider(
                                 height: 2,
                                 color: AppColors.activeCalendar,
                                 thickness: 2,
                               ),
-                              Padding(padding: EdgeInsets.all(8)),
+                              const Padding(padding: EdgeInsets.all(8)),
                               Text(
                                 "Very positive, after what he had been through before, he became so reliable person, that every person want him to fix their problem, come and join with Dr Richard Head",
                                 style: TextStyles.regular_18,
                               ),
 
                               //TOMBOL CHAT
-                              SizedBox(
+                              const SizedBox(
                                 height: 40,
                               ),
-                              Center(
-                                child: CustomElevatedButton(
-                                  text: "Chat",
-                                  buttonTextStyle: TextStyles.bold_18,
-                                  buttonStyle: CustomButtonStyles.buttonBlue2,
-                                  height: 40,
-                                  width: 150,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 40,
-                              )
                             ],
                           ),
                         ),
@@ -238,6 +225,26 @@ class _PsychologistDetailPageState extends State<PsychologistDetailPage> {
           },
           color: Colors.transparent,
         ),
+        bottomNavigationBar: BottomNavigationBarChat(context),
+      ),
+    );
+  }
+
+  Widget BottomNavigationBarChat(BuildContext context) {
+    return Container(
+      height: 80,
+      color: AppColors.bgDarkMode,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CustomElevatedButton(
+            text: "Chat",
+            buttonTextStyle: TextStyles.bold_18,
+            buttonStyle: CustomButtonStyles.buttonBlue2,
+            height: 40,
+            width: 150,
+          )
+        ],
       ),
     );
   }
@@ -260,11 +267,11 @@ class ProfilePsikolog extends StatefulWidget {
 class _ProfilePsikologState extends State<ProfilePsikolog> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: Row(
         children: [
-          Container(
+          SizedBox(
             width: 30,
             child: FaIcon(
               widget.icon,
@@ -272,14 +279,14 @@ class _ProfilePsikologState extends State<ProfilePsikolog> {
               color: Colors.white,
             ),
           ),
-          Padding(padding: EdgeInsets.all(10)),
-          Container(
+          const Padding(padding: EdgeInsets.all(10)),
+          SizedBox(
             width: 300,
             height: 70,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
+                SizedBox(
                   height: 50,
                   width: double.maxFinite,
                   child: Column(
