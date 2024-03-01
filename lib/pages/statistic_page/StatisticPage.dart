@@ -334,7 +334,7 @@ class _StatisticPageState extends State<StatisticPage> {
         ),
 
         //BOTTOM NAVBAR
-        bottomNavigationBar: const NavBar2(),
+        // bottomNavigationBar: const NavBar(),
       ),
     );
   }

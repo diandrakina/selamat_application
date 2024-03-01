@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:selamat_application/pages/login_page/create_email_page.dart';
+import 'package:selamat_application/pages/login_page/loginPage.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 
@@ -11,6 +13,15 @@ class BeforeLoginPage extends StatefulWidget {
 }
 
 class _BeforeLoginPageState extends State<BeforeLoginPage> {
+
+  void navigateToSignUp() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => LoginPage(),
+      ),
+    );
+  }
+  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -146,6 +157,7 @@ class _BeforeLoginPageState extends State<BeforeLoginPage> {
             margin: EdgeInsets.symmetric(horizontal: 10),
           ),
           GestureDetector(
+            onTap: navigateToSignUp,
             child: Container(
               child: Text(
                 "Sign in.",

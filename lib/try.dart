@@ -1,84 +1,147 @@
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+// import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class MyHomePage extends StatefulWidget {
+class Try extends StatefulWidget {
+  const Try({super.key});
+
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<Try> createState() => _TryState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  PageController _pageController = PageController();
-  int _currentPageIndex = 0;
+class _TryState extends State<Try> {
+  late VideoPlayerController _videoPlayerController;
+  late Future<void> _initializeVideoPlayerFuture;
 
-  void _onTap(int pageIndex) {
-    _pageController.animateToPage(
-      pageIndex,
-      duration: Duration(milliseconds: 300),
-      curve: Curves.ease,
+  @override
+  void initState() {
+    // ignore: deprecated_member_use
+    // _videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(
+    //     'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'))
+    //   ..initialize().then((_) {
+    //     setState(() {});
+    //   });
+
+    // _videoPlayerController = VideoPlayerController.network(
+    //     'https://www.youtube.com/watch?v=8R7XqslaEUE')
+    //   ..initialize().then((_) {
+    //     setState(() {});
+    //   });
+
+    _videoPlayerController = VideoPlayerController.asset(
+        "assets/images/discovery_page/Art_Of_Thinking.mp4")
+      ..initialize().then((_) {
+        _videoPlayerController.setLooping(true);
+        _videoPlayerController.play();
+        // _videoPlayerController.setVolume(1);
+        setState(() {});
+      });
+
+    // _initializeVideoPlayerFuture = _videoPlayerController.initialize();
+
+    super.initState();
+  }
+
+  @override
+  // Widget build(BuildContext context) {
+  //   return Scaffold(
+  //     appBar: AppBar(
+  //       title: Text('Coba Video'),
+  //     ),
+  //     body: Container(
+  //       child: FutureBuilder(
+  //         future: _initializeVideoPlayerFuture,
+  //         builder: (context, snapshot) {
+  //           if (snapshot.connectionState == ConnectionState.done) {
+  //             return AspectRatio(
+  //               aspectRatio: _videoPlayerController.value.aspectRatio,
+  //               child: VideoPlayer(_videoPlayerController),
+  //             );
+  //           } else {
+  //             return Center(child: CircularProgressIndicator());
+  //           }
+  //         },
+  //       ),
+  //     ),
+  //     floatingActionButton: FloatingActionButton(
+  //       onPressed: () {
+  //         setState(() {
+  //           _videoPlayerController.value.isPlaying
+  //               ? _videoPlayerController.pause()
+  //               : _videoPlayerController.play();
+  //         });
+  //       },
+  //       child: Icon(
+  //         _videoPlayerController.value.isPlaying
+  //             ? Icons.pause
+  //             : Icons.play_arrow,
+  //       ),
+  //     ),
+  //   );
+  // }
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Halo RIchie"),
+      ),
+      body: Column(
+        children: [
+          SizedBox(
+            child: AspectRatio(
+              aspectRatio: _videoPlayerController.value.aspectRatio,
+              child: VideoPlayer(_videoPlayerController),
+            ),
+          ),
+        ],
+      ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _videoPlayerController.dispose();
+  }
+}
+
+class TryYoutube extends StatefulWidget {
+  const TryYoutube({super.key});
+
+  @override
+  State<TryYoutube> createState() => _TryYoutubeState();
+}
+
+class _TryYoutubeState extends State<TryYoutube> {
+  final url = 'https://www.youtube.com/watch?v=8R7XqslaEUE';
+  late YoutubePlayerController _ytController;
+
+  void initState() {
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Page Flutter'),
+        title: Text('YouTube Video Example'),
       ),
-      body: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  _onTap(0);
-                },
-                child: Text(
-                  'Notifications',
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: _currentPageIndex == 0 ? Colors.blue : Colors.black,
-                  ),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  _onTap(1);
-                },
-                child: Text(
-                  'Friends',
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: _currentPageIndex == 1 ? Colors.blue : Colors.black,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Expanded(
-            child: PageView(
-              controller: _pageController,
-              onPageChanged: (index) {
-                setState(() {
-                  _currentPageIndex = index;
-                });
-              },
-              children: [
-                Container(
-                  color: Colors.green,
-                  child: Center(
-                    child: Text('Notifications Page'),
-                  ),
-                ),
-                Container(
-                  color: Colors.orange,
-                  child: Center(
-                    child: Text('Friends Page'),
-                  ),
-                ),
-              ],
+      body: Center(
+        child: YoutubePlayer(
+          controller: YoutubePlayerController(
+            initialVideoId: 'YOUR_YOUTUBE_VIDEO_ID',
+            flags: YoutubePlayerFlags(
+              autoPlay: true,
+              mute: false,
             ),
           ),
-        ],
+          showVideoProgressIndicator: true,
+          progressIndicatorColor: Colors.blueAccent,
+          progressColors: ProgressBarColors(
+            playedColor: Colors.blue,
+            handleColor: Colors.blueAccent,
+          ),
+        ),
       ),
     );
   }

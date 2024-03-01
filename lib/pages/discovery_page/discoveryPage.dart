@@ -238,7 +238,7 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
             ),
           ),
         ),
-        bottomNavigationBar: const NavBar(),
+        // bottomNavigationBar: const NavBar(),
       ),
     );
   }

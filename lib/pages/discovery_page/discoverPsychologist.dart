@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/navbar.dart';
+import 'package:selamat_application/widget/widget_discovery/containerPsikolog.dart';
 import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 
 import '../../widget/widget_discovery/container_profile_psikolog.dart';
@@ -27,13 +28,13 @@ class _DiscoverPsychologistState extends State<DiscoverPsychologist> {
             color: AppColors.bgDarkMode,
             child: Row(
               children: [
-                Padding(padding: EdgeInsets.all(5)),
-                FaIcon(
+                const Padding(padding: EdgeInsets.all(5)),
+                const FaIcon(
                   Icons.arrow_back,
                   color: AppColors.white,
                   size: 25,
                 ),
-                Padding(padding: EdgeInsets.all(5)),
+                const Padding(padding: EdgeInsets.all(5)),
                 SizedBox(
                   width: 300,
                   child: Text(
@@ -41,7 +42,7 @@ class _DiscoverPsychologistState extends State<DiscoverPsychologist> {
                     style: TextStyles.bold_30,
                   ),
                 ),
-                FaIcon(
+                const FaIcon(
                   Icons.history,
                   color: AppColors.white,
                   size: 30,
@@ -54,438 +55,176 @@ class _DiscoverPsychologistState extends State<DiscoverPsychologist> {
         //BODY
         body: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.only(left: 20, right: 20),
+            padding: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: 20,
-                ),
                 Text(
                   "Featured Psychologist",
-                  style: TextStyles.bold_30,
+                  style: TextStyles.bold_24,
                 ),
-                Padding(padding: EdgeInsets.all(8)),
-                Container(
-                  height: 180,
-                  width: double.maxFinite,
-                  decoration: BoxDecoration(
-                      color: AppColors.darkModeCard,
-                      borderRadius: BorderRadius.circular(12)),
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Container(
-                        height: 140,
-                        width: 120,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          image: DecorationImage(
-                              image: AssetImage(
-                                  'assets/images/discovery_page/psikolog/ZhouYiran.jpg'),
-                              fit: BoxFit.cover),
-                        ),
-                      ),
-                      Padding(padding: EdgeInsets.all(10)),
-                      Container(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Zhou Yiran",
-                              style: TextStyles.bold_30,
-                            ),
-                            Text(
-                              'psychologist',
-                              style: TextStyles.regular_14,
-                            ),
-                            Padding(padding: EdgeInsets.all(2)),
-                            Row(
-                              children: [
-                                Container(
-                                  height: 25,
-                                  width: 85,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(4),
-                                      color: AppColors.activeCalendar),
-                                  child: Row(
-                                    children: [
-                                      Padding(padding: EdgeInsets.all(2)),
-                                      FaIcon(
-                                        Icons.work,
-                                        color: Colors.white,
-                                        size: 20,
-                                      ),
-                                      Padding(padding: EdgeInsets.all(2)),
-                                      Text(
-                                        "23 years",
-                                        style: TextStyles.bold_14,
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                Padding(padding: EdgeInsets.all(5)),
-                                Container(
-                                  height: 25,
-                                  width: 56,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(4),
-                                      color: AppColors.successStreak),
-                                  child: Row(
-                                    children: [
-                                      Padding(padding: EdgeInsets.all(3)),
-                                      Text(
-                                        "4.9",
-                                        style: TextStyles.bold_14,
-                                      ),
-                                      Padding(padding: EdgeInsets.all(2)),
-                                      FaIcon(
-                                        Icons.star,
-                                        color: Colors.yellow,
-                                        size: 20,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Padding(padding: EdgeInsets.all(2)),
-                            Text(
-                              'Rp 500.000',
-                              style: TextStyles.bold_18,
-                            ),
-                            Padding(padding: EdgeInsets.all(2)),
-                            CustomElevatedButton(
-                              text: "Chat",
-                              height: 30,
-                              width: 150,
-                              buttonStyle: CustomButtonStyles.buttonBlue2,
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
+                const Padding(padding: EdgeInsets.all(8)),
+
+                //CONTAINER PERTAMA
+                const ContainerPsikolog(
+                  image:
+                      "assets/images/discovery_page/psikolog/ChenZheyuan.jpg",
+                  name: "Chen Zheyuan",
+                  price: "500.000",
+                  rating: 5.0,
+                  speciality: "Psikolog Klinis",
+                  years: 23,
+                  kiriAtas: 12,
+                  kananAtas: 12,
+                  kiriBawah: 0,
+                  kananBawah: 0,
                 ),
-                SizedBox(
+                const Divider(
+                  color: AppColors.activeCalendar,
+                  height: 0,
+                  thickness: 2,
+                ),
+                const ContainerPsikolog(
+                  image:
+                      "assets/images/discovery_page/psikolog/ChenZheyuan.jpg",
+                  name: "Chen Zheyuan",
+                  price: "500.000",
+                  rating: 5.0,
+                  speciality: "Psikolog Klinis",
+                  years: 23,
+                  kiriAtas: 0,
+                  kananAtas: 0,
+                  kiriBawah: 12,
+                  kananBawah: 12,
+                ),
+                const SizedBox(
                   height: 20,
                 ),
 
-                //MOST POPULAR
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 260,
-                      child: Text(
-                        "Most Popular",
-                        style: TextStyles.bold_18,
-                      ),
-                    ),
-                    Text(
-                      "View More >",
-                      style: TextStyles.regular_14,
-                    )
-                  ],
+                //OUR PSYCHOLOGIST
+                Text(
+                  "Our Psychologist",
+                  style: TextStyles.bold_24,
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  height: 120,
-                  // color: Colors.amber,
-                  width: double.maxFinite,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/ChenZheyuan.jpg',
-                              namePsikolog: 'Chen Zheyuan'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/MarkLee.jpg',
-                              namePsikolog: 'Mark Lee'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/ZhouYiran.jpg',
-                              namePsikolog: 'Zhou Yiran'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/SongEunseok.jpg',
-                              namePsikolog: 'Song Eunseok'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/Joel.jpeg',
-                              namePsikolog: 'Joeliardo Leviothniel'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/ChenZheyuan.jpg',
-                              namePsikolog: 'Chen Zheyuan'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/MarkLee.jpg',
-                              namePsikolog: 'Mark Lee'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/ZhouYiran.jpg',
-                              namePsikolog: 'Zhou Yiran'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/SongEunseok.jpg',
-                              namePsikolog: 'Song Eunseok'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/Joel.jpeg',
-                              namePsikolog: 'Joeliardo Leviothniel'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                      ],
-                    ),
-                  ),
+                const Padding(padding: EdgeInsets.all(8)),
+                const ContainerPsikolog(
+                  image:
+                      "assets/images/discovery_page/psikolog/ChenZheyuan.jpg",
+                  name: "Chen Zheyuan",
+                  price: "500.000",
+                  rating: 5.0,
+                  speciality: "Psikolog Klinis",
+                  years: 23,
+                  kiriAtas: 12,
+                  kananAtas: 12,
+                  kiriBawah: 0,
+                  kananBawah: 0,
                 ),
 
-                //BEST RATING
-                Padding(padding: EdgeInsets.all(10)),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 260,
-                      child: Text(
-                        "Best Rating",
-                        style: TextStyles.bold_18,
-                      ),
-                    ),
-                    Text(
-                      "View More >",
-                      style: TextStyles.regular_14,
-                    )
-                  ],
+                const Divider(
+                  color: AppColors.activeCalendar,
+                  height: 0,
+                  thickness: 2,
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  height: 120,
-                  // color: Colors.amber,
-                  width: double.maxFinite,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/ChenZheyuan.jpg',
-                              namePsikolog: 'Chen Zheyuan'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/MarkLee.jpg',
-                              namePsikolog: 'Mark Lee'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/ZhouYiran.jpg',
-                              namePsikolog: 'Zhou Yiran'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/SongEunseok.jpg',
-                              namePsikolog: 'Song Eunseok'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/Joel.jpeg',
-                              namePsikolog: 'Joeliardo Leviothniel'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/ChenZheyuan.jpg',
-                              namePsikolog: 'Chen Zheyuan'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/MarkLee.jpg',
-                              namePsikolog: 'Mark Lee'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/ZhouYiran.jpg',
-                              namePsikolog: 'Zhou Yiran'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/SongEunseok.jpg',
-                              namePsikolog: 'Song Eunseok'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/Joel.jpeg',
-                              namePsikolog: 'Joeliardo Leviothniel'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                      ],
-                    ),
-                  ),
+                const ContainerPsikolog(
+                  image:
+                      "assets/images/discovery_page/psikolog/ChenZheyuan.jpg",
+                  name: "Chen Zheyuan",
+                  price: "500.000",
+                  rating: 5.0,
+                  speciality: "Psikolog Klinis",
+                  years: 23,
+                  kiriAtas: 0,
+                  kananAtas: 0,
+                  kiriBawah: 0,
+                  kananBawah: 0,
                 ),
 
-                //MOST EXPERIENCE
-                Padding(padding: EdgeInsets.all(10)),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 260,
-                      child: Text(
-                        "Most Experience",
-                        style: TextStyles.bold_18,
-                      ),
-                    ),
-                    Text(
-                      "View More >",
-                      style: TextStyles.regular_14,
-                    )
-                  ],
+                const Divider(
+                  color: AppColors.activeCalendar,
+                  height: 0,
+                  thickness: 2,
                 ),
-                SizedBox(
-                  height: 10,
+                const ContainerPsikolog(
+                  image:
+                      "assets/images/discovery_page/psikolog/ChenZheyuan.jpg",
+                  name: "Chen Zheyuan",
+                  price: "500.000",
+                  rating: 5.0,
+                  speciality: "Psikolog Klinis",
+                  years: 23,
+                  kiriAtas: 0,
+                  kananAtas: 0,
+                  kiriBawah: 0,
+                  kananBawah: 0,
                 ),
-                Container(
-                  height: 120,
-                  // color: Colors.amber,
-                  width: double.maxFinite,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/ChenZheyuan.jpg',
-                              namePsikolog: 'Chen Zheyuan'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/MarkLee.jpg',
-                              namePsikolog: 'Mark Lee'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/ZhouYiran.jpg',
-                              namePsikolog: 'Zhou Yiran'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/SongEunseok.jpg',
-                              namePsikolog: 'Song Eunseok'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/Joel.jpeg',
-                              namePsikolog: 'Joeliardo Leviothniel'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/ChenZheyuan.jpg',
-                              namePsikolog: 'Chen Zheyuan'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/MarkLee.jpg',
-                              namePsikolog: 'Mark Lee'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/ZhouYiran.jpg',
-                              namePsikolog: 'Zhou Yiran'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/SongEunseok.jpg',
-                              namePsikolog: 'Song Eunseok'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                        Container(
-                          child: ProfilePsikolog(
-                              imagePsikolog:
-                                  'assets/images/discovery_page/psikolog/Joel.jpeg',
-                              namePsikolog: 'Joeliardo Leviothniel'),
-                        ),
-                        Padding(padding: EdgeInsets.all(8)),
-                      ],
-                    ),
-                  ),
+
+                const Divider(
+                  color: AppColors.activeCalendar,
+                  height: 0,
+                  thickness: 2,
                 ),
+
+                const ContainerPsikolog(
+                  image:
+                      "assets/images/discovery_page/psikolog/ChenZheyuan.jpg",
+                  name: "Chen Zheyuan",
+                  price: "500.000",
+                  rating: 5.0,
+                  speciality: "Psikolog Klinis",
+                  years: 23,
+                  kiriAtas: 0,
+                  kananAtas: 0,
+                  kiriBawah: 0,
+                  kananBawah: 0,
+                ),
+
+                const Divider(
+                  color: AppColors.activeCalendar,
+                  height: 0,
+                  thickness: 2,
+                ),
+
+                const ContainerPsikolog(
+                  image:
+                      "assets/images/discovery_page/psikolog/ChenZheyuan.jpg",
+                  name: "Chen Zheyuan",
+                  price: "500.000",
+                  rating: 5.0,
+                  speciality: "Psikolog Klinis",
+                  years: 23,
+                  kiriAtas: 0,
+                  kananAtas: 0,
+                  kiriBawah: 0,
+                  kananBawah: 0,
+                ),
+
+                const Divider(
+                  color: AppColors.activeCalendar,
+                  height: 0,
+                  thickness: 2,
+                ),
+                const ContainerPsikolog(
+                  image:
+                      "assets/images/discovery_page/psikolog/ChenZheyuan.jpg",
+                  name: "Chen Zheyuan",
+                  price: "500.000",
+                  rating: 5.0,
+                  speciality: "Psikolog Klinis",
+                  years: 23,
+                  kiriAtas: 0,
+                  kananAtas: 0,
+                  kiriBawah: 12,
+                  kananBawah: 12,
+                ),
+                const SizedBox(
+                  height: 20,
+                )
               ],
             ),
           ),
         ),
-        bottomNavigationBar: NavBar(),
+        // bottomNavigationBar: NavBar(),
       ),
     );
   }
