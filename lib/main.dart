@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:selamat_application/pages/activity_page/activityPage.dart';
 
@@ -19,6 +20,10 @@ import 'package:selamat_application/pages/profile_page/editProfile.dart';
 import 'package:selamat_application/pages/profile_page/profileSharedSchedule.dart';
 
 import 'package:selamat_application/pages/rule_page/privacyPolicy.dart';
+import 'package:selamat_application/pages/schedule_page/categoriesPage.dart';
+import 'package:selamat_application/pages/schedule_page/schedulePage.dart';
+import 'package:selamat_application/pages/schedule_page/toDoList.dart';
+import 'package:selamat_application/pages/schedule_page/visibilityPage.dart';
 import 'package:selamat_application/pages/statistic_page/StatisticPage.dart';
 
 // WELCOME PAGE
@@ -49,6 +54,8 @@ import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/try.dart';
 import 'package:selamat_application/widget/chart/profile_page/donutChart.dart';
 import 'package:selamat_application/widget/widget_payment/customStepper.dart';
+import 'package:selamat_application/widget/widget_schedule/calendar.dart';
+import 'package:selamat_application/widget/widget_schedule/scheduleAction.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -99,7 +106,7 @@ class MyApp extends StatelessWidget {
           //   },
           // ),
 
-          home: ActivityPage()),
+          home: Calendar()),
     );
   }
 }

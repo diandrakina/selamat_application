@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/navbar.dart';
 import 'package:selamat_application/widget/searchBar.dart';
@@ -14,18 +15,30 @@ class VisibilityPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+            //APPBAR
             appBar: AppBar(
-              backgroundColor: AppColors.bgDarkMode,
               toolbarHeight: 80,
-              leading: Icon(
-                Icons.arrow_back,
-                color: AppColors.white,
-              ),
-              title: Text(
-                'Visibility',
-                style: TextStyles.GR_24_title_regular,
+              leadingWidth: double.maxFinite,
+              elevation: 0.0,
+              backgroundColor: Colors.transparent,
+              leading: Row(
+                children: [
+                  const Padding(padding: EdgeInsets.all(5)),
+                  const FaIcon(
+                    Icons.arrow_back,
+                    color: AppColors.white,
+                    size: 25,
+                  ),
+                  const Padding(padding: EdgeInsets.all(5)),
+                  Text(
+                    "Visibility",
+                    style: TextStyles.bold_30,
+                  ),
+                ],
               ),
             ),
+
+            //BODY
             body: SingleChildScrollView(
               child: Container(
                 child: Column(children: [
@@ -34,49 +47,61 @@ class VisibilityPage extends StatelessWidget {
                       children: [
                         Icon(Icons.public, color: AppColors.white),
                         SizedBox(width: 10),
-                        Text('Public', style: TextStyles.GR_16_light),
+                        Text('Public', style: TextStyles.regular_18),
                       ],
                     ),
                   ),
-                  Divider(),
+                  const Divider(
+                    height: 10,
+                    color: AppColors.activeCalendar,
+                  ),
                   ListTile(
                     title: Row(
                       children: [
                         Icon(Icons.lock, color: AppColors.white),
                         SizedBox(width: 10),
-                        Text('Private', style: TextStyles.GR_16_light),
+                        Text('Private', style: TextStyles.regular_18),
                       ],
                     ),
                   ),
-                  Divider(),
+                  const Divider(
+                    height: 10,
+                    color: AppColors.activeCalendar,
+                  ),
                   ListTile(
                     title: Row(
                       children: [
                         Icon(Icons.list_alt, color: AppColors.white),
                         SizedBox(width: 10),
                         Text('Show category only',
-                            style: TextStyles.GR_16_light),
+                            style: TextStyles.regular_18),
                       ],
                     ),
                   ),
-                  Divider(),
+                  const Divider(
+                    height: 10,
+                    color: AppColors.activeCalendar,
+                  ),
                   ListTile(
                     title: Row(
                       children: [
                         Icon(Icons.group, color: AppColors.white),
                         SizedBox(width: 10),
-                        Text('Mutuals only', style: TextStyles.GR_16_light),
+                        Text('Mutuals only', style: TextStyles.regular_18),
                       ],
                     ),
                   ),
-                  Divider(),
+                  const Divider(
+                    height: 10,
+                    color: AppColors.activeCalendar,
+                  ),
                   ListTile(
                     title: Row(
                       children: [
                         Icon(Icons.group_add, color: AppColors.white),
                         SizedBox(width: 10),
                         Text('Mutuals only + category only',
-                            style: TextStyles.GR_16_light),
+                            style: TextStyles.regular_18),
                       ],
                     ),
                   ),

@@ -36,9 +36,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   fl_chart: ^0.65.0
   google_fonts: ^6.1.0
-  # calendar_appbar: ^0.0.6
-  table_calendar: ^3.0.9
-  calendar_timeline: ^1.1.2
   sliding_up_panel: ^2.0.0+1
   pinput: ^4.0.0
   font_awesome_flutter: ^10.7.0
@@ -52,7 +49,8 @@ dependencies:
   youtube_player_flutter: ^9.0.0
   video_player: ^2.8.2
   timeline_tile: ^2.0.0
-
+  flutter_slidable: ^3.0.1
+  easy_date_timeline: ^1.0.3
 
 dev_dependencies:
   flutter_test:
