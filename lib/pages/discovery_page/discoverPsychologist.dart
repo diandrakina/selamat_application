@@ -485,7 +485,7 @@ class _DiscoverPsychologistState extends State<DiscoverPsychologist> {
             ),
           ),
         ),
-        bottomNavigationBar: NavBar(),
+        // bottomNavigationBar: NavBar(),
       ),
     );
   }
