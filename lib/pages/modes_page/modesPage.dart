@@ -113,90 +113,135 @@ class _TimerHomePageState extends State<TimerHomePage> {
             "Modes",
             style: TextStyles.GR_24_title_regular,
           )),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                SizedBox(
-                  width: 300.0,
-                  height: 300.0,
-                  child: CircularProgressIndicator(
-                    value: _totalSeconds / 1500, // 25 minutes = 1500 seconds
-                    strokeWidth: 25.0,
-                    backgroundColor: Colors.grey,
-                    valueColor:
-                        AlwaysStoppedAnimation<Color>(AppColors.baseColor),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 20.0),
+                  child:
+                      Text('Pomodoro', style: TextStyles.GR_24_title_regular),
+                ),
+              ),
+              SizedBox(height: 10.0),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: AppColors
+                        .darkModeCard, // Change the background color to grey
+                    borderRadius: BorderRadius.circular(
+                        12), // Change the border radius to 20
+                  ),
+                  child: ListTile(
+                    title: Row(
+                      children: [
+                        Icon(
+                          Icons.work,
+                          color: AppColors.white,
+                        ),
+                        SizedBox(width: 10),
+                        Text(
+                          'Work',
+                          style: TextStyles.GR_16_regular,
+                        ),
+                      ],
+                    ),
+                    trailing: Text(
+                      '09.00',
+                      style: TextStyles.GR_16_regular,
+                    ),
                   ),
                 ),
-                Text(
-                  _formatTime(_totalSeconds),
-                  style: TextStyles.bold_70_white,
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 40),
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    SizedBox(
+                      width: 300.0,
+                      height: 300.0,
+                      child: CircularProgressIndicator(
+                        value:
+                            _totalSeconds / 1500, // 25 minutes = 1500 seconds
+                        strokeWidth: 25.0,
+                        backgroundColor: Colors.grey,
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(AppColors.baseColor),
+                      ),
+                    ),
+                    Text(
+                      _formatTime(_totalSeconds),
+                      style: TextStyles.bold_70_white,
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            SizedBox(height: 20.0),
-            Padding(
-              padding: EdgeInsets.only(top: 100),
-              child: SizedBox(
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 100),
+                child: SizedBox(
+                  width: 320,
+                  height: 50,
+                  child: ElevatedButton(
+                      onPressed: () {
+                        if (_totalSeconds == 0) {
+                          setState(() {
+                            _totalSeconds =
+                                1500; // Set your desired initial timer value here (10 minutes)
+                          });
+                        }
+                        _toggleTimer();
+                      },
+                      child: Text(
+                        _isActive ? 'Stop Session' : 'Start Session',
+                        style: TextStyles.GR_24_bold,
+                      ),
+                      style: _isActive
+                          ? ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8)),
+                              backgroundColor: AppColors.pastelRed)
+                          : ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8)),
+                              backgroundColor: AppColors.baseColor)),
+                ),
+              ),
+              SizedBox(height: 20.0),
+              SizedBox(
                 width: 320,
                 height: 50,
                 child: ElevatedButton(
-                    onPressed: () {
-                      if (_totalSeconds == 0) {
-                        setState(() {
-                          _totalSeconds =
-                              1500; // Set your desired initial timer value here (10 minutes)
-                        });
-                      }
-                      _toggleTimer();
-                    },
+                    onPressed: _resetTimer,
                     child: Text(
-                      _isActive ? 'Stop Session' : 'Start Session',
+                      'Reset',
                       style: TextStyles.GR_24_bold,
                     ),
-                    style: _isActive
-                        ? ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8)),
-                            backgroundColor: AppColors.pastelRed)
-                        : ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8)),
-                            backgroundColor: AppColors.baseColor)),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8)),
+                      backgroundColor: AppColors.floatingGrey,
+                    )),
               ),
-            ),
-            SizedBox(height: 20.0),
-            SizedBox(
-              width: 320,
-              height: 50,
-              child: ElevatedButton(
-                  onPressed: _resetTimer,
-                  child: Text(
-                    'Reset',
-                    style: TextStyles.GR_24_bold,
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
-                    backgroundColor: AppColors.floatingGrey,
-                  )),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            _totalSeconds =
-                5; // Set your desired initial timer value here (10 minutes)
-          });
-        },
-        tooltip: 'Set Timer',
-        child: Icon(Icons.timer),
-      ),
+      // yang bagian bawah ini fungsinya buat ngetes audios
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     setState(() {
+      //       _totalSeconds =
+      //           5; // Set your desired initial timer value here (10 minutes)
+      //     });
+      //   },
+      //   tooltip: 'Set Timer',
+      //   child: Icon(Icons.timer),
+      // ),
     );
   }
 }
