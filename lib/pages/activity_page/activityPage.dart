@@ -154,7 +154,7 @@ class _ActivityPageState extends State<ActivityPage> {
             color: Colors.white,
           ),
         ),
-        bottomNavigationBar: NavBar(),
+        // bottomNavigationBar: NavBar(),
       ),
     );
   }
