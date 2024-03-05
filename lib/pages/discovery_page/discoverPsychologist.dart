@@ -2,6 +2,8 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:selamat_application/pages/discovery_page/discoveryPage.dart';
+import 'package:selamat_application/pages/payment_page/transactionHistory.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/navbar.dart';
 import 'package:selamat_application/widget/widget_discovery/containerPsikolog.dart';
@@ -29,10 +31,20 @@ class _DiscoverPsychologistState extends State<DiscoverPsychologist> {
             child: Row(
               children: [
                 const Padding(padding: EdgeInsets.all(5)),
-                const FaIcon(
-                  Icons.arrow_back,
-                  color: AppColors.white,
-                  size: 25,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: ((context) => const DiscoveryPage()),
+                      ),
+                    );
+                  },
+                  child: const FaIcon(
+                    Icons.arrow_back,
+                    color: AppColors.white,
+                    size: 25,
+                  ),
                 ),
                 const Padding(padding: EdgeInsets.all(5)),
                 SizedBox(
@@ -42,10 +54,20 @@ class _DiscoverPsychologistState extends State<DiscoverPsychologist> {
                     style: TextStyles.bold_30,
                   ),
                 ),
-                const FaIcon(
-                  Icons.history,
-                  color: AppColors.white,
-                  size: 30,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: ((context) => const TransactionHistory()),
+                      ),
+                    );
+                  },
+                  child: const FaIcon(
+                    Icons.history,
+                    color: AppColors.white,
+                    size: 30,
+                  ),
                 )
               ],
             ),

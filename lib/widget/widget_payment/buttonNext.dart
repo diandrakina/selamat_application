@@ -13,15 +13,12 @@ class ButtonNext extends StatefulWidget {
 class _ButtonNextState extends State<ButtonNext> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      height: 100,
-      child: CustomElevatedButton(
-        height: 50,
-        text: widget.title,
-        buttonStyle: CustomButtonStyles.buttonBlue,
-        buttonTextStyle: TextStyles.bold_18,
-      ),
+    return CustomElevatedButton(
+      margin: const EdgeInsets.all(20),
+      height: 50,
+      text: widget.title,
+      buttonStyle: CustomButtonStyles.buttonBlue,
+      buttonTextStyle: TextStyles.bold_18,
     );
   }
 }

@@ -144,6 +144,8 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(12), topRight: Radius.circular(12)),
           child: BottomNavigationBar(
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
             type: BottomNavigationBarType.fixed,
             backgroundColor: AppColors.darkModeCard,
             onTap: navigationTapped,

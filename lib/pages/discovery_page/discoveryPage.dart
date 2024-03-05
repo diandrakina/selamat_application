@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:selamat_application/pages/discovery_page/discoverPsychologist.dart';
 import 'package:selamat_application/pages/discovery_page/habitPage.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/drawerWidget.dart';
@@ -89,13 +90,24 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                     SizedBox(
                       width: 260,
                       child: Text(
-                        "Featured Doctor",
+                        "Featured Psychologist",
                         style: TextStyles.bold_24,
                       ),
                     ),
-                    Text(
-                      "View More >",
-                      style: TextStyles.regular_14,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: ((context) =>
+                                const DiscoverPsychologist()),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        "View More >",
+                        style: TextStyles.regular_14,
+                      ),
                     )
                   ],
                 ),
@@ -103,9 +115,6 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                   height: 10,
                 ),
 
-                // ListView(
-                //   children: [],
-                // ),
                 const ContainerPsikolog(
                   image:
                       "assets/images/discovery_page/psikolog/ChenZheyuan.jpg",
@@ -151,9 +160,19 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                         style: TextStyles.bold_24,
                       ),
                     ),
-                    Text(
-                      "View More >",
-                      style: TextStyles.regular_14,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: ((context) => const HabitPage()),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        "View More >",
+                        style: TextStyles.regular_14,
+                      ),
                     )
                   ],
                 ),

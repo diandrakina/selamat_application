@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:selamat_application/pages/add_schedule_notes/addShareNotes.dart';
+import 'package:selamat_application/pages/add_schedule_notes/addShareSchedule.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/drawerWidget.dart';
 import 'package:selamat_application/widget/navbar.dart';
@@ -80,11 +82,10 @@ class _ActivityPageState extends State<ActivityPage> {
                   height: 16,
                 ),
                 ScheduleBox(
-                  profilePict:
-                      "assets/images/discovery_page/psikolog/Joel.jpeg",
-                  username: "lookaforwin",
+                  profilePict: "assets/images/home_page/gojosatoru.png",
+                  username: "gojosatoru",
                   desc:
-                      "i wanna score 80+ like Kobe Bryant, do you guys have any advice on my routine?",
+                      "Yea, when you are the strongest you got a lot of schedule too.",
                   date: "December 13 - December 24",
                   comment: 34.1,
                   hours: 3,
@@ -116,6 +117,14 @@ class _ActivityPageState extends State<ActivityPage> {
                 content: Column(
                   children: [
                     ListTile(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const AddShareSchedule(),
+                          ),
+                        );
+                      },
                       leading: const FaIcon(
                         Icons.calendar_month_outlined,
                         color: Colors.white,
@@ -131,6 +140,14 @@ class _ActivityPageState extends State<ActivityPage> {
                       thickness: 1,
                     ),
                     ListTile(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const AddShareNotes(),
+                          ),
+                        );
+                      },
                       leading: const FaIcon(
                         Icons.note_add,
                         color: Colors.white,
@@ -154,7 +171,7 @@ class _ActivityPageState extends State<ActivityPage> {
             color: Colors.white,
           ),
         ),
-        bottomNavigationBar: NavBar(),
+        // bottomNavigationBar: NavBar(),
       ),
     );
   }

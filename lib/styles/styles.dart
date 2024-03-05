@@ -65,6 +65,12 @@ class TextStyles {
       fontSize: 16.0,
       color: Colors.white);
 
+  static TextStyle regular_12 = const TextStyle(
+      fontFamily: 'SamsungSans',
+      fontWeight: FontWeight.normal,
+      fontSize: 12.0,
+      color: Colors.white);
+
   static TextStyle light_16 = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.w300,
@@ -340,6 +346,36 @@ class TextStyles {
       fontWeight: FontWeight.w300,
       fontSize: 16,
       color: AppColors.inactiveText);
+
+  static TextStyle alertGrey = const TextStyle(
+      fontFamily: 'SamsungSans',
+      fontWeight: FontWeight.bold,
+      fontSize: 16,
+      color: AppColors.inactiveText);
+
+  static TextStyle alertRed = const TextStyle(
+      fontFamily: 'SamsungSans',
+      fontWeight: FontWeight.bold,
+      fontSize: 16,
+      color: AppColors.pastelRed);
+
+  static TextStyle alertBlue = const TextStyle(
+      fontFamily: 'SamsungSans',
+      fontWeight: FontWeight.bold,
+      fontSize: 16,
+      color: AppColors.baseColor);
+
+  static TextStyle completed = const TextStyle(
+      fontFamily: 'SamsungSans',
+      fontWeight: FontWeight.bold,
+      fontSize: 12,
+      color: AppColors.pastelGreenHealth);
+
+  static TextStyle onProgress = const TextStyle(
+      fontFamily: 'SamsungSans',
+      fontWeight: FontWeight.bold,
+      fontSize: 12,
+      color: AppColors.starYellow);
 }
 
 class AppDecoration {
@@ -410,6 +446,10 @@ class CustomButtonStyles {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)));
   static ButtonStyle get buttonBlue2 => ElevatedButton.styleFrom(
       backgroundColor: AppColors.baseColor,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.0)));
+
+  static ButtonStyle get buttonGrey2 => ElevatedButton.styleFrom(
+      backgroundColor: AppColors.darkModeCard,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.0)));
 }
 
