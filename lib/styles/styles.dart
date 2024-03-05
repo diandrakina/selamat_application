@@ -376,6 +376,11 @@ class TextStyles {
       fontWeight: FontWeight.bold,
       fontSize: 12,
       color: AppColors.starYellow);
+  static TextStyle rating = const TextStyle(
+      fontFamily: 'SamsungSans',
+      fontWeight: FontWeight.bold,
+      fontSize: 72,
+      color: AppColors.white);
 }
 
 class AppDecoration {

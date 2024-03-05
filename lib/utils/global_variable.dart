@@ -12,3 +12,11 @@ const homeScreenItems = [
   ActivityPage(),
   StatisticPage(),
 ];
+
+const psychologistScreenItems = [
+  Text("HomePage"),
+  Text("Discover"),
+  Text("Schedule"),
+  Text("Chat"),
+  Text("Profile"),
+];

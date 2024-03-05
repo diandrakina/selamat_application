@@ -57,6 +57,8 @@ import 'package:selamat_application/pages/discovery_page/featuredHabitsPage.dart
 import 'package:selamat_application/pages/discovery_page/habitPage.dart';
 import 'package:selamat_application/pages/discovery_page/psychologistDetailPage.dart';
 import 'package:selamat_application/pages/discovery_page/searchDiscoverPage.dart';
+import 'package:selamat_application/pages_psychologist/home_psychologist/homePagePsychologist.dart';
+import 'package:selamat_application/pages_psychologist/profile_psychologist_page/profilePsychologistPage.dart';
 import 'package:selamat_application/providers/user_provider.dart';
 import 'package:selamat_application/responsive/mobile_screen_layout.dart';
 
@@ -131,7 +133,7 @@ class MyApp extends StatelessWidget {
           //     },
           //   ),
           // ));
-          home: ActivityPage()),
+          home: ProfilePsychologistPage()),
     );
     // home: StreamBuilder(
     //   stream: FirebaseAuth.instance.authStateChanges(),
