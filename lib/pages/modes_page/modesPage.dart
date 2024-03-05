@@ -35,11 +35,22 @@ class _TimerHomePageState extends State<TimerHomePage> {
   int _totalSeconds = 0;
   bool _isActive = false;
   late Timer _timer;
-  late AudioPlayer _audioPlayer;
+  // late AudioPlayer _audioPlayer;
+  final audio2 = AudioPlayer();
 
   void initState() {
     super.initState();
-    _audioPlayer = AudioPlayer();
+    // _audioPlayer = AudioPlayer();
+    // _playAudio();
+  }
+
+  Future<void> _playAudio() async {
+    await audio2.play(AssetSource("audio/ringtone.mp3"));
+    // audio2.play('assets/audio/ringtone.mp3');
+  }
+
+  Future<void> _stopAudio() async {
+    await audio2.stop();
   }
 
   void _toggleTimer() {
@@ -56,9 +67,7 @@ class _TimerHomePageState extends State<TimerHomePage> {
             } else {
               _isActive = false;
               _timer.cancel();
-              // _playRingtone();
-              final player = AudioPlayer();
-              player.play(AssetSource('assets/audio/ringtone.mp3'));
+              _playAudio();
             }
           });
         });
@@ -83,14 +92,14 @@ class _TimerHomePageState extends State<TimerHomePage> {
   //   await player.play(AssetSource(audioPath));
   // }
 
-  Future<void> _playRingtone() async {
-    await _audioPlayer.play(AssetSource('audio/ringtone.mp3'));
-  }
+  // Future<void> _playRingtone() async {
+  //   await _audioPlayer.play(AssetSource('audio/ringtone.mp3'));
+  // }
 
   @override
   void dispose() {
     _timer.cancel();
-    _audioPlayer.dispose();
+    // _playAudio.dispose();
     super.dispose();
   }
 
@@ -208,6 +217,7 @@ class _TimerHomePageState extends State<TimerHomePage> {
                           });
                         }
                         _toggleTimer();
+                        _stopAudio();
                       },
                       child: Text(
                         _isActive ? 'Stop Session' : 'Start Session',
@@ -229,7 +239,10 @@ class _TimerHomePageState extends State<TimerHomePage> {
                 width: 320,
                 height: 50,
                 child: ElevatedButton(
-                    onPressed: _resetTimer,
+                    onPressed: () {
+                      _resetTimer();
+                      _stopAudio();
+                    },
                     child: Text(
                       'Reset',
                       style: TextStyles.GR_24_bold,

@@ -32,20 +32,43 @@ class ReminderNotif extends StatefulWidget {
 
 class _ReminderNotifState extends State<ReminderNotif> {
   bool _isAlarmActive = true;
+  // late AudioCache audioPlayer;
+  final audio2 = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    // audioPlayer = AudioCache(prefix: 'assets/audio/');
+    _playAudio();
+  }
+
+  Future<void> _playAudio() async {
+    await audio2.play(AssetSource("audio/ringtone.mp3"));
+    // audio2.play('assets/audio/ringtone.mp3');
+  }
+
+  Future<void> _stopAudio() async {
+    await audio2.stop();
+  }
 
   void _checkAlarm() {
+    _stopAudio();
+    _playAudio();
     setState(() {
       _isAlarmActive = false;
     });
   }
 
   void _dismissAlarm() {
+    _stopAudio();
+    _playAudio();
     setState(() {
       _isAlarmActive = false;
     });
   }
 
   void _snoozeAlarm() {
+    _stopAudio();
     setState(() {
       _isAlarmActive = false;
     });
@@ -54,6 +77,7 @@ class _ReminderNotifState extends State<ReminderNotif> {
     Timer(Duration(minutes: 5), () {
       setState(() {
         _isAlarmActive = true;
+        _playAudio();
       });
     });
   }
@@ -119,24 +143,25 @@ class _ReminderNotifState extends State<ReminderNotif> {
                             SizedBox(
                               width: 30,
                             ),
-                            OutlinedButton(
+                            //
+                            ElevatedButton(
                               onPressed: _checkAlarm,
-                              style: OutlinedButton.styleFrom(
+                              style: ElevatedButton.styleFrom(
                                 shape: CircleBorder(),
-                                side: BorderSide(color: Colors.white),
-                                fixedSize: Size(120, 120),
+                                padding: EdgeInsets.all(24),
+                                backgroundColor: AppColors.pastelGreenHealth,
                               ),
                               child: Stack(
                                 alignment: Alignment.center,
                                 children: [
                                   Icon(
                                     Icons.check,
-                                    color: Colors.white,
+                                    color: AppColors.white,
                                     size: 70,
                                   ),
                                 ],
                               ),
-                            ),
+                            )
                           ],
                         ),
                       ),
