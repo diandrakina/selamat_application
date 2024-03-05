@@ -56,7 +56,9 @@ class _TimerHomePageState extends State<TimerHomePage> {
             } else {
               _isActive = false;
               _timer.cancel();
-              _playRingtone();
+              // _playRingtone();
+              final player = AudioPlayer();
+              player.play(AssetSource('assets/audio/ringtone.mp3'));
             }
           });
         });
@@ -139,9 +141,20 @@ class _TimerHomePageState extends State<TimerHomePage> {
                   child: ListTile(
                     title: Row(
                       children: [
-                        Icon(
-                          Icons.work,
-                          color: AppColors.white,
+                        Container(
+                          decoration: BoxDecoration(
+                            color: AppColors
+                                .baseColor, // Change the background color to grey
+                            borderRadius: BorderRadius.circular(
+                                100), // Change the border radius to 20
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(5.0),
+                            child: Icon(
+                              Icons.work,
+                              color: AppColors.white,
+                            ),
+                          ),
                         ),
                         SizedBox(width: 10),
                         Text(
