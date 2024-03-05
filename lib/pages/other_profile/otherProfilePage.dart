@@ -1,27 +1,23 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:selamat_application/pages/add_schedule_notes/addShareNotes.dart';
 import 'package:selamat_application/pages/add_schedule_notes/addShareSchedule.dart';
+import 'package:selamat_application/pages/home_page/homePage.dart';
 import 'package:selamat_application/pages/profile_page/editProfile.dart';
+import 'package:selamat_application/pages/profile_page/profileSharedSchedule.dart';
 import 'package:selamat_application/pages/settings_page/settingsPage.dart';
 import 'package:selamat_application/styles/styles.dart';
-import 'package:selamat_application/widget/chart/profile_page/donutChart.dart';
-import 'package:selamat_application/widget/chart/profile_page/timeChart.dart';
-import 'package:selamat_application/widget/navbar.dart';
-import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
-import 'package:selamat_application/widget/widget_schedule/notesBox.dart';
 import 'package:selamat_application/widget/widget_schedule/scheduleBox.dart';
+import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 
-class NewProfilePage extends StatefulWidget {
-  const NewProfilePage({super.key});
+class OtherProfilePage extends StatefulWidget {
+  const OtherProfilePage({super.key});
 
   @override
-  State<NewProfilePage> createState() => _NewProfilePageState();
+  State<OtherProfilePage> createState() => _OtherProfilePageState();
 }
 
-class _NewProfilePageState extends State<NewProfilePage> {
+class _OtherProfilePageState extends State<OtherProfilePage> {
   bool _isFollowed = false;
   @override
   Widget build(BuildContext context) {
@@ -79,8 +75,7 @@ class _NewProfilePageState extends State<NewProfilePage> {
                 height: 150,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage(
-                          "assets/images/discovery_page/running.png"),
+                      image: AssetImage("assets/images/discovery_page/gym.png"),
                       fit: BoxFit.cover),
                 ),
               ),
@@ -95,30 +90,28 @@ class _NewProfilePageState extends State<NewProfilePage> {
                       child: const CircleAvatar(
                         radius: 50,
                         backgroundImage: AssetImage(
-                            "assets/images/discovery_page/psikolog/ChenZheyuan.jpg"),
+                            "assets/images/home_page/gojosatoru.png"),
                       ),
                     ),
                     const SizedBox(
                       width: 110,
                     ),
                     Container(
-                      transform: Matrix4.translationValues(0.0, -10.0, 0.0),
-                      child: CustomElevatedButton(
-                        text: "Edit Profile",
-                        buttonStyle: CustomButtonStyles.buttonGray3,
-                        buttonTextStyle: TextStyles.medium_18,
-                        width: 140,
-                        height: 35,
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => EditProfile(),
-                            ),
-                          );
-                        },
-                      ),
-                    )
+                        transform: Matrix4.translationValues(0.0, -10.0, 0.0),
+                        child: CustomElevatedButton(
+                          text: _isFollowed ? 'Followed' : "Follow",
+                          buttonStyle: _isFollowed
+                              ? CustomButtonStyles.buttonGray3
+                              : CustomButtonStyles.buttonGrey2,
+                          buttonTextStyle: TextStyles.medium_18,
+                          width: 140,
+                          height: 35,
+                          onPressed: () {
+                            setState(() {
+                              _isFollowed = !_isFollowed;
+                            });
+                          },
+                        ))
                   ],
                 ),
               ),
@@ -132,13 +125,13 @@ class _NewProfilePageState extends State<NewProfilePage> {
                   children: [
                     //NAMA USER
                     Text(
-                      "Richie Hartono",
+                      "Gojo Satoru",
                       style: TextStyles.bold_24,
                     ),
 
                     //USERNAME
                     Text(
-                      "@richie_hartono",
+                      "@gojosatoru",
                       style: TextStyles.light_16,
                     ),
                     const SizedBox(
@@ -147,7 +140,7 @@ class _NewProfilePageState extends State<NewProfilePage> {
 
                     //DESKRIPSI PROFILE
                     Text(
-                      "bukan ambis, tetapi optimis. semoga bisa menjadi yang terbaik demi masa depan. Saya suka main game, tetapi tetap rajin dalam belajar.",
+                      "saya adalah penyihir terkuat sepanjang masa, jadi jika anda ingin melihat kehebatan, follow saya.",
                       style: TextStyles.light_16,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
@@ -168,7 +161,7 @@ class _NewProfilePageState extends State<NewProfilePage> {
                           width: 10,
                         ),
                         Text(
-                          "22 Januari 2001",
+                          "13 Desember 1998",
                           style: TextStyles.profile_text,
                         )
                       ],
@@ -186,34 +179,36 @@ class _NewProfilePageState extends State<NewProfilePage> {
                           width: 10,
                         ),
                         Text(
-                          "Bergabung Juni 2019",
+                          "Bergabung Juni 2017",
                           style: TextStyles.profile_text,
                         )
                       ],
                     ),
+                    const SizedBox(
+                      height: 10,
+                    ),
 
-                    //KETERANGAN
-                    const Center(
-                      child: SizedBox(
-                        width: 300,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            ContainerAssets(
-                              num: 4,
-                              info: 'Posts',
-                            ),
-                            ContainerAssets(num: 782, info: 'mutuals'),
-                            ContainerAssets(num: 42, info: 'habits'),
-                          ],
-                        ),
-                      ),
+                    //MUTUALS
+                    Text(
+                      "62 Mutuals",
+                      style: TextStyles.bold_16,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+
+                    //Send Message
+                    CustomElevatedButton(
+                      height: 40,
+                      text: "Send Message",
+                      buttonStyle: CustomButtonStyles.buttonNotSure,
+                      buttonTextStyle: TextStyles.bold_18,
                     ),
 
                     //TAMPUNG PAGE VIEW
                     const SizedBox(
                       height: 700,
-                      child: Page_View(),
+                      child: Page_View2(),
                     ),
                   ],
                 ),
@@ -221,121 +216,25 @@ class _NewProfilePageState extends State<NewProfilePage> {
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Column(
-                  children: [
-                    ListTile(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const AddShareSchedule(),
-                          ),
-                        );
-                      },
-                      leading: const FaIcon(
-                        Icons.calendar_month_outlined,
-                        color: Colors.white,
-                        size: 30,
-                      ),
-                      title: Text(
-                        "Share Schedule",
-                        style: TextStyles.medium_24,
-                      ),
-                    ),
-                    const Divider(
-                      color: AppColors.activeCalendar,
-                      thickness: 1,
-                    ),
-                    ListTile(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const AddShareNotes(),
-                          ),
-                        );
-                      },
-                      leading: const FaIcon(
-                        Icons.note_add,
-                        color: Colors.white,
-                        size: 30,
-                      ),
-                      title: Text(
-                        "Create A Note",
-                        style: TextStyles.medium_24,
-                      ),
-                    ),
-                  ],
-                ),
-                behavior: SnackBarBehavior.fixed,
-              ),
-            );
-          },
-          shape: const CircleBorder(),
-          backgroundColor: AppColors.baseColor,
-          child: const FaIcon(
-            FontAwesomeIcons.pencil,
-            color: Colors.white,
-          ),
-        ),
       ),
     );
   }
 }
 
-// BUAT CONTAINER
-class ContainerAssets extends StatefulWidget {
-  final int num;
-  final String info;
-  const ContainerAssets({Key? key, required this.num, required this.info});
+class Page_View2 extends StatefulWidget {
+  const Page_View2({super.key});
 
   @override
-  State<ContainerAssets> createState() => _ContainerAssetsState();
+  State<Page_View2> createState() => _Page_View2State();
 }
 
-class _ContainerAssetsState extends State<ContainerAssets> {
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      // color: Colors.amber,
-      height: 80,
-      width: 60,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            '${widget.num}',
-            style: TextStyles.bold_18,
-          ),
-          Text(
-            widget.info,
-            style: TextStyles.light_14,
-          )
-        ],
-      ),
-    );
-  }
-}
-
-//PAGE VIEW
-class Page_View extends StatefulWidget {
-  const Page_View({super.key});
-
-  @override
-  State<Page_View> createState() => _Page_ViewState();
-}
-
-class _Page_ViewState extends State<Page_View> {
+class _Page_View2State extends State<Page_View2> {
   PageController _pageController = PageController(initialPage: 0);
   int _currentPageIndex = 0;
 
   final List<Widget> _pages = [
-    const ScheduleView(),
-    const NotesView(),
+    const ScheduleView2(),
+    const NotesView2(),
   ];
 
   void _onTap(int pageIndex) {
@@ -406,8 +305,8 @@ class _Page_ViewState extends State<Page_View> {
 }
 
 //HALAMAN 1
-class ScheduleView extends StatelessWidget {
-  const ScheduleView({super.key});
+class ScheduleView2 extends StatelessWidget {
+  const ScheduleView2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -415,67 +314,40 @@ class ScheduleView extends StatelessWidget {
       children: [
         Padding(padding: EdgeInsets.all(30)),
         //BOX BUAT SHARE SCHEDULE
-        ScheduleBox(
-          profilePict: "assets/images/discovery_page/psikolog/Joel.jpeg",
-          username: "lookaforwin",
-          desc:
-              "i wanna score 80+ like Kobe Bryant, do you guys have any advice on my routine?",
-          date: "December 13 - December 24",
-          comment: 34.1,
-          hours: 3,
-          likes: 76.1,
-          status: true,
-        ),
+
         SizedBox(
           height: 16,
         ),
-        ScheduleBox(
-          profilePict: "assets/images/discovery_page/psikolog/Joel.jpeg",
-          username: "lookaforwin",
-          desc:
-              "i wanna score 80+ like Kobe Bryant, do you guys have any advice on my routine?",
-          date: "December 13 - December 24",
-          comment: 34.1,
-          hours: 3,
-          likes: 76.1,
-          status: true,
-        )
       ],
     );
   }
 }
 
-//PAGE 2
-class NotesView extends StatelessWidget {
-  const NotesView({super.key});
+class NotesView2 extends StatelessWidget {
+  const NotesView2({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        Padding(padding: EdgeInsets.all(30)),
-        NotesBox(
-          profilePict: "assets/images/discovery_page/psikolog/Joel.jpeg",
-          username: "lookaforwin",
-          desc:
-              "YAA BOYY I JUST TRAIN SO HARD, I CAN GET THAT 81+ POINTS ASAP BROOO. SEE U NEXT WEEK!",
-          comment: 34.1,
-          hours: 3,
-          likes: 76.1,
-          status: true,
+        const Padding(padding: EdgeInsets.all(30)),
+        const SizedBox(
+          height: 50,
         ),
-        SizedBox(
-          height: 16,
-        ),
-        NotesBox(
-          profilePict: "assets/images/discovery_page/psikolog/Joel.jpeg",
-          username: "lookaforwin",
-          desc:
-              "YAA BOYY I JUST TRAIN SO HARD, I CAN GET THAT 81+ POINTS ASAP BROOO. SEE U NEXT WEEK!",
-          comment: 34.1,
-          hours: 3,
-          likes: 76.1,
-          status: true,
+        Container(
+          height: 180,
+          width: 180,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(color: Colors.white),
+          ),
+          child: Center(
+            child: FaIcon(
+              FontAwesomeIcons.bookmark,
+              size: 60,
+              color: Colors.white,
+            ),
+          ),
         )
       ],
     );

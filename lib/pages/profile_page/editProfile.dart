@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:selamat_application/pages/profile_page/profileSharedSchedule.dart';
 import 'package:selamat_application/styles/styles.dart';
 
 class EditProfile extends StatefulWidget {
@@ -21,15 +22,25 @@ class _EditProfileState extends State<EditProfile> {
           toolbarHeight: 80,
           leadingWidth: double.maxFinite,
           leading: Container(
-            padding: EdgeInsets.only(left: 5),
+            padding: const EdgeInsets.only(left: 5),
             color: AppColors.bgDarkMode,
             child: Row(
               children: [
                 const Padding(padding: EdgeInsets.all(5)),
-                const FaIcon(
-                  FontAwesomeIcons.xmark,
-                  color: AppColors.white,
-                  size: 30,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const NewProfilePage(),
+                      ),
+                    );
+                  },
+                  child: const FaIcon(
+                    FontAwesomeIcons.xmark,
+                    color: AppColors.white,
+                    size: 30,
+                  ),
                 ),
                 const Padding(padding: EdgeInsets.all(10)),
                 SizedBox(
@@ -65,11 +76,12 @@ class _EditProfileState extends State<EditProfile> {
                     },
                   );
                 },
-                decoration: InputDecoration(border: UnderlineInputBorder()),
+                decoration:
+                    const InputDecoration(border: UnderlineInputBorder()),
               ),
 
               //EDIT BIO
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               Text(
                 'Bio',
                 style: TextStyles.bold_18,
@@ -81,10 +93,11 @@ class _EditProfileState extends State<EditProfile> {
                       _age = value;
                     });
                   },
-                  decoration: InputDecoration(border: UnderlineInputBorder())),
+                  decoration:
+                      const InputDecoration(border: UnderlineInputBorder())),
 
               //EDIT DATE OF BIRTH
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               Text(
                 'Date of Birth',
                 style: TextStyles.bold_18,
@@ -96,7 +109,7 @@ class _EditProfileState extends State<EditProfile> {
                     _age = value;
                   });
                 },
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
                 ),
               ),
@@ -113,6 +126,72 @@ class _EditProfileState extends State<EditProfile> {
                       // Misalnya, kita hanya mencetak data yang diubah
                       print('Name: $_name');
                       print('Age: $_age');
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            backgroundColor: AppColors.darkModeCard,
+                            content: Container(
+                              padding: const EdgeInsets.all(5),
+                              height: 180,
+                              width: 380,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Discard Changes",
+                                    style: TextStyles.bold_24,
+                                  ),
+                                  Text(
+                                    "Are you sure want to discard the changes you made?",
+                                    style: TextStyles.light_18,
+                                  ),
+                                  const SizedBox(
+                                    height: 50,
+                                  ),
+                                  Row(
+                                    children: [
+                                      const SizedBox(
+                                        width: 100,
+                                      ),
+                                      GestureDetector(
+                                        child: Text(
+                                          "No Thanks",
+                                          style: TextStyles.alertGrey,
+                                        ),
+                                        onTap: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                      const SizedBox(
+                                        width: 15,
+                                      ),
+                                      GestureDetector(
+                                        child: Text(
+                                          "Discard",
+                                          style: TextStyles.alertRed,
+                                        ),
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  NewProfilePage(),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
                     },
                     style: CustomButtonStyles.buttonBlue,
                     child: Text(

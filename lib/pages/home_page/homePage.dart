@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 // import 'dart:html';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:selamat_application/pages/chat_page/ChatPage.dart';
+import 'package:selamat_application/pages/chat_page/ContactPage.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/drawerWidget.dart';
 import 'package:selamat_application/widget/navbar.dart';
@@ -76,10 +78,30 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(
                     width: 15,
                   ),
-                  const FaIcon(
-                    FontAwesomeIcons.solidCommentDots,
-                    size: 25,
-                    color: AppColors.white,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ChatScreen(),
+                        ),
+                      );
+                    },
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ContactPage(),
+                          ),
+                        );
+                      },
+                      child: const FaIcon(
+                        FontAwesomeIcons.solidCommentDots,
+                        size: 25,
+                        color: AppColors.white,
+                      ),
+                    ),
                   ),
                 ],
               ),

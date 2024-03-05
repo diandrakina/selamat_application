@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:selamat_application/pages/payment_page/payment2.dart';
 import 'package:selamat_application/styles/styles.dart';
+import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 import 'package:selamat_application/widget/widget_payment/buttonNext.dart';
 import 'package:selamat_application/widget/widget_payment/customStepper.dart';
 
@@ -200,7 +202,21 @@ class _Payment1State extends State<Payment1> {
             ],
           ),
         ),
-        bottomNavigationBar: const ButtonNext(title: "Pilih Metode Pembayaran"),
+        bottomNavigationBar: CustomElevatedButton(
+          margin: const EdgeInsets.all(20),
+          height: 50,
+          text: "Pilih Metode Pembayaran",
+          buttonStyle: CustomButtonStyles.buttonBlue,
+          buttonTextStyle: TextStyles.bold_18,
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: ((context) => Payment2()),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

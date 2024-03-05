@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:selamat_application/pages/chat_page/ChatPage.dart';
 // import 'package:flutter/material.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/navbar.dart';
@@ -9,84 +10,191 @@ import 'package:selamat_application/widget/widget_discovery/container_habits.dar
 import 'package:selamat_application/widget/widget_discovery/container_profile_psikolog.dart';
 import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Contact Page',
-      theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
-      home: ContactPage(),
-    );
-  }
-}
-
 class ContactPage extends StatefulWidget {
   @override
   _ContactPageState createState() => _ContactPageState();
 }
 
 class _ContactPageState extends State<ContactPage> {
+  List<String> photo = [
+    'assets/images/home_page/gojosatoru.png',
+    'assets/images/discovery_page/psikolog/ChenZheyuan.jpg',
+    'assets/images/home_page/donaldtrump.png',
+    'assets/images/discovery_page/psikolog/SongEunseok.jpg',
+    'assets/images/home_page/gojosatoru.png',
+    'assets/images/discovery_page/psikolog/ChenZheyuan.jpg',
+    'assets/images/home_page/donaldtrump.png',
+    'assets/images/discovery_page/psikolog/SongEunseok.jpg',
+    'assets/images/home_page/gojosatoru.png',
+    'assets/images/discovery_page/psikolog/ChenZheyuan.jpg',
+    'assets/images/home_page/donaldtrump.png',
+    'assets/images/discovery_page/psikolog/SongEunseok.jpg',
+    'assets/images/home_page/gojosatoru.png',
+    'assets/images/discovery_page/psikolog/ChenZheyuan.jpg',
+    'assets/images/home_page/donaldtrump.png',
+    'assets/images/discovery_page/psikolog/SongEunseok.jpg',
+    'assets/images/home_page/gojosatoru.png',
+    'assets/images/discovery_page/psikolog/ChenZheyuan.jpg',
+    'assets/images/home_page/donaldtrump.png',
+    'assets/images/discovery_page/psikolog/SongEunseok.jpg',
+  ];
+  List<String> name = [
+    'Gojo Satoru',
+    'Chen Zheyuan',
+    'Donald Trump',
+    'Song Eunseok',
+    'Gojo Satoru',
+    'Chen Zheyuan',
+    'Donald Trump',
+    'Song Eunseok',
+    'Gojo Satoru',
+    'Chen Zheyuan',
+    'Donald Trump',
+    'Song Eunseok',
+    'Gojo Satoru',
+    'Chen Zheyuan',
+    'Donald Trump',
+    'Song Eunseok',
+    'Gojo Satoru',
+    'Chen Zheyuan',
+    'Donald Trump',
+    'Song Eunseok',
+  ];
+  List<String> message = [
+    "Halo gais",
+    "OK siap",
+    "Sebaiknya kita valo saja",
+    'Hehehehe iya',
+    'NOOOO',
+    "Halo gais",
+    "OK siap",
+    "Sebaiknya kita valo saja",
+    'Hehehehe iya',
+    'NOOOO',
+    "Halo gais",
+    "OK siap",
+    "Sebaiknya kita valo saja",
+    'Hehehehe iya',
+    'NOOOO',
+    "Halo gais",
+    "OK siap",
+    "Sebaiknya kita valo saja",
+    'Hehehehe iya',
+    'NOOOO',
+  ];
+
+  List<String> time = [
+    '10.30',
+    '10.30',
+    '10.30',
+    '10.30',
+    '10.30',
+    '10.30',
+    '10.30',
+    '10.30',
+    '10.30',
+    '10.30',
+    '10.30',
+    '10.30',
+    '10.30',
+    '10.30',
+    '10.30',
+    '10.00',
+    '10.00',
+    '10.00',
+    '10.00',
+    '10.00',
+    '10.00',
+    '10.00',
+    '10.00',
+    '10.00',
+    '10.00',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //APPBAR
       appBar: AppBar(
+        toolbarHeight: 110,
+        leadingWidth: double.maxFinite,
         backgroundColor: AppColors.bgDarkMode,
-        leading: IconButton(
-          iconSize: 18,
-          icon: Icon(
-            FontAwesomeIcons.arrowLeft,
-            color: AppColors.white,
+        elevation: 0.0,
+        leading: Container(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  const Padding(padding: EdgeInsets.all(5)),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const FaIcon(
+                      Icons.arrow_back,
+                      color: AppColors.white,
+                      size: 25,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  SizedBox(
+                    width: 300,
+                    child: Text(
+                      'Chats',
+                      style: TextStyles.GR_24_bold,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const FaIcon(
+                      FontAwesomeIcons.penToSquare,
+                      color: AppColors.white,
+                      size: 25,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              const CustomSearchBar()
+            ],
           ),
-          onPressed: () {},
         ),
-        title: Text(
-          'Chats',
-          style: TextStyles.GR_24_bold,
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.search),
-            color: AppColors.white,
-            onPressed: () {
-              // Implement search functionality
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.more_vert),
-            color: AppColors.white,
-            onPressed: () {
-              // Implement more options
-            },
-          ),
-        ],
       ),
+
+      //BODY
       body: ListView.builder(
         itemCount: 20, // Assuming there are 20 recent chats
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
             leading: CircleAvatar(
-              backgroundColor: Colors.grey,
-              backgroundImage:
-                  AssetImage('assets/images/login_page/facebook_logo.png'),
+              backgroundImage: AssetImage(photo.elementAt(index)),
             ),
             title: Text(
-              'Contact Name',
-              style: TextStyles.GR_16_regular,
+              name.elementAt(index),
+              style: TextStyles.bold_18,
             ),
             subtitle: Text(
-              'Last message from contact',
-              style: TextStyle(color: Colors.white70),
+              message.elementAt(index),
+              style: TextStyles.medium_14,
             ),
             trailing: Text(
-              '10:30 AM',
-              style: TextStyle(color: Colors.white70),
+              time.elementAt(index),
+              style: TextStyles.GR_12_light,
             ), // Last message time
             onTap: () {
-              // Open chat with this contact
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ChatScreen(),
+                ),
+              );
             },
           );
         },

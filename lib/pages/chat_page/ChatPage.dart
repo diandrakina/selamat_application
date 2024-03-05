@@ -10,58 +10,6 @@ import 'package:selamat_application/widget/widget_discovery/container_profile_ps
 import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 // import 'package:flutter/material.dart';
 
-void main() {
-  runApp(ChatPage());
-}
-
-class ChatPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
-      title: 'Chat Page',
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColors.bgDarkMode,
-          leading: IconButton(
-            iconSize: 18,
-            icon: Icon(
-              FontAwesomeIcons.arrowLeft,
-              color: AppColors.white,
-            ),
-            onPressed: () {},
-          ),
-          title: Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(right: 10.0),
-                child: CircleAvatar(
-                  backgroundImage:
-                      AssetImage('assets/images/login_page/facebook_logo.png'),
-                ),
-              ),
-              Text(
-                'Agus',
-                style: TextStyles.GR_24_bold,
-              ),
-            ],
-          ),
-          elevation: 0.0,
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.more_horiz),
-              iconSize: 30.0,
-              color: Colors.white,
-              onPressed: () {},
-            ),
-          ],
-        ),
-        body: ChatScreen(),
-      ),
-    );
-  }
-}
-
 class ChatScreen extends StatefulWidget {
   @override
   _ChatScreenState createState() => _ChatScreenState();
@@ -85,32 +33,81 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Expanded(
-          child: ListView.builder(
-            reverse: true,
-            itemCount: _messages.length,
-            itemBuilder: (context, index) {
-              return _messages[index];
-            },
+    return SafeArea(
+      child: Scaffold(
+        //APPBAR
+        appBar: AppBar(
+          leadingWidth: double.maxFinite,
+          toolbarHeight: 80,
+          backgroundColor: AppColors.bgDarkMode,
+          elevation: 0.0,
+          leading: Row(
+            children: [
+              const Padding(padding: EdgeInsets.all(5)),
+              IconButton(
+                icon: const FaIcon(
+                  Icons.arrow_back,
+                  color: AppColors.white,
+                  size: 25,
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              const CircleAvatar(
+                backgroundImage: AssetImage(
+                    'assets/images/discovery_page/psikolog/ChenZheyuan.jpg'),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              SizedBox(
+                width: 220,
+                child: Text(
+                  'Chen Zheyuan',
+                  style: TextStyles.bold_24,
+                ),
+              ),
+              IconButton(
+                icon: const Icon(Icons.more_horiz),
+                iconSize: 30.0,
+                color: Colors.white,
+                onPressed: () {},
+              ),
+            ],
           ),
         ),
-        // Divider(height: 1.0),
-        Container(
-          decoration: BoxDecoration(
-            color: AppColors.bgDarkMode,
-          ),
-          child: _buildTextComposer(),
+
+        //BODY
+        body: Column(
+          children: <Widget>[
+            Expanded(
+              child: ListView.builder(
+                reverse: true,
+                itemCount: _messages.length,
+                itemBuilder: (context, index) {
+                  return _messages[index];
+                },
+              ),
+            ),
+            Container(
+              color: AppColors.bgDarkMode,
+              child: _buildTextComposer(),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 
   Widget _buildTextComposer() {
     return Container(
-      color: AppColors.darkModeCard,
-      margin: EdgeInsets.all(20.0),
+      height: 60,
+      decoration: BoxDecoration(
+        color: AppColors.darkModeCard,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      margin: const EdgeInsets.all(20.0),
       child: Row(
         children: <Widget>[
           Flexible(
@@ -127,11 +124,11 @@ class _ChatScreenState extends State<ChatScreen> {
                   borderSide: BorderSide.none,
                 ),
               ),
-              style: TextStyles.GR_16_regular,
+              style: TextStyles.light_16,
             ),
           ),
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.send,
               color: AppColors.white,
             ),
@@ -148,7 +145,7 @@ class _ChatScreenState extends State<ChatScreen> {
 }
 
 class ChatMessage extends StatelessWidget {
-  ChatMessage({required this.text, required this.isSender});
+  const ChatMessage({required this.text, required this.isSender});
 
   final String text;
   final bool isSender;
@@ -156,27 +153,27 @@ class ChatMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+      margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
       child: Row(
         mainAxisAlignment:
             isSender ? MainAxisAlignment.end : MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           isSender
-              ? SizedBox()
+              ? const SizedBox()
               : Container(
                   width: 40.0,
                   height: 40.0,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
                       image: AssetImage(
-                          'assets/images/login_page/facebook_logo.png'),
+                          'assets/images/discovery_page/psikolog/ChenZheyuan.jpg'),
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
-          SizedBox(width: 10.0),
+          const SizedBox(width: 10.0),
           Flexible(
             child: Container(
               constraints: BoxConstraints(
@@ -187,7 +184,7 @@ class ChatMessage extends StatelessWidget {
                 color: isSender ? Colors.blue : Colors.grey[300],
                 borderRadius: BorderRadius.circular(8.0),
               ),
-              padding: EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10.0),
               child: Text(
                 text,
                 style: TextStyle(color: isSender ? Colors.white : Colors.black),
@@ -195,21 +192,21 @@ class ChatMessage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: 10.0),
+          const SizedBox(width: 10.0),
           isSender
               ? Container(
                   width: 40.0,
                   height: 40.0,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
                       image: AssetImage(
-                          'assets/images/login_page/facebook_logo.png'),
+                          'assets/images/discovery_page/psikolog/ChenZheyuan.jpg'),
                       fit: BoxFit.cover,
                     ),
                   ),
                 )
-              : SizedBox(),
+              : const SizedBox(),
         ],
       ),
     );
