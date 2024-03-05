@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:selamat_application/pages/payment_page/payment3.dart';
 import 'package:selamat_application/styles/styles.dart';
 
 class Payment4 extends StatefulWidget {
@@ -23,10 +24,20 @@ class _Payment4State extends State<Payment4> {
           leading: Row(
             children: [
               const Padding(padding: EdgeInsets.all(5)),
-              const FaIcon(
-                Icons.arrow_back,
-                color: AppColors.white,
-                size: 25,
+              GestureDetector(
+                child: const FaIcon(
+                  Icons.arrow_back,
+                  color: AppColors.white,
+                  size: 25,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: ((context) => Payment3()),
+                    ),
+                  );
+                },
               ),
               const Padding(padding: EdgeInsets.all(5)),
               Text(

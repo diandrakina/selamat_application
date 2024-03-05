@@ -34,10 +34,15 @@ class _PsychologistDetailPageState extends State<PsychologistDetailPage> {
           leading: Row(
             children: [
               const Padding(padding: EdgeInsets.all(5)),
-              const FaIcon(
-                Icons.arrow_back,
-                color: AppColors.white,
-                size: 25,
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+                child: const FaIcon(
+                  Icons.arrow_back,
+                  color: AppColors.white,
+                  size: 25,
+                ),
               ),
               const Padding(padding: EdgeInsets.all(5)),
               Text(

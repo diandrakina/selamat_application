@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:selamat_application/pages/payment_page/payment2.dart';
+import 'package:selamat_application/pages/payment_page/payment4.dart';
 import 'package:selamat_application/styles/styles.dart';
+import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 import 'package:selamat_application/widget/widget_payment/buttonNext.dart';
 import 'package:selamat_application/widget/widget_payment/customStepper.dart';
 
@@ -25,10 +28,20 @@ class _Payment3State extends State<Payment3> {
           leading: Row(
             children: [
               const Padding(padding: EdgeInsets.all(5)),
-              const FaIcon(
-                Icons.arrow_back,
-                color: AppColors.white,
-                size: 25,
+              GestureDetector(
+                child: const FaIcon(
+                  Icons.arrow_back,
+                  color: AppColors.white,
+                  size: 25,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: ((context) => Payment2()),
+                    ),
+                  );
+                },
               ),
               const Padding(padding: EdgeInsets.all(5)),
               Text(
@@ -390,7 +403,80 @@ class _Payment3State extends State<Payment3> {
             ],
           ),
         ),
-        bottomNavigationBar: const ButtonNext(title: "Konfirmasi"),
+        bottomNavigationBar: CustomElevatedButton(
+          margin: const EdgeInsets.all(20),
+          height: 50,
+          text: "Confirm Payment",
+          buttonStyle: CustomButtonStyles.buttonBlue,
+          buttonTextStyle: TextStyles.bold_18,
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  backgroundColor: AppColors.darkModeCard,
+                  content: Container(
+                    padding: const EdgeInsets.all(5),
+                    height: 180,
+                    width: 380,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Are you sure?",
+                          style: TextStyles.bold_24,
+                        ),
+                        Text(
+                          "Check your personal data again, make sure you have filled in the data correctly.",
+                          style: TextStyles.light_18,
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Row(
+                          children: [
+                            const SizedBox(
+                              width: 90,
+                            ),
+                            GestureDetector(
+                              child: Text(
+                                "Check Again",
+                                style: TextStyles.alertGrey,
+                              ),
+                              onTap: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            GestureDetector(
+                              child: Text(
+                                "Correct",
+                                style: TextStyles.alertBlue,
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Payment4(),
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              },
+            );
+          },
+        ),
       ),
     );
   }

@@ -54,6 +54,7 @@ dependencies:
   timeline_tile: ^2.0.0
   flutter_slidable: ^3.0.1
   easy_date_timeline: ^1.0.3
+  # awesome_notifications: ^0.8.2
 
 
 dev_dependencies:

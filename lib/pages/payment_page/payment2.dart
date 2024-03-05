@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:selamat_application/pages/payment_page/payment1.dart';
+import 'package:selamat_application/pages/payment_page/payment3.dart';
 import 'package:selamat_application/styles/styles.dart';
+import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 import 'package:selamat_application/widget/widget_payment/buttonNext.dart';
 import 'package:selamat_application/widget/widget_payment/customStepper.dart';
 
@@ -47,10 +50,20 @@ class _Payment2State extends State<Payment2> {
           leading: Row(
             children: [
               const Padding(padding: EdgeInsets.all(5)),
-              const FaIcon(
-                Icons.arrow_back,
-                color: AppColors.white,
-                size: 25,
+              GestureDetector(
+                child: const FaIcon(
+                  Icons.arrow_back,
+                  color: AppColors.white,
+                  size: 25,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: ((context) => Payment1()),
+                    ),
+                  );
+                },
               ),
               const Padding(padding: EdgeInsets.all(5)),
               Text(
@@ -217,7 +230,21 @@ class _Payment2State extends State<Payment2> {
             ],
           ),
         ),
-        bottomNavigationBar: const ButtonNext(title: "Lanjut Ke Pembayaran"),
+        bottomNavigationBar: CustomElevatedButton(
+          margin: const EdgeInsets.all(20),
+          height: 50,
+          text: "Lanjut ke Pembayaran",
+          buttonStyle: CustomButtonStyles.buttonBlue,
+          buttonTextStyle: TextStyles.bold_18,
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: ((context) => Payment3()),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

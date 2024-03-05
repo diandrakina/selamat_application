@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:selamat_application/pages/schedule_page/toDoList.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/navbar.dart';
 import 'package:selamat_application/widget/searchBar.dart';
@@ -20,14 +21,24 @@ class CategoriesPage extends StatelessWidget {
           toolbarHeight: 80,
           leadingWidth: double.maxFinite,
           elevation: 0.0,
-          backgroundColor: Colors.transparent,
+          backgroundColor: AppColors.bgDarkMode,
           leading: Row(
             children: [
               const Padding(padding: EdgeInsets.all(5)),
-              const FaIcon(
-                Icons.arrow_back,
-                color: AppColors.white,
-                size: 25,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ToDoList(),
+                    ),
+                  );
+                },
+                child: const FaIcon(
+                  Icons.arrow_back,
+                  color: AppColors.white,
+                  size: 25,
+                ),
               ),
               const Padding(padding: EdgeInsets.all(5)),
               Text(

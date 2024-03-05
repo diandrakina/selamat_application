@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:selamat_application/pages/other_profile/otherProfilePage.dart';
 import 'package:selamat_application/styles/styles.dart';
 
 class ScheduleBox extends StatefulWidget {
@@ -42,7 +43,7 @@ class _ScheduleBoxState extends State<ScheduleBox> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 15, right: 15),
+      padding: const EdgeInsets.only(left: 15, right: 15),
       height: 300,
       decoration: BoxDecoration(
         color: AppColors.darkModeCard,
@@ -52,10 +53,10 @@ class _ScheduleBoxState extends State<ScheduleBox> {
         crossAxisAlignment: CrossAxisAlignment.start,
         //Kepala
         children: [
-          Padding(padding: EdgeInsets.all(5)),
+          const Padding(padding: EdgeInsets.all(5)),
           Row(
             children: [
-              Container(
+              SizedBox(
                 width: 300,
                 child: Row(
                   children: [
@@ -69,95 +70,103 @@ class _ScheduleBoxState extends State<ScheduleBox> {
                             fit: BoxFit.cover),
                       ),
                     ),
-                    Padding(padding: EdgeInsets.all(5)),
-                    Text(
-                      widget.username,
-                      style: TextStyles.medium_18,
+                    const Padding(padding: EdgeInsets.all(5)),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: ((context) => const OtherProfilePage()),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        widget.username,
+                        style: TextStyles.bold_18,
+                      ),
                     ),
                   ],
                 ),
               ),
-              FaIcon(
+              const FaIcon(
                 Icons.more_vert,
                 size: 20,
                 color: AppColors.white,
               )
             ],
           ),
-          Padding(padding: EdgeInsets.all(8)),
+          const Padding(padding: EdgeInsets.all(8)),
           Text(
             widget.desc,
             style: TextStyles.light_18,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
-          Padding(padding: EdgeInsets.all(5)),
+          const Padding(padding: EdgeInsets.all(5)),
           Text(
             widget.date,
             style: TextStyles.bold_18,
           ),
-          Padding(padding: EdgeInsets.all(3)),
-          Container(
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    _buildBox(13),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    _buildBox(14),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    _buildBox(15),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    _buildBox(16),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    _buildBox(17),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    _buildBox(18),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    _buildBox(19)
-                  ],
-                ),
-                Padding(padding: EdgeInsets.all(3)),
-                Row(
-                  children: [
-                    _buildBox(20),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    _buildBox(21),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    _buildBox(22),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    _buildBox(23),
-                  ],
-                ),
-              ],
-            ),
+          const Padding(padding: EdgeInsets.all(3)),
+          Column(
+            children: [
+              Row(
+                children: [
+                  _buildBox(13),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  _buildBox(14),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  _buildBox(15),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  _buildBox(16),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  _buildBox(17),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  _buildBox(18),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  _buildBox(19)
+                ],
+              ),
+              const Padding(padding: EdgeInsets.all(3)),
+              Row(
+                children: [
+                  _buildBox(20),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  _buildBox(21),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  _buildBox(22),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  _buildBox(23),
+                ],
+              ),
+            ],
           ),
-          Padding(padding: EdgeInsets.all(3)),
+          const Padding(padding: EdgeInsets.all(3)),
           Text(
             "Tap some date to see detail",
             style: TextStyles.thin_14,
           ),
           Row(
             children: [
-              Container(
+              SizedBox(
                 width: 270,
                 child: Row(
                   // crossAxisAlignment: CrossAxisAlignment.start,
@@ -175,15 +184,15 @@ class _ScheduleBoxState extends State<ScheduleBox> {
                       "${widget.likes}k",
                       style: TextStyles.light_14,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 15,
                     ),
-                    FaIcon(
+                    const FaIcon(
                       FontAwesomeIcons.comment,
                       size: 20,
                       color: Colors.white,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 5,
                     ),
                     Text(
@@ -198,12 +207,12 @@ class _ScheduleBoxState extends State<ScheduleBox> {
                 style: TextStyles.light_14,
               ),
               widget.status
-                  ? Icon(
+                  ? const Icon(
                       Icons.public,
                       color: Colors.white,
                       size: 20,
                     )
-                  : FaIcon(
+                  : const FaIcon(
                       FontAwesomeIcons.lock,
                       color: Colors.white,
                       size: 15,
@@ -216,17 +225,111 @@ class _ScheduleBoxState extends State<ScheduleBox> {
   }
 
   Widget _buildBox(int dateShare) {
-    return Container(
-      height: 30,
-      width: 30,
-      decoration: BoxDecoration(
-        color: AppColors.baseColor,
-        borderRadius: BorderRadius.circular(4),
+    return GestureDetector(
+      onTap: () {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                backgroundColor: AppColors.darkModeCard,
+                content: Container(
+                  padding: const EdgeInsets.all(5),
+                  height: 250,
+                  width: 400,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: const FaIcon(
+                          FontAwesomeIcons.xmark,
+                          size: 15,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Center(
+                        child: Text(
+                          "${dateShare} December 2023",
+                          style: TextStyles.bold_16,
+                        ),
+                      ),
+                      Center(
+                        child: Text(
+                          "Satoru Gojo Schedule",
+                          style: TextStyles.medium_16,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      _buildActivity(Icons.work, "Work", '07.00'),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      _buildActivity(Icons.work, "Work", '07.00'),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      _buildActivity(Icons.work, "Work", '07.00'),
+                    ],
+                  ),
+                ),
+              );
+            });
+      },
+      child: Container(
+        height: 30,
+        width: 30,
+        decoration: BoxDecoration(
+          color: AppColors.baseColor,
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child: Text(
+          "${dateShare}",
+          style: TextStyles.bold_18,
+          textAlign: TextAlign.center,
+        ),
       ),
-      child: Text(
-        "${dateShare}",
-        style: TextStyles.bold_18,
-        textAlign: TextAlign.center,
+    );
+  }
+
+  Widget _buildActivity(IconData icon, String act, String time) {
+    return Container(
+      height: 40,
+      width: double.maxFinite,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          color: AppColors.activeCalendar),
+      child: Row(
+        children: [
+          const SizedBox(
+            width: 10,
+          ),
+          FaIcon(
+            icon,
+            size: 20,
+            color: Colors.white,
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          SizedBox(
+            width: 150,
+            child: Text(
+              act,
+              style: TextStyles.medium_14,
+            ),
+          ),
+          Text(
+            time,
+            style: TextStyles.medium_14,
+          )
+        ],
       ),
     );
   }

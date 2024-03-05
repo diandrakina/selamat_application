@@ -6,14 +6,15 @@ import 'package:selamat_application/utils/global_variable.dart';
 // import 'package:provider/provider.dart';
 // import 'package:instagram_clone/models/user.dart' as model;
 
-class MobileScreenLayout extends StatefulWidget {
-  const MobileScreenLayout({super.key});
+class PsychologistScreenLayout extends StatefulWidget {
+  const PsychologistScreenLayout({super.key});
 
   @override
-  State<MobileScreenLayout> createState() => _MobileScreenLayoutState();
+  State<PsychologistScreenLayout> createState() =>
+      _PsychologistScreenLayoutState();
 }
 
-class _MobileScreenLayoutState extends State<MobileScreenLayout> {
+class _PsychologistScreenLayoutState extends State<PsychologistScreenLayout> {
   int _page = 0;
   late PageController pageController;
 
@@ -65,75 +66,9 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
     Color primaryColor = AppColors.white;
     Color secondaryColor = Colors.white54;
 
-    // return SizedBox(
-    //   height: 100,
-    //   child: Scaffold(
-    //     bottomNavigationBar: ClipRRect(
-    //       borderRadius: BorderRadius.only(
-    //           topLeft: Radius.circular(12), topRight: Radius.circular(12)),
-    //       child: Scaffold(
-    //         body: PageView(
-    //           children: homeScreenItems,
-    //           physics: NeverScrollableScrollPhysics(),
-    //           controller: pageController,
-    //           onPageChanged: onPageChanged,
-    //         ),
-    //         bottomNavigationBar: BottomNavigationBar(
-    //           type: BottomNavigationBarType.fixed,
-    //           backgroundColor: AppColors.darkModeCard,
-    //           onTap: navigationTapped,
-    //           items: [
-    //             BottomNavigationBarItem(
-    //                 icon: Icon(
-    //                   Icons.home,
-    //                   size: 32,
-    //                   color: _page == 0 ? primaryColor : secondaryColor,
-    //                 ),
-    //                 label: '',
-    //                 backgroundColor: primaryColor),
-    //             BottomNavigationBarItem(
-    //               icon: Icon(
-    //                 Icons.search,
-    //                 size: 32,
-    //                 color: _page == 1 ? primaryColor : secondaryColor,
-    //               ),
-    //                       label: '',
-    //                       backgroundColor: primaryColor),
-    //                   BottomNavigationBarItem(
-    //                       icon: Icon(
-    //                         Icons.calendar_month,
-    //                         size: 32,
-    //                         color: _page == 2 ? primaryColor : secondaryColor,
-    //                       ),
-    //                       label: '',
-    //                       backgroundColor: primaryColor),
-    //                   BottomNavigationBarItem(
-    //                       icon: Icon(
-    //                         FontAwesomeIcons.running,
-    //                         size: 32,
-    //                         color: _page == 3 ? primaryColor : secondaryColor,
-    //                       ),
-    //                       label: '',
-    //                       backgroundColor: primaryColor),
-    //                   BottomNavigationBarItem(
-    //                       icon: Icon(
-    //                         FontAwesomeIcons.chartSimple,
-    //                         size: 32,
-    //                         color: _page == 4 ? primaryColor : secondaryColor,
-    //                       ),
-    //                       label: '',
-    //                       backgroundColor: primaryColor,
-    //             ),
-    //           ],
-    //         ),
-    //       ),
-    //     ),
-    //   ),
-    // );
-
     return Scaffold(
       body: PageView(
-        children: homeScreenItems,
+        children: psychologistScreenItems,
         physics: NeverScrollableScrollPhysics(),
         controller: pageController,
         onPageChanged: onPageChanged,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:selamat_application/pages/discovery_page/featuredHabitsPage.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/navbar.dart';
 import 'package:selamat_application/widget/searchBar.dart';
@@ -26,10 +27,15 @@ class _HabitPageState extends State<HabitPage> {
             child: Row(
               children: [
                 const Padding(padding: EdgeInsets.all(5)),
-                const FaIcon(
-                  Icons.arrow_back,
-                  color: AppColors.white,
-                  size: 25,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const FaIcon(
+                    Icons.arrow_back,
+                    color: AppColors.white,
+                    size: 25,
+                  ),
                 ),
                 const Padding(padding: EdgeInsets.all(5)),
                 SizedBox(
@@ -441,6 +447,14 @@ class _FeaturedHabitsState extends State<FeaturedHabits> {
           ),
           const Padding(padding: EdgeInsets.all(8)),
           CustomElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: ((context) => const FeaturedHabitsPage()),
+                ),
+              );
+            },
             text: "Enroll",
             buttonTextStyle: TextStyles.bold_18,
             buttonStyle: CustomButtonStyles.buttonBlue2,
