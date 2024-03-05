@@ -98,43 +98,43 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (_) => UserProvider(),
-        ),
-      ],
-      child: MaterialApp(
+        providers: [
+          ChangeNotifierProvider(
+            create: (_) => UserProvider(),
+          ),
+        ],
+        child: MaterialApp(
           title: 'Joeliardo Test Commit',
           theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
           debugShowCheckedModeBanner: false,
-          //   home: StreamBuilder(
-          //     stream: FirebaseAuth.instance.authStateChanges(),
-          //     builder: (context, snapshot) {
-          //       if (snapshot.connectionState == ConnectionState.active) {
-          //         if (snapshot.hasData) {
-          //           // UserProvider _userProvider = Provider.of(context, listen: false);
-          //           // await _userProvider.refreshUser();
-          //         } else if (snapshot.hasError) {
-          //           return Center(
-          //             child: Text(
-          //               '${snapshot.error}',
-          //             ),
-          //           );
-          //         }
-          //       }
-          //       if (snapshot.connectionState == ConnectionState.waiting) {
-          //         return Center(
-          //           child: const CircularProgressIndicator(
-          //             color: Colors.white,
-          //           ),
-          //         );
-          //       }
-          //       return MobileScreenLayout();
-          //     },
-          //   ),
-          // ));
-          home: ProfilePsychologistPage()),
-    );
+          home: StreamBuilder(
+            stream: FirebaseAuth.instance.authStateChanges(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.active) {
+                if (snapshot.hasData) {
+                  // UserProvider _userProvider = Provider.of(context, listen: false);
+                  // await _userProvider.refreshUser();
+                } else if (snapshot.hasError) {
+                  return Center(
+                    child: Text(
+                      '${snapshot.error}',
+                    ),
+                  );
+                }
+              }
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(
+                  child: const CircularProgressIndicator(
+                    color: Colors.white,
+                  ),
+                );
+              }
+              return MobileScreenLayout();
+            },
+          ),
+        ));
+    //       ),
+    // );
     // home: StreamBuilder(
     //   stream: FirebaseAuth.instance.authStateChanges(),
     //   builder: (context, snapshot) {
