@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:selamat_application/pages/add_schedule_notes/addShareNotes.dart';
 import 'package:selamat_application/pages/add_schedule_notes/addShareSchedule.dart';
+import 'package:selamat_application/pages/chat_page/ContactPage.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/drawerWidget.dart';
-import 'package:selamat_application/widget/navbar.dart';
 import 'package:selamat_application/widget/searchBar.dart';
 import 'package:selamat_application/widget/widget_schedule/notesBox.dart';
 import 'package:selamat_application/widget/widget_schedule/scheduleBox.dart';
@@ -58,10 +58,20 @@ class _ActivityPageState extends State<ActivityPage> {
                   const SizedBox(
                     width: 15,
                   ),
-                  const FaIcon(
-                    FontAwesomeIcons.solidCommentDots,
-                    size: 25,
-                    color: AppColors.white,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ContactPage(),
+                        ),
+                      );
+                    },
+                    child: const FaIcon(
+                      FontAwesomeIcons.solidCommentDots,
+                      size: 25,
+                      color: AppColors.white,
+                    ),
                   ),
                 ],
               ),

@@ -146,12 +146,348 @@ class _HomePagePsychologistState extends State<HomePagePsychologist> {
                 ),
                 const SizedBox(
                   height: 40,
-                )
+                ),
+
+                //Reschedule Request
+                Container(
+                  padding: const EdgeInsets.all(15),
+                  height: 250,
+                  width: double.maxFinite,
+                  decoration: BoxDecoration(
+                    color: AppColors.darkModeCard,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(children: [
+                    Text(
+                      "Reschedule Request",
+                      style: TextStyles.bold_24,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Column(
+                      children: [
+                        _rescheduleRequest(
+                            "Abraham Mahayana Setiawan",
+                            "P001",
+                            "09.00 - 11.00",
+                            "12.00 - 13.00",
+                            "Saturday, 4 December 2023",
+                            "Sunday, 5 December 2024"),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        _rescheduleRequest(
+                            "Abraham Mahayana Setiawan",
+                            "P001",
+                            "09.00 - 11.00",
+                            "12.00 - 13.00",
+                            "Saturday, 4 December 2023",
+                            "Sunday, 5 December 2024"),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                      ],
+                    ),
+                  ]),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
 
                 //Tambahin diagram kalau sempet
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _rescheduleRequest(String name, String code, String oldTime,
+      String newTime, String oldDate, String newDate) {
+    return GestureDetector(
+      onTap: () {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                backgroundColor: AppColors.darkModeCard,
+                content: Container(
+                  padding: const EdgeInsets.all(5),
+                  height: 380,
+                  width: 380,
+                  child: Column(
+                    children: [
+                      //Detail Appointment
+                      Row(
+                        children: [
+                          Text(
+                            "Detail Reschedule",
+                            style: TextStyles.bold_24,
+                          ),
+                          const SizedBox(
+                            width: 40,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const FaIcon(
+                              FontAwesomeIcons.xmark,
+                              color: Colors.white,
+                              size: 20,
+                            ),
+                          )
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+
+                      //Patient Name
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 120,
+                            child: Text(
+                              "Patient Name",
+                              style: TextStyles.bold_16,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          SizedBox(
+                            width: 120,
+                            child: Expanded(
+                              child: Text(
+                                name,
+                                style: TextStyles.light_16,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+
+                      //Patient Code
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 120,
+                            child: Text(
+                              "Patient Code",
+                              style: TextStyles.bold_16,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          SizedBox(
+                            width: 120,
+                            child: Expanded(
+                              child: Text(
+                                code,
+                                style: TextStyles.light_16,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+
+                      //Old Date
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 120,
+                            child: Text(
+                              "Old Date",
+                              style: TextStyles.bold_16,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          SizedBox(
+                            width: 120,
+                            child: Expanded(
+                              child: Text(
+                                oldDate,
+                                style: TextStyles.light_16,
+                                maxLines: 2,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+
+                      //Old Time
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 120,
+                            child: Text(
+                              "Old Time",
+                              style: TextStyles.bold_16,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          SizedBox(
+                            width: 120,
+                            child: Expanded(
+                              child: Text(
+                                oldTime,
+                                style: TextStyles.light_16,
+                                maxLines: 2,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+
+                      //New Date
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 120,
+                            child: Text(
+                              "New Date",
+                              style: TextStyles.bold_16,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          SizedBox(
+                            width: 120,
+                            child: Expanded(
+                              child: Text(
+                                newDate,
+                                style: TextStyles.light_16,
+                                maxLines: 2,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+
+                      //New Time
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 120,
+                            child: Text(
+                              "New Time",
+                              style: TextStyles.bold_16,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          SizedBox(
+                            width: 120,
+                            child: Expanded(
+                              child: Text(
+                                newTime,
+                                style: TextStyles.light_16,
+                                maxLines: 2,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+
+                      //TOMBOL
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          //Accepted
+                          CustomElevatedButton(
+                            height: 40,
+                            width: 120,
+                            text: "Accepted",
+                            buttonStyle: CustomButtonStyles.buttonBlue2,
+                            buttonTextStyle: TextStyles.bold_16,
+                          ),
+
+                          //Rejected
+                          CustomElevatedButton(
+                            height: 40,
+                            width: 120,
+                            text: "Rejected",
+                            buttonStyle: CustomButtonStyles.buttonGrey3,
+                            buttonTextStyle: TextStyles.bold_16,
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              );
+            });
+      },
+      child: Container(
+        height: 60,
+        width: double.maxFinite,
+        decoration: BoxDecoration(
+          color: AppColors.inactiveCalendar,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Row(
+          children: [
+            SizedBox(
+              width: 60,
+              child: Text(
+                code,
+                style: TextStyles.light_16,
+                textAlign: TextAlign.right,
+              ),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            SizedBox(
+              width: 220,
+              child: Text(
+                name,
+                style: TextStyles.bold_18,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            const FaIcon(
+              Icons.navigate_next,
+              color: Colors.white,
+              size: 30,
+            )
+          ],
         ),
       ),
     );
@@ -282,32 +618,32 @@ class _HomePagePsychologistState extends State<HomePagePsychologist> {
               isFirst: false,
               isLast: false,
               isPast: true,
-              name: "Richie Hartono",
-              time: "08.00 - 09.00"),
+              name: "Abraham Mahayana Setiawan",
+              time: "09.00 - 10.00"),
           PatientList(
               isFirst: false,
               isLast: false,
               isPast: true,
-              name: "Richie Hartono",
-              time: "08.00 - 09.00"),
+              name: "Ariya Gunananda",
+              time: "10.00 - 11.00"),
           PatientList(
               isFirst: false,
               isLast: false,
               isPast: true,
-              name: "Richie Hartono",
-              time: "08.00 - 09.00"),
+              name: "Dexter Valerian Krisnadhi",
+              time: "11.00 - 12.00"),
           PatientList(
               isFirst: false,
               isLast: false,
               isPast: true,
-              name: "Richie Hartono",
-              time: "08.00 - 09.00"),
+              name: "Nathasya Rizandi",
+              time: "15.00 - 17.00"),
           PatientList(
               isFirst: false,
               isLast: true,
               isPast: true,
-              name: "Richie Hartono",
-              time: "08.00 - 09.00"),
+              name: "Shaquille O'neil",
+              time: "17.00 - 18.00"),
         ],
       ),
     );
@@ -352,10 +688,12 @@ class PatientList extends StatelessWidget {
             const SizedBox(
               width: 10,
             ),
-            Text(
-              name,
-              style: TextStyles.bold_18,
-              overflow: TextOverflow.ellipsis,
+            Expanded(
+              child: Text(
+                name,
+                style: TextStyles.bold_18,
+                overflow: TextOverflow.ellipsis,
+              ),
             )
           ],
         ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:selamat_application/pages/profile_page/profileSharedSchedule.dart';
 import 'package:selamat_application/styles/styles.dart';
 
 class EditProfile extends StatefulWidget {
@@ -29,12 +28,7 @@ class _EditProfileState extends State<EditProfile> {
                 const Padding(padding: EdgeInsets.all(5)),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const NewProfilePage(),
-                      ),
-                    );
+                    Navigator.of(context).pop();
                   },
                   child: const FaIcon(
                     FontAwesomeIcons.xmark,
@@ -117,15 +111,15 @@ class _EditProfileState extends State<EditProfile> {
 
               //TOMBOL SAVE
               Center(
-                child: Container(
+                child: SizedBox(
                   height: 50,
                   width: double.maxFinite,
                   child: ElevatedButton(
                     onPressed: () {
                       // Proses simpan data di sini
                       // Misalnya, kita hanya mencetak data yang diubah
-                      print('Name: $_name');
-                      print('Age: $_age');
+                      // print('Name: $_name');
+                      // print('Age: $_age');
                       showDialog(
                         context: context,
                         builder: (context) {
@@ -175,13 +169,7 @@ class _EditProfileState extends State<EditProfile> {
                                           style: TextStyles.alertRed,
                                         ),
                                         onTap: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  NewProfilePage(),
-                                            ),
-                                          );
+                                          Navigator.of(context).pop();
                                         },
                                       ),
                                     ],

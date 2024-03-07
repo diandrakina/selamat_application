@@ -1,18 +1,13 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:selamat_application/pages/schedule_page/categoriesPage.dart';
 import 'package:selamat_application/pages/schedule_page/schedulePage.dart';
 import 'package:selamat_application/pages/schedule_page/visibilityPage.dart';
 import 'package:selamat_application/styles/styles.dart';
-import 'package:selamat_application/widget/navbar.dart';
-import 'package:selamat_application/widget/searchBar.dart';
-import 'package:selamat_application/widget/widget_discovery/container_habits.dart';
-import 'package:selamat_application/widget/widget_discovery/container_profile_psikolog.dart';
 import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 
 class ToDoList extends StatefulWidget {
-  ToDoList({super.key});
+  const ToDoList({super.key});
 
   @override
   _ToDoListState createState() => _ToDoListState();
@@ -37,7 +32,7 @@ class _ToDoListState extends State<ToDoList> {
     });
   }
 
-  TextEditingController _textFieldController = TextEditingController();
+  final TextEditingController _textFieldController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +70,7 @@ class _ToDoListState extends State<ToDoList> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SchedulePage(),
+                      builder: (context) => const SchedulePage(),
                     ),
                   );
                 },
@@ -283,7 +278,8 @@ class _ToDoListState extends State<ToDoList> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => VisibilityPage(),
+                                    builder: (context) =>
+                                        const VisibilityPage(),
                                   ),
                                 );
                               },
@@ -308,7 +304,8 @@ class _ToDoListState extends State<ToDoList> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => CategoriesPage(),
+                                    builder: (context) =>
+                                        const CategoriesPage(),
                                   ),
                                 );
                               },
@@ -408,7 +405,7 @@ class _ToDoListState extends State<ToDoList> {
                     ),
                     const SizedBox(
                       height: 40,
-                    )
+                    ),
                   ],
                 ),
               ),

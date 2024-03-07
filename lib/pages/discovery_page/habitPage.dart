@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:selamat_application/pages/discovery_page/featuredHabitsPage.dart';
 import 'package:selamat_application/styles/styles.dart';
-import 'package:selamat_application/widget/navbar.dart';
 import 'package:selamat_application/widget/searchBar.dart';
 import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
+// ignore: depend_on_referenced_packages
 import 'package:carousel_slider/carousel_slider.dart';
 
 class HabitPage extends StatefulWidget {
@@ -236,7 +236,7 @@ class ContainerHabitsRound extends StatefulWidget {
   final IconData iconHabit;
   final String nameHabit;
   const ContainerHabitsRound(
-      {Key? key, required this.iconHabit, required this.nameHabit});
+      {super.key, required this.iconHabit, required this.nameHabit});
 
   @override
   State<ContainerHabitsRound> createState() => _ContainerHabitsRoundState();
@@ -245,7 +245,7 @@ class ContainerHabitsRound extends StatefulWidget {
 class _ContainerHabitsRoundState extends State<ContainerHabitsRound> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 110,
       width: 70,
       child: Column(children: [
@@ -279,7 +279,7 @@ class RecentHabits extends StatefulWidget {
   final String bgHabits;
 
   const RecentHabits(
-      {Key? key, required this.nameHabit, required this.bgHabits});
+      {super.key, required this.nameHabit, required this.bgHabits});
 
   @override
   State<RecentHabits> createState() => _RecentHabitsState();
@@ -334,7 +334,7 @@ class FeaturedHabits extends StatefulWidget {
   final int month;
   final int person;
   const FeaturedHabits(
-      {Key? key,
+      {super.key,
       required this.bgFeaturedHabits,
       required this.nameHabits,
       required this.descHabits,

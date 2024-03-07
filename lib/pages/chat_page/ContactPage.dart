@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:selamat_application/pages/chat_page/ChatPage.dart';
-// import 'package:flutter/material.dart';
 import 'package:selamat_application/styles/styles.dart';
-import 'package:selamat_application/widget/navbar.dart';
 import 'package:selamat_application/widget/searchBar.dart';
-import 'package:selamat_application/widget/widget_discovery/container_habits.dart';
-import 'package:selamat_application/widget/widget_discovery/container_profile_psikolog.dart';
-import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 
 class ContactPage extends StatefulWidget {
   @override
@@ -170,7 +164,7 @@ class _ContactPageState extends State<ContactPage> {
 
       //BODY
       body: ListView.builder(
-        itemCount: 20, // Assuming there are 20 recent chats
+        itemCount: 20,
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
             leading: CircleAvatar(

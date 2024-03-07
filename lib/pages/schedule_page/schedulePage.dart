@@ -1,6 +1,5 @@
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:selamat_application/pages/schedule_page/allSchedule.dart';
 import 'package:selamat_application/pages/schedule_page/toDoList.dart';
@@ -125,7 +124,7 @@ class _SchedulePageState extends State<SchedulePage> {
                   ),
 
                   //TIMELINE
-                  timeLineProps: EasyTimeLineProps(separatorPadding: 8),
+                  timeLineProps: const EasyTimeLineProps(separatorPadding: 8),
 
                   //DAYBUILDER
                   itemBuilder: ((
@@ -211,7 +210,7 @@ class _SchedulePageState extends State<SchedulePage> {
           width: double.maxFinite,
 
           //PAGE VIEW
-          child: PageView2(),
+          child: const PageView2(),
         ),
 
         //Floating button
@@ -220,7 +219,7 @@ class _SchedulePageState extends State<SchedulePage> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ToDoList(),
+                builder: (context) => const ToDoList(),
               ),
             );
           },
@@ -243,20 +242,20 @@ class PageView2 extends StatefulWidget {
 }
 
 class _PageView2State extends State<PageView2> {
-  PageController _pageController = PageController(initialPage: 0);
+  final PageController _pageController = PageController(initialPage: 0);
   int _currentPageIndex = 0;
 
   final List<Widget> _pages = [
-    AllSchedule(),
-    AllSchedule(),
-    AllSchedule(),
-    AllSchedule(),
+    const AllSchedule(),
+    const AllSchedule(),
+    const AllSchedule(),
+    const AllSchedule(),
   ];
 
   void _onTap(int pageIndex) {
     _pageController.animateToPage(
       pageIndex,
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       curve: Curves.ease,
     );
   }

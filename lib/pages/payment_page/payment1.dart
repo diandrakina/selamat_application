@@ -3,7 +3,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:selamat_application/pages/payment_page/payment2.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
-import 'package:selamat_application/widget/widget_payment/buttonNext.dart';
 import 'package:selamat_application/widget/widget_payment/customStepper.dart';
 
 class Payment1 extends StatefulWidget {
@@ -47,7 +46,8 @@ class _Payment1State extends State<Payment1> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               //STEPPER COMPONENT
-              StepperComponent(status1: true, status2: false, status3: false),
+              const StepperComponent(
+                  status1: true, status2: false, status3: false),
 
               //CONTENT
               const SizedBox(
@@ -212,7 +212,7 @@ class _Payment1State extends State<Payment1> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: ((context) => Payment2()),
+                builder: ((context) => const Payment2()),
               ),
             );
           },

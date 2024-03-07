@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:selamat_application/pages/question_page/targetQuestionPage.dart';
 import 'package:selamat_application/styles/styles.dart';
@@ -75,8 +74,7 @@ class _EndUpQuestionPageState extends State<EndUpQuestionPage> {
         ),
         body: Container(
           width: double.maxFinite,
-          padding: EdgeInsets.only(left: 20, right: 20),
-          // padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+          padding: const EdgeInsets.only(left: 20, right: 20),
           child: Column(
             children: [
               Row(
@@ -112,7 +110,7 @@ class _EndUpQuestionPageState extends State<EndUpQuestionPage> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 34,
               ),
               Text(
@@ -121,23 +119,23 @@ class _EndUpQuestionPageState extends State<EndUpQuestionPage> {
                 textAlign: TextAlign.center,
                 style: TextStyles.GR_38_bold,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Text(
                 "choose time below",
                 style: TextStyles.GR_24_light,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               //COBA WIDGET
               timePicker(context),
-              SizedBox(
+              const SizedBox(
                 height: 100,
               ),
               _buttonNext(context),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               _buttonNotSure(context)
@@ -230,7 +228,7 @@ class _EndUpQuestionPageState extends State<EndUpQuestionPage> {
       text: 'NEXT',
       buttonTextStyle: TextStyles.medium_24,
       height: 60,
-      margin: EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 10),
       buttonStyle: CustomButtonStyles.buttonBlue,
       onPressed: () {
         navigateToTargetQuestionPage();
@@ -243,7 +241,7 @@ class _EndUpQuestionPageState extends State<EndUpQuestionPage> {
       text: 'IM NOT SURE',
       buttonTextStyle: TextStyles.medium_24,
       height: 60,
-      margin: EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 10),
       buttonStyle: CustomButtonStyles.buttonNotSure,
     );
   }

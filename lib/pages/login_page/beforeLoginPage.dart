@@ -13,7 +13,6 @@ class BeforeLoginPage extends StatefulWidget {
 }
 
 class _BeforeLoginPageState extends State<BeforeLoginPage> {
-
   void navigateToSignUp() {
     Navigator.of(context).push(
       MaterialPageRoute(
@@ -21,7 +20,7 @@ class _BeforeLoginPageState extends State<BeforeLoginPage> {
       ),
     );
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -29,14 +28,14 @@ class _BeforeLoginPageState extends State<BeforeLoginPage> {
         body: Column(
           children: [
             Container(
-              padding: EdgeInsets.only(left: 20, right: 20),
+              padding: const EdgeInsets.only(left: 20, right: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(padding: EdgeInsets.all(5)),
+                  const Padding(padding: EdgeInsets.all(5)),
                   Container(
                     height: 80,
-                    padding: EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.only(left: 10),
                     child: Text(
                       "Ready",
                       style: TextStyles.bold_70_black,
@@ -44,14 +43,14 @@ class _BeforeLoginPageState extends State<BeforeLoginPage> {
                   ),
                   Container(
                     height: 90,
-                    padding: EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.only(left: 10),
                     child: Text(
                       "to",
                       style: TextStyles.bold_70_black,
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.only(left: 10),
                     width: double.maxFinite,
                     height: 100,
                     decoration: BoxDecoration(
@@ -80,50 +79,50 @@ class _BeforeLoginPageState extends State<BeforeLoginPage> {
                 ],
               ),
             ),
-            Divider(
+            const Divider(
               color: AppColors.floatingGrey,
               thickness: 1,
             ),
             Container(
-              padding: EdgeInsets.only(left: 30, right: 30),
+              padding: const EdgeInsets.only(left: 30, right: 30),
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   CustomElevatedButton(
                     height: 50,
                     text: 'Continue with Apple',
                     buttonTextStyle: TextStyles.regular_18,
-                    leftIcon: FaIcon(
+                    leftIcon: const FaIcon(
                       Icons.apple,
                       size: 30,
                       color: Colors.white,
                     ),
                     buttonStyle: CustomButtonStyles.buttonNotSure,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   CustomElevatedButton(
                     height: 50,
                     text: 'Continue with Google',
                     buttonTextStyle: TextStyles.regular_18,
-                    leftIcon: FaIcon(
+                    leftIcon: const FaIcon(
                       FontAwesomeIcons.google,
                       size: 30,
                       color: Colors.white,
                     ),
                     buttonStyle: CustomButtonStyles.buttonNotSure,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   CustomElevatedButton(
                     height: 50,
                     text: 'Continue with Username',
                     buttonTextStyle: TextStyles.regular_18,
-                    leftIcon: FaIcon(
+                    leftIcon: const FaIcon(
                       Icons.person,
                       size: 30,
                       color: Colors.white,
@@ -133,7 +132,7 @@ class _BeforeLoginPageState extends State<BeforeLoginPage> {
                 ],
               ),
             ),
-            Padding(padding: EdgeInsets.all(10)),
+            const Padding(padding: EdgeInsets.all(10)),
           ],
         ),
         bottomNavigationBar: _signInStack(context),
@@ -146,24 +145,24 @@ class _BeforeLoginPageState extends State<BeforeLoginPage> {
       // color: Colors.amber,
       height: 20,
       width: 203,
-      margin: EdgeInsets.only(left: 70, right: 70, bottom: 30),
+      margin: const EdgeInsets.only(left: 70, right: 70, bottom: 30),
       child: Row(
         children: [
           Container(
+            margin: EdgeInsets.symmetric(horizontal: 10),
             child: Text(
               'don\'t have an account?',
               style: TextStyles.GR_15_light,
             ),
-            margin: EdgeInsets.symmetric(horizontal: 10),
           ),
           GestureDetector(
             onTap: navigateToSignUp,
             child: Container(
+              padding: EdgeInsets.symmetric(vertical: 0),
               child: Text(
                 "Sign in.",
                 style: TextStyles.bold_15_blue,
               ),
-              padding: EdgeInsets.symmetric(vertical: 0),
             ),
           )
         ],
@@ -205,11 +204,9 @@ class _TypewriterTextAnimationState extends State<TypewriterTextAnimation> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text(
-        _strings[currentIndex].substring(0, currentCharIndex),
-        style: TextStyles.bold_70_white,
-      ),
+    return Text(
+      _strings[currentIndex].substring(0, currentCharIndex),
+      style: TextStyles.bold_70_white,
     );
   }
 }
