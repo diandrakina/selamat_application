@@ -19,7 +19,7 @@ class TimerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Timer App',
+      title: 'Modes Page',
       theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
       home: TimerHomePage(),
     );

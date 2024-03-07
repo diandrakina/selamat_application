@@ -57,6 +57,8 @@ import 'package:selamat_application/pages/discovery_page/featuredHabitsPage.dart
 import 'package:selamat_application/pages/discovery_page/habitPage.dart';
 import 'package:selamat_application/pages/discovery_page/psychologistDetailPage.dart';
 import 'package:selamat_application/pages/discovery_page/searchDiscoverPage.dart';
+import 'package:selamat_application/pages/chat_page/ChatPsychologist.dart';
+import 'package:selamat_application/pages_psychologist/chat_psychologist/PsychologistChatPatient.dart';
 import 'package:selamat_application/pages_psychologist/home_psychologist/homePagePsychologist.dart';
 import 'package:selamat_application/pages_psychologist/profile_psychologist_page/profilePsychologistPage.dart';
 import 'package:selamat_application/providers/user_provider.dart';
@@ -107,31 +109,33 @@ class MyApp extends StatelessWidget {
           title: 'Joeliardo Test Commit',
           theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
           debugShowCheckedModeBanner: false,
-          home: StreamBuilder(
-            stream: FirebaseAuth.instance.authStateChanges(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.active) {
-                if (snapshot.hasData) {
-                  // UserProvider _userProvider = Provider.of(context, listen: false);
-                  // await _userProvider.refreshUser();
-                } else if (snapshot.hasError) {
-                  return Center(
-                    child: Text(
-                      '${snapshot.error}',
-                    ),
-                  );
-                }
-              }
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(
-                  child: const CircularProgressIndicator(
-                    color: Colors.white,
-                  ),
-                );
-              }
-              return MobileScreenLayout();
-            },
-          ),
+          home: ChatPsycho(),
+          // home: PsychologistChat(),
+          // home: StreamBuilder(
+          //   stream: FirebaseAuth.instance.authStateChanges(),
+          //   builder: (context, snapshot) {
+          //     if (snapshot.connectionState == ConnectionState.active) {
+          //       if (snapshot.hasData) {
+          //         // UserProvider _userProvider = Provider.of(context, listen: false);
+          //         // await _userProvider.refreshUser();
+          //       } else if (snapshot.hasError) {
+          //         return Center(
+          //           child: Text(
+          //             '${snapshot.error}',
+          //           ),
+          //         );
+          //       }
+          //     }
+          //     if (snapshot.connectionState == ConnectionState.waiting) {
+          //       return Center(
+          //         child: const CircularProgressIndicator(
+          //           color: Colors.white,
+          //         ),
+          //       );
+          //     }
+          //     return MobileScreenLayout();
+          //   },
+          // ),
         ));
     //       ),
     // );
