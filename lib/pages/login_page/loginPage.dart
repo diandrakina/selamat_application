@@ -105,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           )
                         : Text(
-                            "Sign Up",
+                            "Log in",
                             style: TextStyles.medium_24,
                           ),
                     width: double.infinity,

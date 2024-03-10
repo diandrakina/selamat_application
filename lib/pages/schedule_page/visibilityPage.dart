@@ -14,6 +14,7 @@ class VisibilityPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String visibility = "Public";
     return SafeArea(
         child: Scaffold(
             //APPBAR
@@ -27,12 +28,7 @@ class VisibilityPage extends StatelessWidget {
                   const Padding(padding: EdgeInsets.all(5)),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ToDoList(),
-                        ),
-                      );
+                      Navigator.of(context).pop(visibility);
                     },
                     child: const FaIcon(
                       Icons.arrow_back,
@@ -54,6 +50,10 @@ class VisibilityPage extends StatelessWidget {
               child: Container(
                 child: Column(children: [
                   ListTile(
+                    onTap: () {
+                      visibility = "Public";
+                      print(visibility);
+                    },
                     title: Row(
                       children: [
                         Icon(Icons.public, color: AppColors.white),
@@ -67,6 +67,10 @@ class VisibilityPage extends StatelessWidget {
                     color: AppColors.activeCalendar,
                   ),
                   ListTile(
+                    onTap: () {
+                      visibility = "Private";
+                      print(visibility);
+                    },
                     title: Row(
                       children: [
                         Icon(Icons.lock, color: AppColors.white),
@@ -80,6 +84,10 @@ class VisibilityPage extends StatelessWidget {
                     color: AppColors.activeCalendar,
                   ),
                   ListTile(
+                    onTap: () {
+                      visibility = "Show category only";
+                      print(visibility);
+                    },
                     title: Row(
                       children: [
                         Icon(Icons.list_alt, color: AppColors.white),
@@ -94,6 +102,10 @@ class VisibilityPage extends StatelessWidget {
                     color: AppColors.activeCalendar,
                   ),
                   ListTile(
+                    onTap: () {
+                        visibility = 'Mutuals only';
+                        print(visibility);
+                      },
                     title: Row(
                       children: [
                         Icon(Icons.group, color: AppColors.white),
@@ -107,6 +119,10 @@ class VisibilityPage extends StatelessWidget {
                     color: AppColors.activeCalendar,
                   ),
                   ListTile(
+                    onTap: () {
+                        visibility = 'Mutuals only + category only';
+                        print(visibility);
+                      },
                     title: Row(
                       children: [
                         Icon(Icons.group_add, color: AppColors.white),

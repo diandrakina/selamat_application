@@ -1,15 +1,20 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+import 'package:selamat_application/models/user.dart' as model;
 import 'package:selamat_application/pages/schedule_page/categoriesPage.dart';
-import 'package:selamat_application/pages/schedule_page/schedulePage.dart';
 import 'package:selamat_application/pages/schedule_page/visibilityPage.dart';
+import 'package:selamat_application/providers/user_provider.dart';
+import 'package:selamat_application/resources/firestore_methods.dart';
 import 'package:selamat_application/styles/styles.dart';
-import 'package:selamat_application/widget/navbar.dart';
-import 'package:selamat_application/widget/searchBar.dart';
-import 'package:selamat_application/widget/widget_discovery/container_habits.dart';
-import 'package:selamat_application/widget/widget_discovery/container_profile_psikolog.dart';
+import 'package:selamat_application/utils/richie_utils.dart';
 import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
+
+// BUAT BIKIN TO DO LIST (TOMBOL ADD)
 
 class ToDoList extends StatefulWidget {
   ToDoList({super.key});
@@ -19,21 +24,151 @@ class ToDoList extends StatefulWidget {
 }
 
 class _ToDoListState extends State<ToDoList> {
-  bool _darkMode = false;
-  bool _notification = false;
+  Uint8List? _image;
+  String _title = "Add Title";
+  DateTime _startDate = DateTime.now();
+  // TimeOfDay _time = TimeOfDay.now();
+  String _time = 'x';
+  bool _notification = false; // repeat
+  // List <int> _repatDate = List<int>.filled(7, 0);
+  // final List _repatDate = [0,0,0,0,0,0,0];
+  List<int> _repeatDate = List.filled(7, 0);
+  // List<int> zeros = List.filled(10, 0);
+
+  String _visibility = "Public";
+  String _category = "None";
+  String _description = "";
+
   bool _reminder = false;
-  bool _location = false;
-  bool _isDay = false;
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
 
-  int? selectedDay;
+  bool _isLoading = false;
+  // int? selectedDay;
 
-  _onButtonTapped(int? index) {
+   void clearImage(){
     setState(() {
-      if (selectedDay == index) {
-        selectedDay = null;
+      _image = null;
+    });
+  }
+
+  void createToDo(String uid)async{
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      String res = await FirestoreMethods().addToDoList(
+        uid,
+        _image!, 
+        // _title, 
+        'A',
+        _startDate, 
+        _time, 
+        _repeatDate, 
+        "Public",
+        "None",
+        "A",
+        false
+        // _visibility, 
+        // _category, 
+        // _description, 
+        // _reminder,
+
+      );
+      if (res == 'success') {
+        showSnackBar("New Task Added!", context);
+        clearImage();
+        setState(() {
+          _isLoading = false;
+        });
       } else {
-        selectedDay = index;
+        showSnackBar(res, context);
+        setState(() {
+          _isLoading = true;
+        });
       }
+    } catch (e) {
+      showSnackBar(e.toString(), context);
+    }
+  }
+
+  void pickTime() async {
+    // final TimeOfDay? timeOfDay = await showTimePicker(
+    //   context: context,
+    //   initialTime: _time,
+    //   initialEntryMode: TimePickerEntryMode.dial,
+    // );
+    // if (timeOfDay != null) {
+    //   setState(
+    //     () {
+    //       _time = timeOfDay;
+    //     },
+    //   );
+    // }
+  }
+
+  void pickDate() async {
+    final DateTime? dateTime = await showDatePicker(
+      context: context,
+      initialDate: _startDate,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(3000),
+    );
+    if (dateTime != null) {
+      setState(() {
+        _startDate = dateTime;
+      });
+    }
+  }
+
+  _changeRepeatDateSelected(int index) {
+    setState(
+      () {
+        if (_repeatDate[index] == 1) {
+          _repeatDate[index] = 0;
+        } else {
+          _repeatDate[index] = 1;
+        }
+      },
+    );
+  }
+
+  Widget _repeatedDay(String day, int index) {
+    return GestureDetector(
+      onTap: () {
+        _changeRepeatDateSelected(index);
+      },
+      child: Container(
+        height: 35,
+        width: 35,
+        decoration: BoxDecoration(
+          color: _repeatDate[index] == 1
+              // color: 1 == 1
+              ? AppColors.baseColor
+              : AppColors.activeCalendar,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Center(
+          child: Text(
+            day,
+            style: TextStyles.bold_18,
+          ),
+        ),
+      ),
+    );
+  }
+
+  void selectImage() async {
+    Uint8List im = await pickImage(ImageSource.gallery);
+    setState(() {
+      _image = im;
+    });
+  }
+
+  void changeTitle() {
+    setState(() {
+      _title = _titleController.text;
     });
   }
 
@@ -41,6 +176,8 @@ class _ToDoListState extends State<ToDoList> {
 
   @override
   Widget build(BuildContext context) {
+    // model.User user = Provider.of<UserProvider>(context).getUser;
+
     return SafeArea(
       child: Scaffold(
         //APPBAR
@@ -72,14 +209,11 @@ class _ToDoListState extends State<ToDoList> {
                 height: 30,
                 width: 80,
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SchedulePage(),
-                    ),
-                  );
+                  // createToDo(user.uid);
+                  createToDo('2RCmqdiK7yQ2gLNd2BwEBlXFPcn1');
+                  // Navigator.of(context).pop();
                 },
-              )
+              ),
             ],
           ),
         ),
@@ -95,10 +229,37 @@ class _ToDoListState extends State<ToDoList> {
                     const SizedBox(
                       height: 20,
                     ),
-                    Image.asset(
-                      'assets/images/login_page/facebook_logo.png', // Adjust the path to your logo
-                      width: 100,
-                      height: 100,
+                    // Image.asset(
+                    //   'assets/images/login_page/facebook_logo.png', // Adjust the path to your logo
+                    //   width: 100,
+                    //   height: 100,
+                    // ),
+                    Stack(
+                      children: [
+                        _image != null
+                            ? CircleAvatar(
+                                radius: 64,
+                                backgroundImage: MemoryImage(
+                                  _image!,
+                                ),
+                              )
+                            : const CircleAvatar(
+                                radius: 64,
+                                backgroundImage: NetworkImage(
+                                    'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg'),
+                              ),
+                        Positioned(
+                          bottom: -10,
+                          left: 80,
+                          child: IconButton(
+                            onPressed: selectImage,
+                            icon: const Icon(
+                              Icons.add_a_photo,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(
                       height: 20,
@@ -118,17 +279,44 @@ class _ToDoListState extends State<ToDoList> {
                         const SizedBox(
                           width: 20,
                         ),
-                        Text(
-                          'Add Title',
-                          style: TextStyles.bold_30,
+                        // Text(
+                        //   '${_title}',
+                        //   style: TextStyles.bold_30,
+                        // ),
+                        Container(
+                          constraints:
+                              BoxConstraints(minWidth: 70, maxWidth: 200),
+                          child: IntrinsicWidth(
+                            child: TextField(
+                              onChanged: (val) {
+                                setState(() {
+                                  _title = val;
+                                });
+                              },
+                              style: TextStyles.bold_30,
+                              controller: _titleController,
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: _title,
+                                hintStyle: TextStyles.bold_30,
+                                contentPadding: const EdgeInsets.all(8),
+                                // border: .
+                              ),
+                              keyboardType: TextInputType.multiline,
+                              maxLines: null,
+                            ),
+                          ),
                         ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        const FaIcon(
-                          FontAwesomeIcons.pen,
-                          color: Colors.white,
-                          size: 20,
+                        // const SizedBox(
+                        //   width: 20,
+                        // ),
+                        IconButton(
+                          onPressed: changeTitle,
+                          icon: const FaIcon(
+                            FontAwesomeIcons.pen,
+                            color: Colors.white,
+                            size: 20,
+                          ),
                         )
                       ],
                     ),
@@ -158,6 +346,7 @@ class _ToDoListState extends State<ToDoList> {
                       child: Column(
                         children: [
                           ListTile(
+                            onTap: () => pickDate(),
                             title: Row(
                               children: [
                                 const FaIcon(
@@ -172,17 +361,18 @@ class _ToDoListState extends State<ToDoList> {
                               ],
                             ),
                             trailing: Text(
-                              'Wed, 22 Nov 2023',
+                              // 'Wed, 22 Nov 2023',
+                              // DateFormat.yMMMd().format(
+                              //     widget.snap['datePublished'].toDate()),
+                              "${DateFormat.E().format(_startDate)}, ${DateFormat.d().format(_startDate)} ${DateFormat.MMM().format(_startDate)} ${DateFormat.y().format(_startDate)}",
                               style: TextStyles.light_18,
                             ), // Add your logic for language selection here
-                            onTap: () {
-                              // Add logic for language selection here
-                            },
                           ),
                           const Divider(
                             height: 5,
                           ),
                           ListTile(
+                            onTap: () => pickTime(),
                             title: Row(
                               children: [
                                 const FaIcon(
@@ -196,12 +386,11 @@ class _ToDoListState extends State<ToDoList> {
                                 ),
                               ],
                             ),
-                            trailing: Text('19:00 >',
-                                style: TextStyles
-                                    .light_18), // Add your logic for language selection here
-                            onTap: () {
-                              // Add logic for language selection here
-                            },
+                            trailing: Text(
+                              // '${_time.hour}:${_time.minute}',
+                              // style: TextStyles.light_18,
+                              "a"
+                            ),
                           ),
                           const Divider(
                             height: 5,
@@ -270,31 +459,48 @@ class _ToDoListState extends State<ToDoList> {
                       child: Column(
                         children: [
                           ListTile(
+                            onTap: () async {
+                              final visStatus = await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => VisibilityPage(),
+                                ),
+                              );
+                              setState(() {
+                                _visibility = visStatus;
+                              });
+                            },
                             title: Row(
                               children: [
-                                const Icon(Icons.visibility,
-                                    color: AppColors.white),
+                                const Icon(
+                                  Icons.visibility,
+                                  color: AppColors.white,
+                                ),
                                 const SizedBox(width: 10),
                                 Text('Visibility', style: TextStyles.light_18),
                               ],
                             ),
-                            trailing: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => VisibilityPage(),
-                                  ),
-                                );
-                              },
-                              child:
-                                  Text('Public >', style: TextStyles.light_18),
+                            trailing: Container(
+                              constraints: BoxConstraints(maxWidth: 150),
+                              child: Text('${_visibility}',
+                                  style: TextStyles.light_18),
                             ), // Add your logic for language selection here
                           ),
                           const Divider(
                             height: 5,
                           ),
                           ListTile(
+                            onTap: () async {
+                              final categoryStatus = await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CategoriesPage(),
+                                ),
+                              );
+                              setState(() {
+                                _category = categoryStatus;
+                              });
+                            },
                             title: Row(
                               children: [
                                 const Icon(Icons.category,
@@ -303,16 +509,10 @@ class _ToDoListState extends State<ToDoList> {
                                 Text('Category', style: TextStyles.regular_18),
                               ],
                             ),
-                            trailing: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => CategoriesPage(),
-                                  ),
-                                );
-                              },
-                              child: Text('None >', style: TextStyles.light_18),
+                            trailing: Container(
+                              constraints: BoxConstraints(maxWidth: 150),
+                              child: Text('${_category}',
+                                  style: TextStyles.light_18),
                             ), // Add your logic for language selection here
                           ),
                           const Divider(
@@ -324,12 +524,18 @@ class _ToDoListState extends State<ToDoList> {
                             title:
                                 Text('Description', style: TextStyles.light_18),
                             subtitle: TextField(
-                              controller: _textFieldController,
+                              style:  TextStyles.light_14,
+                              controller: _descriptionController,
                               decoration: InputDecoration(
-                                  hintText: "Add some description",
-                                  hintStyle: TextStyles.light_14),
-                              onChanged: (text) {
-                                // Handle changes to the text field
+                                hintText: "Add some description",
+                                hintStyle: TextStyles.light_14,contentPadding: const EdgeInsets.all(4),
+                              ),
+                              keyboardType: TextInputType.multiline,
+                              maxLines: null,
+                              onChanged: (val) {
+                                setState(() {
+                                  _description = val;
+                                });
                               },
                             ),
                           ),
@@ -413,30 +619,6 @@ class _ToDoListState extends State<ToDoList> {
                 ),
               ),
             ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _repeatedDay(String day, int index) {
-    return GestureDetector(
-      onTap: () {
-        _onButtonTapped(index);
-      },
-      child: Container(
-        height: 35,
-        width: 35,
-        decoration: BoxDecoration(
-          color: selectedDay == index
-              ? AppColors.baseColor
-              : AppColors.activeCalendar,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Center(
-          child: Text(
-            day,
-            style: TextStyles.bold_18,
           ),
         ),
       ),

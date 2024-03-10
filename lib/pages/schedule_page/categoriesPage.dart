@@ -14,6 +14,8 @@ class CategoriesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String categoryStatus = 'None';
+
     return SafeArea(
       child: Scaffold(
         //APPBAR
@@ -26,13 +28,8 @@ class CategoriesPage extends StatelessWidget {
             children: [
               const Padding(padding: EdgeInsets.all(5)),
               GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ToDoList(),
-                    ),
-                  );
+                onTap: () async {
+                  Navigator.of(context).pop(categoryStatus);
                 },
                 child: const FaIcon(
                   Icons.arrow_back,
@@ -53,6 +50,10 @@ class CategoriesPage extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(children: [
             ListTile(
+              onTap: () {
+                categoryStatus = "Work";
+                print(categoryStatus);
+              },
               title: Row(
                 children: [
                   const FaIcon(Icons.work, color: AppColors.white),
@@ -66,6 +67,10 @@ class CategoriesPage extends StatelessWidget {
               color: AppColors.activeCalendar,
             ),
             ListTile(
+              onTap: () {
+                categoryStatus = "Exercise";
+                print(categoryStatus);
+              },
               title: Row(
                 children: [
                   const FaIcon(Icons.sports_gymnastics, color: AppColors.white),
@@ -79,6 +84,10 @@ class CategoriesPage extends StatelessWidget {
               color: AppColors.activeCalendar,
             ),
             ListTile(
+              onTap: () {
+                categoryStatus = "Family";
+                print(categoryStatus);
+              },
               title: Row(
                 children: [
                   const FaIcon(Icons.house, color: AppColors.white),
@@ -92,6 +101,10 @@ class CategoriesPage extends StatelessWidget {
               color: AppColors.activeCalendar,
             ),
             ListTile(
+              onTap: () {
+                categoryStatus = "Daily";
+                print(categoryStatus);
+              },
               title: Row(
                 children: [
                   const FaIcon(Icons.emoji_emotions, color: AppColors.white),
@@ -105,6 +118,10 @@ class CategoriesPage extends StatelessWidget {
               color: AppColors.activeCalendar,
             ),
             ListTile(
+              onTap: () {
+                categoryStatus = "Leisure";
+                print(categoryStatus);
+              },
               title: Row(
                 children: [
                   const FaIcon(Icons.gamepad, color: AppColors.white),

@@ -20,3 +20,10 @@ const psychologistScreenItems = [
   Text("Chat"),
   Text("Profile"),
 ];
+
+const scheduleScreenItems = [
+  Text("All"),
+  Text("Morning"),
+  Text("Afternoon"),
+  Text("Evening"),
+];

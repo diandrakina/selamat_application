@@ -71,14 +71,11 @@ class _TargetQuestionPageState extends State<TargetQuestionPage> {
       _isLoading = false;
     });
 
-    if (res != 'success') {
+    if (res != 'Success!') {
       showSnackBar(res, context);
     } else {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => HomePage(),
-        ),
-      );
+      // showSnackBar(res, context);
+      navigateToWelcomePage();
     }
   }
 
