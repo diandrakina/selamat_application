@@ -60,9 +60,11 @@ import 'package:selamat_application/pages_psychologist/home_psychologist/homePag
 import 'package:selamat_application/pages_psychologist/profile_psychologist_page/profilePsychologistPage.dart';
 import 'package:selamat_application/providers/user_provider.dart';
 import 'package:selamat_application/responsive/mobile_screen_layout.dart';
+import 'package:selamat_application/responsive/responsive_layout.dart';
 
 //STYLES
 import 'package:selamat_application/styles/styles.dart';
+import 'package:selamat_application/testing.dart';
 import 'package:selamat_application/try.dart';
 import 'package:selamat_application/widget/chart/profile_page/donutChart.dart';
 import 'package:selamat_application/widget/widget_payment/customStepper.dart';
@@ -106,28 +108,31 @@ class MyApp extends StatelessWidget {
         title: 'Selamat App',
         theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
         debugShowCheckedModeBanner: false,
-        // home: SchedulePage(
         home: StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.active) {
+              // Checking if the snapshot has any data or not
               if (snapshot.hasData) {
+                print(snapshot.data);
+                // if snapshot has data which means user is logged in then we check the width of screen and accordingly display the screen layout
+                return const ResponsiveLayout(
+                  mobileScreenLayout: MobileScreenLayout(),
+                );
               } else if (snapshot.hasError) {
                 return Center(
-                  child: Text(
-                    '${snapshot.error}',
-                  ),
+                  child: Text('${snapshot.error}'),
                 );
               }
             }
+
+            // means connection to future hasnt been made yet
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(
-                child: const CircularProgressIndicator(
-                  color: Colors.white,
-                ),
+              return const Center(
+                child: CircularProgressIndicator(),
               );
             }
-            return LoginPage();
+            return const BeforeLoginPage();
           },
         ),
       ),

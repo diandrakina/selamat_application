@@ -4,7 +4,7 @@ class User {
   final String uid;
   final String fullName;
   final String email;
-  final DateTime dateOfBirth;
+  final Timestamp dateOfBirth;
   final String profilePicUrl;
   final int startHour;
   final int startMinute;

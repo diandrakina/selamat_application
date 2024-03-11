@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:selamat_application/pages/home_page/homePage.dart';
@@ -60,7 +61,7 @@ class _TargetQuestionPageState extends State<TargetQuestionPage> {
       password: _password,
       phoneNum: _phoneNum,
       fullName: _fullName,
-      dateOfBirth: _dateOfBirth,
+      dateOfBirth: Timestamp.fromDate(_dateOfBirth),
       startHour: _startHour,
       startMinute: _startMinute,
       endHour: _endHour,

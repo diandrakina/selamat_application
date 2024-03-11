@@ -5,7 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:selamat_application/models/user.dart' as model;
+import 'package:selamat_application/models/user.dart';
 import 'package:selamat_application/pages/schedule_page/categoriesPage.dart';
 import 'package:selamat_application/pages/schedule_page/visibilityPage.dart';
 import 'package:selamat_application/providers/user_provider.dart';
@@ -28,12 +28,9 @@ class _ToDoListState extends State<ToDoList> {
   String _title = "Add Title";
   DateTime _startDate = DateTime.now();
   // TimeOfDay _time = TimeOfDay.now();
-  String _time = 'x';
+  // String _time = 'x';
   bool _notification = false; // repeat
-  // List <int> _repatDate = List<int>.filled(7, 0);
-  // final List _repatDate = [0,0,0,0,0,0,0];
   List<int> _repeatDate = List.filled(7, 0);
-  // List<int> zeros = List.filled(10, 0);
 
   String _visibility = "Public";
   String _category = "None";
@@ -46,13 +43,13 @@ class _ToDoListState extends State<ToDoList> {
   bool _isLoading = false;
   // int? selectedDay;
 
-   void clearImage(){
+  void clearImage() {
     setState(() {
       _image = null;
     });
   }
 
-  void createToDo(String uid)async{
+  void createToDo(String uid) async {
     setState(() {
       _isLoading = true;
     });
@@ -60,21 +57,20 @@ class _ToDoListState extends State<ToDoList> {
     try {
       String res = await FirestoreMethods().addToDoList(
         uid,
-        _image!, 
-        // _title, 
-        'A',
-        _startDate, 
-        _time, 
-        _repeatDate, 
-        "Public",
-        "None",
-        "A",
-        false
-        // _visibility, 
-        // _category, 
-        // _description, 
-        // _reminder,
-
+        _image!,
+        _title,
+        // 'A',
+        _startDate,
+        // _time,
+        _repeatDate,
+        // "Public",
+        // "None",
+        // "A",
+        // false,
+        _visibility,
+        _category,
+        _description,
+        _reminder,
       );
       if (res == 'success') {
         showSnackBar("New Task Added!", context);
@@ -94,18 +90,26 @@ class _ToDoListState extends State<ToDoList> {
   }
 
   void pickTime() async {
-    // final TimeOfDay? timeOfDay = await showTimePicker(
-    //   context: context,
-    //   initialTime: _time,
-    //   initialEntryMode: TimePickerEntryMode.dial,
-    // );
-    // if (timeOfDay != null) {
-    //   setState(
-    //     () {
-    //       _time = timeOfDay;
-    //     },
-    //   );
-    // }
+    final TimeOfDay? timeOfDay = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.fromDateTime(_startDate),
+      initialEntryMode: TimePickerEntryMode.dial,
+    );
+    if (timeOfDay != null) {
+      setState(
+        () {
+          // _time= timeOfDay;
+
+          _startDate = DateTime(
+            _startDate.year,
+            _startDate.month,
+            _startDate.day,
+            timeOfDay.hour,
+            timeOfDay.minute,
+          );
+        },
+      );
+    }
   }
 
   void pickDate() async {
@@ -123,6 +127,7 @@ class _ToDoListState extends State<ToDoList> {
   }
 
   _changeRepeatDateSelected(int index) {
+    print(_startDate);
     setState(
       () {
         if (_repeatDate[index] == 1) {
@@ -176,7 +181,28 @@ class _ToDoListState extends State<ToDoList> {
 
   @override
   Widget build(BuildContext context) {
-    // model.User user = Provider.of<UserProvider>(context).getUser;
+    final User user = Provider.of<UserProvider>(context).getUser;
+
+    try {} catch (e) {
+      print(e.toString());
+    }
+    // @override
+    // void initState() {
+    //   super.initState();
+    //   getUsername();
+    // }
+
+    // void getUsername() async {
+    //   DocumentSnapshot snap = await FirebaseFirestore.instance
+    //       .collection('users')
+    //       .doc(FirebaseAuth.instance.currentUser!.uid)
+    //       .get();
+
+    //   // print(snap.data());
+    //   setState(() {
+    //     username = (snap.data() as Map<String, dynamic>)['username'];
+    //   });
+    // }
 
     return SafeArea(
       child: Scaffold(
@@ -202,17 +228,35 @@ class _ToDoListState extends State<ToDoList> {
               const SizedBox(
                 width: 250,
               ),
-              CustomElevatedButton(
-                text: "Save",
-                buttonStyle: CustomButtonStyles.buttonBlue,
-                buttonTextStyle: TextStyles.bold_14,
-                height: 30,
-                width: 80,
-                onPressed: () {
-                  // createToDo(user.uid);
-                  createToDo('2RCmqdiK7yQ2gLNd2BwEBlXFPcn1');
-                  // Navigator.of(context).pop();
+              InkWell(
+                onTap: () {
+                  createToDo(user.uid);
+                  Navigator.of(context).pop();
                 },
+                child: Container(
+                  child: _isLoading
+                      ? const Center(
+                          child: CircularProgressIndicator(
+                            color: AppColors.white,
+                          ),
+                        )
+                      : Text(
+                          "Save",
+                          style: TextStyles.bold_14, 
+                        ),
+                  height: 30,
+                  width: 80,
+                  alignment: Alignment.center,
+                  // padding: const EdgeInsets.symmetric(vertical: 12),
+                  decoration: const ShapeDecoration(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8),
+                      ),
+                    ),
+                    color: AppColors.bluePowderDarker,
+                  ),
+                ),
               ),
             ],
           ),
@@ -388,8 +432,9 @@ class _ToDoListState extends State<ToDoList> {
                             ),
                             trailing: Text(
                               // '${_time.hour}:${_time.minute}',
-                              // style: TextStyles.light_18,
-                              "a"
+                              '${_startDate.hour}:${_startDate.minute}',
+                              style: TextStyles.light_18,
+                              // "a"
                             ),
                           ),
                           const Divider(
@@ -524,11 +569,12 @@ class _ToDoListState extends State<ToDoList> {
                             title:
                                 Text('Description', style: TextStyles.light_18),
                             subtitle: TextField(
-                              style:  TextStyles.light_14,
+                              style: TextStyles.light_14,
                               controller: _descriptionController,
                               decoration: InputDecoration(
                                 hintText: "Add some description",
-                                hintStyle: TextStyles.light_14,contentPadding: const EdgeInsets.all(4),
+                                hintStyle: TextStyles.light_14,
+                                contentPadding: const EdgeInsets.all(4),
                               ),
                               keyboardType: TextInputType.multiline,
                               maxLines: null,

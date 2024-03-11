@@ -1,28 +1,87 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:selamat_application/styles/styles.dart';
 
 class ScheduleAction extends StatefulWidget {
-  final String time;
-  final IconData icon;
-  final String activity;
-  final bool repeat;
+  // final String time;
+  // final IconData icon;
+  // final String activity;
+  // final bool repeat;
+  final snap;
 
-  const ScheduleAction(
-      {Key? key,
-      required this.activity,
-      required this.icon,
-      required this.time,
-      required this.repeat});
+  const ScheduleAction({
+    Key? key,
+    required this.snap,
+    // required this.activity,
+    // required this.icon,
+    // required this.time,
+    // required this.repeat,
+  });
 
   @override
   State<ScheduleAction> createState() => _ScheduleActionState();
 }
 
 class _ScheduleActionState extends State<ScheduleAction> {
+  String repatDateDisplay = '';
+
+  @override
+  void initState() {
+    super.initState();
+    repatDateDisplay = '';
+    // print(widget.snap['repatDate'][0] == 1 ? ' X' : 'Y');
+    if (widget.snap['repatDate'][0] == 0 &&
+        widget.snap['repatDate'][1] == 0 &&
+        widget.snap['repatDate'][2] == 0 &&
+        widget.snap['repatDate'][3] == 0 &&
+        widget.snap['repatDate'][4] == 0 &&
+        widget.snap['repatDate'][5] == 0 &&
+        widget.snap['repatDate'][6] == 0) {
+      repatDateDisplay = 'None';
+    } else if (widget.snap['repatDate'][0] == 1 &&
+        widget.snap['repatDate'][1] == 1 &&
+        widget.snap['repatDate'][2] == 1 &&
+        widget.snap['repatDate'][3] == 1 &&
+        widget.snap['repatDate'][4] == 1 &&
+        widget.snap['repatDate'][5] == 1 &&
+        widget.snap['repatDate'][6] == 1) {
+      repatDateDisplay = 'Everyday';
+    }
+    {
+      if (widget.snap['repatDate'][0] == 1) {
+        repatDateDisplay += 'Mon, ';
+      }
+      if (widget.snap['repatDate'][1] == 1) {
+        repatDateDisplay += 'Tue, ';
+      }
+      if (widget.snap['repatDate'][2] == 1) {
+        repatDateDisplay += 'Wed, ';
+      }
+      if (widget.snap['repatDate'][3] == 1) {
+        repatDateDisplay += 'Thu, ';
+      }
+      if (widget.snap['repatDate'][4] == 1) {
+        repatDateDisplay += 'Fri, ';
+      }
+      if (widget.snap['repatDate'][5] == 1) {
+        repatDateDisplay += 'Sat, ';
+      }
+      if (widget.snap['repatDate'][6] == 1) {
+        repatDateDisplay += 'Sun, ';
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final Timestamp firestoreTimestamp = widget.snap['startDate'];
+    DateTime dateTime = firestoreTimestamp.toDate();
+
+    int hour = dateTime.hour;
+    int minute = dateTime.minute;
+
     return Center(
       child: Slidable(
         //start
@@ -31,6 +90,7 @@ class _ScheduleActionState extends State<ScheduleAction> {
           motion: StretchMotion(),
           children: [
             SlidableAction(
+              // TODOX FINISH
               onPressed: ((context) {}),
               icon: FontAwesomeIcons.circleCheck,
               backgroundColor: AppColors.pastelGreenHealth,
@@ -48,12 +108,14 @@ class _ScheduleActionState extends State<ScheduleAction> {
           motion: StretchMotion(),
           children: [
             SlidableAction(
+              // TODOX EDIT
               onPressed: ((context) {}),
               icon: FontAwesomeIcons.penToSquare,
               foregroundColor: AppColors.white,
               backgroundColor: AppColors.successStreak,
             ),
             SlidableAction(
+              // TODOX DELETE
               onPressed: ((context) {}),
               icon: FontAwesomeIcons.trashCan,
               foregroundColor: AppColors.white,
@@ -79,7 +141,7 @@ class _ScheduleActionState extends State<ScheduleAction> {
                     backgroundColor: AppColors.bgDarkMode,
                     content: Container(
                       padding: EdgeInsets.zero,
-                      height: 250,
+                      height: 300,
                       width: 380,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,13 +158,13 @@ class _ScheduleActionState extends State<ScheduleAction> {
                           ),
                           Center(
                             child: Text(
-                              widget.activity,
+                              widget.snap['title'],
                               style: TextStyles.bold_18,
                             ),
                           ),
                           Center(
                             child: Text(
-                              widget.time,
+                              '${hour}:${minute}',
                               style: TextStyles.light_18,
                             ),
                           ),
@@ -117,11 +179,12 @@ class _ScheduleActionState extends State<ScheduleAction> {
                                 SizedBox(
                                     width: 124,
                                     child: _information(
-                                        "Public schedule", Icons.public)),
+                                        "${widget.snap['visibility']}",
+                                        Icons.public)),
                                 SizedBox(
                                   width: 140,
                                   child: _information(
-                                      "Reminder on ${widget.time}",
+                                      "Reminder on ${hour}:${minute}",
                                       FontAwesomeIcons.solidBell),
                                 ),
                               ],
@@ -143,9 +206,31 @@ class _ScheduleActionState extends State<ScheduleAction> {
                                         FontAwesomeIcons.solidSmile)),
                                 SizedBox(
                                   width: 140,
-                                  child: _information(
-                                      widget.repeat ? "Repeat" : "Not Repeat",
-                                      FontAwesomeIcons.repeat),
+
+                                  child: Row(
+                                    children: [
+                                      FaIcon(
+                                        FontAwesomeIcons.repeat,
+                                        size: 15,
+                                        color: Colors.white,
+                                      ),
+                                      const SizedBox(
+                                        width: 5,
+                                      ),
+                                      Container(
+                                        width: 100,
+                                        child: Text(
+                                          repatDateDisplay,
+                                          style: TextStyles.regular_12,
+                                          maxLines: 3,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  //   child: _information(
+                                  //       '${widget.snap['repatDate']}',
+                                  //       FontAwesomeIcons.repeat),
+                                  // ),
                                 ),
                               ],
                             ),
@@ -155,8 +240,14 @@ class _ScheduleActionState extends State<ScheduleAction> {
                           ),
 
                           Container(
+                            child: Center(
+                                child: Text(
+                              '${widget.snap['description']}',
+                              style: TextStyle(color: Colors.white),
+                            )),
                             padding: const EdgeInsets.all(10),
-                            color: AppColors.black,
+                            color: Colors.grey,
+                            width: double.infinity,
                             height: 100,
                           )
                         ],
@@ -167,6 +258,7 @@ class _ScheduleActionState extends State<ScheduleAction> {
           },
           child: Container(
             height: 50,
+            margin: EdgeInsets.all(5),
             width: double.maxFinite,
             decoration: BoxDecoration(
               color: AppColors.darkModeCard,
@@ -174,15 +266,14 @@ class _ScheduleActionState extends State<ScheduleAction> {
             ),
             child: Row(
               children: [
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  widget.time,
-                  style: TextStyles.regular_18,
-                ),
-                const SizedBox(
-                  width: 10,
+                Container(
+                  width: 70,
+                  child: Center(
+                    child: Text(
+                      '${hour}:${minute}',
+                      style: TextStyles.regular_18,
+                    ),
+                  ),
                 ),
                 Container(
                   height: 30,
@@ -192,10 +283,11 @@ class _ScheduleActionState extends State<ScheduleAction> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      FaIcon(
-                        widget.icon,
-                        size: 20,
-                        color: Colors.white,
+                      CircleAvatar(
+                        radius: 15,
+                        backgroundImage: NetworkImage(
+                          widget.snap['iconUrl'],
+                        ),
                       ),
                     ],
                   ),
@@ -203,29 +295,31 @@ class _ScheduleActionState extends State<ScheduleAction> {
                 const SizedBox(
                   width: 10,
                 ),
-                SizedBox(
-                  width: 200,
+                Expanded(
+                  // color: Colors.green,
+                  // width: 200,
                   child: Text(
-                    widget.activity,
+                    widget.snap['title'],
                     style: TextStyles.regular_18,
                   ),
                 ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.circle, color: Colors.black),
-                  child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      FaIcon(
-                        Icons.alarm,
-                        size: 20,
-                        color: Colors.white,
-                      ),
-                    ],
-                  ),
-                ),
+                widget.snap['reminder'] == true
+                    ? Container(
+                        height: 30,
+                        width: 30,
+                        decoration: const BoxDecoration(
+                            shape: BoxShape.circle, color: Colors.black),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            FaIcon(Icons.alarm, size: 20, color: Colors.white),
+                          ],
+                        ),
+                      )
+                    : Container(
+                        height: 30,
+                        width: 30,
+                      )
               ],
             ),
           ),

@@ -13,6 +13,7 @@ class AuthMethods {
 
   Future<model.User> getUserDetails() async {
     User currentUser = _auth.currentUser!;
+    print("AUTH CURRENT USER ${currentUser}");
     DocumentSnapshot snap =
         await _firestore.collection('users').doc(currentUser.uid).get();
 
@@ -25,7 +26,7 @@ class AuthMethods {
     required String password,
     required String phoneNum,
     required String fullName,
-    required DateTime dateOfBirth,
+    required Timestamp dateOfBirth,
     required int startHour,
     required int startMinute,
     required int endHour,
