@@ -14,11 +14,25 @@ class AllToDoList extends StatefulWidget {
 }
 
 class _AllToDoListState extends State<AllToDoList> {
+  DateTime morning = DateTime.now();
+  DateTime night = DateTime.now();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    morning = DateTime(morning.year, morning.month, morning.day, 0, 1, 0, 0, 0);
+    night = DateTime(night.year, night.month, night.day, 23, 59, 59, 999, 999);
+    print(morning);
+    print(night);
+  }
+
   @override
   Widget build(BuildContext context) {
     final User user = Provider.of<UserProvider>(context).getUser;
+
     return Container(
-        // color: Colors.green,
+      // color: Colors.green,
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
       margin: EdgeInsets.only(top: 65),
       child: Scaffold(
@@ -27,6 +41,9 @@ class _AllToDoListState extends State<AllToDoList> {
               .collection('users')
               .doc(user.uid)
               .collection('toDos')
+              .where('startDate', isGreaterThanOrEqualTo: morning)
+              .where('startDate', isLessThanOrEqualTo: night)
+              .orderBy('startDate', descending: true)
               .snapshots(),
           builder: (context,
               AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
