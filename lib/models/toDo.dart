@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class ToDo {
+  final bool isDone;
+  final String toDoId;
   final String iconUrl;
   final String title;
   final Timestamp startDate;
@@ -15,6 +17,8 @@ class ToDo {
   final bool reminder;
 
   const ToDo({
+    required this.isDone,
+    required this.toDoId,
     required this.iconUrl,
     required this.title,
     required this.startDate,
@@ -28,6 +32,8 @@ class ToDo {
   });
 
   Map<String, dynamic> toJson() => {
+        'isDone': isDone,
+        'toDoId': toDoId,
         'iconUrl': iconUrl,
         'title': title,
         'startDate': startDate,
@@ -44,6 +50,8 @@ class ToDo {
     var snapshot = snap.data() as Map<String, dynamic>;
 
     return ToDo(
+      isDone: snapshot['isDone'],
+      toDoId: snapshot['toDoId'],
       iconUrl: snapshot['iconUrl'],
       title: snapshot['title'],
       startDate: snapshot['startDate'],

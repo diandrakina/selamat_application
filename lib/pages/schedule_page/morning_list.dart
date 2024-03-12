@@ -6,25 +6,25 @@ import 'package:selamat_application/models/user.dart';
 import 'package:selamat_application/providers/user_provider.dart';
 import 'package:selamat_application/widget/widget_schedule/scheduleAction.dart';
 
-class AllToDoList extends StatefulWidget {
-  const AllToDoList({super.key});
+class MorningList extends StatefulWidget {
+  const MorningList({super.key});
 
   @override
-  State<AllToDoList> createState() => _AllToDoListState();
+  State<MorningList> createState() => _MorningListState();
 }
 
-class _AllToDoListState extends State<AllToDoList> {
+class _MorningListState extends State<MorningList> {
   DateTime morning = DateTime.now();
-  DateTime night = DateTime.now();
+  DateTime afternoon = DateTime.now();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     morning = DateTime(morning.year, morning.month, morning.day, 0, 1, 0, 0, 0);
-    night = DateTime(night.year, night.month, night.day, 23, 59, 59, 999, 999);
+    afternoon = DateTime(afternoon.year, afternoon.month, afternoon.day, 11, 59, 59, 999, 999);
     print(morning);
-    print(night);
+    print(afternoon);
   }
 
   @override
@@ -42,7 +42,7 @@ class _AllToDoListState extends State<AllToDoList> {
               .doc(user.uid)
               .collection('toDos')
               .where('startDate', isGreaterThanOrEqualTo: morning)
-              .where('startDate', isLessThanOrEqualTo: night)
+              .where('startDate', isLessThanOrEqualTo: afternoon)
               .orderBy('startDate', descending: true)
               .snapshots(),
           builder: (context,
@@ -53,6 +53,7 @@ class _AllToDoListState extends State<AllToDoList> {
               );
             }
             return ListView.builder(
+              // Balikin banyaknya docs ID
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (context, index) => ScheduleAction(
                 snap: snapshot.data!.docs[index].data(),

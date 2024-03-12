@@ -6,25 +6,25 @@ import 'package:selamat_application/models/user.dart';
 import 'package:selamat_application/providers/user_provider.dart';
 import 'package:selamat_application/widget/widget_schedule/scheduleAction.dart';
 
-class AllToDoList extends StatefulWidget {
-  const AllToDoList({super.key});
+class AfternoonList extends StatefulWidget {
+  const AfternoonList({super.key});
 
   @override
-  State<AllToDoList> createState() => _AllToDoListState();
+  State<AfternoonList> createState() => _AfternoonListState();
 }
 
-class _AllToDoListState extends State<AllToDoList> {
-  DateTime morning = DateTime.now();
-  DateTime night = DateTime.now();
+class _AfternoonListState extends State<AfternoonList> {
+  DateTime afternoon = DateTime.now();
+  DateTime evening = DateTime.now();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    morning = DateTime(morning.year, morning.month, morning.day, 0, 1, 0, 0, 0);
-    night = DateTime(night.year, night.month, night.day, 23, 59, 59, 999, 999);
-    print(morning);
-    print(night);
+    afternoon = DateTime(afternoon.year, afternoon.month, afternoon.day, 12, 0, 0, 0, 0);
+    evening = DateTime(evening.year, evening.month, evening.day, 17, 59, 59, 999, 999);
+    print(afternoon);
+    print(evening);
   }
 
   @override
@@ -41,9 +41,9 @@ class _AllToDoListState extends State<AllToDoList> {
               .collection('users')
               .doc(user.uid)
               .collection('toDos')
-              .where('startDate', isGreaterThanOrEqualTo: morning)
-              .where('startDate', isLessThanOrEqualTo: night)
               .orderBy('startDate', descending: true)
+              .where('startDate', isGreaterThanOrEqualTo: afternoon)
+              .where('startDate', isLessThanOrEqualTo: evening)
               .snapshots(),
           builder: (context,
               AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
@@ -53,6 +53,7 @@ class _AllToDoListState extends State<AllToDoList> {
               );
             }
             return ListView.builder(
+              // Balikin banyaknya docs ID
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (context, index) => ScheduleAction(
                 snap: snapshot.data!.docs[index].data(),

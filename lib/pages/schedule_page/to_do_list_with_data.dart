@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
@@ -10,31 +11,33 @@ import 'package:selamat_application/pages/schedule_page/categoriesPage.dart';
 import 'package:selamat_application/pages/schedule_page/visibilityPage.dart';
 import 'package:selamat_application/providers/user_provider.dart';
 import 'package:selamat_application/resources/firestore_methods.dart';
+import 'package:selamat_application/resources/storage_methods.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/utils/richie_utils.dart';
 import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 
 // BUAT BIKIN TO DO LIST (TOMBOL ADD)
 
-class ToDoList extends StatefulWidget {
-  ToDoList({super.key});
+class ToDoListWithData extends StatefulWidget {
+  final snap;
+  ToDoListWithData({super.key, required this.snap});
 
   @override
   _ToDoListState createState() => _ToDoListState();
 }
 
-class _ToDoListState extends State<ToDoList> {
+class _ToDoListState extends State<ToDoListWithData> {
   Uint8List? _image;
+  String _photoUrl = '';
   String _title = "Add Title";
   DateTime _startDate = DateTime.now();
-  // TimeOfDay _time = TimeOfDay.now();
-  // String _time = 'x';
   bool _notification = false; // repeat
   List<int> _repeatDate = List.filled(7, 0);
 
   String _visibility = "Public";
   String _category = "None";
   String _description = "";
+  bool _isDone = false;
 
   bool _reminder = false;
   final TextEditingController _titleController = TextEditingController();
@@ -43,37 +46,73 @@ class _ToDoListState extends State<ToDoList> {
   bool _isLoading = false;
   // int? selectedDay;
 
+  @override
+  void initState() {
+    super.initState();
+    if (widget.snap['repatDate'][0] == 0 &&
+        widget.snap['repatDate'][1] == 0 &&
+        widget.snap['repatDate'][2] == 0 &&
+        widget.snap['repatDate'][3] == 0 &&
+        widget.snap['repatDate'][4] == 0 &&
+        widget.snap['repatDate'][5] == 0 &&
+        widget.snap['repatDate'][6] == 0) {
+      _notification = false;
+    } else {
+      _notification = true;
+    }
+    _photoUrl = widget.snap['iconUrl'];
+    print('1 ${_photoUrl}');
+    _title = widget.snap['title'];
+    // print('2 ${_title}');
+    _startDate = widget.snap['startDate'].toDate();
+    // print('3 ${_startDate}');
+    _repeatDate = List.from(widget.snap['repatDate']);
+    // _repeatDate = widget.snap['repatDate'];
+    // print('4 ${_repeatDate}');
+    _visibility = widget.snap['visibility'];
+    // print('5 ${_visibility}');
+    _category = widget.snap['category'];
+    // print('6 ${_category}');
+    _description = widget.snap['description'];
+    // print('7 ${_description}');
+    _reminder = widget.snap['reminder'];
+    // print('8 ${_reminder}');
+    _isDone = widget.snap['isDone'];
+  }
+
   void clearImage() {
     setState(() {
       _image = null;
     });
   }
 
-  void createToDo(String uid) async {
+  void updateToDo(String uid) async {
     setState(() {
       _isLoading = true;
     });
+    String _photoUrlConfirmed = _photoUrl;
 
     try {
-      String res = await FirestoreMethods().addToDoList(
+      if (_image != null) {
+        String photoUrl = await StorageMethods()
+            .uploadImageToStorage('toDoIcons', _image!, true);
+        _photoUrlConfirmed = photoUrl;
+      }
+      String res = await FirestoreMethods().updateToDoList(
+        widget.snap['toDoId'],
         uid,
-        _image!,
+        _photoUrlConfirmed,
+        _isDone,
         _title,
-        // 'A',
         _startDate,
-        // _time,
         _repeatDate,
-        // "Public",
-        // "None",
-        // "A",
-        // false,
         _visibility,
         _category,
         _description,
         _reminder,
       );
       if (res == 'success') {
-        showSnackBar("New Task Added!", context);
+        showSnackBar("Task Updated!", context);
         clearImage();
         setState(() {
           _isLoading = false;
@@ -98,6 +137,8 @@ class _ToDoListState extends State<ToDoList> {
     if (timeOfDay != null) {
       setState(
         () {
+          // _time= timeOfDay;
+
           _startDate = DateTime(
             _startDate.year,
             _startDate.month,
@@ -184,23 +225,6 @@ class _ToDoListState extends State<ToDoList> {
     try {} catch (e) {
       print(e.toString());
     }
-    // @override
-    // void initState() {
-    //   super.initState();
-    //   getUsername();
-    // }
-
-    // void getUsername() async {
-    //   DocumentSnapshot snap = await FirebaseFirestore.instance
-    //       .collection('users')
-    //       .doc(FirebaseAuth.instance.currentUser!.uid)
-    //       .get();
-
-    //   // print(snap.data());
-    //   setState(() {
-    //     username = (snap.data() as Map<String, dynamic>)['username'];
-    //   });
-    // }
 
     return SafeArea(
       child: Scaffold(
@@ -228,7 +252,7 @@ class _ToDoListState extends State<ToDoList> {
               ),
               InkWell(
                 onTap: () {
-                  createToDo(user.uid);
+                  updateToDo(user.uid);
                   Navigator.of(context).pop();
                 },
                 child: Container(
@@ -239,8 +263,8 @@ class _ToDoListState extends State<ToDoList> {
                           ),
                         )
                       : Text(
-                          "Save",
-                          style: TextStyles.bold_14, 
+                          "Update",
+                          style: TextStyles.bold_14,
                         ),
                   height: 30,
                   width: 80,
@@ -256,18 +280,6 @@ class _ToDoListState extends State<ToDoList> {
                   ),
                 ),
               ),
-              // CustomElevatedButton(
-              //   text: "Save",
-              //   buttonStyle: CustomButtonStyles.buttonBlue,
-              //   buttonTextStyle: TextStyles.bold_14,
-              //   height: 30,
-              //   width: 80,
-              //   onPressed: () {
-              //     // createToDo(user.uid);
-              //     createToDo(user.uid);
-              //     Navigator.of(context).pop();
-              //   },
-              // ),
             ],
           ),
         ),
@@ -283,11 +295,6 @@ class _ToDoListState extends State<ToDoList> {
                     const SizedBox(
                       height: 20,
                     ),
-                    // Image.asset(
-                    //   'assets/images/login_page/facebook_logo.png', // Adjust the path to your logo
-                    //   width: 100,
-                    //   height: 100,
-                    // ),
                     Stack(
                       children: [
                         _image != null
@@ -297,10 +304,9 @@ class _ToDoListState extends State<ToDoList> {
                                   _image!,
                                 ),
                               )
-                            : const CircleAvatar(
+                            : CircleAvatar(
                                 radius: 64,
-                                backgroundImage: NetworkImage(
-                                    'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg'),
+                                backgroundImage: NetworkImage(_photoUrl),
                               ),
                         Positioned(
                           bottom: -10,
@@ -582,7 +588,9 @@ class _ToDoListState extends State<ToDoList> {
                               style: TextStyles.light_14,
                               controller: _descriptionController,
                               decoration: InputDecoration(
-                                hintText: "Add some description",
+                                hintText: _description.isEmpty
+                                    ? "Add some description"
+                                    : _description,
                                 hintStyle: TextStyles.light_14,
                                 contentPadding: const EdgeInsets.all(4),
                               ),
