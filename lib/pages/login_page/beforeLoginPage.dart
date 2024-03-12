@@ -13,13 +13,18 @@ class BeforeLoginPage extends StatefulWidget {
 }
 
 class _BeforeLoginPageState extends State<BeforeLoginPage> {
+
+
+
+
   void navigateToSignUp() {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => LoginPage(),
+        builder: (context) => CreateEmailPage(),
       ),
     );
   }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -119,6 +124,7 @@ class _BeforeLoginPageState extends State<BeforeLoginPage> {
                     height: 10,
                   ),
                   CustomElevatedButton(
+                    onPressed: navigateToLogin,
                     height: 50,
                     text: 'Continue with Username',
                     buttonTextStyle: TextStyles.regular_18,

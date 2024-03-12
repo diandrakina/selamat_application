@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:selamat_application/pages/activity_page/activityPage.dart';
 import 'package:selamat_application/pages/discovery_page/discoveryPage.dart';
 import 'package:selamat_application/pages/home_page/homePage.dart';
+import 'package:selamat_application/pages/schedule_page/afternoon_list.dart';
+import 'package:selamat_application/pages/schedule_page/all_to_do_list.dart';
+import 'package:selamat_application/pages/schedule_page/evening_list.dart';
+import 'package:selamat_application/pages/schedule_page/morning_list.dart';
 import 'package:selamat_application/pages/statistic_page/StatisticPage.dart';
 import 'package:selamat_application/pages/schedule_page/schedulePage.dart';
 import 'package:selamat_application/pages_psychologist/home_psychologist/homePagePsychologist.dart';
@@ -21,4 +25,11 @@ const psychologistScreenItems = [
   SchedulePsychologistPage(),
   Text("Chat"),
   ProfilePsychologistPage(),
+];
+
+const scheduleScreenItems = [
+  AllToDoList(),
+  MorningList(),
+  AfternoonList(),
+  EveningList(),
 ];

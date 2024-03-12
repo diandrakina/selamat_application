@@ -121,6 +121,15 @@ class TextStyles {
       fontSize: 18.0,
       color: Colors.white);
 
+      static TextStyle bold_18_coret = const TextStyle(
+      fontFamily: 'SamsungSans',
+      fontWeight: FontWeight.bold,
+      fontSize: 18.0,
+      decoration: TextDecoration.lineThrough,
+      decorationThickness: 2,
+      decorationColor: Colors.grey,
+      color: Colors.grey);
+
   static TextStyle medium_18 = const TextStyle(
       fontFamily: 'SamsungSans',
       fontWeight: FontWeight.normal,
@@ -132,6 +141,12 @@ class TextStyles {
       fontWeight: FontWeight.normal,
       fontSize: 18.0,
       color: Colors.white);
+
+      static TextStyle regular_18_coret = const TextStyle(
+      fontFamily: 'SamsungSans',
+      fontWeight: FontWeight.normal,
+      fontSize: 18.0,    
+      color: Colors.grey);
 
   static TextStyle regular_18_black = const TextStyle(
       fontFamily: 'SamsungSans',

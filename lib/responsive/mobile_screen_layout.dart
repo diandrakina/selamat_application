@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:selamat_application/providers/user_provider.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/utils/global_variable.dart';
 // import 'package:instagram_clone/providers/user_provider.dart';
@@ -16,6 +18,7 @@ class MobileScreenLayout extends StatefulWidget {
 class _MobileScreenLayoutState extends State<MobileScreenLayout> {
   int _page = 0;
   late PageController pageController;
+  
 
   @override
   void initState() {

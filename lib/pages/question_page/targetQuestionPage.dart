@@ -1,3 +1,6 @@
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
@@ -62,7 +65,7 @@ class _TargetQuestionPageState extends State<TargetQuestionPage> {
       password: _password,
       phoneNum: _phoneNum,
       fullName: _fullName,
-      dateOfBirth: _dateOfBirth,
+      dateOfBirth: Timestamp.fromDate(_dateOfBirth),
       startHour: _startHour,
       startMinute: _startMinute,
       endHour: _endHour,
@@ -73,14 +76,11 @@ class _TargetQuestionPageState extends State<TargetQuestionPage> {
       _isLoading = false;
     });
 
-    if (res != 'success') {
+    if (res != 'Success!') {
       showSnackBar(res, context);
     } else {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => HomePage(),
-        ),
-      );
+      // showSnackBar(res, context);
+      navigateToWelcomePage();
     }
   }
 

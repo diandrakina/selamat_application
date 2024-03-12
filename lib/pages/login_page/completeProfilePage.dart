@@ -78,7 +78,9 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
   void navigateToLogin() {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => const PrivacyPolicy(),
+
+        builder: (context) => LoginPage(),
+
       ),
     );
   }

@@ -8,30 +8,51 @@ class VisibilityPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String visibility = "Public";
     return SafeArea(
-      child: Scaffold(
-        //APPBAR
-        appBar: AppBar(
-          toolbarHeight: 80,
-          leadingWidth: double.maxFinite,
-          elevation: 0.0,
-          backgroundColor: Colors.transparent,
-          leading: Row(
-            children: [
-              const Padding(padding: EdgeInsets.all(5)),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ToDoList(),
-                    ),
-                  );
-                },
-                child: const FaIcon(
-                  Icons.arrow_back,
-                  color: AppColors.white,
-                  size: 25,
+
+        child: Scaffold(
+            //APPBAR
+            appBar: AppBar(
+              toolbarHeight: 80,
+              leadingWidth: double.maxFinite,
+              elevation: 0.0,
+              backgroundColor: Colors.transparent,
+              leading: Row(
+                children: [
+                  const Padding(padding: EdgeInsets.all(5)),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pop(visibility);
+                    },
+                    child: const FaIcon(
+                      Icons.arrow_back,
+                      color: AppColors.white,
+                      size: 25,
+/
+//       child: Scaffold(
+//         //APPBAR
+//         appBar: AppBar(
+//           toolbarHeight: 80,
+//           leadingWidth: double.maxFinite,
+//           elevation: 0.0,
+//           backgroundColor: Colors.transparent,
+//           leading: Row(
+//             children: [
+//               const Padding(padding: EdgeInsets.all(5)),
+//               GestureDetector(
+//                 onTap: () {
+//                   Navigator.push(
+//                     context,
+//                     MaterialPageRoute(
+//                       builder: (context) => ToDoList(),
+//                     ),
+//                   );
+//                 },
+//                 child: const FaIcon(
+//                   Icons.arrow_back,
+//                   color: AppColors.white,
+//                   size: 25,
                 ),
               ),
               const Padding(padding: EdgeInsets.all(5)),
@@ -42,6 +63,93 @@ class VisibilityPage extends StatelessWidget {
             ],
           ),
         ),
+
+
+            //BODY
+            body: SingleChildScrollView(
+              child: Container(
+                child: Column(children: [
+                  ListTile(
+                    onTap: () {
+                      visibility = "Public";
+                      print(visibility);
+                    },
+                    title: Row(
+                      children: [
+                        Icon(Icons.public, color: AppColors.white),
+                        SizedBox(width: 10),
+                        Text('Public', style: TextStyles.regular_18),
+                      ],
+                    ),
+                  ),
+                  const Divider(
+                    height: 10,
+                    color: AppColors.activeCalendar,
+                  ),
+                  ListTile(
+                    onTap: () {
+                      visibility = "Private";
+                      print(visibility);
+                    },
+                    title: Row(
+                      children: [
+                        Icon(Icons.lock, color: AppColors.white),
+                        SizedBox(width: 10),
+                        Text('Private', style: TextStyles.regular_18),
+                      ],
+                    ),
+                  ),
+                  const Divider(
+                    height: 10,
+                    color: AppColors.activeCalendar,
+                  ),
+                  ListTile(
+                    onTap: () {
+                      visibility = "Show category only";
+                      print(visibility);
+                    },
+                    title: Row(
+                      children: [
+                        Icon(Icons.list_alt, color: AppColors.white),
+                        SizedBox(width: 10),
+                        Text('Show category only',
+                            style: TextStyles.regular_18),
+                      ],
+                    ),
+                  ),
+                  const Divider(
+                    height: 10,
+                    color: AppColors.activeCalendar,
+                  ),
+                  ListTile(
+                    onTap: () {
+                        visibility = 'Mutuals only';
+                        print(visibility);
+                      },
+                    title: Row(
+                      children: [
+                        Icon(Icons.group, color: AppColors.white),
+                        SizedBox(width: 10),
+                        Text('Mutuals only', style: TextStyles.regular_18),
+                      ],
+                    ),
+                  ),
+                  const Divider(
+                    height: 10,
+                    color: AppColors.activeCalendar,
+                  ),
+                  ListTile(
+                    onTap: () {
+                        visibility = 'Mutuals only + category only';
+                        print(visibility);
+                      },
+                    title: Row(
+                      children: [
+                        Icon(Icons.group_add, color: AppColors.white),
+                        SizedBox(width: 10),
+                        Text('Mutuals only + category only',
+                            style: TextStyles.regular_18),
+                      ],
 
         //BODY
         body: SingleChildScrollView(
@@ -134,6 +242,7 @@ class VisibilityPage extends StatelessWidget {
                     Text(
                       "When your tasks are mutuals only, only your mutuals see your tasks, public can not see what your task is.",
                       style: TextStyles.GR_12_light,
+
                     ),
                     const SizedBox(height: 10),
                     Text(

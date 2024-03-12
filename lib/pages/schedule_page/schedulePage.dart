@@ -1,61 +1,85 @@
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:selamat_application/models/user.dart';
 import 'package:selamat_application/pages/schedule_page/allSchedule.dart';
+import 'package:selamat_application/pages/schedule_page/schedule_page_view.dart';
 import 'package:selamat_application/pages/schedule_page/toDoList.dart';
+import 'package:selamat_application/providers/user_provider.dart';
+import 'package:selamat_application/resources/firestore_methods.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 
 class SchedulePage extends StatefulWidget {
-  const SchedulePage({super.key});
+  const SchedulePage({
+    super.key,
+  });
 
   @override
   State<SchedulePage> createState() => _SchedulePageState();
 }
 
 class _SchedulePageState extends State<SchedulePage> {
+  void createEmotefromTask(uid) async {
+    int x = await FirestoreMethods().numOfTaskDone(uid);
+    int y = await FirestoreMethods().numOfTaskToday(uid);
+    print('DONE TAKSSSSSSSS${x}');
+    print('TAKSSSSSSSS${y}');
+    print(x/y);
+  }
+
   @override
   Widget build(BuildContext context) {
+    final User user = Provider.of<UserProvider>(context).getUser;
+    createEmotefromTask(user.uid);
     /*
   status = 0 -> belum masuk tanggalnya
   status = 1 -> happy
   status = 2 -> biasa aja
   status = 3 -> sedih
   */
-    List<int> statttt = [
-      1,
-      2,
-      3,
-      2,
-      1,
-      2,
-      1,
-      3,
-      2,
-      1,
-      1,
-      2,
-      3,
-      2,
-      1,
-      2,
-      1,
-      3,
-      2,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ];
+
+  List<int> statttt = List.filled(31, 0);
+  DateTime today = DateTime.now();
+  DateTime currentDate = DateTime(today.year, today.month, today.day);
+  statttt[currentDate.day] = 1;
+  print(statttt);
+
+    // List<int> statttt = [
+    //   1,
+    //   2,
+    //   3,
+    //   2,
+    //   1,
+    //   2,
+    //   1,
+    //   3,
+    //   2,
+    //   1,
+    //   1,
+    //   2,
+    //   3,
+    //   2,
+    //   1,
+    //   2,
+    //   1,
+    //   3,
+    //   2,
+    //   1,
+    //   0,
+    //   0,
+    //   0,
+    //   0,
+    //   0,
+    //   0,
+    //   0,
+    //   0,
+    //   0,
+    //   0,
+    //   0,
+    //   0
+    // ];
 
     FaIcon _iconMood(int status, bool isSelected, isPressed) {
       switch (status) {
@@ -210,7 +234,8 @@ class _SchedulePageState extends State<SchedulePage> {
           width: double.maxFinite,
 
           //PAGE VIEW
-          child: const PageView2(),
+          child: SchedulePageView(),
+
         ),
 
         //Floating button
@@ -233,6 +258,7 @@ class _SchedulePageState extends State<SchedulePage> {
     );
   }
 }
+
 
 class PageView2 extends StatefulWidget {
   const PageView2({super.key});
@@ -384,3 +410,4 @@ class _PageView2State extends State<PageView2> {
     );
   }
 }
+
