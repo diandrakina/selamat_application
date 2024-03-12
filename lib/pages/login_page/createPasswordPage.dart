@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:selamat_application/pages/login_page/completeProfilePage.dart';
 import 'package:selamat_application/pages/login_page/loginPage.dart';
-import 'package:selamat_application/resources/auth_methods.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/utils/richie_utils.dart';
 import 'package:selamat_application/utils/text_field_input.dart';
-import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
-import 'package:selamat_application/widget/widget_login_register/customTextFormField.dart';
-import 'package:selamat_application/widget/widget_login_register/customCheckboxButton.dart';
 
 class CreatePasswordPage extends StatefulWidget {
   CreatePasswordPage({
@@ -21,55 +17,10 @@ class CreatePasswordPage extends StatefulWidget {
 }
 
 class _CreatePasswordPageState extends State<CreatePasswordPage> {
-  TextEditingController _passwordController = TextEditingController();
-  TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
   bool _isLoading = false;
-
-  // Widget _buildPassword(BuildContext context) {
-  //   return Padding(
-  //     padding: EdgeInsets.symmetric(
-  //       horizontal: 50,
-  //     ),
-  //     child: CustomTextFormField(
-  //       controller: passwordController,
-  //       hintText: 'password',
-  //       textInputType: TextInputType.visiblePassword,
-  //       obscureText: true,
-  //     ),
-  //   );
-  // }
-
-  // Widget _buildConfirmPassword(BuildContext context) {
-  //   return Padding(
-  //     padding: EdgeInsets.symmetric(horizontal: 50),
-  //     child: CustomTextFormField(
-  //       controller: confirmPasswordController,
-  //       hintText: 'confirm password',
-  //       textInputAction: TextInputAction.done,
-  //       textInputType: TextInputType.visiblePassword,
-  //       obscureText: true,
-  //     ),
-  //   );
-  // }
-
-  // Widget _buildRememberMeCheckBox(BuildContext context) {
-  //   return Align(
-  //     alignment: Alignment.centerLeft,
-  //     child: Padding(
-  //       padding: EdgeInsets.only(left: 50),
-  //       child: CustomCheckboxButton(
-  //         alignment: Alignment.centerLeft,
-  //         text: 'Remember me',
-  //         textStyle: TextStyles.GR_15_title_light,
-  //         value: rememberMeCheckBox,
-  //         padding: EdgeInsets.symmetric(vertical: 1),
-  //         onChange: (value) {
-  //           rememberMeCheckBox = value;
-  //         },
-  //       ),
-  //     ),
-  //   );
-  // }
 
   void createPasswordAndConfirm() {
     // print("${_email}");
@@ -131,13 +82,13 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
           ),
         ),
         body: Container(
-          padding: EdgeInsets.symmetric(horizontal: 32),
+          padding: const EdgeInsets.symmetric(horizontal: 32),
           width: double.infinity,
           child: Column(
             children: [
               Flexible(
-                child: Container(),
                 flex: 1,
+                child: Container(),
               ),
               Text(
                 'Create Password',
@@ -171,16 +122,6 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
               InkWell(
                 onTap: createPasswordAndConfirm,
                 child: Container(
-                  child: _isLoading
-                      ? const Center(
-                          child: CircularProgressIndicator(
-                            color: AppColors.white,
-                          ),
-                        )
-                      : Text(
-                          "Next",
-                          style: TextStyles.bold_18,
-                        ),
                   width: double.infinity,
                   alignment: Alignment.center,
                   padding: const EdgeInsets.symmetric(vertical: 12),
@@ -191,25 +132,35 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                         ),
                       ),
                       color: AppColors.bluePowderBlack),
+                  child: _isLoading
+                      ? const Center(
+                          child: CircularProgressIndicator(
+                            color: AppColors.white,
+                          ),
+                        )
+                      : Text(
+                          "Next",
+                          style: TextStyles.bold_18,
+                        ),
                 ),
               ),
               Flexible(
-                child: Container(),
                 flex: 2,
+                child: Container(),
               ),
-              Divider(
+              const Divider(
                 color: AppColors.inactive,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 20,
+                    ),
                     child: Text(
                       'already have an account? ',
                       style: TextStyles.GR_15_light,
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 20,
                     ),
                   ),
                   GestureDetector(

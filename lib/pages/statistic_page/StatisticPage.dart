@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:selamat_application/pages/chat_page/ContactPage.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/chart/profile_page/timeChart.dart';
 import 'package:selamat_application/widget/drawerWidget.dart';
@@ -59,10 +60,20 @@ class _StatisticPageState extends State<StatisticPage> {
                   const SizedBox(
                     width: 15,
                   ),
-                  const FaIcon(
-                    FontAwesomeIcons.solidCommentDots,
-                    size: 25,
-                    color: AppColors.white,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ContactPage(),
+                        ),
+                      );
+                    },
+                    child: const FaIcon(
+                      FontAwesomeIcons.solidCommentDots,
+                      size: 25,
+                      color: AppColors.white,
+                    ),
                   ),
                 ],
               ),

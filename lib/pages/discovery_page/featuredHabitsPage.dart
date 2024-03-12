@@ -30,27 +30,25 @@ class _FeaturedHabitsPageState extends State<FeaturedHabitsPage> {
           leadingWidth: double.maxFinite,
           elevation: 0.0,
           backgroundColor: Colors.transparent,
-          leading: Container(
-            child: Row(
-              children: [
-                const Padding(padding: EdgeInsets.all(5)),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const FaIcon(
-                    Icons.arrow_back,
-                    color: AppColors.white,
-                    size: 25,
-                  ),
+          leading: Row(
+            children: [
+              const Padding(padding: EdgeInsets.all(5)),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+                child: const FaIcon(
+                  Icons.arrow_back,
+                  color: AppColors.white,
+                  size: 25,
                 ),
-                const Padding(padding: EdgeInsets.all(5)),
-                Text(
-                  "The Art of Thinking",
-                  style: TextStyles.bold_30,
-                ),
-              ],
-            ),
+              ),
+              const Padding(padding: EdgeInsets.all(5)),
+              Text(
+                "The Art of Thinking",
+                style: TextStyles.bold_30,
+              ),
+            ],
           ),
         ),
         body: SlidingUpPanel(
@@ -314,7 +312,6 @@ class BackgroundVideo extends StatefulWidget {
 
 class _BackgroundVideoState extends State<BackgroundVideo> {
   late VideoPlayerController _videoPlayerController;
-  late Future<void> _initializeVideoPlayerFuture;
 
   @override
   void initState() {

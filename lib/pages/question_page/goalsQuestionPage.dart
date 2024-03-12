@@ -31,8 +31,7 @@ class GoalQuestionPage extends StatefulWidget {
 }
 
 class _GoalQuestionPageState extends State<GoalQuestionPage> {
-
-void navigateToEndWorkPage() {
+  void navigateToEndWorkPage() {
     String _email = widget.email;
     String _password = widget.password;
     String _phoneNum = widget.phoneNum;
@@ -72,7 +71,7 @@ void navigateToEndWorkPage() {
         ),
         body: Container(
           width: double.maxFinite,
-          padding: EdgeInsets.only(left: 20, right: 20),
+          padding: const EdgeInsets.only(left: 20, right: 20),
           child: Column(
             children: [
               Row(
@@ -108,7 +107,7 @@ void navigateToEndWorkPage() {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 34,
               ),
               Text(
@@ -118,7 +117,7 @@ void navigateToEndWorkPage() {
                 textAlign: TextAlign.center,
                 style: TextStyles.GR_38_bold,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Text(
@@ -127,22 +126,20 @@ void navigateToEndWorkPage() {
                 textAlign: TextAlign.center,
                 style: TextStyles.GR_24_light,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
-              // _yourGoals(context),
-              Container(
+              SizedBox(
                 height: 320,
                 child: SingleChildScrollView(
                   child: _yourGoals(context),
                 ),
               ),
-
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               _buttonNext(context),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               _buttonSkip(context)
@@ -152,60 +149,57 @@ void navigateToEndWorkPage() {
       ),
     );
   }
-  
 
   Widget _yourGoals(BuildContext context) {
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              CustomBoxGoals(
-                  icon: Icons.work,
-                  text: "Work Life   Balance",
-                  colorIcon: AppColors.deadBlue),
-              CustomBoxGoals(
-                  icon: FontAwesomeIcons.crosshairs,
-                  text: "Track My Habits",
-                  colorIcon: AppColors.pastelGreenHealth),
-            ],
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              CustomBoxGoals(
-                  icon: FontAwesomeIcons.trophy,
-                  text: "Challenge Myself",
-                  colorIcon: AppColors.successStreak),
-              CustomBoxGoals(
-                  icon: FontAwesomeIcons.eye,
-                  text: "Try to focus",
-                  colorIcon: AppColors.pastelPurple),
-            ],
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              CustomBoxGoals(
-                  icon: FontAwesomeIcons.solidHeart,
-                  text: "Healthier Life",
-                  colorIcon: AppColors.pastelRed),
-              CustomBoxGoals(
-                  icon: FontAwesomeIcons.fire,
-                  text: "Consistent Routine",
-                  colorIcon: AppColors.starYellow),
-            ],
-          ),
-        ],
-      ),
+    return const Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            CustomBoxGoals(
+                icon: Icons.work,
+                text: "Work Life   Balance",
+                colorIcon: AppColors.deadBlue),
+            CustomBoxGoals(
+                icon: FontAwesomeIcons.crosshairs,
+                text: "Track My Habits",
+                colorIcon: AppColors.pastelGreenHealth),
+          ],
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            CustomBoxGoals(
+                icon: FontAwesomeIcons.trophy,
+                text: "Challenge Myself",
+                colorIcon: AppColors.successStreak),
+            CustomBoxGoals(
+                icon: FontAwesomeIcons.eye,
+                text: "Try to focus",
+                colorIcon: AppColors.pastelPurple),
+          ],
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            CustomBoxGoals(
+                icon: FontAwesomeIcons.solidHeart,
+                text: "Healthier Life",
+                colorIcon: AppColors.pastelRed),
+            CustomBoxGoals(
+                icon: FontAwesomeIcons.fire,
+                text: "Consistent Routine",
+                colorIcon: AppColors.starYellow),
+          ],
+        ),
+      ],
     );
   }
 
@@ -214,7 +208,7 @@ void navigateToEndWorkPage() {
       text: 'NEXT',
       buttonTextStyle: TextStyles.medium_24,
       height: 60,
-      margin: EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 10),
       buttonStyle: CustomButtonStyles.buttonBlue,
       onPressed: () {
         navigateToEndWorkPage();
@@ -227,7 +221,7 @@ void navigateToEndWorkPage() {
       text: 'SKIP',
       buttonTextStyle: TextStyles.medium_24,
       height: 60,
-      margin: EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 10),
       buttonStyle: CustomButtonStyles.buttonNotSure,
     );
   }

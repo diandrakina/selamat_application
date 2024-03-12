@@ -55,7 +55,7 @@ class _StartUpQuestionPageState extends State<StartUpQuestionPage> {
       text: 'NEXT',
       buttonTextStyle: TextStyles.medium_24,
       height: 60,
-      margin: EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 10),
       buttonStyle: CustomButtonStyles.buttonBlue,
       onPressed: () {
         navigateToGoalPage();
@@ -68,7 +68,7 @@ class _StartUpQuestionPageState extends State<StartUpQuestionPage> {
       text: 'IM NOT SURE',
       buttonTextStyle: TextStyles.medium_24,
       height: 60,
-      margin: EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 10),
       buttonStyle: CustomButtonStyles.buttonNotSure,
     );
   }
@@ -90,7 +90,7 @@ class _StartUpQuestionPageState extends State<StartUpQuestionPage> {
         ),
         body: Container(
           width: double.maxFinite,
-          padding: EdgeInsets.only(left: 20, right: 20),
+          padding: const EdgeInsets.only(left: 20, right: 20),
           child: Column(
             children: [
               Row(
@@ -126,7 +126,7 @@ class _StartUpQuestionPageState extends State<StartUpQuestionPage> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 34,
               ),
               Text(
@@ -136,23 +136,23 @@ class _StartUpQuestionPageState extends State<StartUpQuestionPage> {
                 textAlign: TextAlign.center,
                 style: TextStyles.GR_38_bold,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Text(
                 "choose time below",
                 style: TextStyles.GR_24_light,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               //COBA WIDGET
               timePicker(context),
-              SizedBox(
+              const SizedBox(
                 height: 100,
               ),
               _buttonNext(context),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               _buttonNotSure(context)

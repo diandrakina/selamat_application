@@ -5,11 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:selamat_application/pages/discovery_page/discoveryPage.dart';
 import 'package:selamat_application/pages/payment_page/transactionHistory.dart';
 import 'package:selamat_application/styles/styles.dart';
-import 'package:selamat_application/widget/navbar.dart';
 import 'package:selamat_application/widget/widget_discovery/containerPsikolog.dart';
-import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
-
-import '../../widget/widget_discovery/container_profile_psikolog.dart';
 
 class DiscoverPsychologist extends StatefulWidget {
   const DiscoverPsychologist({super.key});

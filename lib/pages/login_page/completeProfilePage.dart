@@ -1,16 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:selamat_application/pages/login_page/beforeLoginPage.dart';
 import 'package:selamat_application/pages/login_page/before_we_start_page.dart';
-import 'package:selamat_application/pages/login_page/loginPage.dart';
 import 'package:selamat_application/pages/rule_page/privacyPolicy.dart';
-import 'package:selamat_application/resources/auth_methods.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/utils/richie_utils.dart';
 import 'package:selamat_application/utils/text_field_input.dart';
-
-import 'package:selamat_application/widget/widget_login_register/customTextFormField.dart';
-import 'package:selamat_application/widget/widget_login_register/customCheckboxButton.dart';
-import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 
 class CompleteProfilePage extends StatefulWidget {
   CompleteProfilePage({
@@ -26,9 +19,9 @@ class CompleteProfilePage extends StatefulWidget {
 }
 
 class _CompleteProfilePageState extends State<CompleteProfilePage> {
-  TextEditingController _phoneNumController = TextEditingController();
-  TextEditingController _fullNameController = TextEditingController();
-  TextEditingController _dateOfBirthController = TextEditingController();
+  final TextEditingController _phoneNumController = TextEditingController();
+  final TextEditingController _fullNameController = TextEditingController();
+  final TextEditingController _dateOfBirthController = TextEditingController();
   bool _isChecked = false;
   bool _isLoading = false;
   bool _isPicked = false;
@@ -77,7 +70,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
   void navigateToPrivacyPolicy() {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => PrivacyPolicy(),
+        builder: (context) => const PrivacyPolicy(),
       ),
     );
   }
@@ -85,7 +78,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
   void navigateToLogin() {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => PrivacyPolicy(),
+        builder: (context) => const PrivacyPolicy(),
       ),
     );
   }
@@ -123,13 +116,13 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
           ),
         ),
         body: Container(
-          padding: EdgeInsets.symmetric(horizontal: 32),
+          padding: const EdgeInsets.symmetric(horizontal: 32),
           width: double.infinity,
           child: Column(
             children: [
               Flexible(
-                child: Container(),
                 flex: 1,
+                child: Container(),
               ),
               Text(
                 'Complete your profile',
@@ -160,16 +153,17 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
               ),
               TextField(
                 controller: _dateOfBirthController,
-                style: TextStyle(
+                style: const TextStyle(
                     color: AppColors.white, fontWeight: FontWeight.w400),
                 decoration: InputDecoration(
                   suffixIcon: IconButton(
-                    icon: Icon(Icons.calendar_month),
+                    icon: const Icon(Icons.calendar_month),
                     onPressed: pickDate,
                     color: AppColors.white,
                   ),
-                  hintStyle: TextStyle(
-                      color: AppColors.white, fontWeight: FontWeight.w400),
+                  hintStyle: TextStyles.GR_16_regular,
+                  // hintStyle: TextStyle(
+                  //     color: AppColors.white, fontWeight: FontWeight.w400),
                   hintText: _isPicked
                       ? "${selectedDate.day}-${selectedDate.month}-${selectedDate.year}"
                       : "date of birth",
@@ -186,7 +180,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                 readOnly: true,
               ),
               Container(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   top: 20,
                 ),
                 child: Row(
@@ -208,25 +202,15 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                             });
                           }),
                     ),
-                    Container(
-                      child: Text(
-                        'i\'ve read and accepted the ',
-                        style: TextStyles.GR_12_light,
-                      ),
-                      // padding: const EdgeInsets.symmetric(
-                      //   vertical: 10,
-                      // ),
+                    Text(
+                      'i\'ve read and accepted the ',
+                      style: TextStyles.GR_12_light,
                     ),
                     GestureDetector(
                       onTap: navigateToPrivacyPolicy,
-                      child: Container(
-                        // padding: const EdgeInsets.symmetric(
-                        //   vertical: 10,
-                        // ),
-                        child: Text(
-                          "privacy and policy",
-                          style: TextStyles.GR_14_bold,
-                        ),
+                      child: Text(
+                        "privacy and policy",
+                        style: TextStyles.GR_14_bold,
                       ),
                     ),
                   ],
@@ -238,16 +222,6 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
               InkWell(
                 onTap: completeProfile,
                 child: Container(
-                  child: _isLoading
-                      ? const Center(
-                          child: CircularProgressIndicator(
-                            color: AppColors.white,
-                          ),
-                        )
-                      : Text(
-                          "Next",
-                          style: TextStyles.bold_18,
-                        ),
                   width: double.infinity,
                   alignment: Alignment.center,
                   padding: const EdgeInsets.symmetric(vertical: 12),
@@ -258,25 +232,35 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                         ),
                       ),
                       color: AppColors.bluePowderBlack),
+                  child: _isLoading
+                      ? const Center(
+                          child: CircularProgressIndicator(
+                            color: AppColors.white,
+                          ),
+                        )
+                      : Text(
+                          "Next",
+                          style: TextStyles.bold_18,
+                        ),
                 ),
               ),
               Flexible(
-                child: Container(),
                 flex: 2,
+                child: Container(),
               ),
-              Divider(
+              const Divider(
                 color: AppColors.inactive,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 20,
+                    ),
                     child: Text(
                       'already have an account? ',
                       style: TextStyles.GR_15_light,
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 20,
                     ),
                   ),
                   GestureDetector(

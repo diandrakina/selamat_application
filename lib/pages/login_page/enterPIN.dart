@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:selamat_application/styles/styles.dart';
@@ -16,12 +18,12 @@ class _EnterPINState extends State<EnterPIN> {
         child: Scaffold(
       body: Column(
         children: [
-          Padding(padding: EdgeInsets.all(50)),
+          const Padding(padding: EdgeInsets.all(50)),
           Text(
             "Enter Your Pin",
             style: TextStyles.GR_40_title_regular,
           ),
-          Padding(padding: EdgeInsets.all(50)),
+          const Padding(padding: EdgeInsets.all(50)),
           Center(
             child: SizedBox(
               width: 350,
@@ -32,7 +34,7 @@ class _EnterPINState extends State<EnterPIN> {
                 defaultPinTheme: PinTheme(
                     height: 80,
                     width: 80,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.transparent,
                       border: Border(
                         bottom: BorderSide(color: AppColors.white, width: 2),

@@ -1,14 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-// import 'package:flutter/material.dart';
 import 'package:selamat_application/styles/styles.dart';
-import 'package:selamat_application/widget/navbar.dart';
-import 'package:selamat_application/widget/searchBar.dart';
-import 'package:selamat_application/widget/widget_discovery/container_habits.dart';
-import 'package:selamat_application/widget/widget_discovery/container_profile_psikolog.dart';
-import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
-// import 'package:flutter/material.dart';
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -18,7 +10,7 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   final List<ChatMessage> _messages = [];
 
-  TextEditingController _textController = TextEditingController();
+  final TextEditingController _textController = TextEditingController();
 
   void _handleSubmitted(String text) {
     _textController.clear();
@@ -145,7 +137,7 @@ class _ChatScreenState extends State<ChatScreen> {
 }
 
 class ChatMessage extends StatelessWidget {
-  const ChatMessage({required this.text, required this.isSender});
+  const ChatMessage({super.key, required this.text, required this.isSender});
 
   final String text;
   final bool isSender;

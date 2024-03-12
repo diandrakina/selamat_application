@@ -38,10 +38,15 @@ class _NotificationPageState extends State<NotificationPage> {
               children: [
                 Row(
                   children: [
-                    const FaIcon(
-                      Icons.arrow_back,
-                      color: AppColors.white,
-                      size: 25,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const FaIcon(
+                        Icons.arrow_back,
+                        color: AppColors.white,
+                        size: 25,
+                      ),
                     ),
                     const Padding(padding: EdgeInsets.all(5)),
                     Text(
