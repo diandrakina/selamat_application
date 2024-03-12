@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:selamat_application/pages/drawer/modesPage.dart';
 import 'package:selamat_application/pages/drawer/notificationPage.dart';
 import 'package:selamat_application/pages/profile_page/profileSharedSchedule.dart';
+import 'package:selamat_application/pages/settings_page/settingsPage.dart';
 import 'package:selamat_application/styles/styles.dart';
 
 class DrawerWidget extends StatefulWidget {
@@ -90,7 +92,14 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 "Modes",
                 style: TextStyles.bold_18,
               ),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ModesPage(),
+                  ),
+                );
+              },
             ),
             ListTile(
               leading: const FaIcon(
@@ -102,7 +111,14 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 "Settings",
                 style: TextStyles.bold_18,
               ),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SettingsPage(),
+                  ),
+                );
+              },
             ),
           ],
         ),

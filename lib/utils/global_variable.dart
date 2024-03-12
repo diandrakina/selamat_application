@@ -4,6 +4,9 @@ import 'package:selamat_application/pages/discovery_page/discoveryPage.dart';
 import 'package:selamat_application/pages/home_page/homePage.dart';
 import 'package:selamat_application/pages/statistic_page/StatisticPage.dart';
 import 'package:selamat_application/pages/schedule_page/schedulePage.dart';
+import 'package:selamat_application/pages_psychologist/home_psychologist/homePagePsychologist.dart';
+import 'package:selamat_application/pages_psychologist/profile_psychologist_page/profilePsychologistPage.dart';
+import 'package:selamat_application/pages_psychologist/schedule_psychologist/schedulePsychologistPage.dart';
 
 const homeScreenItems = [
   HomePage(),
@@ -14,9 +17,8 @@ const homeScreenItems = [
 ];
 
 const psychologistScreenItems = [
-  Text("HomePage"),
-  Text("Discover"),
-  Text("Schedule"),
+  HomePagePsychologist(),
+  SchedulePsychologistPage(),
   Text("Chat"),
-  Text("Profile"),
+  ProfilePsychologistPage(),
 ];

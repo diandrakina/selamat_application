@@ -53,6 +53,7 @@ dependencies:
   easy_date_timeline: ^1.0.3
   just_audio: ^0.9.36
   audioplayers: ^5.2.1
+  flutter_rating_bar: ^4.0.1
 
 
 dev_dependencies:

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:selamat_application/pages/schedule_page/toDoList.dart';
 import 'package:selamat_application/styles/styles.dart';
 
 class ScheduleAction extends StatefulWidget {
@@ -28,7 +29,7 @@ class _ScheduleActionState extends State<ScheduleAction> {
         //start
         startActionPane: ActionPane(
           extentRatio: 0.25,
-          motion: StretchMotion(),
+          motion: const StretchMotion(),
           children: [
             SlidableAction(
               onPressed: ((context) {}),
@@ -45,10 +46,17 @@ class _ScheduleActionState extends State<ScheduleAction> {
         //end
         endActionPane: ActionPane(
           extentRatio: 0.5,
-          motion: StretchMotion(),
+          motion: const StretchMotion(),
           children: [
             SlidableAction(
-              onPressed: ((context) {}),
+              onPressed: ((context) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ToDoList(),
+                  ),
+                );
+              }),
               icon: FontAwesomeIcons.penToSquare,
               foregroundColor: AppColors.white,
               backgroundColor: AppColors.successStreak,

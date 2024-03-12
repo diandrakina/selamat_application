@@ -4,7 +4,6 @@ import 'package:selamat_application/pages/payment_page/payment2.dart';
 import 'package:selamat_application/pages/payment_page/payment4.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
-import 'package:selamat_application/widget/widget_payment/buttonNext.dart';
 import 'package:selamat_application/widget/widget_payment/customStepper.dart';
 
 class Payment3 extends StatefulWidget {
@@ -38,7 +37,7 @@ class _Payment3State extends State<Payment3> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: ((context) => Payment2()),
+                      builder: ((context) => const Payment2()),
                     ),
                   );
                 },
@@ -57,7 +56,8 @@ class _Payment3State extends State<Payment3> {
           child: Column(
             children: [
               //STEPPER COMPONENT
-              StepperComponent(status1: true, status2: true, status3: true),
+              const StepperComponent(
+                  status1: true, status2: true, status3: true),
 
               //CONTENT
               const SizedBox(
@@ -462,7 +462,7 @@ class _Payment3State extends State<Payment3> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Payment4(),
+                                    builder: (context) => const Payment4(),
                                   ),
                                 );
                               },

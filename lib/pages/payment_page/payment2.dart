@@ -4,7 +4,6 @@ import 'package:selamat_application/pages/payment_page/payment1.dart';
 import 'package:selamat_application/pages/payment_page/payment3.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
-import 'package:selamat_application/widget/widget_payment/buttonNext.dart';
 import 'package:selamat_application/widget/widget_payment/customStepper.dart';
 
 class Payment2 extends StatefulWidget {
@@ -60,7 +59,7 @@ class _Payment2State extends State<Payment2> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: ((context) => Payment1()),
+                      builder: ((context) => const Payment1()),
                     ),
                   );
                 },
@@ -240,7 +239,7 @@ class _Payment2State extends State<Payment2> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: ((context) => Payment3()),
+                builder: ((context) => const Payment3()),
               ),
             );
           },

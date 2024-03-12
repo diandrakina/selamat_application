@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:selamat_application/pages/add_schedule_notes/addShareNotes.dart';
-import 'package:selamat_application/pages/add_schedule_notes/addShareSchedule.dart';
-import 'package:selamat_application/pages/home_page/homePage.dart';
-import 'package:selamat_application/pages/profile_page/editProfile.dart';
-import 'package:selamat_application/pages/profile_page/profileSharedSchedule.dart';
 import 'package:selamat_application/pages/settings_page/settingsPage.dart';
 import 'package:selamat_application/styles/styles.dart';
-import 'package:selamat_application/widget/widget_schedule/scheduleBox.dart';
 import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 
 class OtherProfilePage extends StatefulWidget {
@@ -51,7 +45,7 @@ class _OtherProfilePageState extends State<OtherProfilePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SettingsPage(),
+                      builder: (context) => const SettingsPage(),
                     ),
                   );
                 },
@@ -221,6 +215,7 @@ class _OtherProfilePageState extends State<OtherProfilePage> {
   }
 }
 
+// ignore: camel_case_types
 class Page_View2 extends StatefulWidget {
   const Page_View2({super.key});
 
@@ -228,8 +223,9 @@ class Page_View2 extends StatefulWidget {
   State<Page_View2> createState() => _Page_View2State();
 }
 
+// ignore: camel_case_types
 class _Page_View2State extends State<Page_View2> {
-  PageController _pageController = PageController(initialPage: 0);
+  final PageController _pageController = PageController(initialPage: 0);
   int _currentPageIndex = 0;
 
   final List<Widget> _pages = [
@@ -240,67 +236,65 @@ class _Page_View2State extends State<Page_View2> {
   void _onTap(int pageIndex) {
     _pageController.animateToPage(
       pageIndex,
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       curve: Curves.ease,
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Stack(children: [
-        PageView.builder(
-          controller: _pageController,
-          onPageChanged: (int page) {
-            setState(() {
-              _currentPageIndex = page;
-            });
-          },
-          itemCount: _pages.length,
-          itemBuilder: (BuildContext context, int index) {
-            return _pages[index % _pages.length];
-          },
+    return Stack(children: [
+      PageView.builder(
+        controller: _pageController,
+        onPageChanged: (int page) {
+          setState(() {
+            _currentPageIndex = page;
+          });
+        },
+        itemCount: _pages.length,
+        itemBuilder: (BuildContext context, int index) {
+          return _pages[index % _pages.length];
+        },
+      ),
+      Container(
+        padding: const EdgeInsets.only(top: 20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            GestureDetector(
+              onTap: () {
+                _onTap(0);
+              },
+              child: Text(
+                "Schedule",
+                style: TextStyle(
+                    fontFamily: 'Samsung Sans',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: _currentPageIndex == 0
+                        ? AppColors.pastelGreenHealth
+                        : Colors.white54),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                _onTap(1);
+              },
+              child: Text(
+                "Notes",
+                style: TextStyle(
+                    fontFamily: 'Samsung Sans',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: _currentPageIndex == 1
+                        ? AppColors.pastelGreenHealth
+                        : Colors.white54),
+              ),
+            ),
+          ],
         ),
-        Container(
-          padding: const EdgeInsets.only(top: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  _onTap(0);
-                },
-                child: Text(
-                  "Schedule",
-                  style: TextStyle(
-                      fontFamily: 'Samsung Sans',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: _currentPageIndex == 0
-                          ? AppColors.pastelGreenHealth
-                          : Colors.white54),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  _onTap(1);
-                },
-                child: Text(
-                  "Notes",
-                  style: TextStyle(
-                      fontFamily: 'Samsung Sans',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: _currentPageIndex == 1
-                          ? AppColors.pastelGreenHealth
-                          : Colors.white54),
-                ),
-              ),
-            ],
-          ),
-        )
-      ]),
-    );
+      )
+    ]);
   }
 }
 
@@ -341,7 +335,7 @@ class NotesView2 extends StatelessWidget {
             shape: BoxShape.circle,
             border: Border.all(color: Colors.white),
           ),
-          child: Center(
+          child: const Center(
             child: FaIcon(
               FontAwesomeIcons.bookmark,
               size: 60,

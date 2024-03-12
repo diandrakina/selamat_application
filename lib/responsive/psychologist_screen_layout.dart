@@ -95,7 +95,7 @@ class _PsychologistScreenLayoutState extends State<PsychologistScreenLayout> {
                   backgroundColor: primaryColor),
               BottomNavigationBarItem(
                   icon: Icon(
-                    Icons.search,
+                    Icons.calendar_month,
                     size: 32,
                     color: _page == 1 ? primaryColor : secondaryColor,
                   ),
@@ -103,25 +103,17 @@ class _PsychologistScreenLayoutState extends State<PsychologistScreenLayout> {
                   backgroundColor: primaryColor),
               BottomNavigationBarItem(
                   icon: Icon(
-                    Icons.calendar_month,
-                    size: 32,
+                    Icons.chat_bubble,
+                    size: 31,
                     color: _page == 2 ? primaryColor : secondaryColor,
                   ),
                   label: '',
                   backgroundColor: primaryColor),
               BottomNavigationBarItem(
                   icon: Icon(
-                    FontAwesomeIcons.running,
-                    size: 32,
+                    Icons.person,
+                    size: 35,
                     color: _page == 3 ? primaryColor : secondaryColor,
-                  ),
-                  label: '',
-                  backgroundColor: primaryColor),
-              BottomNavigationBarItem(
-                  icon: Icon(
-                    FontAwesomeIcons.chartSimple,
-                    size: 32,
-                    color: _page == 4 ? primaryColor : secondaryColor,
                   ),
                   label: '',
                   backgroundColor: primaryColor),
