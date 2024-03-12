@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 
 class AppColors {
@@ -400,46 +402,47 @@ class TextStyles {
 
 class AppDecoration {
   static BoxDecoration get fill_baseColor =>
-      BoxDecoration(color: AppColors.baseColor);
+      const BoxDecoration(color: AppColors.baseColor);
   static BoxDecoration get fill_fourthColor =>
-      BoxDecoration(color: AppColors.fourthColor);
-  static BoxDecoration get fill_white => BoxDecoration(color: AppColors.white);
+      const BoxDecoration(color: AppColors.fourthColor);
+  static BoxDecoration get fill_white =>
+      const BoxDecoration(color: AppColors.white);
   static BoxDecoration get fill_inactive =>
-      BoxDecoration(color: AppColors.inactive);
+      const BoxDecoration(color: AppColors.inactive);
   static BoxDecoration get fill_pastelGreenHealth =>
-      BoxDecoration(color: AppColors.pastelGreenHealth);
+      const BoxDecoration(color: AppColors.pastelGreenHealth);
   static BoxDecoration get fill_pastelRed =>
-      BoxDecoration(color: AppColors.pastelRed);
+      const BoxDecoration(color: AppColors.pastelRed);
   static BoxDecoration get fill_successStreak =>
-      BoxDecoration(color: AppColors.successStreak);
+      const BoxDecoration(color: AppColors.successStreak);
   static BoxDecoration get fill_darkModeCard =>
-      BoxDecoration(color: AppColors.darkModeCard);
+      const BoxDecoration(color: AppColors.darkModeCard);
   static BoxDecoration get fill_activeCalendar =>
-      BoxDecoration(color: AppColors.activeCalendar);
+      const BoxDecoration(color: AppColors.activeCalendar);
   static BoxDecoration get fill_inactiveCalendar =>
-      BoxDecoration(color: AppColors.inactiveCalendar);
+      const BoxDecoration(color: AppColors.inactiveCalendar);
   static BoxDecoration get fill_bgDarkMode =>
-      BoxDecoration(color: AppColors.bgDarkMode);
+      const BoxDecoration(color: AppColors.bgDarkMode);
   static BoxDecoration get fill_floatingGrey =>
-      BoxDecoration(color: AppColors.floatingGrey);
+      const BoxDecoration(color: AppColors.floatingGrey);
   static BoxDecoration get fill_starYellow =>
-      BoxDecoration(color: AppColors.starYellow);
+      const BoxDecoration(color: AppColors.starYellow);
   static BoxDecoration get fill_deadBlue =>
-      BoxDecoration(color: AppColors.deadBlue);
+      const BoxDecoration(color: AppColors.deadBlue);
   static BoxDecoration get fill_pastelPurple =>
-      BoxDecoration(color: AppColors.pastelPurple);
+      const BoxDecoration(color: AppColors.pastelPurple);
   static BoxDecoration get fill_bluePowder =>
-      BoxDecoration(color: AppColors.bluePowder);
+      const BoxDecoration(color: AppColors.bluePowder);
   static BoxDecoration get fill_bluePowderDark =>
-      BoxDecoration(color: AppColors.bluePowderDark);
+      const BoxDecoration(color: AppColors.bluePowderDark);
   static BoxDecoration get fill_bluePowderDarker =>
-      BoxDecoration(color: AppColors.bluePowderDarker);
+      const BoxDecoration(color: AppColors.bluePowderDarker);
   static BoxDecoration get fill_bluePowderBlack =>
-      BoxDecoration(color: AppColors.bluePowderBlack);
+      const BoxDecoration(color: AppColors.bluePowderBlack);
   static BoxDecoration get fill_inactiveTask =>
-      BoxDecoration(color: AppColors.inactiveTask);
+      const BoxDecoration(color: AppColors.inactiveTask);
   static BoxDecoration get fill_baseColorCard =>
-      BoxDecoration(color: AppColors.baseColorCard);
+      const BoxDecoration(color: AppColors.baseColorCard);
 }
 
 class CustomButtonStyles {
@@ -464,6 +467,11 @@ class CustomButtonStyles {
   static ButtonStyle get buttonBlue => ElevatedButton.styleFrom(
       backgroundColor: AppColors.baseColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)));
+
+  static ButtonStyle get buttonRed => ElevatedButton.styleFrom(
+      backgroundColor: AppColors.pastelRed,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)));
+
   static ButtonStyle get buttonBlue2 => ElevatedButton.styleFrom(
       backgroundColor: AppColors.baseColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.0)));
@@ -471,6 +479,7 @@ class CustomButtonStyles {
   static ButtonStyle get buttonGrey2 => ElevatedButton.styleFrom(
       backgroundColor: AppColors.darkModeCard,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.0)));
+  static ButtonStyle get buttonGrey3 => ElevatedButton.styleFrom(
+      backgroundColor: AppColors.activeCalendar,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.0)));
 }
-
-// PrimaryColors get appTheme => ThemeHelper()

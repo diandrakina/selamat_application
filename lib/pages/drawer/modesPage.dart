@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:selamat_application/widget/navbar.dart';
@@ -11,27 +12,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(TimerApp());
-}
-
-class TimerApp extends StatelessWidget {
+class ModesPage extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Timer App',
-      theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
-      home: TimerHomePage(),
-    );
-  }
 }
 
-class TimerHomePage extends StatefulWidget {
-  @override
-  _TimerHomePageState createState() => _TimerHomePageState();
-}
-
-class _TimerHomePageState extends State<TimerHomePage> {
+class _ModesPageState extends State<ModesPage> {
   int _totalSeconds = 0;
   bool _isActive = false;
   late Timer _timer;
@@ -83,19 +68,6 @@ class _TimerHomePageState extends State<TimerHomePage> {
     });
   }
 
-  // void _playRingtone() {
-  //   _audioCache.play('ringtones.mp3');
-  // }
-
-  // Future<void> playSound() async {
-  //   String audioPath = "assets/audio/ringtone.mp3";
-  //   await player.play(AssetSource(audioPath));
-  // }
-
-  // Future<void> _playRingtone() async {
-  //   await _audioPlayer.play(AssetSource('audio/ringtone.mp3'));
-  // }
-
   @override
   void dispose() {
     _timer.cancel();
@@ -115,73 +87,91 @@ class _TimerHomePageState extends State<TimerHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: AppColors.bgDarkMode,
-          leading: Icon(
-            Icons.arrow_back,
-            color: AppColors.white,
-          ),
-          title: Text(
-            "Modes",
-            style: TextStyles.GR_24_title_regular,
-          )),
-      body: SingleChildScrollView(
-        child: Center(
+        toolbarHeight: 80,
+        leadingWidth: double.maxFinite,
+        elevation: 0.0,
+        backgroundColor: AppColors.bgDarkMode,
+        leading: Container(
+          padding: const EdgeInsets.all(10),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 20.0),
-                  child:
-                      Text('Pomodoro', style: TextStyles.GR_24_title_regular),
-                ),
+            children: [
+              Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const FaIcon(
+                      Icons.arrow_back,
+                      color: AppColors.white,
+                      size: 25,
+                    ),
+                  ),
+                  const Padding(padding: EdgeInsets.all(5)),
+                  Text(
+                    "Modes",
+                    style: TextStyles.bold_30,
+                  ),
+                ],
               ),
-              SizedBox(height: 10.0),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Container(
+            ],
+          ),
+        ),
+      ),
+
+      //BODY
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.only(left: 20, right: 20),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 20.0),
+                    child: Text('Pomodoro', style: TextStyles.bold_24),
+                  ),
+                ),
+                const SizedBox(height: 10.0),
+                Container(
                   decoration: BoxDecoration(
-                    color: AppColors
-                        .darkModeCard, // Change the background color to grey
-                    borderRadius: BorderRadius.circular(
-                        12), // Change the border radius to 20
+                    color: AppColors.darkModeCard,
+                    borderRadius: BorderRadius.circular(12),
                   ),
                   child: ListTile(
                     title: Row(
                       children: [
                         Container(
-                          decoration: BoxDecoration(
-                            color: AppColors
-                                .baseColor, // Change the background color to grey
-                            borderRadius: BorderRadius.circular(
-                                100), // Change the border radius to 20
+                          height: 40,
+                          width: 40,
+                          decoration: const BoxDecoration(
+                            color: AppColors.baseColor,
+                            shape: BoxShape.circle,
                           ),
-                          child: Padding(
-                            padding: EdgeInsets.all(5.0),
-                            child: Icon(
-                              Icons.work,
-                              color: AppColors.white,
-                            ),
+                          child: const Icon(
+                            Icons.work,
+                            color: AppColors.white,
                           ),
                         ),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         Text(
                           'Work',
-                          style: TextStyles.GR_16_regular,
+                          style: TextStyles.medium_18,
                         ),
                       ],
                     ),
                     trailing: Text(
                       '09.00',
-                      style: TextStyles.GR_16_regular,
+                      style: TextStyles.medium_18,
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 40),
-                child: Stack(
+                const SizedBox(
+                  height: 40,
+                ),
+                Stack(
                   alignment: Alignment.center,
                   children: [
                     SizedBox(
@@ -202,72 +192,43 @@ class _TimerHomePageState extends State<TimerHomePage> {
                     ),
                   ],
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 100),
-                child: SizedBox(
-                  width: 320,
-                  height: 50,
-                  child: ElevatedButton(
-                      onPressed: () {
-                        if (_totalSeconds == 0) {
-                          setState(() {
-                            _totalSeconds =
-                                1500; // Set your desired initial timer value here (10 minutes)
-                          });
-                        }
-                        _toggleTimer();
-                        _stopAudio();
-                      },
-                      child: Text(
-                        _isActive ? 'Stop Session' : 'Start Session',
-                        style: TextStyles.GR_24_bold,
-                      ),
-                      style: _isActive
-                          ? ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8)),
-                              backgroundColor: AppColors.pastelRed)
-                          : ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8)),
-                              backgroundColor: AppColors.baseColor)),
+                const SizedBox(
+                  height: 80,
                 ),
-              ),
-              SizedBox(height: 20.0),
-              SizedBox(
-                width: 320,
-                height: 50,
-                child: ElevatedButton(
-                    onPressed: () {
-                      _resetTimer();
-                      _stopAudio();
-                    },
-                    child: Text(
-                      'Reset',
-                      style: TextStyles.GR_24_bold,
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
-                      backgroundColor: AppColors.floatingGrey,
-                    )),
-              ),
-            ],
+                CustomElevatedButton(
+                  text: _isActive ? "Stop Session" : "Start Session",
+                  height: 50,
+                  buttonTextStyle: TextStyles.bold_24,
+                  buttonStyle: _isActive
+                      ? CustomButtonStyles.buttonRed
+                      : CustomButtonStyles.buttonBlue,
+                  onPressed: () {
+                    if (_totalSeconds == 0) {
+                      setState(() {
+                        _totalSeconds =
+                            1500; // Set your desired initial timer value here (10 minutes)
+                      });
+                    }
+                    _toggleTimer();
+                    _stopAudio();
+                  },
+                ),
+                const SizedBox(height: 20.0),
+                CustomElevatedButton(
+                  text: "Reset",
+                  buttonTextStyle: TextStyles.bold_24,
+                  buttonStyle: CustomButtonStyles.buttonNotSure,
+                  height: 50,
+                  onPressed: () {
+                    _resetTimer();
+                    _stopAudio();
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
-      // yang bagian bawah ini fungsinya buat ngetes audios
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     setState(() {
-      //       _totalSeconds =
-      //           5; // Set your desired initial timer value here (10 minutes)
-      //     });
-      //   },
-      //   tooltip: 'Set Timer',
-      //   child: Icon(Icons.timer),
-      // ),
     );
   }
 }

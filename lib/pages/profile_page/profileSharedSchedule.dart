@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:selamat_application/pages/add_schedule_notes/addShareNotes.dart';
@@ -7,9 +5,6 @@ import 'package:selamat_application/pages/add_schedule_notes/addShareSchedule.da
 import 'package:selamat_application/pages/profile_page/editProfile.dart';
 import 'package:selamat_application/pages/settings_page/settingsPage.dart';
 import 'package:selamat_application/styles/styles.dart';
-import 'package:selamat_application/widget/chart/profile_page/donutChart.dart';
-import 'package:selamat_application/widget/chart/profile_page/timeChart.dart';
-import 'package:selamat_application/widget/navbar.dart';
 import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 import 'package:selamat_application/widget/widget_schedule/notesBox.dart';
 import 'package:selamat_application/widget/widget_schedule/scheduleBox.dart';
@@ -22,7 +17,6 @@ class NewProfilePage extends StatefulWidget {
 }
 
 class _NewProfilePageState extends State<NewProfilePage> {
-  bool _isFollowed = false;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -55,7 +49,7 @@ class _NewProfilePageState extends State<NewProfilePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SettingsPage(),
+                      builder: (context) => const SettingsPage(),
                     ),
                   );
                 },
@@ -113,7 +107,7 @@ class _NewProfilePageState extends State<NewProfilePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => EditProfile(),
+                              builder: (context) => const EditProfile(),
                             ),
                           );
                         },
@@ -291,7 +285,7 @@ class _NewProfilePageState extends State<NewProfilePage> {
 class ContainerAssets extends StatefulWidget {
   final int num;
   final String info;
-  const ContainerAssets({Key? key, required this.num, required this.info});
+  const ContainerAssets({super.key, required this.num, required this.info});
 
   @override
   State<ContainerAssets> createState() => _ContainerAssetsState();
@@ -322,6 +316,7 @@ class _ContainerAssetsState extends State<ContainerAssets> {
 }
 
 //PAGE VIEW
+// ignore: camel_case_types
 class Page_View extends StatefulWidget {
   const Page_View({super.key});
 
@@ -329,8 +324,9 @@ class Page_View extends StatefulWidget {
   State<Page_View> createState() => _Page_ViewState();
 }
 
+// ignore: camel_case_types
 class _Page_ViewState extends State<Page_View> {
-  PageController _pageController = PageController(initialPage: 0);
+  final PageController _pageController = PageController(initialPage: 0);
   int _currentPageIndex = 0;
 
   final List<Widget> _pages = [
@@ -341,67 +337,65 @@ class _Page_ViewState extends State<Page_View> {
   void _onTap(int pageIndex) {
     _pageController.animateToPage(
       pageIndex,
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       curve: Curves.ease,
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Stack(children: [
-        PageView.builder(
-          controller: _pageController,
-          onPageChanged: (int page) {
-            setState(() {
-              _currentPageIndex = page;
-            });
-          },
-          itemCount: _pages.length,
-          itemBuilder: (BuildContext context, int index) {
-            return _pages[index % _pages.length];
-          },
+    return Stack(children: [
+      PageView.builder(
+        controller: _pageController,
+        onPageChanged: (int page) {
+          setState(() {
+            _currentPageIndex = page;
+          });
+        },
+        itemCount: _pages.length,
+        itemBuilder: (BuildContext context, int index) {
+          return _pages[index % _pages.length];
+        },
+      ),
+      Container(
+        padding: const EdgeInsets.only(top: 20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            GestureDetector(
+              onTap: () {
+                _onTap(0);
+              },
+              child: Text(
+                "Schedule",
+                style: TextStyle(
+                    fontFamily: 'Samsung Sans',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: _currentPageIndex == 0
+                        ? AppColors.pastelGreenHealth
+                        : Colors.white54),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                _onTap(1);
+              },
+              child: Text(
+                "Notes",
+                style: TextStyle(
+                    fontFamily: 'Samsung Sans',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: _currentPageIndex == 1
+                        ? AppColors.pastelGreenHealth
+                        : Colors.white54),
+              ),
+            ),
+          ],
         ),
-        Container(
-          padding: const EdgeInsets.only(top: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  _onTap(0);
-                },
-                child: Text(
-                  "Schedule",
-                  style: TextStyle(
-                      fontFamily: 'Samsung Sans',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: _currentPageIndex == 0
-                          ? AppColors.pastelGreenHealth
-                          : Colors.white54),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  _onTap(1);
-                },
-                child: Text(
-                  "Notes",
-                  style: TextStyle(
-                      fontFamily: 'Samsung Sans',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: _currentPageIndex == 1
-                          ? AppColors.pastelGreenHealth
-                          : Colors.white54),
-                ),
-              ),
-            ],
-          ),
-        )
-      ]),
-    );
+      )
+    ]);
   }
 }
 
@@ -416,8 +410,8 @@ class ScheduleView extends StatelessWidget {
         Padding(padding: EdgeInsets.all(30)),
         //BOX BUAT SHARE SCHEDULE
         ScheduleBox(
-          profilePict: "assets/images/discovery_page/psikolog/Joel.jpeg",
-          username: "lookaforwin",
+          profilePict: "assets/images/discovery_page/psikolog/ChenZheyuan.jpg",
+          username: "richie_hartono",
           desc:
               "i wanna score 80+ like Kobe Bryant, do you guys have any advice on my routine?",
           date: "December 13 - December 24",
@@ -430,8 +424,8 @@ class ScheduleView extends StatelessWidget {
           height: 16,
         ),
         ScheduleBox(
-          profilePict: "assets/images/discovery_page/psikolog/Joel.jpeg",
-          username: "lookaforwin",
+          profilePict: "assets/images/discovery_page/psikolog/ChenZheyuan.jpg",
+          username: "richie_hartono",
           desc:
               "i wanna score 80+ like Kobe Bryant, do you guys have any advice on my routine?",
           date: "December 13 - December 24",
@@ -455,8 +449,8 @@ class NotesView extends StatelessWidget {
       children: [
         Padding(padding: EdgeInsets.all(30)),
         NotesBox(
-          profilePict: "assets/images/discovery_page/psikolog/Joel.jpeg",
-          username: "lookaforwin",
+          profilePict: "assets/images/discovery_page/psikolog/ChenZheyuan.jpg",
+          username: "richie_hartono",
           desc:
               "YAA BOYY I JUST TRAIN SO HARD, I CAN GET THAT 81+ POINTS ASAP BROOO. SEE U NEXT WEEK!",
           comment: 34.1,
@@ -468,8 +462,8 @@ class NotesView extends StatelessWidget {
           height: 16,
         ),
         NotesBox(
-          profilePict: "assets/images/discovery_page/psikolog/Joel.jpeg",
-          username: "lookaforwin",
+          profilePict: "assets/images/discovery_page/psikolog/ChenZheyuan.jpg",
+          username: "richie_hartono",
           desc:
               "YAA BOYY I JUST TRAIN SO HARD, I CAN GET THAT 81+ POINTS ASAP BROOO. SEE U NEXT WEEK!",
           comment: 34.1,

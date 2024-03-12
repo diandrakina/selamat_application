@@ -39,7 +39,11 @@ class _NotificationPageState extends State<NotificationPage> {
                 Row(
                   children: [
                     GestureDetector(
-                      onTap: () => Navigator.of(context).pop(),
+
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
+
                       child: const FaIcon(
                         Icons.arrow_back,
                         color: AppColors.white,

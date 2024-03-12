@@ -34,7 +34,7 @@ class _Payment4State extends State<Payment4> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: ((context) => Payment3()),
+                      builder: ((context) => const Payment3()),
                     ),
                   );
                 },
@@ -63,7 +63,7 @@ class _Payment4State extends State<Payment4> {
                 textAlign: TextAlign.center,
                 style: TextStyles.bold_30,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
 

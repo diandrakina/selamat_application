@@ -1,6 +1,5 @@
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:selamat_application/models/user.dart';
@@ -149,7 +148,7 @@ class _SchedulePageState extends State<SchedulePage> {
                   ),
 
                   //TIMELINE
-                  timeLineProps: EasyTimeLineProps(separatorPadding: 8),
+                  timeLineProps: const EasyTimeLineProps(separatorPadding: 8),
 
                   //DAYBUILDER
                   itemBuilder: ((
@@ -236,6 +235,7 @@ class _SchedulePageState extends State<SchedulePage> {
 
           //PAGE VIEW
           child: SchedulePageView(),
+
         ),
 
         //Floating button
@@ -244,7 +244,7 @@ class _SchedulePageState extends State<SchedulePage> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ToDoList(),
+                builder: (context) => const ToDoList(),
               ),
             );
           },
@@ -258,3 +258,156 @@ class _SchedulePageState extends State<SchedulePage> {
     );
   }
 }
+
+
+class PageView2 extends StatefulWidget {
+  const PageView2({super.key});
+
+  @override
+  State<PageView2> createState() => _PageView2State();
+}
+
+class _PageView2State extends State<PageView2> {
+  final PageController _pageController = PageController(initialPage: 0);
+  int _currentPageIndex = 0;
+
+  final List<Widget> _pages = [
+    const AllSchedule(),
+    const AllSchedule(),
+    const AllSchedule(),
+    const AllSchedule(),
+  ];
+
+  void _onTap(int pageIndex) {
+    _pageController.animateToPage(
+      pageIndex,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.ease,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        PageView.builder(
+          controller: _pageController,
+          onPageChanged: (int page) {
+            setState(() {
+              _currentPageIndex = page;
+            });
+          },
+          itemCount: _pages.length,
+          itemBuilder: (BuildContext context, int index) {
+            return _pages[index % _pages.length];
+          },
+        ),
+        Container(
+          padding: const EdgeInsets.only(top: 20),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                const SizedBox(
+                  width: 20,
+                ),
+
+                //All
+                GestureDetector(
+                  child: CustomElevatedButton(
+                    onPressed: () {
+                      _onTap(0);
+                    },
+                    text: "All",
+                    buttonTextStyle: TextStyles.bold_18,
+                    height: 40,
+                    width: 92,
+                    buttonStyle: _currentPageIndex == 0
+                        ? CustomButtonStyles.buttonBlue2
+                        : CustomButtonStyles.buttonGrey2,
+                  ),
+                ),
+                const SizedBox(
+                  width: 8,
+                ),
+
+                //Morning
+                GestureDetector(
+                  child: CustomElevatedButton(
+                    onPressed: () {
+                      _onTap(1);
+                    },
+                    text: "  Morning",
+                    leftIcon: const FaIcon(
+                      FontAwesomeIcons.sun,
+                      color: Colors.white,
+                      size: 20,
+                    ),
+                    buttonTextStyle: TextStyles.bold_18,
+                    height: 40,
+                    width: 150,
+                    buttonStyle: _currentPageIndex == 1
+                        ? CustomButtonStyles.buttonBlue2
+                        : CustomButtonStyles.buttonGrey2,
+                  ),
+                ),
+                const SizedBox(
+                  width: 8,
+                ),
+
+                //Afternoon
+                GestureDetector(
+                  child: CustomElevatedButton(
+                    onPressed: () {
+                      _onTap(2);
+                    },
+                    text: "  Afternoon",
+                    leftIcon: const FaIcon(
+                      FontAwesomeIcons.sun,
+                      color: Colors.white,
+                      size: 20,
+                    ),
+                    buttonTextStyle: TextStyles.bold_18,
+                    height: 40,
+                    width: 165,
+                    buttonStyle: _currentPageIndex == 2
+                        ? CustomButtonStyles.buttonBlue2
+                        : CustomButtonStyles.buttonGrey2,
+                  ),
+                ),
+                const SizedBox(
+                  width: 8,
+                ),
+
+                //Evening
+                GestureDetector(
+                  child: CustomElevatedButton(
+                    onPressed: () {
+                      _onTap(3);
+                    },
+                    text: "  Evening",
+                    leftIcon: const FaIcon(
+                      FontAwesomeIcons.moon,
+                      color: Colors.white,
+                      size: 20,
+                    ),
+                    buttonTextStyle: TextStyles.bold_18,
+                    height: 40,
+                    width: 140,
+                    buttonStyle: _currentPageIndex == 3
+                        ? CustomButtonStyles.buttonBlue2
+                        : CustomButtonStyles.buttonGrey2,
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+              ],
+            ),
+          ),
+        )
+      ],
+    );
+  }
+}
+

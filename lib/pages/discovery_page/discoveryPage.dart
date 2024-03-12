@@ -1,16 +1,15 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:selamat_application/pages/chat_page/ContactPage.dart';
 import 'package:selamat_application/pages/discovery_page/discoverPsychologist.dart';
 import 'package:selamat_application/pages/discovery_page/habitPage.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/drawerWidget.dart';
-import 'package:selamat_application/widget/navbar.dart';
+
 import 'package:selamat_application/widget/searchBar.dart';
 import 'package:selamat_application/widget/widget_discovery/containerPsikolog.dart';
 import 'package:selamat_application/widget/widget_discovery/container_habits.dart';
-import 'package:selamat_application/widget/widget_discovery/container_profile_psikolog.dart';
-import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 
 class DiscoveryPage extends StatefulWidget {
   const DiscoveryPage({super.key});
@@ -64,10 +63,20 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                   const SizedBox(
                     width: 15,
                   ),
-                  const FaIcon(
-                    FontAwesomeIcons.solidCommentDots,
-                    size: 25,
-                    color: AppColors.white,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ContactPage(),
+                        ),
+                      );
+                    },
+                    child: const FaIcon(
+                      FontAwesomeIcons.solidCommentDots,
+                      size: 25,
+                      color: AppColors.white,
+                    ),
                   ),
                 ],
               ),

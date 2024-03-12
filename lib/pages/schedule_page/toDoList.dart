@@ -1,3 +1,4 @@
+
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -11,13 +12,15 @@ import 'package:selamat_application/pages/schedule_page/visibilityPage.dart';
 import 'package:selamat_application/providers/user_provider.dart';
 import 'package:selamat_application/resources/firestore_methods.dart';
 import 'package:selamat_application/styles/styles.dart';
+
 import 'package:selamat_application/utils/richie_utils.dart';
+
 import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 
 // BUAT BIKIN TO DO LIST (TOMBOL ADD)
 
 class ToDoList extends StatefulWidget {
-  ToDoList({super.key});
+  const ToDoList({super.key});
 
   @override
   _ToDoListState createState() => _ToDoListState();
@@ -175,7 +178,7 @@ class _ToDoListState extends State<ToDoList> {
     });
   }
 
-  TextEditingController _textFieldController = TextEditingController();
+  final TextEditingController _textFieldController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -226,10 +229,25 @@ class _ToDoListState extends State<ToDoList> {
               const SizedBox(
                 width: 250,
               ),
+
               InkWell(
                 onTap: () {
                   createToDo(user.uid);
                   Navigator.of(context).pop();
+
+              CustomElevatedButton(
+                text: "Save",
+                buttonStyle: CustomButtonStyles.buttonBlue,
+                buttonTextStyle: TextStyles.bold_14,
+                height: 30,
+                width: 80,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SchedulePage(),
+                    ),
+                  );
                 },
                 child: Container(
                   child: _isLoading
@@ -535,10 +553,26 @@ class _ToDoListState extends State<ToDoList> {
                                 Text('Visibility', style: TextStyles.light_18),
                               ],
                             ),
+
                             trailing: Container(
                               constraints: BoxConstraints(maxWidth: 150),
                               child: Text('${_visibility}',
                                   style: TextStyles.light_18),
+
+                            trailing: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const VisibilityPage(),
+                                  ),
+                                );
+                              },
+                              child:
+                                  Text('Public >', style: TextStyles.light_18),
+
+                          
                             ), // Add your logic for language selection here
                           ),
                           const Divider(
@@ -564,10 +598,24 @@ class _ToDoListState extends State<ToDoList> {
                                 Text('Category', style: TextStyles.regular_18),
                               ],
                             ),
+
                             trailing: Container(
                               constraints: BoxConstraints(maxWidth: 150),
                               child: Text('${_category}',
                                   style: TextStyles.light_18),
+
+                            trailing: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const CategoriesPage(),
+                                  ),
+                                );
+                              },
+                              child: Text('None >', style: TextStyles.light_18),
+
                             ), // Add your logic for language selection here
                           ),
                           const Divider(
@@ -670,7 +718,7 @@ class _ToDoListState extends State<ToDoList> {
                     ),
                     const SizedBox(
                       height: 40,
-                    )
+                    ),
                   ],
                 ),
               ),

@@ -128,7 +128,7 @@ class _TransactionHistoryState extends State<TransactionHistory> {
                       style: TextStyles.medium_16,
                     ),
                     Text(
-                      "${time} hour(s) session",
+                      "$time hour(s) session",
                       style: TextStyles.medium_16,
                     ),
                   ],

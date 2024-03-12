@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:selamat_application/pages/discovery_page/psychologistDetailPage.dart';
 import 'package:selamat_application/styles/styles.dart';
+import 'package:selamat_application/widget/navbar.dart';
+import 'package:selamat_application/widget/searchBar.dart';
+import 'package:selamat_application/widget/widget_discovery/container_habits.dart';
+import 'package:selamat_application/widget/widget_discovery/container_profile_psikolog.dart';
+import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
+// Import the psychologist detail page
 
-class ChatScreen extends StatefulWidget {
+class ChatPsycho extends StatefulWidget {
   @override
   _ChatScreenState createState() => _ChatScreenState();
 }
 
-class _ChatScreenState extends State<ChatScreen> {
+class _ChatScreenState extends State<ChatPsycho> {
   final List<ChatMessage> _messages = [];
 
-  final TextEditingController _textController = TextEditingController();
+  TextEditingController _textController = TextEditingController();
 
   void _handleSubmitted(String text) {
     _textController.clear();
@@ -77,14 +84,14 @@ class _ChatScreenState extends State<ChatScreen> {
               child: ListView.builder(
                 reverse: true,
                 itemCount: _messages.length,
-                itemBuilder: (context, index) { 
+                itemBuilder: (context, index) {
                   return _messages[index];
                 },
               ),
             ),
             Container(
               color: AppColors.bgDarkMode,
-              child: _buildTextComposer(),
+              child: _buildTextComposerButton(),
             ),
           ],
         ),
@@ -92,52 +99,45 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  Widget _buildTextComposer() {
+  Widget _buildTextComposerButton() {
     return Container(
-      height: 60,
+      height: 40,
       decoration: BoxDecoration(
         color: AppColors.darkModeCard,
         borderRadius: BorderRadius.circular(12),
       ),
       margin: const EdgeInsets.all(20.0),
-      child: Row(
-        children: <Widget>[
-          Flexible(
-            child: TextField(
-              controller: _textController,
-              onSubmitted: _handleSubmitted,
-              decoration: InputDecoration(
-                fillColor: AppColors.darkModeCard,
-                filled: true,
-                hintText: 'Message',
-                hintStyle: TextStyles.GR_16_regular,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                  borderSide: BorderSide.none,
-                ),
+      child: SizedBox(
+        width: 180,
+        child: TextButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => PsychologistDetailPage()),
+            );
+          },
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(
+                Colors.blue), // Set button color to blue
+            shape: MaterialStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius:
+                    BorderRadius.circular(12), // Set border radius to 12
               ),
-              style: TextStyles.light_16,
             ),
           ),
-          IconButton(
-            icon: const Icon(
-              Icons.send,
-              color: AppColors.white,
-            ),
-            onPressed: () {
-              if (_textController.text.isNotEmpty) {
-                _handleSubmitted(_textController.text);
-              }
-            },
+          child: Text(
+            'Chat Again',
+            style: TextStyles.GR_16_bold, // Adjust style as needed
           ),
-        ],
+        ),
       ),
     );
   }
 }
 
 class ChatMessage extends StatelessWidget {
-  const ChatMessage({super.key, required this.text, required this.isSender});
+  const ChatMessage({required this.text, required this.isSender});
 
   final String text;
   final bool isSender;

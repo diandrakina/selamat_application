@@ -8,6 +8,9 @@ import 'package:selamat_application/models/user.dart';
 import 'package:selamat_application/pages/schedule_page/to_do_list_with_data.dart';
 import 'package:selamat_application/providers/user_provider.dart';
 import 'package:selamat_application/resources/firestore_methods.dart';
+
+import 'package:selamat_application/pages/schedule_page/toDoList.dart';
+
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/utils/richie_utils.dart';
 
@@ -111,6 +114,7 @@ class _ScheduleActionState extends State<ScheduleAction> {
 
   @override
   Widget build(BuildContext context) {
+
     final User user = Provider.of<UserProvider>(context).getUser;
     final Timestamp firestoreTimestamp = widget.snap['startDate'];
     DateTime dateTime = firestoreTimestamp.toDate();
@@ -157,6 +161,81 @@ class _ScheduleActionState extends State<ScheduleAction> {
                           MaterialPageRoute(
                             builder: (context) => ToDoListWithData(
                               snap: widget.snap,
+
+    return Center(
+      child: Slidable(
+        //start
+        startActionPane: ActionPane(
+          extentRatio: 0.25,
+          motion: const StretchMotion(),
+          children: [
+            SlidableAction(
+              onPressed: ((context) {}),
+              icon: FontAwesomeIcons.circleCheck,
+              backgroundColor: AppColors.pastelGreenHealth,
+              foregroundColor: AppColors.white,
+              borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(12),
+                  bottomLeft: Radius.circular(12)),
+            )
+          ],
+        ),
+
+        //end
+        endActionPane: ActionPane(
+          extentRatio: 0.5,
+          motion: const StretchMotion(),
+          children: [
+            SlidableAction(
+              onPressed: ((context) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ToDoList(),
+                  ),
+                );
+              }),
+              icon: FontAwesomeIcons.penToSquare,
+              foregroundColor: AppColors.white,
+              backgroundColor: AppColors.successStreak,
+            ),
+            SlidableAction(
+              onPressed: ((context) {}),
+              icon: FontAwesomeIcons.trashCan,
+              foregroundColor: AppColors.white,
+              backgroundColor: AppColors.pastelRed,
+              borderRadius: const BorderRadius.only(
+                topRight: Radius.circular(12),
+                bottomRight: Radius.circular(12),
+              ),
+            )
+          ],
+        ),
+
+        //CONTAINER
+        child: GestureDetector(
+          onTap: () {
+            showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    backgroundColor: AppColors.bgDarkMode,
+                    content: Container(
+                      padding: EdgeInsets.zero,
+                      height: 250,
+                      width: 380,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          GestureDetector(
+                            child: const FaIcon(
+                              FontAwesomeIcons.xmark,
+                              color: Colors.white,
+                              size: 20,
+
                             ),
                           ),
                         );

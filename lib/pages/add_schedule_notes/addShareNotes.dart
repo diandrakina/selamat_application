@@ -228,7 +228,7 @@ class _AddShareNotesState extends State<AddShareNotes> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => ActivityPage(),
+                                    builder: (context) => const ActivityPage(),
                                   ),
                                 );
                               },

@@ -53,7 +53,7 @@ class _BeforeWeStartPageState extends State<BeforeWeStartPage> {
       child: Scaffold(
         body: Center(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 32),
+            padding: const EdgeInsets.symmetric(horizontal: 32),
             child: Text(
               "Before we start Let me ask you some questions",
               style: TextStyles.GR_42_bold,

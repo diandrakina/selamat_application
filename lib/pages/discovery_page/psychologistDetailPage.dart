@@ -260,7 +260,7 @@ class ProfilePsikolog extends StatefulWidget {
   final String tittle;
   final String description;
   const ProfilePsikolog(
-      {Key? key,
+      {super.key,
       required this.icon,
       required this.description,
       required this.tittle});
