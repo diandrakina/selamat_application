@@ -12,8 +12,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+
 class ModesPage extends StatefulWidget {
   @override
+  State<ModesPage> createState() => _ModesPageState();
 }
 
 class _ModesPageState extends State<ModesPage> {
@@ -206,7 +208,7 @@ class _ModesPageState extends State<ModesPage> {
                     if (_totalSeconds == 0) {
                       setState(() {
                         _totalSeconds =
-                            1500; // Set your desired initial timer value here (10 minutes)
+                            5; // Set your desired initial timer value here (10 minutes)
                       });
                     }
                     _toggleTimer();

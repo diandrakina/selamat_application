@@ -14,8 +14,9 @@ class GoalQuestionPage extends StatefulWidget {
     required this.phoneNum,
     required this.fullName,
     required this.dateOfBirth,
-    required this.startHour,
-    required this.startMinute,
+    required this.startHourMinute,
+    // required this.startHour,
+    // required this.startMinute,
   });
 
   final String email;
@@ -23,8 +24,9 @@ class GoalQuestionPage extends StatefulWidget {
   final String phoneNum;
   final String fullName;
   final DateTime dateOfBirth;
-  final int startHour;
-  final int startMinute;
+  final DateTime startHourMinute;
+  // final int startHour;
+  // final int startMinute;
 
   @override
   State<GoalQuestionPage> createState() => _GoalQuestionPageState();
@@ -37,8 +39,9 @@ class _GoalQuestionPageState extends State<GoalQuestionPage> {
     String _phoneNum = widget.phoneNum;
     String _fullName = widget.fullName;
     DateTime _dateOfBirth = widget.dateOfBirth;
-    int _startHour = widget.startHour;
-    int _startMinute = widget.startMinute;
+    DateTime _startHourMinute = widget.startHourMinute;
+    // int _startHour = widget.startHour;
+    // int _startMinute = widget.startMinute;
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => EndUpQuestionPage(
@@ -47,8 +50,9 @@ class _GoalQuestionPageState extends State<GoalQuestionPage> {
           phoneNum: _phoneNum,
           fullName: _fullName,
           dateOfBirth: _dateOfBirth,
-          startHour: _startHour,
-          startMinute: _startMinute,
+          startHourMinute: _startHourMinute,
+          // startHour: _startHour,
+          // startMinute: _startMinute,
         ),
       ),
     );

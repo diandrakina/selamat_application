@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:selamat_application/pages/question_page/goalsQuestionPage.dart';
-import 'package:selamat_application/routes/appRoutes.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 
@@ -28,6 +27,7 @@ class StartUpQuestionPage extends StatefulWidget {
 class _StartUpQuestionPageState extends State<StartUpQuestionPage> {
   int _startHour = 0;
   int _startMinute = 0;
+  DateTime _timeNow = DateTime.now();
 
   void navigateToGoalPage() {
     String _email = widget.email;
@@ -35,6 +35,8 @@ class _StartUpQuestionPageState extends State<StartUpQuestionPage> {
     String _phoneNum = widget.phoneNum;
     String _fullName = widget.fullName;
     DateTime _dateOfBirth = widget.dateOfBirth;
+    DateTime _startHourMinute = DateTime(
+        _timeNow.year, _timeNow.month, _timeNow.day, _startHour, _startMinute);
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => GoalQuestionPage(
@@ -43,8 +45,9 @@ class _StartUpQuestionPageState extends State<StartUpQuestionPage> {
           phoneNum: _phoneNum,
           fullName: _fullName,
           dateOfBirth: _dateOfBirth,
-          startHour: _startHour,
-          startMinute: _startMinute,
+          startHourMinute: _startHourMinute,
+          // startHour: _startHour,
+          // startMinute: _startMinute,
         ),
       ),
     );

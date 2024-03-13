@@ -22,10 +22,12 @@ class TargetQuestionPage extends StatefulWidget {
     required this.phoneNum,
     required this.fullName,
     required this.dateOfBirth,
-    required this.startHour,
-    required this.startMinute,
-    required this.endHour,
-    required this.endMinute,
+    required this.startHourMinute,
+    // required this.startHour,
+    // required this.startMinute,
+    required this.endHourMinute,
+    // required this.endHour,
+    // required this.endMinute,
   });
 
   final String email;
@@ -33,10 +35,12 @@ class TargetQuestionPage extends StatefulWidget {
   final String phoneNum;
   final String fullName;
   final DateTime dateOfBirth;
-  final int startHour;
-  final int startMinute;
-  final int endHour;
-  final int endMinute;
+  final DateTime startHourMinute;
+  // final int startHour;
+  // final int startMinute;
+  final DateTime endHourMinute;
+  // final int endHour;
+  // final int endMinute;
 
   @override
   State<TargetQuestionPage> createState() => _TargetQuestionPageState();
@@ -51,10 +55,12 @@ class _TargetQuestionPageState extends State<TargetQuestionPage> {
     String _phoneNum = widget.phoneNum;
     String _fullName = widget.fullName;
     DateTime _dateOfBirth = widget.dateOfBirth;
-    int _startHour = widget.startHour;
-    int _startMinute = widget.startMinute;
-    int _endHour = widget.endHour;
-    int _endMinute = widget.endMinute;
+    DateTime _startHourMinute = widget.startHourMinute;
+    // int _startHour = widget.startHour;
+    // int _startMinute = widget.startMinute;
+    DateTime _endHourMinute= widget.endHourMinute;
+    // int _endHour = widget.endHour;
+    // int _endMinute = widget.endMinute;
 
     setState(() {
       _isLoading = true;
@@ -66,10 +72,12 @@ class _TargetQuestionPageState extends State<TargetQuestionPage> {
       phoneNum: _phoneNum,
       fullName: _fullName,
       dateOfBirth: Timestamp.fromDate(_dateOfBirth),
-      startHour: _startHour,
-      startMinute: _startMinute,
-      endHour: _endHour,
-      endMinute: _endMinute,
+      startHourMinute: Timestamp.fromDate(_startHourMinute),
+      // startHour: _startHour,
+      // startMinute: _startMinute,
+      endHourMinute: Timestamp.fromDate(_endHourMinute),
+      // endHour: _endHour,
+      // endMinute: _endMinute,
     );
 
     setState(() {

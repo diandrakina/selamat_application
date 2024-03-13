@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
+// import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -15,19 +15,11 @@ import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/utils/richie_utils.dart';
 
 class ScheduleAction extends StatefulWidget {
-  // final String time;
-  // final IconData icon;
-  // final String activity;
-  // final bool repeat;
   final snap;
 
   const ScheduleAction({
     Key? key,
     required this.snap,
-    // required this.activity,
-    // required this.icon,
-    // required this.time,
-    // required this.repeat,
   });
 
   @override
@@ -55,8 +47,9 @@ class _ScheduleActionState extends State<ScheduleAction> {
         widget.snap['reminder'],
       );
       if (res == 'success') {
-        isDoneTrue == true ? 
-        showSnackBar("Task Done!", context): showSnackBar("Task Undone!", context);
+        isDoneTrue == true
+            ? showSnackBar("Task Done!", context)
+            : showSnackBar("Task Undone!", context);
       } else {
         showSnackBar(res, context);
       }
@@ -114,7 +107,6 @@ class _ScheduleActionState extends State<ScheduleAction> {
 
   @override
   Widget build(BuildContext context) {
-
     final User user = Provider.of<UserProvider>(context).getUser;
     final Timestamp firestoreTimestamp = widget.snap['startDate'];
     DateTime dateTime = firestoreTimestamp.toDate();
@@ -161,81 +153,6 @@ class _ScheduleActionState extends State<ScheduleAction> {
                           MaterialPageRoute(
                             builder: (context) => ToDoListWithData(
                               snap: widget.snap,
-
-    return Center(
-      child: Slidable(
-        //start
-        startActionPane: ActionPane(
-          extentRatio: 0.25,
-          motion: const StretchMotion(),
-          children: [
-            SlidableAction(
-              onPressed: ((context) {}),
-              icon: FontAwesomeIcons.circleCheck,
-              backgroundColor: AppColors.pastelGreenHealth,
-              foregroundColor: AppColors.white,
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(12),
-                  bottomLeft: Radius.circular(12)),
-            )
-          ],
-        ),
-
-        //end
-        endActionPane: ActionPane(
-          extentRatio: 0.5,
-          motion: const StretchMotion(),
-          children: [
-            SlidableAction(
-              onPressed: ((context) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ToDoList(),
-                  ),
-                );
-              }),
-              icon: FontAwesomeIcons.penToSquare,
-              foregroundColor: AppColors.white,
-              backgroundColor: AppColors.successStreak,
-            ),
-            SlidableAction(
-              onPressed: ((context) {}),
-              icon: FontAwesomeIcons.trashCan,
-              foregroundColor: AppColors.white,
-              backgroundColor: AppColors.pastelRed,
-              borderRadius: const BorderRadius.only(
-                topRight: Radius.circular(12),
-                bottomRight: Radius.circular(12),
-              ),
-            )
-          ],
-        ),
-
-        //CONTAINER
-        child: GestureDetector(
-          onTap: () {
-            showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    backgroundColor: AppColors.bgDarkMode,
-                    content: Container(
-                      padding: EdgeInsets.zero,
-                      height: 250,
-                      width: 380,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          GestureDetector(
-                            child: const FaIcon(
-                              FontAwesomeIcons.xmark,
-                              color: Colors.white,
-                              size: 20,
-
                             ),
                           ),
                         );
@@ -365,11 +282,9 @@ class _ScheduleActionState extends State<ScheduleAction> {
                                             width: 124,
                                             child: _information(
                                                 widget.snap['category'],
-                                                // ignore: deprecated_member_use
                                                 FontAwesomeIcons.solidSmile)),
                                         SizedBox(
                                           width: 140,
-
                                           child: Row(
                                             children: [
                                               FaIcon(
@@ -390,10 +305,6 @@ class _ScheduleActionState extends State<ScheduleAction> {
                                               )
                                             ],
                                           ),
-                                          //   child: _information(
-                                          //       '${widget.snap['repatDate']}',
-                                          //       FontAwesomeIcons.repeat),
-                                          // ),
                                         ),
                                       ],
                                     ),
@@ -421,7 +332,6 @@ class _ScheduleActionState extends State<ScheduleAction> {
                   },
                   child: Container(
                     height: 50,
-                    // margin: EdgeInsets.all(5),
                     width: double.maxFinite,
                     decoration: BoxDecoration(
                       color: AppColors.darkModeCard,
@@ -519,65 +429,6 @@ class _ScheduleActionState extends State<ScheduleAction> {
                   ],
                 ),
 
-                //end
-                // endActionPane: ActionPane(
-                //   extentRatio: 0.5,
-                //   motion: StretchMotion(),
-                //   children: [
-                //     // SlidableAction(
-                //     //   // TODOX EDIT
-                //     //   onPressed: ((context) {}),
-                //     //   icon: FontAwesomeIcons.penToSquare,
-                //     //   foregroundColor: AppColors.white,
-                //     //   backgroundColor: AppColors.successStreak,
-                //     // ),
-                //     // SlidableAction(
-                //     //   // TODOX DELETE
-                //     //   onPressed: (BuildContext context) {
-                //     //     showDialog(
-                //     //       context: context,
-                //     //       builder: (context) => Dialog(
-                //     //         child: ListView(
-                //     //           padding: EdgeInsets.symmetric(
-                //     //             vertical: 16,
-                //     //           ),
-                //     //           shrinkWrap: true,
-                //     //           children: [
-                //     //             "Delete Task",
-                //     //           ]
-                //     //               .map(
-                //     //                 (e) => InkWell(
-                //     //                   onTap: () async {
-                //     //                     FirestoreMethods().deleteToDo(
-                //     //                         user.uid, widget.snap["toDoId"]);
-                //     //                     Navigator.of(context).pop();
-                //     //                   },
-                //     //                   child: Container(
-                //     //                     padding: const EdgeInsets.symmetric(
-                //     //                       vertical: 12,
-                //     //                       horizontal: 16,
-                //     //                     ),
-                //     //                     child: Text(e),
-                //     //                   ),
-                //     //                 ),
-                //     //               )
-                //     //               .toList(),
-                //     //         ),
-                //     //       ),
-                //     //     );
-                //     //   },
-
-                //     //   icon: FontAwesomeIcons.trashCan,
-                //     //   foregroundColor: AppColors.white,
-                //     //   backgroundColor: AppColors.pastelRed,
-                //     //   borderRadius: const BorderRadius.only(
-                //     //     topRight: Radius.circular(12),
-                //     //     bottomRight: Radius.circular(12),
-                //     //   ),
-                //     // )
-                //   ],
-                // ),
-
                 //CONTAINER
                 child: GestureDetector(
                   onTap: () {
@@ -656,7 +507,6 @@ class _ScheduleActionState extends State<ScheduleAction> {
                                                 FontAwesomeIcons.solidSmile)),
                                         SizedBox(
                                           width: 140,
-
                                           child: Row(
                                             children: [
                                               FaIcon(
@@ -677,10 +527,6 @@ class _ScheduleActionState extends State<ScheduleAction> {
                                               )
                                             ],
                                           ),
-                                          //   child: _information(
-                                          //       '${widget.snap['repatDate']}',
-                                          //       FontAwesomeIcons.repeat),
-                                          // ),
                                         ),
                                       ],
                                     ),

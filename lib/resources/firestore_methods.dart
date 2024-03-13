@@ -2,12 +2,55 @@ import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:selamat_application/models/activity.dart';
 import 'package:selamat_application/models/toDo.dart';
 import 'package:selamat_application/resources/storage_methods.dart';
 import 'package:uuid/uuid.dart';
 
 class FirestoreMethods {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  // Add Activity
+  Future<String> addActivity(
+    final bool isNotes,
+    final String uid,
+    final String profilePict,
+    final String username,
+    final String desc,
+    final DateTime startDate,
+    final DateTime endDate,
+    final String status,
+  ) async {
+    String res = 'Some error occurred';
+    try {
+      String activityId = Uuid().v1();
+
+      Activity activity = Activity(
+        isNotes: isNotes,
+        uid: uid,
+        activityId: activityId,
+        profilePict: profilePict,
+        username: username,
+        desc: desc,
+        startDate: Timestamp.fromDate(startDate),
+        endDate: Timestamp.fromDate(endDate),
+        likes: [],
+        datePublished: DateTime.now(),
+        status: status,
+      );
+
+      _firestore
+          .collection('activities')
+          .doc(activityId)
+          .set(
+            activity.toJson(),
+          );
+      res = 'success';
+    } catch (err) {
+      res = err.toString();
+    }
+    return res;
+  }
 
   // Return number of task that is donec
   Future<int> numOfTaskDone(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:selamat_application/pages/login_page/before_we_start_page.dart';
+import 'package:selamat_application/pages/login_page/loginPage.dart';
 import 'package:selamat_application/pages/rule_page/privacyPolicy.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/utils/richie_utils.dart';
