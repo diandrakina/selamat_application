@@ -80,7 +80,6 @@ class _ActivityCardState extends State<ActivityCard> {
     setState(() {});
   }
 
-
   @override
   Widget build(BuildContext context) {
     final User user = Provider.of<UserProvider>(context).getUser;
@@ -257,7 +256,7 @@ class _ActivityCardState extends State<ActivityCard> {
                 style: TextStyles.light_14,
               ),
               const SizedBox(
-                width: 15,
+                width: 10,
               ),
               IconButton(
                 onPressed: () => Navigator.of(context).push(
