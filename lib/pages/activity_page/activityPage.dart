@@ -19,6 +19,7 @@ class ActivityPage extends StatefulWidget {
 }
 
 class _ActivityPageState extends State<ActivityPage> {
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -163,7 +164,7 @@ class _ActivityPageState extends State<ActivityPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const AddShareSchedule(),
+                            builder: (context) => AddShareSchedule(),
                           ),
                         );
                       },

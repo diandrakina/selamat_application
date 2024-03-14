@@ -208,7 +208,7 @@ class _ModesPageState extends State<ModesPage> {
                     if (_totalSeconds == 0) {
                       setState(() {
                         _totalSeconds =
-                            5; // Set your desired initial timer value here (10 minutes)
+                            1500; // Set your desired initial timer value here (10 minutes)
                       });
                     }
                     _toggleTimer();

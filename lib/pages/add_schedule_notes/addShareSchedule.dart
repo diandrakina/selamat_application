@@ -19,25 +19,12 @@ class AddShareSchedule extends StatefulWidget {
 
 class _AddShareScheduleState extends State<AddShareSchedule> {
   bool _isNotes = false;
-  // _ String uid;
-  // _ String activityId;
-  // _ String profilePict;
-  // _ String username;
   String _desc = '';
-  // DateTime _startDate = DateTime(2022, 1, 1, 0, 0);
   DateTime _startDate = DateTime.now();
   DateTime _endDate = DateTime(2022, 1, 1, 0, 0);
-  // _ likes;
-  // _ datePublished;
   String _status = 'Public';
 
   bool _isPicked = false;
-
-  // String _caption = ' ';
-  // DateTime? start;
-  // DateTime? end;
-  // bool _isPicked = false;
-  // String dropdownValue = 'Public';
 
   void updateStatusValue(String newValue) {
     setState(() {
@@ -47,16 +34,32 @@ class _AddShareScheduleState extends State<AddShareSchedule> {
   }
 
   void pickDateRange() async {
+    final ThemeData themeData = Theme.of(context);
+    final ThemeData dialogTheme = ThemeData.dark().copyWith(
+      colorScheme: themeData.colorScheme.copyWith(
+        primary: Colors.blue, // Change primary color
+      ),
+      textTheme: themeData.textTheme.copyWith(
+        bodyText1: TextStyle(color: Colors.white), // Set all text to white
+      ),
+      backgroundColor: Colors.grey[900], // Adjust background color
+    );
+
     final DateTimeRange? dateTime = await showDateRangePicker(
       context: context,
-      // initialDate: _startDate,
-      firstDate: DateTime(2000),
-      lastDate: DateTime(3000),
-      // builder: (context, child) {
-      //   // return Theme(
-        
-      //   // );
-      // },
+      initialDateRange: DateTimeRange(
+        start: DateTime.now(),
+        end: DateTime.now().add(Duration(days: 7)),
+      ),
+      firstDate: DateTime.now().subtract(Duration(days: 365)),
+      lastDate: DateTime.now().add(Duration(days: 365)),
+      helpText: 'Select Date Range',
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: dialogTheme,
+          child: child!,
+        );
+      },
     );
     if (dateTime != null) {
       setState(() {
@@ -159,67 +162,6 @@ class _AddShareScheduleState extends State<AddShareSchedule> {
                   keyboardType: TextInputType.text,
                   readOnly: true,
                 ),
-                // Row(
-                //   children: [
-                //     const SizedBox(
-                //         width: 300,
-                //         child: TextField(
-                //           decoration: InputDecoration(
-                //             hintStyle: TextStyles.GR_16_regular,
-                //             // hintText: _isPicked
-                //             //     ? "${_startDate.day}-${_startDate.month}-${_startDate.year} - ${_endDate.day}-${_endDate.month}-${_endDate.year}"
-                //             //     : "SelectDate",
-                //             hintText:  "s",
-                //           ),
-                //         )),
-                //     const SizedBox(
-                //       width: 20,
-                //     ),
-                //     GestureDetector(
-                //       onTap: () async {
-                //         final result = await showDateRangePicker(
-                //           context: context,
-                //           firstDate: DateTime(2000),
-                //           lastDate: DateTime.now().add(
-                //             const Duration(days: 365),
-                //           ),
-                //           // builder: (context, child) {
-                //           //   return Theme(
-                //           //       data: Theme.of(context).copyWith(
-                //           //         primaryColor: AppColors.baseColor,
-                //           //         hintColor: Colors.white,
-                //           //         colorScheme: const ColorScheme.light(
-                //           //           primary: AppColors.baseColor,
-                //           //           onPrimary: Colors.white,
-                //           //           surface: Colors.white,
-                //           //           onSurface: Colors.white,
-                //           //           background: AppColors.bgDarkMode,
-                //           //           onPrimaryContainer: AppColors.baseColor,
-                //           //         ),
-                //           //         textButtonTheme: TextButtonThemeData(
-                //           //           style: TextButton.styleFrom(
-                //           //               foregroundColor: AppColors.baseColor),
-                //           //         ),
-                //           //       ),
-                //           //       child: child!);
-                //           // },
-                //         );
-                //         if (result != null) {
-                //           setState(() {
-                //             _isPicked = true;
-                //             _startDate = result.start;
-                //             _endDate = result.end;
-                //           });
-                //         }
-                //       },
-                //       child: const FaIcon(
-                //         Icons.calendar_month,
-                //         color: Colors.white,
-                //         size: 30,
-                //       ),
-                //     ),
-                //   ],
-                // ),
 
                 const SizedBox(
                   height: 20,
@@ -390,12 +332,8 @@ class _AddShareScheduleState extends State<AddShareSchedule> {
                                   _endDate,
                                   _status,
                                 );
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const ActivityPage(),
-                                  ),
-                                );
+                                Navigator.of(context)
+                                    .popUntil((route) => route.isFirst);
                               },
                             ),
                           ],

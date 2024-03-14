@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:selamat_application/models/user.dart';
 import 'package:selamat_application/pages/activity_page/activityPage.dart';
+import 'package:selamat_application/providers/user_provider.dart';
+import 'package:selamat_application/resources/firestore_methods.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 
@@ -12,11 +16,24 @@ class AddShareNotes extends StatefulWidget {
 }
 
 class _AddShareNotesState extends State<AddShareNotes> {
-  String _caption = ' ';
-  String dropdownValue = 'Mutuals';
+  bool _isNotes = true;
+  String _desc = '';
+  DateTime _startDate = DateTime.now();
+  DateTime _endDate = DateTime(2022, 1, 1, 0, 0);
+  String _status = 'Public';
+
+  bool _isPicked = false;
+
+  void updateStatusValue(String newValue) {
+    setState(() {
+      _status = newValue;
+    });
+    print(_status);
+  }
 
   @override
   Widget build(BuildContext context) {
+    final User user = Provider.of<UserProvider>(context).getUser;
     return SafeArea(
       child: Scaffold(
         appBar:
@@ -71,7 +88,7 @@ class _AddShareNotesState extends State<AddShareNotes> {
                   onChanged: (value) {
                     setState(
                       () {
-                        _caption = value;
+                        _desc = value;
                       },
                     );
                   },
@@ -97,7 +114,10 @@ class _AddShareNotesState extends State<AddShareNotes> {
                       ),
                     ),
                     DropdownButton<String>(
-                      value: dropdownValue,
+                      value: _status,
+                      onChanged: (String? newVal) {
+                        updateStatusValue(newVal!);
+                      },
                       dropdownColor: AppColors.inactiveCalendar,
                       icon: const Icon(Icons.arrow_drop_down),
                       style: TextStyles.regular_18,
@@ -156,12 +176,25 @@ class _AddShareNotesState extends State<AddShareNotes> {
                             ),
                           ),
                         ),
+                        DropdownMenuItem<String>(
+                          value: "Category",
+                          child: SizedBox(
+                            child: Row(
+                              children: [
+                                FaIcon(
+                                  FontAwesomeIcons.clipboardList,
+                                  size: 15,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text("Category Only")
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          dropdownValue = newValue!;
-                        });
-                      },
                     ),
                   ],
                 ),
@@ -192,11 +225,11 @@ class _AddShareNotesState extends State<AddShareNotes> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Discard Changes",
+                          "Save Changes",
                           style: TextStyles.bold_24,
                         ),
                         Text(
-                          "Are you sure want to discard the changes you made?",
+                          "Are you sure want to save the changes you made?",
                           style: TextStyles.light_18,
                         ),
                         const SizedBox(
@@ -221,16 +254,22 @@ class _AddShareNotesState extends State<AddShareNotes> {
                             ),
                             GestureDetector(
                               child: Text(
-                                "Discard",
-                                style: TextStyles.alertRed,
+                                "Save",
+                                style: TextStyles.alertBlue,
                               ),
                               onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const ActivityPage(),
-                                  ),
+                                FirestoreMethods().addActivity(
+                                  _isNotes,
+                                  user.uid,
+                                  user.profilePicUrl,
+                                  user.fullName,
+                                  _desc,
+                                  _startDate,
+                                  _endDate,
+                                  _status,
                                 );
+                                Navigator.of(context)
+                                    .popUntil((route) => route.isFirst);
                               },
                             ),
                           ],

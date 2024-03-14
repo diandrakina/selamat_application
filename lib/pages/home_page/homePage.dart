@@ -7,6 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:selamat_application/pages/chat_page/ChatPage.dart';
 import 'package:selamat_application/pages/chat_page/ContactPage.dart';
 import 'package:selamat_application/styles/styles.dart';
+import 'package:selamat_application/widget/bottom_sheet_timer_widget.dart';
 import 'package:selamat_application/widget/drawerWidget.dart';
 import 'package:selamat_application/widget/navbar.dart';
 import 'package:selamat_application/widget/searchBar.dart';
@@ -83,24 +84,14 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ChatScreen(),
+                          builder: (context) => ContactPage(),
                         ),
                       );
                     },
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ContactPage(),
-                          ),
-                        );
-                      },
-                      child: const FaIcon(
-                        FontAwesomeIcons.solidCommentDots,
-                        size: 25,
-                        color: AppColors.white,
-                      ),
+                    child: const FaIcon(
+                      FontAwesomeIcons.solidCommentDots,
+                      size: 25,
+                      color: AppColors.white,
                     ),
                   ),
                 ],
@@ -120,6 +111,18 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // ElevatedButton(
+                //   onPressed: () {
+                //     // Show the bottom sheet when the button is pressed
+                //     showModalBottomSheet(
+                //       context: context,
+                //       // isScrollControlled: true,
+                //       builder: (BuildContext context) {
+                //         return BottomSheetTimer();
+                //       },
+                //     );
+                //   }, child: Text('Test Button'),
+                // ),
                 const SizedBox(
                   height: 5,
                 ),

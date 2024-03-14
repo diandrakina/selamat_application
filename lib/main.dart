@@ -69,9 +69,9 @@ class MyApp extends StatelessWidget {
               if (snapshot.hasData) {
                 print(snapshot.data);
                 // if snapshot has data which means user is logged in then we check the width of screen and accordingly display the screen layout
-                return const ResponsiveLayout(
-                  mobileScreenLayout: MobileScreenLayout(),
-                );
+                // return const ResponsiveLayout(
+                //   mobileScreenLayout: MobileScreenLayout(),
+                // );
               } else if (snapshot.hasError) {
                 return Center(
                   child: Text('${snapshot.error}'),
