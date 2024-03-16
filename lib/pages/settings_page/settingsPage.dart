@@ -1,8 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:selamat_application/pages/login_page/beforeLoginPage.dart';
 import 'package:selamat_application/pages/profile_page/editProfile.dart';
 import 'package:selamat_application/pages/settings_page/reminderSettings.dart';
+import 'package:selamat_application/resources/auth_methods.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/navbar.dart';
 import 'package:selamat_application/widget/searchBar.dart';
@@ -345,7 +347,14 @@ class _SettingsPageState extends State<SettingsPage> {
                                           "Log Out",
                                           style: TextStyles.alertRed,
                                         ),
-                                        onTap: () {
+                                        onTap: () async {
+                                          await AuthMethods().signOut();
+                                          Navigator.of(context).pushReplacement(
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  BeforeLoginPage(),
+                                            ),
+                                          );
                                           // Navigator.push(
                                           //   context,
                                           //   MaterialPageRoute(

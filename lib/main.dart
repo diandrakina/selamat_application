@@ -7,6 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:provider/provider.dart';
 import 'package:selamat_application/pages/login_page/beforeLoginPage.dart';
+import 'package:selamat_application/providers/timer_provider.dart';
 
 import 'package:selamat_application/providers/user_provider.dart';
 
@@ -56,6 +57,10 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => UserProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => TimerProvider(),
+          child: MyApp(),
+        ),
       ],
       child: MaterialApp(
         title: 'Selamat App',
@@ -68,10 +73,9 @@ class MyApp extends StatelessWidget {
               // Checking if the snapshot has any data or not
               if (snapshot.hasData) {
                 print(snapshot.data);
-                // if snapshot has data which means user is logged in then we check the width of screen and accordingly display the screen layout
-                // return const ResponsiveLayout(
-                //   mobileScreenLayout: MobileScreenLayout(),
-                // );
+                return const ResponsiveLayout(
+                  mobileScreenLayout: MobileScreenLayout(),
+                );
               } else if (snapshot.hasError) {
                 return Center(
                   child: Text('${snapshot.error}'),

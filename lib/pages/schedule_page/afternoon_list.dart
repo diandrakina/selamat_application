@@ -41,7 +41,7 @@ class _AfternoonListState extends State<AfternoonList> {
               .collection('users')
               .doc(user.uid)
               .collection('toDos')
-              .orderBy('startDate', descending: true)
+              // .orderBy('startDate', descending: true)
               .where('startDate', isGreaterThanOrEqualTo: afternoon)
               .where('startDate', isLessThanOrEqualTo: evening)
               .snapshots(),

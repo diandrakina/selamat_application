@@ -43,7 +43,7 @@ class _EveningListState extends State<EveningList> {
               .collection('toDos')
               .where('startDate', isGreaterThanOrEqualTo: evening)
               .where('startDate', isLessThanOrEqualTo: night)
-              .orderBy('startDate', descending: true)
+              // .orderBy('startDate', descending: true)
               .snapshots(),
           builder: (context,
               AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {

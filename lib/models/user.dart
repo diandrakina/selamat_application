@@ -16,6 +16,9 @@ class User {
   final List userTarget;
   final String bio; //Di profile
   final String phoneNum;
+  final int workDurationToday;
+  final int workDurationThisWeek;
+  final List scheduleEmoteMonthly;
 
   const User({
     required this.uid,
@@ -35,6 +38,9 @@ class User {
     // this.bio = "",
     required this.bio,
     required this.phoneNum,
+    required this.workDurationToday,
+    required this.workDurationThisWeek,
+    required this.scheduleEmoteMonthly,
   });
 
   Map<String, dynamic> toJson() => {
@@ -53,6 +59,9 @@ class User {
         'userTarget': userTarget,
         'bio': bio,
         'phoneNum': phoneNum,
+        'workDurationToday': workDurationToday,
+        'workDurationThisWeek': workDurationThisWeek,
+        'scheduleEmoteMonthly': scheduleEmoteMonthly,
       };
 
   static User fromSnap(DocumentSnapshot snap) {
@@ -74,6 +83,9 @@ class User {
       userTarget: snapshot['userTarget'],
       bio: snapshot['bio'],
       phoneNum: snapshot['phoneNum'],
+      workDurationToday: snapshot['workDurationToday'],
+      workDurationThisWeek: snapshot['workDurationThisWeek'],
+      scheduleEmoteMonthly: snapshot['scheduleEmoteMonthly'],
     );
   }
 }

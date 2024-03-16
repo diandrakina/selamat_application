@@ -11,6 +11,10 @@ class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  Future<void> signOut() async{
+    await _auth.signOut();
+  }
+
   Future<model.User> getUserDetails() async {
     User currentUser = _auth.currentUser!;
     print("AUTH CURRENT USER ${currentUser}");
@@ -68,6 +72,9 @@ class AuthMethods {
         userTarget: [],
         bio: "",
         phoneNum: phoneNum,
+        workDurationToday: 0,
+        workDurationThisWeek: 0,
+        scheduleEmoteMonthly: List<int>.filled(31, 0),
       );
       // add user to database
       await _firestore.collection('users').doc(cred.user!.uid).set(

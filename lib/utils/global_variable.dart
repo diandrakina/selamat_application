@@ -33,3 +33,5 @@ const scheduleScreenItems = [
   AfternoonList(),
   EveningList(),
 ];
+
+int global_todaysWorkTime = 0;

@@ -88,7 +88,7 @@ class _ActivityPageState extends State<ActivityPage> {
         //BODY
         body: StreamBuilder(
           stream:
-              FirebaseFirestore.instance.collection('activities').snapshots(),
+              FirebaseFirestore.instance.collection('activities').orderBy('datePublished', descending: true).snapshots(),
           builder: (context,
               AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {

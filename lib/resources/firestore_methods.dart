@@ -4,15 +4,84 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:selamat_application/models/activity.dart';
 import 'package:selamat_application/models/toDo.dart';
+import 'package:selamat_application/models/user.dart';
 import 'package:selamat_application/resources/storage_methods.dart';
 import 'package:uuid/uuid.dart';
 
 class FirestoreMethods {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  // Update SCHEDULE EMOTE
+  Future<String> updateScheduleEmote(
+    String uid,
+    int todaysEmote,
+    int date,
+  ) async {
+    String res = 'Some error occurred';
+    try {
+      _firestore.collection('users').doc(uid).update({
+        'scheduleEmoteMonthly.${date}': todaysEmote,
+      });
+    } catch (e) {
+      print(e.toString());
+    }
+    return res;
+  }
+
+  // Update WORK HOUR
+  Future<String> updateHour(
+    String uid,
+    int workDurationToday,
+  ) async {
+    String res = 'Some error occurred';
+    try {
+      DocumentSnapshot snapshot =
+          await _firestore.collection('users').doc(uid).get();
+
+      Map<String, dynamic>? userData = snapshot.data() as Map<String, dynamic>?;
+      if (userData != null) {
+        int _workDurationThisWeek = userData['workDurationThisWeek'];
+        print('User Work Time: $_workDurationThisWeek');
+
+        _firestore.collection('users').doc(uid).update({
+          'workDurationToday': workDurationToday,
+          'workDurationThisWeek': _workDurationThisWeek + workDurationToday,
+        });
+      } else {
+        print('User document does not exist');
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+    return res;
+  }
+
+  // UPDATE PROFILE
+  Future<String> updateProfile(
+    String uid,
+    String fullName, //
+    String photoUrl, //
+    String bio, //
+    String phoneNum, //
+  ) async {
+    String res = 'Some error occurred';
+    try {
+      _firestore.collection('users').doc(uid).update({
+        'fullName': fullName,
+        'profilePicUrl': photoUrl,
+        'bio': bio,
+        'phoneNum': phoneNum,
+      });
+      res = 'success';
+    } catch (err) {
+      res = err.toString();
+    }
+    return res;
+  }
+
   // POST COMMENT
-  Future<void> postComment(String activityId, String text, String uid, String name,
-      String profilePic) async {
+  Future<void> postComment(String activityId, String text, String uid,
+      String name, String profilePic) async {
     try {
       if (text.isNotEmpty) {
         String commentId = const Uuid().v1();
