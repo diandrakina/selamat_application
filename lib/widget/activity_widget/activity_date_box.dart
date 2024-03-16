@@ -24,19 +24,20 @@ class ActivityDateBox extends StatefulWidget {
 }
 
 class _ActivityDateBoxState extends State<ActivityDateBox> {
-
   @override
   Widget build(BuildContext context) {
-  DateTime _startDate = widget.startDate.toDate();
-  DateTime startOfTheDay = DateTime(_startDate.year, _startDate.month, _startDate.day, 0, 1, 0, 0, 0);
-  DateTime endOfTheDay = DateTime(_startDate.year, _startDate.month, _startDate.day, 23, 59, 59, 999, 999);
+    DateTime _startDate = widget.startDate.toDate();
+    DateTime startOfTheDay = DateTime(
+        _startDate.year, _startDate.month, _startDate.day, 0, 1, 0, 0, 0);
+    DateTime endOfTheDay = DateTime(_startDate.year, _startDate.month,
+        _startDate.day, 23, 59, 59, 999, 999);
     final User user = Provider.of<UserProvider>(context).getUser;
 
     return Container(
       margin: EdgeInsets.all(5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        color: Colors.blue,
+        color: AppColors.baseColor,
       ),
       width: 50,
       height: 50,
@@ -57,8 +58,8 @@ class _ActivityDateBoxState extends State<ActivityDateBox> {
                 ),
                 content: SingleChildScrollView(
                   child: Container(
-                    padding: const EdgeInsets.all(5),
-                    height: 180,
+                    padding: EdgeInsets.zero,
+                    height: 250,
                     width: 380,
                     child: Scaffold(
                       body: StreamBuilder(
@@ -66,7 +67,8 @@ class _ActivityDateBoxState extends State<ActivityDateBox> {
                             .collection('users')
                             .doc(user.uid)
                             .collection('toDos')
-                            .where('startDate', isGreaterThanOrEqualTo: startOfTheDay)
+                            .where('startDate',
+                                isGreaterThanOrEqualTo: startOfTheDay)
                             // .where('startDate', isLessThanOrEqualTo: endOfTheDay)
                             // .orderBy('startDate', descending: true)
                             .snapshots(),
@@ -95,7 +97,10 @@ class _ActivityDateBoxState extends State<ActivityDateBox> {
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: Text('Close'),
+                    child: Text(
+                      'Close',
+                      style: TextStyles.alertRed,
+                    ),
                   ),
                 ],
               );
@@ -105,7 +110,7 @@ class _ActivityDateBoxState extends State<ActivityDateBox> {
         child: Center(
           child: Text(
             '${widget.dateNum}',
-            style: TextStyle(color: Colors.white),
+            style: TextStyles.bold_18,
           ),
         ),
       ),
