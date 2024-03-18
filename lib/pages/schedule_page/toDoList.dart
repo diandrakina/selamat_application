@@ -234,20 +234,6 @@ class _ToDoListState extends State<ToDoList> {
                 onTap: () {
                   createToDo(user.uid);
                   Navigator.of(context).pop();
-
-              CustomElevatedButton(
-                text: "Save",
-                buttonStyle: CustomButtonStyles.buttonBlue,
-                buttonTextStyle: TextStyles.bold_14,
-                height: 30,
-                width: 80,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SchedulePage(),
-                    ),
-                  );
                 },
                 child: Container(
                   child: _isLoading
@@ -274,18 +260,6 @@ class _ToDoListState extends State<ToDoList> {
                   ),
                 ),
               ),
-              // CustomElevatedButton(
-              //   text: "Save",
-              //   buttonStyle: CustomButtonStyles.buttonBlue,
-              //   buttonTextStyle: TextStyles.bold_14,
-              //   height: 30,
-              //   width: 80,
-              //   onPressed: () {
-              //     // createToDo(user.uid);
-              //     createToDo(user.uid);
-              //     Navigator.of(context).pop();
-              //   },
-              // ),
             ],
           ),
         ),
@@ -301,11 +275,6 @@ class _ToDoListState extends State<ToDoList> {
                     const SizedBox(
                       height: 20,
                     ),
-                    // Image.asset(
-                    //   'assets/images/login_page/facebook_logo.png', // Adjust the path to your logo
-                    //   width: 100,
-                    //   height: 100,
-                    // ),
                     Stack(
                       children: [
                         _image != null
@@ -553,27 +522,22 @@ class _ToDoListState extends State<ToDoList> {
                                 Text('Visibility', style: TextStyles.light_18),
                               ],
                             ),
-
                             trailing: Container(
                               constraints: BoxConstraints(maxWidth: 150),
                               child: Text('${_visibility}',
                                   style: TextStyles.light_18),
-
-                            trailing: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const VisibilityPage(),
-                                  ),
-                                );
-                              },
-                              child:
-                                  Text('Public >', style: TextStyles.light_18),
-
-                          
-                            ), // Add your logic for language selection here
+                            // trailing: GestureDetector(
+                            //   onTap: () {
+                            //     Navigator.push(
+                            //       context,
+                            //       MaterialPageRoute(
+                            //         builder: (context) =>
+                            //             const VisibilityPage(),
+                            //       ),
+                            //     );
+                              // child:
+                              //     Text('Public >', style: TextStyles.light_18),
+                           ),
                           ),
                           const Divider(
                             height: 5,
@@ -604,18 +568,18 @@ class _ToDoListState extends State<ToDoList> {
                               child: Text('${_category}',
                                   style: TextStyles.light_18),
 
-                            trailing: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const CategoriesPage(),
-                                  ),
-                                );
-                              },
-                              child: Text('None >', style: TextStyles.light_18),
-
+                            // trailing: GestureDetector(
+                            //   onTap: () {
+                            //     Navigator.push(
+                            //       context,
+                            //       MaterialPageRoute(
+                            //         builder: (context) =>
+                            //             const CategoriesPage(),
+                            //       ),
+                            //     );
+                            //   },
+                              // child: Text('None >', style: TextStyles.light_18),
+                            // ),
                             ), // Add your logic for language selection here
                           ),
                           const Divider(

@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:selamat_application/pages/add_schedule_notes/addShareNotes.dart';
 import 'package:selamat_application/pages/add_schedule_notes/addShareSchedule.dart';
 import 'package:selamat_application/pages/chat_page/ContactPage.dart';
 import 'package:selamat_application/styles/styles.dart';
+import 'package:selamat_application/widget/activity_widget/activity_card.dart';
 import 'package:selamat_application/widget/drawerWidget.dart';
 import 'package:selamat_application/widget/searchBar.dart';
 import 'package:selamat_application/widget/widget_schedule/notesBox.dart';
@@ -17,6 +19,7 @@ class ActivityPage extends StatefulWidget {
 }
 
 class _ActivityPageState extends State<ActivityPage> {
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -83,43 +86,73 @@ class _ActivityPageState extends State<ActivityPage> {
         drawer: const DrawerWidget(),
 
         //BODY
-        body: SingleChildScrollView(
-          child: Container(
-            padding: const EdgeInsets.only(left: 20, right: 20),
-            child: const Column(
-              children: [
-                SizedBox(
-                  height: 16,
-                ),
-                ScheduleBox(
-                  profilePict: "assets/images/home_page/gojosatoru.png",
-                  username: "gojosatoru",
-                  desc:
-                      "Yea, when you are the strongest you got a lot of schedule too.",
-                  date: "December 13 - December 24",
-                  comment: 34.1,
-                  hours: 3,
-                  likes: 76.1,
-                  status: true,
-                ),
-                SizedBox(
-                  height: 16,
-                ),
-                NotesBox(
-                  profilePict:
-                      "assets/images/discovery_page/psikolog/Joel.jpeg",
-                  username: "lookaforwin",
-                  desc:
-                      "YAA BOYY I JUST TRAIN SO HARD, I CAN GET THAT 81+ POINTS ASAP BROOO. SEE U NEXT WEEK!",
-                  comment: 34.1,
-                  hours: 3,
-                  likes: 76.1,
-                  status: true,
-                ),
-              ],
-            ),
-          ),
+        body: StreamBuilder(
+          stream:
+              FirebaseFirestore.instance.collection('activities').orderBy('datePublished', descending: true).snapshots(),
+          builder: (context,
+              AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            return ListView.builder(
+              itemCount: snapshot.data!.docs.length,
+              itemBuilder: (context, index) =>
+                  ActivityCard(snap: snapshot.data!.docs[index].data()),
+            );
+          },
         ),
+        //     child: Container(
+        //       padding: const EdgeInsets.only(left: 20, right: 20),
+        //       child: const Column(
+        //         children: [
+        //           SizedBox(
+        //             height: 16,
+        //           ),
+        //           ScheduleBox(
+        //             profilePict: "assets/images/home_page/gojosatoru.png",
+        //             username: "gojosatoru",
+        //             desc:
+        //                 "Yea, when you are the strongest you got a lot of schedule too.",
+        //             date: "December 13 - December 24",
+        //             comment: 34.1,
+        //             hours: 3,
+        //             likes: 76.1,
+        //             status: true,
+        //           ),
+        //           SizedBox(
+        //             height: 16,
+        //           ),
+        //           ActivityCard(
+        //             profilePict: "assets/images/home_page/gojosatoru.png",
+        //             username: "gojosatoru",
+        //             desc:
+        //                 "Yea, when you are the strongest you got a lot of schedule too.",
+        //             date: "December 13 - December 24",
+        //             comment: 34.1,
+        //             hours: 3,
+        //             likes: 76.1,
+        //             status: true,
+        //           ),
+        //           SizedBox(
+        //             height: 16,
+        //           ),
+        //           NotesBox(
+        //             profilePict:
+        //                 "assets/images/discovery_page/psikolog/Joel.jpeg",
+        //             username: "lookaforwin",
+        //             desc:
+        //                 "YAA BOYY I JUST TRAIN SO HARD, I CAN GET THAT 81+ POINTS ASAP BROOO. SEE U NEXT WEEK!",
+        //             comment: 34.1,
+        //             hours: 3,
+        //             likes: 76.1,
+        //             status: true,
+        //           ),
+        //         ],
+        //       ),
+        //     ),
+        //   ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -131,7 +164,7 @@ class _ActivityPageState extends State<ActivityPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const AddShareSchedule(),
+                            builder: (context) => AddShareSchedule(),
                           ),
                         );
                       },
@@ -181,7 +214,6 @@ class _ActivityPageState extends State<ActivityPage> {
             color: Colors.white,
           ),
         ),
-        // bottomNavigationBar: NavBar(),
       ),
     );
   }

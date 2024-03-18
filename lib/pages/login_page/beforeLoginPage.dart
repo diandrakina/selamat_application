@@ -24,6 +24,14 @@ class _BeforeLoginPageState extends State<BeforeLoginPage> {
       ),
     );
   }
+
+  void navigateToLogin() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => LoginPage(),
+      ),
+    );
+  }
   
 
   @override

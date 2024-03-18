@@ -2,12 +2,173 @@ import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:selamat_application/models/activity.dart';
 import 'package:selamat_application/models/toDo.dart';
+import 'package:selamat_application/models/user.dart';
 import 'package:selamat_application/resources/storage_methods.dart';
 import 'package:uuid/uuid.dart';
 
 class FirestoreMethods {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  // Update SCHEDULE EMOTE
+  Future<String> updateScheduleEmote(
+    String uid,
+    int todaysEmote,
+    int date,
+  ) async {
+    String res = 'Some error occurred';
+    try {
+      _firestore.collection('users').doc(uid).update({
+        'scheduleEmoteMonthly.${date}': todaysEmote,
+      });
+    } catch (e) {
+      print(e.toString());
+    }
+    return res;
+  }
+
+  // Update WORK HOUR
+  Future<String> updateHour(
+    String uid,
+    int workDurationToday,
+  ) async {
+    String res = 'Some error occurred';
+    try {
+      DocumentSnapshot snapshot =
+          await _firestore.collection('users').doc(uid).get();
+
+      Map<String, dynamic>? userData = snapshot.data() as Map<String, dynamic>?;
+      if (userData != null) {
+        int _workDurationThisWeek = userData['workDurationThisWeek'];
+        print('User Work Time: $_workDurationThisWeek');
+
+        _firestore.collection('users').doc(uid).update({
+          'workDurationToday': workDurationToday,
+          'workDurationThisWeek': _workDurationThisWeek + workDurationToday,
+        });
+      } else {
+        print('User document does not exist');
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+    return res;
+  }
+
+  // UPDATE PROFILE
+  Future<String> updateProfile(
+    String uid,
+    String fullName, //
+    String photoUrl, //
+    String bio, //
+    String phoneNum, //
+  ) async {
+    String res = 'Some error occurred';
+    try {
+      _firestore.collection('users').doc(uid).update({
+        'fullName': fullName,
+        'profilePicUrl': photoUrl,
+        'bio': bio,
+        'phoneNum': phoneNum,
+      });
+      res = 'success';
+    } catch (err) {
+      res = err.toString();
+    }
+    return res;
+  }
+
+  // POST COMMENT
+  Future<void> postComment(String activityId, String text, String uid,
+      String name, String profilePic) async {
+    try {
+      if (text.isNotEmpty) {
+        String commentId = const Uuid().v1();
+        await _firestore
+            .collection('activities')
+            .doc(activityId)
+            .collection('comments')
+            .doc(commentId)
+            .set({
+          'profilePic': profilePic,
+          'name': name,
+          'uid': uid,
+          'text': text,
+          'commentId': commentId,
+          'datePublished': DateTime.now(),
+        });
+      } else {
+        print('Text is empty');
+      }
+    } catch (e) {
+      print(
+        e.toString(),
+      );
+    }
+  }
+
+  // LIKE ACTIVITY
+  Future<void> likeActivity(String activityId, String uid, List likes) async {
+    try {
+      if (likes.contains(uid)) {
+        await _firestore.collection('activities').doc(activityId).update(
+          {
+            'likes': FieldValue.arrayRemove([uid]),
+          },
+        );
+      } else {
+        await _firestore.collection('activities').doc(activityId).update(
+          {
+            'likes': FieldValue.arrayUnion([uid]),
+          },
+        );
+      }
+    } catch (e) {
+      print(
+        e.toString(),
+      );
+    }
+  }
+
+  // Add Activity
+  Future<String> addActivity(
+    final bool isNotes,
+    final String uid,
+    final String profilePict,
+    final String username,
+    final String desc,
+    final DateTime startDate,
+    final DateTime endDate,
+    final String status,
+  ) async {
+    String res = 'Some error occurred';
+    try {
+      String activityId = Uuid().v1();
+
+      Activity activity = Activity(
+        isNotes: isNotes,
+        uid: uid,
+        activityId: activityId,
+        profilePict: profilePict,
+        username: username,
+        desc: desc,
+        startDate: Timestamp.fromDate(startDate),
+        endDate: Timestamp.fromDate(endDate),
+        likes: [],
+        datePublished: DateTime.now(),
+        status: status,
+      );
+
+      _firestore.collection('activities').doc(activityId).set(
+            activity.toJson(),
+          );
+      res = 'success';
+    } catch (err) {
+      res = err.toString();
+    }
+    return res;
+  }
 
   // Return number of task that is donec
   Future<int> numOfTaskDone(

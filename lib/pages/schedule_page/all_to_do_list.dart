@@ -41,9 +41,9 @@ class _AllToDoListState extends State<AllToDoList> {
               .collection('users')
               .doc(user.uid)
               .collection('toDos')
+              // .orderBy('startDate', descending: true)
               .where('startDate', isGreaterThanOrEqualTo: morning)
               .where('startDate', isLessThanOrEqualTo: night)
-              .orderBy('startDate', descending: true)
               .snapshots(),
           builder: (context,
               AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {

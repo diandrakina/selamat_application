@@ -12,8 +12,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+
 class ModesPage extends StatefulWidget {
   @override
+  State<ModesPage> createState() => _ModesPageState();
 }
 
 class _ModesPageState extends State<ModesPage> {

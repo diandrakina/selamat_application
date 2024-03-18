@@ -11,6 +11,10 @@ class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  Future<void> signOut() async{
+    await _auth.signOut();
+  }
+
   Future<model.User> getUserDetails() async {
     User currentUser = _auth.currentUser!;
     print("AUTH CURRENT USER ${currentUser}");
@@ -27,10 +31,12 @@ class AuthMethods {
     required String phoneNum,
     required String fullName,
     required Timestamp dateOfBirth,
-    required int startHour,
-    required int startMinute,
-    required int endHour,
-    required int endMinute,
+    required Timestamp startHourMinute,
+    // required int startHour,
+    // required int startMinute,
+    required Timestamp endHourMinute,
+    // required int endHour,
+    // required int endMinute,
   }) async {
     String res = "Some error occurred";
     try {
@@ -56,14 +62,19 @@ class AuthMethods {
         email: email,
         dateOfBirth: dateOfBirth,
         profilePicUrl: "",
-        startHour: startHour,
-        startMinute: startMinute,
+        startHourMinute: startHourMinute,
+        // startHour: startHour,
+        // startMinute: startMinute,
         userGoal: [],
-        endHour: endHour,
-        endMinute: endMinute,
+        endHourMinute: endHourMinute,
+        // endHour: endHour,
+        // endMinute: endMinute,
         userTarget: [],
         bio: "",
         phoneNum: phoneNum,
+        workDurationToday: 0,
+        workDurationThisWeek: 0,
+        scheduleEmoteMonthly: List<int>.filled(31, 0),
       );
       // add user to database
       await _firestore.collection('users').doc(cred.user!.uid).set(

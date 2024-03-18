@@ -12,8 +12,9 @@ class EndUpQuestionPage extends StatefulWidget {
     required this.phoneNum,
     required this.fullName,
     required this.dateOfBirth,
-    required this.startHour,
-    required this.startMinute,
+    required this.startHourMinute,
+    // required this.startHour,
+    // required this.startMinute,
   });
 
   final String email;
@@ -21,8 +22,9 @@ class EndUpQuestionPage extends StatefulWidget {
   final String phoneNum;
   final String fullName;
   final DateTime dateOfBirth;
-  final int startHour;
-  final int startMinute;
+  final DateTime startHourMinute;
+  // final int startHour;
+  // final int startMinute;
 
   @override
   State<EndUpQuestionPage> createState() => _EndUpQuestionPageState();
@@ -31,6 +33,7 @@ class EndUpQuestionPage extends StatefulWidget {
 class _EndUpQuestionPageState extends State<EndUpQuestionPage> {
   int _endHour = 0;
   int _endMinute = 0;
+  DateTime _timeNow = DateTime.now();
 
   void navigateToTargetQuestionPage() {
     String _email = widget.email;
@@ -38,8 +41,11 @@ class _EndUpQuestionPageState extends State<EndUpQuestionPage> {
     String _phoneNum = widget.phoneNum;
     String _fullName = widget.fullName;
     DateTime _dateOfBirth = widget.dateOfBirth;
-    int _startHour = widget.startHour;
-    int _startMinute = widget.startMinute;
+    DateTime _startHourMinute = widget.startHourMinute;
+    DateTime _endHourMinute = DateTime(
+        _timeNow.year, _timeNow.month, _timeNow.day, _endHour, _endMinute);
+    // int _startHour = widget.startHour;
+    // int _startMinute = widget.startMinute;
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => TargetQuestionPage(
@@ -48,10 +54,12 @@ class _EndUpQuestionPageState extends State<EndUpQuestionPage> {
           phoneNum: _phoneNum,
           fullName: _fullName,
           dateOfBirth: _dateOfBirth,
-          startHour: _startHour,
-          startMinute: _startMinute,
-          endHour: _endHour,
-          endMinute: _endMinute,
+          startHourMinute: _startHourMinute,
+          endHourMinute: _endHourMinute,
+          // startHour: _startHour,
+          // startMinute: _startMinute,
+          // endHour: _endHour,
+          // endMinute: _endMinute,
         ),
       ),
     );

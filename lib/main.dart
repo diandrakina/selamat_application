@@ -1,11 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-
 import 'package:provider/provider.dart';
+import 'package:selamat_application/pages/login_page/beforeLoginPage.dart';
+import 'package:selamat_application/providers/timer_provider.dart';
 
 import 'package:selamat_application/providers/user_provider.dart';
 
@@ -22,7 +24,6 @@ import 'package:selamat_application/pages/schedule_page/schedulePage.dart';
 import 'package:selamat_application/widget/widget_schedule/scheduleAction.dart';
 //STYLES
 import 'package:selamat_application/styles/styles.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -52,27 +53,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-
       providers: [
         ChangeNotifierProvider(
           create: (_) => UserProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => TimerProvider(),
+          child: MyApp(),
+        ),
       ],
       child: MaterialApp(
-
         title: 'Selamat App',
-
         theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
         debugShowCheckedModeBanner: false,
         home: StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.active) {
-
               // Checking if the snapshot has any data or not
               if (snapshot.hasData) {
                 print(snapshot.data);
-                // if snapshot has data which means user is logged in then we check the width of screen and accordingly display the screen layout
                 return const ResponsiveLayout(
                   mobileScreenLayout: MobileScreenLayout(),
                 );
@@ -92,31 +92,6 @@ class MyApp extends StatelessWidget {
             return const BeforeLoginPage();
           },
         ),
-
-              if (snapshot.hasData) {
-                // UserProvider _userProvider = Provider.of(context, listen: false);
-                // await _userProvider.refreshUser();
-              } else if (snapshot.hasError) {
-                return Center(
-                  child: Text(
-                    '${snapshot.error}',
-                  ),
-                );
-              }
-            }
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(
-                child: const CircularProgressIndicator(
-                  color: Colors.white,
-                ),
-              );
-            }
-            return MobileScreenLayout();
-          },
-        ),
-
-        // home: ReminderNotif(),
-
       ),
     );
   }

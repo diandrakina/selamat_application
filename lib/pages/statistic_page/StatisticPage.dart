@@ -82,7 +82,7 @@ class _StatisticPageState extends State<StatisticPage> {
         ),
 
         //DRAWER
-        drawer: const DrawerWidget(),
+        // drawer: const DrawerWidget(),
 
         //BODY
         body: Container(

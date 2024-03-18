@@ -223,12 +223,12 @@ class _NewProfilePageState extends State<NewProfilePage> {
                   children: [
                     ListTile(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const AddShareSchedule(),
-                          ),
-                        );
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => const AddShareSchedule(),
+                        //   ),
+                        // );
                       },
                       leading: const FaIcon(
                         Icons.calendar_month_outlined,
