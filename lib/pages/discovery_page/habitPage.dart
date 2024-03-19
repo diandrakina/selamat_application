@@ -138,11 +138,11 @@ class _HabitPageState extends State<HabitPage> {
                 CarouselSlider(
                   items: const [
                     FeaturedHabits(
-                        nameHabits: "Running",
+                        nameHabits: "The Art of Thinking",
                         descHabits:
-                            "Running is a method of terrestrial locomotion by which humans and other animals move rapidly on foot. Running is a gait with an aerial phase in which all feet are above the ground (though there are exceptions). This is in contrast to walking, where one foot is always in contact with the ground, the legs are kept mostly straight, and the center of gravity vaults over the stance leg or legs in an inverted pendulum fashion.",
+                            "The Art of Thinking habit emphasizes the importance of critical thinking, which involves objectively analyzing and evaluating information, arguments, and evidence. It encourages individuals to question assumptions, consider alternative perspectives, and make well-reasoned judgments.",
                         bgFeaturedHabits:
-                            'assets/images/discovery_page/running.png',
+                            'assets/images/discovery_page/catur.png',
                         month: 3,
                         person: 127,
                         rating: 4.8,
@@ -170,6 +170,8 @@ class _HabitPageState extends State<HabitPage> {
                   ],
                   options: CarouselOptions(
                       height: 320,
+                      // autoPlay: true,
+                      autoPlayAnimationDuration: Duration(milliseconds: 5000),
                       enlargeCenterPage: true,
                       aspectRatio: 1 / 1,
                       enableInfiniteScroll: true,

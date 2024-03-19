@@ -1,10 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:selamat_application/models/user.dart' as u;
 import 'package:selamat_application/pages/add_schedule_notes/addShareNotes.dart';
 import 'package:selamat_application/pages/add_schedule_notes/addShareSchedule.dart';
 import 'package:selamat_application/pages/profile_page/editProfile.dart';
 import 'package:selamat_application/pages/settings_page/settingsPage.dart';
+import 'package:selamat_application/providers/user_provider.dart';
 import 'package:selamat_application/styles/styles.dart';
+import 'package:selamat_application/widget/activity_widget/activity_card.dart';
 import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 import 'package:selamat_application/widget/widget_schedule/notesBox.dart';
 import 'package:selamat_application/widget/widget_schedule/scheduleBox.dart';
@@ -19,6 +25,7 @@ class NewProfilePage extends StatefulWidget {
 class _NewProfilePageState extends State<NewProfilePage> {
   @override
   Widget build(BuildContext context) {
+    final u.User user = Provider.of<UserProvider>(context).getUser;
     return SafeArea(
       child: Scaffold(
         //APPBAR
@@ -86,10 +93,12 @@ class _NewProfilePageState extends State<NewProfilePage> {
                   children: [
                     Container(
                       transform: Matrix4.translationValues(0.0, -40.0, 0.0),
-                      child: const CircleAvatar(
+                      child: CircleAvatar(
                         radius: 50,
-                        backgroundImage: AssetImage(
-                            "assets/images/discovery_page/psikolog/ChenZheyuan.jpg"),
+                        backgroundImage: user.profilePicUrl == ""
+                            ? NetworkImage(
+                                'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg')
+                            : NetworkImage(user.profilePicUrl),
                       ),
                     ),
                     const SizedBox(
@@ -126,13 +135,13 @@ class _NewProfilePageState extends State<NewProfilePage> {
                   children: [
                     //NAMA USER
                     Text(
-                      "Richie Hartono",
+                      user.fullName,
                       style: TextStyles.bold_24,
                     ),
 
                     //USERNAME
                     Text(
-                      "@richie_hartono",
+                      user.email,
                       style: TextStyles.light_16,
                     ),
                     const SizedBox(
@@ -223,12 +232,12 @@ class _NewProfilePageState extends State<NewProfilePage> {
                   children: [
                     ListTile(
                       onTap: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => const AddShareSchedule(),
-                        //   ),
-                        // );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const AddShareSchedule(),
+                          ),
+                        );
                       },
                       leading: const FaIcon(
                         Icons.calendar_month_outlined,
@@ -373,7 +382,7 @@ class _Page_ViewState extends State<Page_View> {
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                     color: _currentPageIndex == 0
-                        ? AppColors.pastelGreenHealth
+                        ? AppColors.baseColor
                         : Colors.white54),
               ),
             ),
@@ -388,7 +397,7 @@ class _Page_ViewState extends State<Page_View> {
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                     color: _currentPageIndex == 1
-                        ? AppColors.pastelGreenHealth
+                        ? AppColors.baseColor
                         : Colors.white54),
               ),
             ),
@@ -400,78 +409,75 @@ class _Page_ViewState extends State<Page_View> {
 }
 
 //HALAMAN 1
-class ScheduleView extends StatelessWidget {
+class ScheduleView extends StatefulWidget {
   const ScheduleView({super.key});
 
   @override
+  State<ScheduleView> createState() => _ScheduleViewState();
+}
+
+class _ScheduleViewState extends State<ScheduleView> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        Padding(padding: EdgeInsets.all(30)),
-        //BOX BUAT SHARE SCHEDULE
-        ScheduleBox(
-          profilePict: "assets/images/discovery_page/psikolog/ChenZheyuan.jpg",
-          username: "richie_hartono",
-          desc:
-              "i wanna score 80+ like Kobe Bryant, do you guys have any advice on my routine?",
-          date: "December 13 - December 24",
-          comment: 34.1,
-          hours: 3,
-          likes: 76.1,
-          status: true,
-        ),
-        SizedBox(
-          height: 16,
-        ),
-        ScheduleBox(
-          profilePict: "assets/images/discovery_page/psikolog/ChenZheyuan.jpg",
-          username: "richie_hartono",
-          desc:
-              "i wanna score 80+ like Kobe Bryant, do you guys have any advice on my routine?",
-          date: "December 13 - December 24",
-          comment: 34.1,
-          hours: 3,
-          likes: 76.1,
-          status: true,
-        )
-      ],
+    return StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+      stream: FirebaseFirestore.instance
+          .collection('activities')
+          .where('uid', isEqualTo: _auth.currentUser!.uid)
+          .where('isNotes', isEqualTo: false)
+          // .orderBy('datePublished', descending: true)
+          .snapshots(),
+      builder: (context,
+          AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+        return ListView.builder(
+            itemCount: snapshot.data?.docs.length ?? 0,
+            itemBuilder: (context, index) {
+              return ActivityCard(snap: snapshot.data!.docs[index].data());
+            });
+      },
     );
   }
 }
 
 //PAGE 2
-class NotesView extends StatelessWidget {
+class NotesView extends StatefulWidget {
   const NotesView({super.key});
 
   @override
+  State<NotesView> createState() => _NotesViewState();
+}
+
+class _NotesViewState extends State<NotesView> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        Padding(padding: EdgeInsets.all(30)),
-        NotesBox(
-          profilePict: "assets/images/discovery_page/psikolog/ChenZheyuan.jpg",
-          username: "richie_hartono",
-          desc:
-              "YAA BOYY I JUST TRAIN SO HARD, I CAN GET THAT 81+ POINTS ASAP BROOO. SEE U NEXT WEEK!",
-          comment: 34.1,
-          hours: 3,
-          likes: 76.1,
-          status: true,
-        ),
-        SizedBox(
-          height: 16,
-        ),
-        NotesBox(
-          profilePict: "assets/images/discovery_page/psikolog/ChenZheyuan.jpg",
-          username: "richie_hartono",
-          desc:
-              "YAA BOYY I JUST TRAIN SO HARD, I CAN GET THAT 81+ POINTS ASAP BROOO. SEE U NEXT WEEK!",
-          comment: 34.1,
-          hours: 3,
-          likes: 76.1,
-          status: true,
-        )
-      ],
+    return StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+      stream: FirebaseFirestore.instance
+          .collection('activities')
+          .where('uid', isEqualTo: _auth.currentUser!.uid)
+          .where('isNotes', isEqualTo: true)
+          // .orderBy('datePublished', descending: true)
+          .snapshots(),
+      builder: (context,
+          AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+        return ListView.builder(
+            itemCount: snapshot.data?.docs.length ?? 0,
+            itemBuilder: (context, index) {
+              return ActivityCard(snap: snapshot.data!.docs[index].data());
+            });
+      },
     );
   }
 }

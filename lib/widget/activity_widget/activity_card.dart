@@ -84,10 +84,8 @@ class _ActivityCardState extends State<ActivityCard> {
   Widget build(BuildContext context) {
     final User user = Provider.of<UserProvider>(context).getUser;
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-      // margin: EdgeInsets.symmetric(vertical: 10),
-      // height: 300,
-      // color: AppColors.darkModeCard,
+      // margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      margin: EdgeInsets.symmetric(vertical: 10),
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
       decoration: BoxDecoration(
         color: AppColors.darkModeCard,
@@ -132,7 +130,7 @@ class _ActivityCardState extends State<ActivityCard> {
                     context: context,
                     builder: (context) => Dialog(
                       child: ListView(
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                           vertical: 16,
                         ),
                         shrinkWrap: true,
@@ -175,7 +173,7 @@ class _ActivityCardState extends State<ActivityCard> {
             // maxLines: 3,
             // overflow: TextOverflow.ellipsis,
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
 
@@ -249,14 +247,12 @@ class _ActivityCardState extends State<ActivityCard> {
                     : const Icon(
                         Icons.favorite_border,
                         size: 25,
+                        color: Colors.white,
                       ),
               ),
               Text(
-                "${widget.snap['likes'].length} Likes",
+                "${widget.snap['likes'].length}",
                 style: TextStyles.light_14,
-              ),
-              const SizedBox(
-                width: 10,
               ),
               IconButton(
                 onPressed: () => Navigator.of(context).push(
@@ -271,7 +267,7 @@ class _ActivityCardState extends State<ActivityCard> {
                 ),
               ),
               Text(
-                "View all $commentLen comments",
+                "$commentLen",
                 style: TextStyles.light_14,
               ),
             ],

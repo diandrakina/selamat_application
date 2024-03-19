@@ -66,6 +66,7 @@ class MyApp extends StatelessWidget {
         title: 'Selamat App',
         theme: new ThemeData(scaffoldBackgroundColor: AppColors.bgDarkMode),
         debugShowCheckedModeBanner: false,
+        // home: SchedulePage(),
         home: StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
@@ -73,9 +74,9 @@ class MyApp extends StatelessWidget {
               // Checking if the snapshot has any data or not
               if (snapshot.hasData) {
                 print(snapshot.data);
-                return const ResponsiveLayout(
-                  mobileScreenLayout: MobileScreenLayout(),
-                );
+                // return const ResponsiveLayout(
+                //   mobileScreenLayout: MobileScreenLayout(),
+                // );
               } else if (snapshot.hasError) {
                 return Center(
                   child: Text('${snapshot.error}'),

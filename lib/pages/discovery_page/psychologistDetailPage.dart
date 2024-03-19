@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:selamat_application/pages_psychologist/chat_psychologist/PsychologistChatPatient.dart';
 import 'package:selamat_application/styles/styles.dart';
 import 'package:selamat_application/widget/widget_login_register/customElevatedButton.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
@@ -62,7 +63,7 @@ class _PsychologistDetailPageState extends State<PsychologistDetailPage> {
               decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage(
-                        'assets/images/discovery_page/psikolog/ZhouYiran.jpg'),
+                        'assets/images/discovery_page/psikolog/ChenZheyuan.jpg'),
                     fit: BoxFit.cover),
               ),
             ),
@@ -73,7 +74,7 @@ class _PsychologistDetailPageState extends State<PsychologistDetailPage> {
               child: Column(
                 children: [
                   Text(
-                    "Dr. Zhou Yiran, S.Kom., M.Cs., M.Hum., Ph.D.",
+                    "Dr. Chen Zheyuan, S.Kom., M.Cs., M.Hum., Ph.D.",
                     style: TextStyles.bold_30,
                     textAlign: TextAlign.center,
                   ),
@@ -248,7 +249,12 @@ class _PsychologistDetailPageState extends State<PsychologistDetailPage> {
             buttonStyle: CustomButtonStyles.buttonBlue2,
             height: 40,
             width: 150,
-          )
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => PsychologistChat(),
+              ),
+            ),
+          ),
         ],
       ),
     );
